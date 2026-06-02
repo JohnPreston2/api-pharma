@@ -15,15 +15,15 @@
 
 ---
 
-## Tier 2 — À venir
+## Tier 2 — Haute fréquence, haut risque conseil
 
-| # | Fiche | Statut |
+| # | Fiche | Mots-clés patient |
 |---|---|---|
-| 06 | Dépression / Anxiété / Insomnie | 🔜 |
-| 07 | Hypothyroïdie | 🔜 |
-| 08 | RGO / Ulcère peptique / IPP | 🔜 |
-| 09 | Anticoagulation (FA / MTEV) — AVK / NACO | 🔜 |
-| 10 | Insuffisance cardiaque | 🔜 |
+| 06 | [Dépression / Anxiété / Insomnie](./06_depression_anxiete_insomnie.md) | moral, nerfs, Lexomil, Xanax, ISRS, BZD, Stilnox |
+| 07 | [Hypothyroïdie](./07_hypothyroidie.md) | thyroïde, Lévothyrox, TSH, prise de poids, frilosité |
+| 08 | [RGO / Ulcère peptique / IPP](./08_RGO_ulcere_IPP.md) | brûlures estomac, IPP, oméprazole, H. pylori |
+| 09 | [Anticoagulation — AVK / NACO](./09_anticoagulation_AVK_NACO.md) | Préviscan, INR, Xarelto, Eliquis, FA, phlébite |
+| 10 | [Insuffisance cardiaque](./10_insuffisance_cardiaque.md) | souffle court, œdèmes, furosémide, bisoprolol, pesée |
 
 ---
 
