@@ -59,6 +59,8 @@
   .drug-dose { font-size: 6pt; color: var(--grey); }
   .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
   .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
 
   .cls-avk .drug-class-header { background: var(--cl); }
   .cls-avk .drug-class-header .name { color: var(--c1); }
@@ -157,17 +159,17 @@
       <div class="drug-class-header"><div class="name">AVK — Anti-Vitamine K</div><div class="badge">Suivi INR obligatoire</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Fluindione (Préviscan)</div>
+          <div class="drug-dci">Fluindione (Préviscan)<span class="princeps">Préviscan</span><span class="vol-data">📦 5M boîtes · 3,20€ · 16M€/an</span></div>
           <div class="drug-dose">t½ 31h · 80% des prescriptions françaises · 1 cp/j heure fixe</div>
           <div class="drug-watch">INR cible 2–3 · Pas de générique · Marge thérapeutique étroite</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Warfarine (Coumadine)</div>
+          <div class="drug-dci">Warfarine (Coumadine)<span class="princeps">Coumadine · Générique</span><span class="vol-data">📦 3M boîtes · 2,80€ · 8M€/an</span></div>
           <div class="drug-dose">t½ 35–45h · INR 2–3 (FA/MTEV) ou 2,5–3,5 (valves méca)</div>
           <div class="drug-watch">Valves mécaniques = AVK uniquement (CI NACO) · Pas de générique</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Acénocoumarol (Sintrom, Minisintrom)</div>
+          <div class="drug-dci">Acénocoumarol (Sintrom, Minisintrom)<span class="princeps">Sintrom · Minisintrom</span><span class="vol-data">📦 1M boîtes · 3,10€ · 3M€/an</span></div>
           <div class="drug-dose">t½ court (8–11h) · Comprimé quadrisécable (Minisintrom 1 mg)</div>
           <div class="drug-watch">Titration plus difficile · INR fréquents en initiation</div>
         </div>
@@ -177,22 +179,22 @@
       <div class="drug-class-header"><div class="name">NACO / AOD — Anticoagulants Oraux Directs</div><div class="badge">Sans INR routinier</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Dabigatran (Pradaxa) Anti-IIa</div>
+          <div class="drug-dci">Dabigatran (Pradaxa) Anti-IIa<span class="princeps">Pradaxa</span><span class="vol-data">📦 2M boîtes · 28€ · 56M€/an</span></div>
           <div class="drug-dose">FA : 150 mg × 2/j · 110 mg ×2/j si > 75 ans ou IRC modérée</div>
           <div class="drug-watch">Antidote : Idarucizumab (Praxbind) · DFG &lt;30 = CI · Dyspepsie fréquente</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Rivaroxaban (Xarelto) Anti-Xa</div>
+          <div class="drug-dci">Rivaroxaban (Xarelto) Anti-Xa<span class="princeps">Xarelto</span><span class="vol-data">📦 6M boîtes · 32€ · 192M€/an</span></div>
           <div class="drug-dose">FA : <b>20 mg × 1/j avec le repas</b> · TVP curatif : 15 mg × 2/j 3 sem</div>
           <div class="drug-watch">Prise avec repas OBLIGATOIRE (↑ absorption +39%) · Antidote : Andexanet alfa</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Apixaban (Eliquis) Anti-Xa</div>
+          <div class="drug-dci">Apixaban (Eliquis) Anti-Xa<span class="princeps">Eliquis</span><span class="vol-data">📦 8M boîtes · 30€ · 240M€/an</span></div>
           <div class="drug-dose">FA : 5 mg × 2/j · 2,5 mg × 2/j si ≥ 2 critères (≥80 ans / ≤60 kg / créat ≥133)</div>
           <div class="drug-watch">Dose réduite : critères stricts · Antidote : Andexanet alfa</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Edoxaban (Lixiana) Anti-Xa</div>
+          <div class="drug-dci">Edoxaban (Lixiana) Anti-Xa<span class="princeps">Lixiana</span><span class="vol-data">📦 1M boîtes · 35€ · 35M€/an</span></div>
           <div class="drug-dose">60 mg × 1/j · 30 mg si IRC, poids ≤ 60 kg ou P-gp inhibiteur</div>
           <div class="drug-watch">Réduction dose obligatoire selon DFG</div>
         </div>

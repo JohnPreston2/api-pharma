@@ -41,11 +41,11 @@ Héparine : potentialise antithrombine III → bloque Xa + IIa
 
 ## AVK — Antagonistes de la Vitamine K
 
-| DCI | Produit | T½ | INR cible |
-|---|---|---|---|
-| Fluindione | **Préviscan** | 31 h | 2–3 (FA, MTEV) |
-| Warfarine | **Coumadine** | 35–45 h | 2–3 ou 2,5–3,5 (valves méca) |
-| Acénocoumarol | Sintrom, Minisintrom | 8–11 h | 2–3 |
+| DCI | Produit | T½ | INR cible | open-medic 2023 |
+|---|---|---|---|---|
+| Fluindione | **Préviscan** | 31 h | 2–3 (FA, MTEV) | 📦 5M btes · 3,20€ · 16M€/an |
+| Warfarine | **Coumadine** · Générique | 35–45 h | 2–3 ou 2,5–3,5 (valves méca) | 📦 3M btes · 2,80€ · 8M€/an |
+| Acénocoumarol | Sintrom · Minisintrom | 8–11 h | 2–3 | 📦 1M btes · 3,10€ · 3M€/an |
 
 > En France, **Préviscan = AVK dominant** (80% des prescriptions)
 
@@ -87,12 +87,12 @@ Voyage → emporter carnet anticoagulant + INR récent
 
 ## NACO (AOD) — Anticoagulants Oraux Directs
 
-| DCI | Produit | Cible | Indication | Posologie |
-|---|---|---|---|---|
-| **Dabigatran** | Pradaxa | Anti-IIa | FA, MTEV | 150 mg × 2/j (110 mg si > 75 ans, IRC modérée) |
-| **Rivaroxaban** | Xarelto | Anti-Xa | FA, MTEV, coronaire | FA : 20 mg × 1/j au repas · MTEV curatif : 15 mg × 2/j 3 sem puis 20 mg × 1/j |
-| **Apixaban** | Eliquis | Anti-Xa | FA, MTEV | FA : 5 mg × 2/j (2,5 mg si ≥ 2 critères : âge ≥ 80, poids ≤ 60 kg, créatinine ≥ 133 µmol/L) |
-| **Edoxaban** | Lixiana | Anti-Xa | FA, MTEV | 60 mg × 1/j (30 mg si IRC, poids ≤ 60 kg) |
+| DCI | Produit | Cible | Indication | Posologie | open-medic 2023 |
+|---|---|---|---|---|---|
+| **Dabigatran** | Pradaxa | Anti-IIa | FA, MTEV | 150 mg × 2/j (110 mg si > 75 ans, IRC modérée) | 📦 2M btes · 28€ · 56M€/an |
+| **Rivaroxaban** | Xarelto | Anti-Xa | FA, MTEV, coronaire | FA : 20 mg × 1/j au repas · MTEV curatif : 15 mg × 2/j 3 sem puis 20 mg × 1/j | **📦 6M btes · 32€ · 192M€/an** |
+| **Apixaban** | Eliquis | Anti-Xa | FA, MTEV | FA : 5 mg × 2/j (2,5 mg si ≥ 2 critères : âge ≥ 80, poids ≤ 60 kg, créatinine ≥ 133 µmol/L) | **📦 8M btes · 30€ · 240M€/an** |
+| **Edoxaban** | Lixiana | Anti-Xa | FA, MTEV | 60 mg × 1/j (30 mg si IRC, poids ≤ 60 kg) | 📦 1M btes · 35€ · 35M€/an |
 
 ### Avantages NACO vs AVK
 - Pas de surveillance INR routinière

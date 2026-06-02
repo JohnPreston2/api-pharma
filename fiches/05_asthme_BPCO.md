@@ -57,10 +57,10 @@ Sifflement, dyspnée                 Toux productive, dyspnée d'effort
 
 ### Bêta-2 agonistes
 
-| Type | DCI clés | Indication | Durée action |
-|---|---|---|---|
-| **SABA** (court) | Salbutamol (Ventoline), Terbutaline (Bricanyl) | **Crise** / Secours | 4–6 h |
-| **LABA** (long) | Formotérol, Salmétérol, Indacatérol (BPCO), Olodatérol (BPCO) | **Fond** (jamais seul asthme) | 12–24 h |
+| Type | DCI clés | Princeps | Indication | Durée action |
+|---|---|---|---|---|
+| **SABA** (court) | Salbutamol (Ventoline), Terbutaline (Bricanyl) | Ventoline · Bricanyl | **Crise** / Secours | 4–6 h |
+| **LABA** (long) | Formotérol, Salmétérol, Indacatérol (BPCO), Olodatérol (BPCO) | Symbicort/Foster · Sérétide | **Fond** (jamais seul asthme) | 12–24 h |
 
 ### Corticoïdes inhalés (CSI) — Asthme uniquement en fond
 
@@ -75,15 +75,17 @@ Sifflement, dyspnée                 Toux productive, dyspnée d'effort
 
 | Produit | Composition | Dispositif |
 |---|---|---|
-| **Symbicort** | Budésonide + Formotérol | Turbuhaler |
+| **Symbicort** | Budésonide + Formotérol | Turbuhaler · 2M btes · 45€ · 90M€/an |
 | **Fostair** | Béclométasone + Formotérol | pMDI / Nexthaler |
-| **Séretide** | Fluticasone + Salmétérol | Diskus / MDI |
-| **Trelegy** | Fluticasone + Vilanterol + Uméclidinium | Ellipta |
+| **Séretide** | Fluticasone + Salmétérol | Diskus/MDI · 2M btes · 52€ · 104M€/an |
+| **Trelegy** | Fluticasone + Vilanterol + Uméclidinium | Ellipta · 0,5M btes · 95€ |
 | **Relvar** | Fluticasone furoate + Vilanterol | Ellipta |
 
 > **Stratégie MART (Asthme) :** Symbicort ou Fostair = traitement fond **ET** secours → 1 seul inhalateur
 
 ### Anticholinergiques — Surtout BPCO
+
+> 💊 **open-medic 2023** : Ventoline 8M btes · Symbicort/Foster 2M btes · Sérétide 2M btes · Spiriva 1M btes
 
 | Type | DCI clés | Indication |
 |---|---|---|

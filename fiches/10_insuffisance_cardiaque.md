@@ -57,12 +57,12 @@ IC à FE préservée (ICFEp) : FEVG ≥ 50% → traitement de la cause + symptô
 
 ### Les 4 piliers (mortalité prouvée)
 
-| Classe | DCI clés | Posologie initiale → cible | Points clés officine |
-|---|---|---|---|
-| **IEC** | Ramipril, énalapril, lisinopril, périndopril | Ramipril 1,25 mg → 10 mg/j | Débuter bas, augmenter progressivement · Kaliémie + créatinine |
-| **β-bloquants cardiosélectifs** | Bisoprolol, carvédilol, métoprolol succinate | Bisoprolol 1,25 mg → 10 mg/j | **Ne jamais arrêter brutalement** · Débuter à distance d'une décompensation |
-| **ARM — Antagonistes aldostérone** | Spironolactone, éplérénone | Spiro 25–50 mg/j · Épléré 25–50 mg/j | Kaliémie ++ (hyperkaliémie) · Gynécomastie (spiro) |
-| **Gliflozines (iSGLT2)** | Dapagliflozine (Forxiga 10 mg), Empagliflozine (Jardiance 10 mg) | 10 mg × 1/j | Bénéfice IC indépendant du diabète · Mycoses génitales |
+| Classe | DCI clés | Princeps | Posologie initiale → cible | Points clés officine |
+|---|---|---|---|---|
+| **IEC** | Ramipril, énalapril, lisinopril, périndopril | Triatec · Renitec · Coversyl | Ramipril 1,25 mg → 10 mg/j | Débuter bas, augmenter progressivement · Kaliémie + créatinine |
+| **β-bloquants cardiosélectifs** | Bisoprolol, carvédilol, métoprolol succinate | Cardensiel · Kredex · Lopressor | Bisoprolol 1,25 mg → 10 mg/j | **Ne jamais arrêter brutalement** · Débuter à distance d'une décompensation |
+| **ARM — Antagonistes aldostérone** | Spironolactone, éplérénone | Aldactone · Inspra | Spiro 25–50 mg/j · Épléré 25–50 mg/j | Kaliémie ++ (hyperkaliémie) · Gynécomastie (spiro) |
+| **Gliflozines (iSGLT2)** | Dapagliflozine (Forxiga 10 mg), Empagliflozine (Jardiance 10 mg) | Forxiga · Jardiance | 10 mg × 1/j | Bénéfice IC indépendant du diabète · Mycoses génitales |
 
 > **ARNI** (sacubitril/valsartan = Entresto) : remplace IEC si persistance symptômes → 1 comprimé = valsartan + sacubitril
 
@@ -70,10 +70,12 @@ IC à FE préservée (ICFEp) : FEVG ≥ 50% → traitement de la cause + symptô
 
 | Classe | DCI | Posologie | Surveiller |
 |---|---|---|---|
-| **Diurétique de l'anse** | Furosémide (Lasilix) | 20–160 mg/j | Kaliémie, natrémie, créatinine, poids |
-| | Bumétanide (Burinex) | 0,5–5 mg/j | Idem |
+| **Diurétique de l'anse** | Furosémide (Lasilix) | Lasilix · Générique · 📦 8M btes | 20–160 mg/j | Kaliémie, natrémie, créatinine, poids |
+| | Bumétanide (Burinex) | Burinex · Générique | 0,5–5 mg/j | Idem |
 | **Thiazidique** | Hydrochlorothiazide | Adjuvant | Idem |
 | **Diurétique épargneur K+** | Spironolactone | 25–50 mg | Kaliémie (hyperK+ si + IEC) |
+
+> 💊 **open-medic 2023** : Bisoprolol 22M btes · IEC IC 10M btes · Entresto 0,8M btes (CA 104M€) · Forxiga/Jardiance IC 1,5M btes
 
 ### Digitaliques — Usage restreint
 

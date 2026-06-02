@@ -46,15 +46,17 @@ Complications MICRO          Complications MACRO
 
 ## Classes thérapeutiques
 
-| Classe | DCI clés | Points clés officine | Surveiller |
-|---|---|---|---|
-| **Metformine** ← 1ère ligne | metformine | Avec repas · LP si digestif | Créatinine (CI si DFG < 30) · Vitamine B12 |
-| **Gliflozines (iSGLT2)** | dapagliflozine, empagliflozine, canagliflozine | Bénéfice CV + rénal prouvé | Mycoses génitales · Déshydratation · **Arrêt si chirurgie** |
-| **Agonistes GLP-1** | sémaglutide, liraglutide, dulaglutide | Injectable ou oral · Perte de poids | Nausées à l'initiation · Pancréatite rare |
-| **Gliptines (iDPP-4)** | sitagliptine, vildagliptine, saxagliptine | Bien tolérés, neutres CV | Infections ORL · Pancréatite rare |
-| **Sulfamides** | gliclazide, glimépiride | Risque hypoglycémie ++ · Éviter si âgé | Glycémies · Prise de poids |
-| **Insulines basales** | glargine (Lantus/Toujeo), dégludec (Tresiba) | 1 injection/j au coucher | Hypoglycémie nocturne |
-| **Insulines rapides** | asparte (NovoRapid), lispro (Humalog) | Avant repas (0–15 min avant) | Hypoglycémie post-prandiale |
+| Classe | DCI clés | Princeps | Points clés officine | Surveiller |
+|---|---|---|---|---|
+| **Metformine** ← 1ère ligne | metformine | Glucophage · Générique | Avec repas · LP si digestif | Créatinine (CI si DFG < 30) · Vitamine B12 |
+| **Gliflozines (iSGLT2)** | dapagliflozine, empagliflozine, canagliflozine | Forxiga · Jardiance | Bénéfice CV + rénal prouvé | Mycoses génitales · Déshydratation · **Arrêt si chirurgie** |
+| **Agonistes GLP-1** | sémaglutide, liraglutide, dulaglutide | Ozempic · Rybelsus · Trulicity | Injectable ou oral · Perte de poids | Nausées à l'initiation · Pancréatite rare |
+| **Gliptines (iDPP-4)** | sitagliptine, vildagliptine, saxagliptine | Januvia · Galvus · Onglyza | Bien tolérés, neutres CV | Infections ORL · Pancréatite rare |
+| **Sulfamides** | gliclazide, glimépiride | Diamicron LP · Amarel | Risque hypoglycémie ++ · Éviter si âgé | Glycémies · Prise de poids |
+| **Insulines basales** | glargine (Lantus/Toujeo), dégludec (Tresiba) | Lantus · Toujeo · Tresiba | 1 injection/j au coucher | Hypoglycémie nocturne |
+| **Insulines rapides** | asparte (NovoRapid), lispro (Humalog) | NovoRapid · Humalog | Avant repas (0–15 min avant) | Hypoglycémie post-prandiale |
+
+> 💊 **open-medic 2023** : Metformine 22M btes · Gliflozines 3,5M btes · GLP-1 3M stylos · Gliptines 5M btes · Insulines 5M stylos
 
 ### Stratégie thérapeutique (HAS 2023)
 ```

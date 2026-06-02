@@ -70,6 +70,8 @@
   .drug-dose { font-size: 6pt; color: var(--grey); }
   .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
   .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
 
   .cls-iec .drug-class-header { background: var(--blue-l); }
   .cls-iec .drug-class-header .name { color: var(--blue); }
@@ -169,12 +171,12 @@
       <div class="drug-class-header"><div class="name">IEC ou ARNI</div><div class="badge">Pilier 1</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Ramipril · Énalapril · Périndopril (IEC)</div>
+          <div class="drug-dci">Ramipril · Énalapril · Périndopril (IEC)<span class="princeps">Triatec · Renitec · Coversyl · Générique</span><span class="vol-data">📦 25M boîtes · 2,80€ · 70M€/an</span></div>
           <div class="drug-dose">Débuter bas · Augmenter progressivement · Ramipril 1,25 → 10 mg/j</div>
           <div class="drug-watch">Kaliémie + créatinine · Toux → switcher ARNI</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Sacubitril/Valsartan (Entresto)</div>
+          <div class="drug-dci">Sacubitril/Valsartan (Entresto)<span class="princeps">Entresto</span><span class="vol-data">📦 0,8M boîtes · 130€ · 104M€/an</span></div>
           <div class="drug-dose">ARNI = remplace IEC si symptômes persistants · 24/26 → 49/51 mg × 2/j</div>
           <div class="drug-watch">Pas de générique · Ne pas combiner avec IEC</div>
         </div>
@@ -184,7 +186,7 @@
       <div class="drug-class-header"><div class="name">β-Bloquants cardiosélectifs</div><div class="badge">Pilier 2 — jamais brutal</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Bisoprolol · Carvédilol · Métoprolol succinate</div>
+          <div class="drug-dci">Bisoprolol · Carvédilol · Métoprolol succinate<span class="princeps">Cardensiel · Kredex · Lopressor · Générique</span><span class="vol-data">📦 22M boîtes · 3,40€ · 75M€/an</span></div>
           <div class="drug-dose">Bisoprolol 1,25 → 10 mg/j · Titration LENTE sur semaines</div>
           <div class="drug-watch">Jamais arrêt brutal · Débuter à distance d'une décompensation · FC cible 55–65/min</div>
         </div>
@@ -194,12 +196,12 @@
       <div class="drug-class-header"><div class="name">ARM — Antagonistes Aldostérone</div><div class="badge">Pilier 3 — K+ +++</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Spironolactone (Aldactone)</div>
+          <div class="drug-dci">Spironolactone (Aldactone)<span class="princeps">Aldactone · Générique</span><span class="vol-data">📦 5M boîtes · 4,50€ · 23M€/an</span></div>
           <div class="drug-dose">25–50 mg/j · Gynécomastie possible (homme)</div>
           <div class="drug-watch">Hyperkaliémie +++ · IEC + ARM = surveiller K+ et créatinine</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Éplérénone (Inspra)</div>
+          <div class="drug-dci">Éplérénone (Inspra)<span class="princeps">Inspra</span><span class="vol-data">📦 1M boîtes · 18€ · 18M€/an</span></div>
           <div class="drug-dose">25–50 mg/j · Pas de gynécomastie</div>
           <div class="drug-watch">Idem spironolactone pour kaliémie</div>
         </div>
@@ -209,7 +211,7 @@
       <div class="drug-class-header"><div class="name">Gliflozines (iSGLT2)</div><div class="badge">Pilier 4 — diabétiques ET non diabétiques</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Dapagliflozine (Forxiga 10 mg) · Empagliflozine (Jardiance 10 mg)</div>
+          <div class="drug-dci">Dapagliflozine (Forxiga 10 mg) · Empagliflozine (Jardiance 10 mg)<span class="princeps">Forxiga · Jardiance</span><span class="vol-data">📦 1,5M boîtes · 55€ · 83M€/an</span></div>
           <div class="drug-dose">10 mg × 1/j · Bénéfice IC indépendant du diabète</div>
           <div class="drug-watch">Mycoses génitales · Déshydratation · DFG &lt;20 = CI</div>
         </div>
@@ -219,12 +221,12 @@
       <div class="drug-class-header"><div class="name">Diurétiques de l'Anse</div><div class="badge">Symptômes surcharge</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Furosémide (Lasilix)</div>
+          <div class="drug-dci">Furosémide (Lasilix)<span class="princeps">Lasilix · Générique</span><span class="vol-data">📦 8M boîtes · 1,80€ · 14M€/an</span></div>
           <div class="drug-dose">20–160 mg/j · Titré selon symptômes et poids</div>
           <div class="drug-watch">Kaliémie · Natrémie · Créatinine · Poids quotidien</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Bumétanide (Burinex)</div>
+          <div class="drug-dci">Bumétanide (Burinex)<span class="princeps">Burinex · Générique</span><span class="vol-data">📦 1M boîtes · 3,20€ · 3M€/an</span></div>
           <div class="drug-dose">0,5–5 mg/j · Équivalence : 1 mg bumétanide = 40 mg furosémide</div>
           <div class="drug-watch">Idem furosémide</div>
         </div>

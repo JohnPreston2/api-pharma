@@ -45,14 +45,16 @@ PA = Débit cardiaque × Résistances périphériques
 
 ## Classes thérapeutiques
 
-| Classe | DCI clés | Posologie type | Surveiller |
-|---|---|---|---|
-| **IEC** | ramipril, périndopril, énalapril, lisinopril | Ramipril 2,5–10 mg/j | Kaliémie, créatinine, **toux sèche** |
-| **ARA2 (Sartans)** | valsartan, irbesartan, losartan, candésartan, olmésartan | Selon molécule | Kaliémie, créatinine (pas de toux) |
-| **ICa dihydropyridines** | amlodipine, félodipine, lercanidipine | Amlodipine 5–10 mg/j | **Œdèmes MI** (fréquents, bénins) |
-| **ICa non-DHP** | vérapamil, diltiazem | Selon forme | **CI si β-bloquant** (BAV) |
-| **Diurétiques thiazidiques** | hydrochlorothiazide, indapamide | Indapamide 1,5 LP/j | Kaliémie, natrémie, uricémie, glycémie |
-| **β-bloquants** | bisoprolol, métoprolol, aténolol, nébivolol | Bisoprolol 2,5–10 mg/j | FC, bronchospasme, glycémie masquée |
+| Classe | DCI clés | Princeps | Posologie type | Surveiller |
+|---|---|---|---|---|
+| **IEC** | ramipril, périndopril, énalapril, lisinopril | Triatec · Coversyl · Renitec | Ramipril 2,5–10 mg/j | Kaliémie, créatinine, **toux sèche** |
+| **ARA2 (Sartans)** | valsartan, irbesartan, losartan, candésartan, olmésartan | Nisis · Aprovel · Cozaar · Atacand · Alteis | Selon molécule | Kaliémie, créatinine (pas de toux) |
+| **ICa dihydropyridines** | amlodipine, félodipine, lercanidipine | Amlor · Flodil · Zanidip | Amlodipine 5–10 mg/j | **Œdèmes MI** (fréquents, bénins) |
+| **ICa non-DHP** | vérapamil, diltiazem | Isoptine · Tildiem | Selon forme | **CI si β-bloquant** (BAV) |
+| **Diurétiques thiazidiques** | hydrochlorothiazide, indapamide | Esidrex · Fludex LP | Indapamide 1,5 LP/j | Kaliémie, natrémie, uricémie, glycémie |
+| **β-bloquants** | bisoprolol, métoprolol, aténolol, nébivolol | Cardensiel · Lopressor · Ténormine · Temerit | Bisoprolol 2,5–10 mg/j | FC, bronchospasme, glycémie masquée |
+
+> 💊 **open-medic 2023** : IEC/ARA2 : ~37M btes · Bisoprolol : 22M btes · Amlodipine : 20M btes · Indapamide : 10M btes
 
 ### Associations préférentielles (HAS 2023)
 ```

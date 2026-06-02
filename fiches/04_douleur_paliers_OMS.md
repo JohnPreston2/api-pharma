@@ -41,12 +41,12 @@ Répond aux paliers   Répond POCO aux paliers
 
 #### AINS — En 2ème intention ou douleur inflammatoire
 
-| DCI | Dose OTC max | Points clés |
-|---|---|---|
-| Ibuprofène | 400 mg × 3/j (1200 mg/j) | Avec repas, durée < 5 jours en automédication |
-| Kétoprofène | 50 mg × 3/j | Photosensibilisation +++ |
-| Naproxène | 250–500 mg × 2/j | Meilleur profil CV que ibuprofène |
-| Diclofénac | 25–50 mg × 3/j | Forme gel topique très utilisée |
+| DCI | Princeps | Dose OTC max | Points clés |
+|---|---|---|---|
+| Ibuprofène | Advil · Brufen · Générique | 400 mg × 3/j (1200 mg/j) | Avec repas, durée < 5 jours en automédication |
+| Kétoprofène | Profenid · Générique | 50 mg × 3/j | Photosensibilisation +++ |
+| Naproxène | Apranax · Générique | 250–500 mg × 2/j | Meilleur profil CV que ibuprofène |
+| Diclofénac | Voltarène · Générique | 25–50 mg × 3/j | Forme gel topique très utilisée |
 
 **Contre-indications absolues AINS :**
 - Ulcère gastrique actif
@@ -124,8 +124,8 @@ Dépendance physique (arrêt progressif obligatoire)
 
 > **Les paliers OMS sont PEU EFFICACES sur la douleur neuropathique**
 
-| Classe | DCI | Posologie | Surveiller |
-|---|---|---|---|
+| Classe | DCI | Princeps | Posologie | Surveiller |
+|---|---|---|---|---|
 | **Antiépileptiques** | Prégabaline (Lyrica) | 75–300 mg × 2/j | Sédation, vertige, dépendance |
 | | Gabapentine | 300–3600 mg/j | Titration progressive |
 | **Antidépresseurs** | Duloxétine (Cymbalta) | 60–120 mg/j | Nausées initiales, PA |

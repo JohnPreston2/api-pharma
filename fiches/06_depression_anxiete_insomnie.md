@@ -55,17 +55,19 @@ Hyperactivation axe HPA (cortisol) + GABA insuffisant + rythme circadien perturb
 
 ### Antidépresseurs
 
-| Classe | DCI clés | Posologie | Points clés officine |
-|---|---|---|---|
-| **ISRS** ← 1ère ligne | Sertraline, escitalopram, paroxétine, fluoxétine, citalopram | Sertraline 50–200 mg/j · Escitalopram 10–20 mg/j | Délai d'action **2–4 semaines** · Nausées initiales (passagères) |
-| **IRSN** | Venlafaxine, duloxétine | Venlafaxine 75–225 mg/j · Duloxétine 60–120 mg/j | ↑ PA à forte dose (venlafaxine) · Douleur neuropathique (duloxétine) |
-| **NaSSA** | Mirtazapine | 15–45 mg/j au coucher | Sédation + appétit ↑ · Utile si insomnie associée |
-| **Tricycliques (TCA)** | Amitriptyline, clomipramine, imipramine | Doses progressives | Nombreux EI anticholinergiques · Réservé si échec ISRS |
-| **IMAO** | Phénelzine, moclobémide (réversible) | Selon molécule | Interactions alimentaires tyramine (IMAO irréversibles) |
+| Classe | DCI clés | Princeps | Posologie | Points clés officine |
+|---|---|---|---|---|
+| **ISRS** ← 1ère ligne | Sertraline, escitalopram, paroxétine, fluoxétine, citalopram | Zoloft · Seroplex · Deroxat · Prozac | Sertraline 50–200 mg/j · Escitalopram 10–20 mg/j | Délai d'action **2–4 semaines** · Nausées initiales (passagères) |
+| **IRSN** | Venlafaxine, duloxétine | Effexor · Cymbalta | Venlafaxine 75–225 mg/j · Duloxétine 60–120 mg/j | ↑ PA à forte dose (venlafaxine) · Douleur neuropathique (duloxétine) |
+| **NaSSA** | Mirtazapine | Norset · Générique | 15–45 mg/j au coucher | Sédation + appétit ↑ · Utile si insomnie associée |
+| **Tricycliques (TCA)** | Amitriptyline, clomipramine, imipramine | Laroxyl · Anafranil · Générique | Doses progressives | Nombreux EI anticholinergiques · Réservé si échec ISRS |
+| **IMAO** | Phénelzine, moclobémide (réversible) | Moclamine | Selon molécule | Interactions alimentaires tyramine (IMAO irréversibles) |
 
 > **Règle d'or :** Ne jamais arrêter brutalement — sevrage progressif sur 4–8 semaines minimum
 
 ### Anxiolytiques — Benzodiazépines (BZD)
+
+> 💊 **open-medic 2023** : Sertraline 8M btes · Escitalopram 7M btes · Alprazolam/Xanax 10M btes · Zolpidem/Stilnox 5M btes
 
 | DCI | Demi-vie | Usage | Risque |
 |---|---|---|---|

@@ -58,8 +58,10 @@ Clinique : tout ralentit
 | | |
 |---|---|
 | DCI | Lévothyroxine sodique |
+| **Princeps** | **Lévothyrox** (nouvelle formule 2017) · L-Thyroxine Serb · Thyrofix · Tcaps |
 | Mécanisme | Substitution en T4 → conversion périphérique en T3 active |
 | Produits | **Lévothyrox** (nouvelle formule 2017), L-Thyroxine Serb, Thyrofix, Tcaps |
+| **open-medic 2023** | 📦 **42M boîtes** · 2,35€ · **99M€/an** — 3ème DCI la plus dispensée en France |
 | Formes | Comprimé, gélule, solution buvable |
 
 ### Posologie

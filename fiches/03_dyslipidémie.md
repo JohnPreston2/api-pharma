@@ -44,13 +44,13 @@ TG ↑↑ (> 5 g/L) → risque pancréatite aiguë
 
 ### Statines — 1ère ligne absolue
 
-| DCI | Puissance LDL ↓ | Posologie | Particularité |
-|---|---|---|---|
-| Rosuvastatine | Très haute (40–55%) | 5–40 mg/j (matin ou soir) | Max 40 mg/j |
-| Atorvastatine | Haute (35–50%) | 10–80 mg/j (n'importe quand) | La + prescrite |
-| Simvastatine | Modérée (25–35%) | 10–40 mg/j **le soir** | Interactions CYP3A4 ++ |
-| Pravastatine | Modérée (20–30%) | 20–40 mg/j | Peu d'interactions (non CYP3A4) |
-| Fluvastatine | Faible–modérée | 40–80 mg/j | |
+| DCI | Princeps | Puissance LDL ↓ | Posologie | Particularité |
+|---|---|---|---|---|
+| Rosuvastatine | Crestor · Générique | Très haute (40–55%) | 5–40 mg/j (matin ou soir) | Max 40 mg/j |
+| Atorvastatine | **Tahor** · Générique | Haute (35–50%) | 10–80 mg/j (n'importe quand) | **La + prescrite en France** |
+| Simvastatine | Zocor · Générique | Modérée (25–35%) | 10–40 mg/j **le soir** | Interactions CYP3A4 ++ |
+| Pravastatine | Elisor · Générique | Modérée (20–30%) | 20–40 mg/j | Peu d'interactions (non CYP3A4) |
+| Fluvastatine | Lescol · Générique | Faible–modérée | 40–80 mg/j | |
 
 > **Pourquoi le soir pour simvastatine ?** La synthèse du cholestérol est maximale la nuit → t½ court de la simvastatine justifie la prise nocturne. Atorva et rosuva ont un t½ long → n'importe quand.
 
@@ -63,13 +63,15 @@ TG ↑↑ (> 5 g/L) → risque pancréatite aiguë
 ### Inhibiteurs PCSK9 — Haut risque / Hypercholestérolémie familiale
 | DCI | Produit | Administration |
 |---|---|---|
-| Évolocumab | Repatha | SC 140 mg/2 sem ou 420 mg/mois |
-| Alirocumab | Praluent | SC 75–150 mg/2 sem |
+| Évolocumab | **Repatha** | SC 140 mg/2 sem ou 420 mg/mois |
+| Alirocumab | **Praluent** | SC 75–150 mg/2 sem |
 
 - Réduction LDL jusqu'à 60% en PLUS des statines
 - Prescription initiale spécialiste (cardio, endocrino), renouvellement officine
 
 ### Fibrates — Hypertriglycéridémie
+> 💊 **open-medic 2023** : Atorvastatine 35M btes (CA 147M€) · Simvastatine 12M btes · Rosuvastatine 10M btes · Ézétimibe 5M btes
+
 | DCI | Indication | Surveiller |
 |---|---|---|
 | Fénofibrate (Lipanthyl) | TG > 2 g/L isolé | Créatinine · Myopathie si + statine |

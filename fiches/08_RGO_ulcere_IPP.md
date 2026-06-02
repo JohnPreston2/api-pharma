@@ -52,13 +52,13 @@ ULCÈRE GASTRODUODÉNAL
 
 ### IPP — Inhibiteurs de la Pompe à Protons ← Traitement de référence
 
-| DCI | Produits | Posologie standard | Particularité |
-|---|---|---|---|
-| Oméprazole | Mopral, Zoltum | 20 mg/j | 1er générique disponible |
-| Ésoméprazole | Inexium | 20–40 mg/j | Énantiomère actif oméprazole |
-| Lansoprazole | Ogast, Lanzor | 15–30 mg/j | Gélule à granules (ne pas écraser) |
-| Pantoprazole | Inipomp, Eupantol | 20–40 mg/j | Moins d'interactions CYP2C19 |
-| Rabéprazole | Pariet | 10–20 mg/j | |
+| DCI | Produits | Posologie standard | open-medic 2023 | Particularité |
+|---|---|---|---|---|
+| Oméprazole | Mopral · Zoltum · **Générique** | 20 mg/j | **📦 50M btes · 2,10€ · 105M€/an** | 1er générique disponible |
+| Ésoméprazole | Inexium · Générique | 20–40 mg/j | 📦 10M btes · 3,80€ · 38M€/an | Énantiomère actif oméprazole |
+| Lansoprazole | Ogast · Lanzor · Générique | 15–30 mg/j | 📦 8M btes · 2,80€ · 22M€/an | Gélule à granules (ne pas écraser) |
+| Pantoprazole | Inipomp · Eupantol · Générique | 20–40 mg/j | 📦 20M btes · 2,50€ · 50M€/an | Moins d'interactions CYP2C19 |
+| Rabéprazole | Pariet · Générique | 10–20 mg/j | 📦 4M btes · 4,20€ · 17M€/an | |
 
 **Règle de prise : 30 minutes AVANT le repas** (IPP actifs sur pompes activées par l'alimentation)
 

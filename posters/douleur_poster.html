@@ -67,6 +67,8 @@
   .drug-dose { font-size: 6pt; color: var(--grey); }
   .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
   .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
 
   .cls-p1 .drug-class-header { background: var(--green-l); }
   .cls-p1 .drug-class-header .name { color: var(--green); }
@@ -170,7 +172,7 @@
       <div class="drug-class-header"><div class="name">Palier 1 — Paracétamol</div><div class="badge">1er réflexe</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Paracétamol (Doliprane, Efferalgan, Dafalgan)</div>
+          <div class="drug-dci">Paracétamol (Doliprane, Efferalgan, Dafalgan)<span class="princeps">Doliprane · Efferalgan · Dafalgan · Générique</span><span class="vol-data">📦 180M boîtes · 1,85€ · 333M€/an</span></div>
           <div class="drug-dose">1g / 6h · Délai 30–60 min · Multiple formes (cp, sachet, sirop, IV)</div>
           <div class="drug-watch">Vérifier paracétamol "caché" (Bi-Profénid, Antarène) · Hépatotoxicité si surdose</div>
         </div>
@@ -181,12 +183,12 @@
       <div class="drug-class-header"><div class="name">Palier 1 — AINS</div><div class="badge">Douleur inflammatoire</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Ibuprofène</div>
+          <div class="drug-dci">Ibuprofène<span class="princeps">Advil · Brufen · Générique</span><span class="vol-data">📦 45M boîtes · 2,20€ · 99M€/an</span></div>
           <div class="drug-dose">200–400 mg × 3/j avec repas · Max 1200 mg/j (OTC)</div>
           <div class="drug-watch">Avec repas · CI listées · &lt; 5j automédication</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Kétoprofène · Naproxène · Diclofénac</div>
+          <div class="drug-dci">Kétoprofène · Naproxène · Diclofénac<span class="princeps">Profenid · Apranax · Voltarène · Générique</span><span class="vol-data">📦 12M boîtes · 3,10€ · 37M€/an</span></div>
           <div class="drug-dose">Selon molécule et forme (oral/topique/patch)</div>
           <div class="drug-watch">Kétoprofène : photosensibilisation +++ · Naproxène : meilleur profil CV</div>
         </div>
@@ -197,12 +199,12 @@
       <div class="drug-class-header"><div class="name">Palier 2 — Opioïdes Faibles</div><div class="badge">EVA 4–6</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Tramadol (Topalgic, Contramal)</div>
+          <div class="drug-dci">Tramadol (Topalgic, Contramal)<span class="princeps">Topalgic · Contramal · Générique</span><span class="vol-data">📦 10M boîtes · 4,50€ · 45M€/an</span></div>
           <div class="drug-dose">50–100 mg × 3–4/j · LP : 100–300 mg × 1–2/j · Max 400 mg/j</div>
           <div class="drug-watch">ISRS → sd sérotoninergique · IMAO = CI · Seuil épileptogène ↓ · Vertiges</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Codéine (Efferalgan codéiné, Codoliprane)</div>
+          <div class="drug-dci">Codéine (Efferalgan codéiné, Codoliprane)<span class="princeps">Efferalgan Codéiné · Codoliprane · Générique</span><span class="vol-data">📦 8M boîtes · 4,20€ · 34M€/an</span></div>
           <div class="drug-dose">30–60 mg / prise · Toujours associée paracétamol</div>
           <div class="drug-watch">CI &lt; 12 ans · CI allaitantes · CYP2D6 métaboliseurs ultra-rapides</div>
         </div>
@@ -213,17 +215,17 @@
       <div class="drug-class-header"><div class="name">Palier 3 — Opioïdes Forts</div><div class="badge">⚠ Laxatif dès J1</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Morphine LP (Skénan, Moscontin)</div>
+          <div class="drug-dci">Morphine LP (Skénan, Moscontin)<span class="princeps">Skénan · Moscontin</span><span class="vol-data">📦 1,5M boîtes · 18€ · 27M€/an</span></div>
           <div class="drug-dose">Fond : 2 prises/j · LI (Actiskenan) pour interdoses</div>
           <div class="drug-watch">Constipation SYSTÉMATIQUE → Macrogol/lactulose dès J1 · Nausées · Sédation</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Fentanyl patch (Durogésic)</div>
+          <div class="drug-dci">Fentanyl patch (Durogésic)<span class="princeps">Durogésic</span><span class="vol-data">📦 0,5M boîtes · 48€ · 24M€/an</span></div>
           <div class="drug-dose">Changement toutes 72h · Débutant avec dose faible</div>
           <div class="drug-watch">T° application ≤ 30°C (fièvre → ↑ absorption) · Collecte patch usagé</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Oxycodone (Oxycontin LP) · Hydromorphone (Sophidone)</div>
+          <div class="drug-dci">Oxycodone (Oxycontin LP) · Hydromorphone (Sophidone)<span class="princeps">Oxycontin LP · Sophidone</span><span class="vol-data">📦 0,8M boîtes · 55€ · 44M€/an</span></div>
           <div class="drug-dose">Rotation opioïde si morphine mal tolérée</div>
           <div class="drug-watch">Mêmes EI morphine · Ordonnance sécurisée</div>
         </div>
@@ -234,12 +236,12 @@
       <div class="drug-class-header"><div class="name">Douleur Neuropathique</div><div class="badge">Brûlures · Chocs électriques</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Prégabaline (Lyrica) · Gabapentine</div>
+          <div class="drug-dci">Prégabaline (Lyrica) · Gabapentine<span class="princeps">Lyrica · Neurontin · Générique</span><span class="vol-data">📦 4M boîtes · 18€ · 72M€/an</span></div>
           <div class="drug-dose">Prégabaline 75–300 mg × 2/j · Titration progressive</div>
           <div class="drug-watch">Sédation · Vertiges · Dépendance possible (prégabaline)</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Duloxétine (Cymbalta) · Amitriptyline</div>
+          <div class="drug-dci">Duloxétine (Cymbalta) · Amitriptyline<span class="princeps">Cymbalta · Laroxyl · Générique</span><span class="vol-data">📦 3M boîtes · 12€ · 36M€/an</span></div>
           <div class="drug-dose">Duloxétine 60–120 mg/j · Amitriptyline 10–75 mg au coucher</div>
           <div class="drug-watch">Nausées (duloxétine) · Somnolence + anticholinergiques (amitriptyline)</div>
         </div>

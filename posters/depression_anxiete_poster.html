@@ -56,6 +56,8 @@
   .drug-dose { font-size: 6pt; color: var(--grey); }
   .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
   .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
 
   .cls-isrs .drug-class-header { background: var(--cl); }
   .cls-isrs .drug-class-header .name { color: var(--c1); }
@@ -160,22 +162,22 @@
       <div class="drug-class-header"><div class="name">ISRS — 1ère ligne dépression</div><div class="badge">Délai 2–4 semaines</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Escitalopram (Seroplex)</div>
+          <div class="drug-dci">Escitalopram (Seroplex)<span class="princeps">Seroplex · Générique</span><span class="vol-data">📦 7M boîtes · 9,20€ · 64M€/an</span></div>
           <div class="drug-dose">10–20 mg/j · Moins d'interactions · Préféré si tamoxifène</div>
           <div class="drug-watch">Allongement QT dose-dépendant · Max 20 mg</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Sertraline (Zoloft)</div>
+          <div class="drug-dci">Sertraline (Zoloft)<span class="princeps">Zoloft · Générique</span><span class="vol-data">📦 8M boîtes · 7,50€ · 60M€/an</span></div>
           <div class="drug-dose">50–200 mg/j · Référence dépression + TAG</div>
           <div class="drug-watch">Nausées initiales (passagères) · Interactions modérées</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Fluoxétine (Prozac)</div>
+          <div class="drug-dci">Fluoxétine (Prozac)<span class="princeps">Prozac · Générique</span><span class="vol-data">📦 5M boîtes · 5,80€ · 29M€/an</span></div>
           <div class="drug-dose">20–60 mg/j · t½ très long (5 semaines)</div>
           <div class="drug-watch">Inhibiteur CYP2D6 · CI tamoxifène · Peu de sevrage</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Paroxétine (Deroxat)</div>
+          <div class="drug-dci">Paroxétine (Deroxat)<span class="princeps">Deroxat · Générique</span><span class="vol-data">📦 6M boîtes · 6,80€ · 41M€/an</span></div>
           <div class="drug-dose">20–60 mg/j</div>
           <div class="drug-watch">Sevrage difficile (t½ court) · Anticholinergique · CI tamoxifène</div>
         </div>
@@ -185,12 +187,12 @@
       <div class="drug-class-header"><div class="name">IRSN</div><div class="badge">Dépression + Douleur neuro</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Venlafaxine (Effexor)</div>
+          <div class="drug-dci">Venlafaxine (Effexor)<span class="princeps">Effexor · Générique</span><span class="vol-data">📦 5M boîtes · 8,40€ · 42M€/an</span></div>
           <div class="drug-dose">75–225 mg/j LP · LP = avaler entier (ne pas écraser)</div>
           <div class="drug-watch">↑ PA à forte dose · Sevrage brutal = vertiges, chocs électriques</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Duloxétine (Cymbalta)</div>
+          <div class="drug-dci">Duloxétine (Cymbalta)<span class="princeps">Cymbalta · Générique</span><span class="vol-data">📦 3M boîtes · 12€ · 36M€/an</span></div>
           <div class="drug-dose">60–120 mg/j · TAG + douleur neuropathique</div>
           <div class="drug-watch">Nausées initiales · Précaution HTA</div>
         </div>
@@ -200,7 +202,7 @@
       <div class="drug-class-header"><div class="name">NaSSA</div><div class="badge">Insomnie associée</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Mirtazapine (Norset)</div>
+          <div class="drug-dci">Mirtazapine (Norset)<span class="princeps">Norset · Générique</span><span class="vol-data">📦 3M boîtes · 7,10€ · 21M€/an</span></div>
           <div class="drug-dose">15–45 mg/j au coucher</div>
           <div class="drug-watch">Sédation + appétit ↑ (utile si insomnie + perte de poids)</div>
         </div>
@@ -210,12 +212,12 @@
       <div class="drug-class-header"><div class="name">Benzodiazépines</div><div class="badge">⚠ Max 4–12 semaines</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Alprazolam (Xanax) · Lorazépam (Témesta)</div>
+          <div class="drug-dci">Alprazolam (Xanax) · Lorazépam (Témesta)<span class="princeps">Xanax · Témesta · Générique</span><span class="vol-data">📦 10M boîtes · 2,80€ · 28M€/an</span></div>
           <div class="drug-dose">Anxiété aiguë · Courte demi-vie</div>
           <div class="drug-watch">Dépendance rapide · Ne jamais arrêter brutalement</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Oxazépam (Séresta) ← sujet âgé</div>
+          <div class="drug-dci">Oxazépam (Séresta) ← sujet âgé<span class="princeps">Séresta · Générique</span><span class="vol-data">📦 5M boîtes · 2,30€ · 12M€/an</span></div>
           <div class="drug-dose">Pas de métabolite actif · Moins d'accumulation</div>
           <div class="drug-watch">1er choix chez le sujet âgé</div>
         </div>
@@ -225,17 +227,17 @@
       <div class="drug-class-header"><div class="name">Hypnotiques</div><div class="badge">Insomnie max 4 sem</div></div>
       <div class="drug-class-body">
         <div class="drug-row">
-          <div class="drug-dci">Zolpidem (Stilnox)</div>
+          <div class="drug-dci">Zolpidem (Stilnox)<span class="princeps">Stilnox · Générique</span><span class="vol-data">📦 5M boîtes · 3,10€ · 16M€/an</span></div>
           <div class="drug-dose">10 mg au coucher · Ordonnance sécurisée</div>
           <div class="drug-watch">Conduites auto le matin ! · Somnambulisme · Dépendance</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Mélatonine (Circadin)</div>
+          <div class="drug-dci">Mélatonine (Circadin)<span class="princeps">Circadin</span><span class="vol-data">📦 2M boîtes · 8,50€ · 17M€/an</span></div>
           <div class="drug-dose">2 mg LP au coucher · Jet-lag · Sans dépendance</div>
           <div class="drug-watch">Troubles rythme circadien · Enfants (hors AMM)</div>
         </div>
         <div class="drug-row">
-          <div class="drug-dci">Doxylamine (Donormyl) · Hydroxyzine (Atarax)</div>
+          <div class="drug-dci">Doxylamine (Donormyl) · Hydroxyzine (Atarax)<span class="princeps">Donormyl · Atarax · Générique</span><span class="vol-data">📦 3M boîtes · 4,20€ · 13M€/an</span></div>
           <div class="drug-dose">Antihistaminiques · OTC disponible</div>
           <div class="drug-watch">Somnolence résiduelle · CI conduite le matin</div>
         </div>
