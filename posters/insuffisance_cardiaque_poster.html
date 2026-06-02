@@ -117,6 +117,12 @@
   .footer-strip { background: #880e4f; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
   .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
   .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
   @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -269,10 +275,10 @@
   <div>
     <div class="section-label">Ce que dit le patient 🗣</div>
     <div class="patient-card">
-      <div class="patient-item"><div class="speech-bubble">"J'ai pris 3 kg depuis 3 jours"</div><div class="speech-resp">Décompensation → médecin en urgence</div></div>
-      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté le bisoprolol, ça fait baisser mon cœur"</div><div class="speech-resp">Réexpliquer : le ralentissement est VOULU et bénéfique</div></div>
-      <div class="patient-item"><div class="speech-bubble">"J'utilise du sel de régime (NoSalt)"</div><div class="speech-resp">Sel de régime = KCl → hyperkaliémie si IEC + ARM !</div></div>
-      <div class="patient-item"><div class="speech-bubble">"J'ai pris du Nurofen pour mon dos"</div><div class="speech-resp">AINS → risque décompensation → alerter, évaluer</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris 3 kg depuis 3 jours"</div><div class="speech-hide">Rétention hydrique = décompensation cardiaque imminente · plan d'action préétabli → médecin urgent</div><div class="speech-resp">Décompensation → médecin en urgence</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté le bisoprolol, ça fait baisser mon cœur"</div><div class="speech-hide">Arrêt brutal β-bloquant = rebond adrénergique → décompensation + arythmie · le ralentissement est VOULU</div><div class="speech-resp">Réexpliquer : le ralentissement est VOULU et bénéfique</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'utilise du sel de régime (NoSalt)"</div><div class="speech-hide">KCl = substitut au NaCl → hyperkaliémie MAJEURE si IEC/ARA2 + ARM → dangereux, souvent ignoré</div><div class="speech-resp">Sel de régime = KCl → hyperkaliémie si IEC + ARM !</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris du Nurofen pour mon dos"</div><div class="speech-hide">AINS = CI absolue en IC · rétention Na/eau → aggravation · risque décompensation aiguë</div><div class="speech-resp">AINS → risque décompensation → alerter, évaluer</div></div>
     </div>
   </div>
 </div>

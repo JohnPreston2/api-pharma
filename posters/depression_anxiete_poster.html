@@ -103,6 +103,12 @@
   .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
   .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
   .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
   @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -281,10 +287,10 @@
   <div>
     <div class="section-label">Ce que dit le patient 🗣</div>
     <div class="patient-card">
-      <div class="patient-item"><div class="speech-bubble">"Je prends du Lexomil / Xanax depuis 10 ans"</div><div class="speech-resp">Dépendance chronique → ne pas couper, plan de sevrage médecin</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Ça fait 3 semaines, ça ne marche pas encore"</div><div class="speech-resp">Délai ISRS normal → réassurer, continuer</div></div>
-      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté d'un coup, j'ai des chocs électriques"</div><div class="speech-resp">Discontinuation ISRS → reprise progressive + médecin</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Je prends du millepertuis en plus"</div><div class="speech-resp">Interactions majeures → vérifier traitement complet</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends du Lexomil / Xanax depuis 10 ans"</div><div class="speech-hide">Dépendance physique installée · arrêt brutal = convulsions possibles · sevrage progressif sur 6-12 mois</div><div class="speech-resp">Dépendance chronique → ne pas couper, plan de sevrage médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Ça fait 3 semaines, ça ne marche pas encore"</div><div class="speech-hide">Délai ISRS = 2-4 semaines · 80% abandonnent trop tôt → patient non informé par le médecin souvent</div><div class="speech-resp">Délai ISRS normal → réassurer, continuer</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté d'un coup, j'ai des chocs électriques"</div><div class="speech-hide">Syndrome de discontinuation ISRS · paroxétine +++ · pas une "addiction" → reprendre, sevrage progressif</div><div class="speech-resp">Discontinuation ISRS → reprise progressive + médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends du millepertuis en plus"</div><div class="speech-hide">Inducteur CYP3A4 majeur → ↓ ISRS + contraceptifs + anticoagulants + cyclosporine · "naturel ≠ inoffensif"</div><div class="speech-resp">Interactions majeures → vérifier traitement complet</div></div>
     </div>
   </div>
 </div>

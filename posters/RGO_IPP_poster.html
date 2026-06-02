@@ -106,6 +106,12 @@
   .footer-strip { background: #bf360c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
   .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
   .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
   @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -281,10 +287,10 @@
   <div>
     <div class="section-label">Ce que dit le patient 🗣</div>
     <div class="patient-card">
-      <div class="patient-item"><div class="speech-bubble">"Je prends mon IPP le soir"</div><div class="speech-resp">Erreur → matin 30 min avant repas (pompes activées par alimentation)</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Je prends des IPP depuis 5 ans"</div><div class="speech-resp">Réévaluation nécessaire → EI long terme → médecin</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Mon antibio pour l'estomac me dérange"</div><div class="speech-resp">Trithérapie H. pylori → fréquent, ne pas arrêter → compliance +++</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Je voudrais de la Ranitidine"</div><div class="speech-resp">Retirée du marché en 2020 (NDMA) → proposer famotidine ou IPP</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends mon IPP le soir"</div><div class="speech-hide">Pompes H+/K+ inactives la nuit (pas de repas) → IPP le soir = sous-optimal · matin 30 min avant</div><div class="speech-resp">Erreur → matin 30 min avant repas (pompes activées par alimentation)</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends des IPP depuis 5 ans"</div><div class="speech-hide">EI long terme : ↓ absorption Ca/Mg/B12 → fractures · déficit magnésium · infections GI (C. difficile)</div><div class="speech-resp">Réévaluation nécessaire → EI long terme → médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon antibio pour l'estomac me dérange"</div><div class="speech-hide">Trithérapie H. pylori = 3 médicaments simultanément · EI GI attendus · compliance = éradication</div><div class="speech-resp">Trithérapie H. pylori → fréquent, ne pas arrêter → compliance +++</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je voudrais de la Ranitidine"</div><div class="speech-hide">Retirée du marché mondial en 2020 (NDMA = carcinogène) → famotidine ou IPP à la place</div><div class="speech-resp">Retirée du marché en 2020 (NDMA) → proposer famotidine ou IPP</div></div>
     </div>
   </div>
 </div>

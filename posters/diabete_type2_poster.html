@@ -539,6 +539,12 @@
   }
 
   /* ── PRINT ── */
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
   @media print {
     body { width: 210mm; margin: 0; }
     .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -876,20 +882,16 @@
     <div class="section-label">Ce que dit le patient 🗣</div>
     <div class="patient-card">
       <div class="patient-item">
-        <div class="speech-bubble">"Mon sucre était à 2,8 ce matin"</div>
-        <div class="speech-resp">Hypoglycémie → explorer cause (repas sauté, effort, alcool)</div>
+        <div class="speech-bubble">"Mon sucre était à 2,8 ce matin"</div><div class="speech-hide">< 0,6 g/L = hypoglycémie sévère · risque convulsion/coma si non resucré rapidement</div><div class="speech-resp">Hypoglycémie → explorer cause (repas sauté, effort, alcool)</div>
       </div>
       <div class="patient-item">
-        <div class="speech-bubble">"J'ai des fourmillements dans les pieds"</div>
-        <div class="speech-resp">Neuropathie diabétique → signaler au médecin</div>
+        <div class="speech-bubble">"J'ai des fourmillements dans les pieds"</div><div class="speech-hide">Neuropathie périphérique = complication chronique installée · signale déséquilibre prolongé</div><div class="speech-resp">Neuropathie diabétique → signaler au médecin</div>
       </div>
       <div class="patient-item">
-        <div class="speech-bubble">"La metformine me dérange le ventre"</div>
-        <div class="speech-resp">Essayer la forme LP avec repas</div>
+        <div class="speech-bubble">"La metformine me dérange le ventre"</div><div class="speech-hide">EI GI chez 20% · transitoire en général · forme LP avec repas = bien mieux tolérée</div><div class="speech-resp">Essayer la forme LP avec repas</div>
       </div>
       <div class="patient-item">
-        <div class="speech-bubble">"J'ai une infection urinaire depuis le nouveau cachet"</div>
-        <div class="speech-resp">Gliflozine → fréquent, mesures hygiène ++</div>
+        <div class="speech-bubble">"J'ai une infection urinaire depuis le nouveau cachet"</div><div class="speech-hide">Gliflozine → glycosurie → mycose génitale/IU fréquente · règles hygiène + séchage ++</div><div class="speech-resp">Gliflozine → fréquent, mesures hygiène ++</div>
       </div>
     </div>
   </div>

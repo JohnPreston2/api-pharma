@@ -104,6 +104,12 @@
   .footer-strip { background: #4a148c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
   .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
   .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
   @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -271,10 +277,10 @@
   <div>
     <div class="section-label">Ce que dit le patient 🗣</div>
     <div class="patient-card">
-      <div class="patient-item"><div class="speech-bubble">"Depuis les statines j'ai des douleurs musculaires"</div><div class="speech-resp">Myalgie → bilan CPK + TSH avant d'arrêter</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Je mange sain, pourquoi j'ai du cholestérol ?"</div><div class="speech-resp">Hypercholestérolémie familiale possible → génétique</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Je peux manger du pamplemousse ?"</div><div class="speech-resp">CI si simvastatine · OK avec atorvastatine / rosuvastatine</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Mon cardiologue a ajouté une piqûre"</div><div class="speech-resp">Inhibiteur PCSK9 → informer conservation réfrigérateur</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Depuis les statines j'ai des douleurs musculaires"</div><div class="speech-hide">Myopathie réelle chez 2% · CPK à doser avant arrêt · rhabdomyolyse rare mais grave (myoglobinurie)</div><div class="speech-resp">Myalgie → bilan CPK + TSH avant d'arrêter</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je mange sain, pourquoi j'ai du cholestérol ?"</div><div class="speech-hide">Hypercholestérolémie familiale = 1/200 · génétique dominant · alimentation seule insuffisante</div><div class="speech-resp">Hypercholestérolémie familiale possible → génétique</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je peux manger du pamplemousse ?"</div><div class="speech-hide">CYP3A4 inhibé → simvastatine ↑↑ → rhabdomyolyse · atorvastatine moindre · CI absolue simva</div><div class="speech-resp">CI si simvastatine · OK avec atorvastatine / rosuvastatine</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon cardiologue a ajouté une piqûre"</div><div class="speech-hide">Inhibiteur PCSK9 (Repatha 140 mg SC/2 sem) · 450€/mois → conservation réfrigérateur 2-8°C</div><div class="speech-resp">Inhibiteur PCSK9 → informer conservation réfrigérateur</div></div>
     </div>
   </div>
 </div>

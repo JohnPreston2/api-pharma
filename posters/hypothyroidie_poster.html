@@ -105,6 +105,12 @@
   .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
   .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
   .vol-badge { display: inline-block; background: rgba(0,0,0,0.07); border-radius: 4px; padding: 1mm 2mm; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.45); margin-top: 1.5mm; letter-spacing: 0.2px; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
   @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
@@ -248,10 +254,10 @@
   <div>
     <div class="section-label">Ce que dit le patient 🗣</div>
     <div class="patient-card">
-      <div class="patient-item"><div class="speech-bubble">"Je prends mon Lévothyrox avec mon café"</div><div class="speech-resp">Erreur fréquente → absorption ↓ → réexpliquer à jeun</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Depuis la nouvelle formule j'ai plein de symptômes"</div><div class="speech-resp">Crise 2017 → écouter, expliquer, orienter si besoin</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Je grossis malgré mon régime"</div><div class="speech-resp">Signe hypothyroïdie → TSH à vérifier ?</div></div>
-      <div class="patient-item"><div class="speech-bubble">"Mon médecin a augmenté la dose, j'ai des palp."</div><div class="speech-resp">Surdosage → contrôle TSH urgent, signaler</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends mon Lévothyrox avec mon café"</div><div class="speech-hide">Café (et lait) ↓ absorption 30-40% → 1ère cause de déséquilibre TSH inexpliqué</div><div class="speech-resp">Erreur fréquente → absorption ↓ → réexpliquer à jeun</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Depuis la nouvelle formule j'ai plein de symptômes"</div><div class="speech-hide">Crise 2017 bien réelle pour certains patients (excipients changés) → écouter sans minimiser</div><div class="speech-resp">Crise 2017 → écouter, expliquer, orienter si besoin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je grossis malgré mon régime"</div><div class="speech-hide">Signe classique d'hypothyroïdie ou de TSH mal équilibrée → contrôle TSH récent ? Dose suffisante ?</div><div class="speech-resp">Signe hypothyroïdie → TSH à vérifier ?</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon médecin a augmenté la dose, j'ai des palp."</div><div class="speech-hide">Surdosage → hyperthyroïdie iatrogène · risque FA + ostéoporose si chronique → TSH urgent</div><div class="speech-resp">Surdosage → contrôle TSH urgent, signaler</div></div>
     </div>
   </div>
 </div>
