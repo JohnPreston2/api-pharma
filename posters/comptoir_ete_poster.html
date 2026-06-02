@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Guide Comptoir Été 2026 — Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --sun: #bf360c; --sun2: #e64a19; --sun3: #ff7043;
+    --sea: #01579b; --sea2: #0277bd; --sea3: #4fc3f7;
+    --grn: #1b5e20; --grn2: #2e7d32; --grn-l: #e8f5e9;
+    --red: #b71c1c; --red-l: #ffebee;
+    --amber: #e65100; --amber2: #f57c00; --amber-l: #fff3e0;
+    --purple: #4a148c; --purple-l: #f3e5f5;
+    --teal: #004d40; --teal2: #00695c; --teal-l: #e0f2f1;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 6.8pt; color: #1a1a2e; line-height: 1.3; }
+
+  /* ── HEADER ── */
+  .header { background: linear-gradient(135deg, #bf360c 0%, #e64a19 45%, #ff7043 100%); padding: 7mm 8mm 5mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4mm; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; left: -8mm; bottom: -8mm; width: 40mm; height: 40mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header::after { content: ''; position: absolute; right: -12mm; top: -12mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .header-left h1 { font-size: 21pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header-left .sub { font-size: 7.5pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.2px; text-transform: uppercase; }
+  .header-pills { display: flex; gap: 3mm; }
+  .pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 7px; padding: 2.5mm 3.5mm; text-align: center; }
+  .pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 0.8mm; display: block; }
+
+  /* ── TAG BAR ── */
+  .tag-bar { background: #a52714; padding: 1.8mm 8mm; display: flex; gap: 2mm; flex-wrap: wrap; align-items: center; }
+  .tag { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.88); font-size: 5pt; padding: 0.7mm 2mm; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+
+  /* ── ALERT STRIP (médicaments photosensibilisants) ── */
+  .alert-strip { background: var(--red-l); border-top: 1px solid #ffcdd2; border-bottom: 2px solid var(--red); padding: 2mm 8mm; display: flex; align-items: flex-start; gap: 3mm; }
+  .alert-icon { font-size: 9pt; flex-shrink: 0; line-height: 1.2; }
+  .alert-title { font-size: 5.5pt; font-weight: 800; color: var(--red); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: block; margin-bottom: 0.5mm; }
+  .alert-body { font-size: 5.5pt; color: #7f0000; line-height: 1.4; }
+  .alert-body strong { color: var(--red); font-weight: 700; }
+
+  /* ── MAIN GRID ── */
+  .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; padding: 3mm 8mm 2mm; }
+
+  /* ── SITUATION CARD ── */
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; display: flex; flex-direction: column; }
+  .card-head { padding: 2mm 2.5mm; display: flex; align-items: center; gap: 1.5mm; }
+  .card-icon { font-size: 11pt; line-height: 1; flex-shrink: 0; }
+  .card-title { font-size: 7pt; font-weight: 800; color: #fff; flex: 1; line-height: 1.1; }
+  .card-body { padding: 2mm 2.5mm; flex: 1; display: flex; flex-direction: column; gap: 1.5mm; }
+
+  .patient-bubble { background: var(--grey-l); border-radius: 4px; padding: 1.5mm 2mm; font-size: 5.5pt; color: var(--grey); font-style: italic; line-height: 1.3; }
+  .patient-bubble::before { content: '💬 '; font-style: normal; }
+
+  .row { display: flex; gap: 1.5mm; align-items: flex-start; }
+  .badge { font-size: 4.8pt; font-weight: 800; padding: 0.8mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; line-height: 1.1; }
+  .b-sell { background: var(--grn-l); color: var(--grn2); }
+  .b-plus { background: #e3f2fd; color: var(--sea2); }
+  .b-tip  { background: var(--teal-l); color: var(--teal2); }
+  .b-warn { background: var(--red-l); color: var(--red); }
+  .row-text { font-size: 5.5pt; color: var(--grey); line-height: 1.3; }
+  .row-text strong { color: #1a1a2e; font-weight: 700; }
+
+  /* Card color themes */
+  .t-sun  .card-head { background: linear-gradient(90deg, #bf360c, #ff7043); }
+  .t-sea  .card-head { background: linear-gradient(90deg, #01579b, #0288d1); }
+  .t-grn  .card-head { background: linear-gradient(90deg, #1b5e20, #43a047); }
+  .t-amb  .card-head { background: linear-gradient(90deg, #e65100, #ffa726); }
+  .t-teal .card-head { background: linear-gradient(90deg, #004d40, #26a69a); }
+  .t-pur  .card-head { background: linear-gradient(90deg, #4a148c, #7b1fa2); }
+  .t-red  .card-head { background: linear-gradient(90deg, #b71c1c, #ef5350); }
+  .t-ind  .card-head { background: linear-gradient(90deg, #283593, #5c6bc0); }
+  .t-pnk  .card-head { background: linear-gradient(90deg, #880e4f, #e91e63); }
+
+  /* ── FOOTER GRID ── */
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; padding: 0 8mm 3mm; }
+  .fc { border-radius: 7px; padding: 2.5mm; }
+  .fc-title { font-size: 5.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; display: flex; align-items: center; gap: 1.5mm; }
+  .fc-title::before { content: ''; width: 2mm; height: 2mm; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .fc-trousse { background: var(--grn-l); border-left: 3px solid var(--grn2); }
+  .fc-trousse .fc-title { color: var(--grn2); }
+  .fc-terrain  { background: var(--red-l); border-left: 3px solid var(--red); }
+  .fc-terrain  .fc-title { color: var(--red); }
+  .fc-ca { background: var(--amber-l); border-left: 3px solid var(--amber); }
+  .fc-ca .fc-title { color: var(--amber); }
+  .fc-item { font-size: 5.5pt; color: var(--grey); padding: 0.9mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.3; }
+  .fc-item:last-child { border-bottom: none; }
+  .fc-item strong { color: #1a1a2e; font-weight: 700; }
+  .fc-item em { color: var(--grey); font-style: normal; font-size: 5pt; }
+
+  /* ── FOOTER STRIP ── */
+  .footer-strip { background: #a52714; padding: 1.8mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 4.8pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.85); font-weight: 700; font-size: 5.5pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+<div class="header">
+  <div class="header-left">
+    <h1>☀️ Comptoir Été</h1>
+    <div class="sub">Guide réflexes vente · Officine · Juin–Septembre 2026</div>
+  </div>
+  <div class="header-pills">
+    <div class="pill"><span class="val">9</span><span class="lbl">Situations</span></div>
+    <div class="pill"><span class="val">+30%</span><span class="lbl">CA dermo été</span></div>
+    <div class="pill"><span class="val">Top 1</span><span class="lbl">Vente OTC</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Soleil · Piqûres · Tique</span>
+  <span class="tag">Diarrhée voyageur</span>
+  <span class="tag">Canicule & médicaments à risque</span>
+  <span class="tag">Yeux · Oreilles · Mycoses</span>
+  <span class="tag">Allergie pollens</span>
+  <span class="tag">Trousse de voyage</span>
+  <span class="tag">Photosensi médicamenteuse</span>
+</div>
+
+<!-- ═══════════════════════════ ALERT STRIP ════════════════════════════ -->
+<div class="alert-strip">
+  <div class="alert-icon">⚠️</div>
+  <div>
+    <span class="alert-title">Médicaments photosensibilisants — à identifier dès la dispensation → conseiller SPF50+ systématique</span>
+    <div class="alert-body">
+      <strong>Antibiotiques :</strong> Doxycycline (Vibramycine ++) · Quinolones (Ciflox, Oflocet) · Sulfaméthoxazole (Bactrim) ·
+      <strong>Cardio :</strong> Amiodarone (Cordarone) · Thiazidiques (Esidrex) ·
+      <strong>AINS topiques :</strong> Kétoprofène gel (Profenid ++) — CI exposition soleil ·
+      <strong>Autres :</strong> Phénothiazines (Largactil) · Griséofulvine · Isotrétinoïne (Roaccutane)
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ MAIN GRID ══════════════════════════════ -->
+<div class="main-grid">
+
+  <!-- 1. COUP DE SOLEIL -->
+  <div class="card t-sun">
+    <div class="card-head">
+      <div class="card-icon">🔥</div>
+      <div class="card-title">Coup de soleil</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai le dos rouge, ça brûle / j'ai pris trop le soleil</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Biafine · Dexeryl · Cicalfate spray</strong> · Paracétamol si douleur</span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>SPF50+</strong> pour le lendemain · Stick lèvres UV · Après-soleil hydratant</span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">CONSEIL</span>
+        <span class="row-text">Compresses eau fraîche · Hydrater +++ · Éviter vêtements serrés sur la zone</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ URGENCE</span>
+        <span class="row-text"><strong>Cloques étendues · Fièvre · Confusion · Enfant</strong> → médecin/urgences</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PIQÛRES INSECTES -->
+  <div class="card t-amb">
+    <div class="card-head">
+      <div class="card-icon">🦟</div>
+      <div class="card-title">Piqûres insectes</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai des piqûres de moustiques / j'ai été piqué par une guêpe</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Apaisyl gel · Fenistil gel · Phenergan gel</strong> · Cétirizine (Zyrtec) si réaction marquée</span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>Répulsif IR3535 ou DEET</strong> · Bracelet anti-moustique · Vêtements couvrants</span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">CONSEIL</span>
+        <span class="row-text">DEET 20–35% adulte · IR3535 enfant · Appliquer après crème solaire</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ URGENCE</span>
+        <span class="row-text"><strong>Œdème lèvres/gorge · Dyspnée · Malaise</strong> → 15/18 — choc anaphylactique</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. TIQUE -->
+  <div class="card t-grn">
+    <div class="card-head">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Tique — extraction</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai une tique plantée, qu'est-ce que je fais ?</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Tire-tique O'Tom · Bétadine · Compresses</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">❌ JAMAIS</span>
+        <span class="row-text">Éther · Huile · Vaseline · Alcool sur la tique → régurgitation → ↑ risque Lyme</span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">MÉTHODE</span>
+        <span class="row-text">Tire-tique au ras de la peau → rotation douce → tirer sans écraser → désinfecter → noter date + localisation</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ SURVEILLER</span>
+        <span class="row-text"><strong>4 semaines :</strong> érythème en cocarde &gt; 5 cm · fièvre · fatigue · arthralgies → médecin urgent (doxycycline)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. DIARRHÉE VOYAGEUR -->
+  <div class="card t-teal">
+    <div class="card-head">
+      <div class="card-icon">🏖</div>
+      <div class="card-title">Diarrhée du voyageur</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai de la diarrhée depuis les vacances / depuis le resto là-bas</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Tiorfan (racécadotril) · SMECTA · Lopéramide · Ercéfuryl</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>SRO (Picolyte, NovaLyte) · Ultra-Levure · Probiotiques</strong> · Paracétamol si douleurs</span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">CONSEIL</span>
+        <span class="row-text">Éviter lopéramide si fièvre ou sang · Réhydratation ++ · SMECTA en 1ère intention enfant</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ MÉDECIN</span>
+        <span class="row-text"><strong>Fièvre &gt; 38,5°C · sang dans selles · &gt; 48h · nourrisson · déshydratation</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CANICULE / COUP DE CHALEUR -->
+  <div class="card t-red">
+    <div class="card-head">
+      <div class="card-icon">🌡️</div>
+      <div class="card-title">Canicule & coup de chaleur</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai très chaud / je transpire beaucoup / je suis étourdi</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>SRO · Spray eau thermale · Brumisateur · Eau de coco</strong> · Paracétamol (pas AINS)</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">💊 TERRAIN</span>
+        <span class="row-text">Vérifier ordonnance : <strong>IEC/ARA2 · Diurétiques · Neuroleptiques · Lithium · Digoxine · Anticholinergiques</strong> → déshydratation → toxicité ↑↑</span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">RÉFLEXE</span>
+        <span class="row-text">Rester au frais · Boire 1,5L+/j · Mouiller peau · Signaler aux proches les personnes âgées seules</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ URGENCE</span>
+        <span class="row-text"><strong>T° &gt; 40°C · confusion · peau sèche chaude · absence de sueur</strong> → 15 — coup de chaleur = urgence vitale</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. YEUX / CONJONCTIVITE -->
+  <div class="card t-sea">
+    <div class="card-head">
+      <div class="card-icon">👁</div>
+      <div class="card-title">Yeux rouges / Conjonctivite</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai les yeux qui piquent depuis la piscine / les pollens / la mer</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Larmes artificielles (Artelac, Théalose) · Kétotifène collyre (Zaditen) · Cromoglicate</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>Lunettes soleil UV400 · Cétirizine oral si allergie</strong> · Compresses eau froide</span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">CONSEIL</span>
+        <span class="row-text">Lentilles de contact → stopper · Ne pas se frotter · Rincer à l'eau froide propre</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ MÉDECIN</span>
+        <span class="row-text"><strong>Sécrétions purulentes · Baisse d'acuité · Douleur · Traumatisme · Porteur de lentilles</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. OTITE EXTERNE -->
+  <div class="card t-ind">
+    <div class="card-head">
+      <div class="card-icon">👂</div>
+      <div class="card-title">Otite externe / baigneur</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai l'oreille qui fait mal depuis la baignade / la piscine</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Paracétamol · Aurigouttes (si bouchon cérumen) · Cerustop</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>Protège-oreilles natation (Mack's, Ohropax) · Sérum physiologique · Spray oreille</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">CONSEIL</span>
+        <span class="row-text">Sécher l'oreille après bain · Éviter cotons-tiges · Bouchons avant baignade en prévention</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ MÉDECIN</span>
+        <span class="row-text"><strong>Fièvre · Douleur intense · Écoulement · Perte auditive · Enfant</strong> → otite moyenne bactérienne</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. MYCOSES PIEDS -->
+  <div class="card t-pnk">
+    <div class="card-head">
+      <div class="card-icon">🦶</div>
+      <div class="card-title">Mycoses pieds / ongles</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai les pieds qui grattent entre les orteils / les ongles qui jaunissent</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Lamisil crème (terbinafine) · Mycoapaisyl · Kétoconazole 2% · Poudre Mycoster</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>Tongs de piscine · Déodorant pieds · Chaussettes coton · Savon Tea Tree</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">DURÉE</span>
+        <span class="row-text">Pieds d'athlète : 1–2 semaines · Candidose interdigitale : 2–4 semaines · Poursuivre 1 sem après guérison</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ MÉDECIN</span>
+        <span class="row-text"><strong>Ongles envahis (onychomycose)</strong> → Lamisil oral 3 mois · Biopsie si doute</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. ALLERGIE POLLENS -->
+  <div class="card t-pur">
+    <div class="card-head">
+      <div class="card-icon">🌿</div>
+      <div class="card-title">Rhinite allergique / Pollens</div>
+    </div>
+    <div class="card-body">
+      <div class="patient-bubble">J'ai le nez qui coule, les yeux qui piquent, j'éternue depuis les pollens</div>
+      <div class="row">
+        <span class="badge b-sell">VENDRE</span>
+        <span class="row-text"><strong>Cétirizine (Zyrtec) · Loratadine (Clarityne) · Desloratadine (Aérius) · Bilastine (Bilaska)</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-plus">+ PROPOSER</span>
+        <span class="row-text"><strong>Spray nasal corticoïde (Pivalone, Avamys) · Spray eau de mer · Collyre antihistaminique</strong></span>
+      </div>
+      <div class="row">
+        <span class="badge b-tip">CONSEIL</span>
+        <span class="row-text">Débuter antiH avant le pic pollinique · Éviter sorties venteux 12h–16h · Laver cheveux le soir</span>
+      </div>
+      <div class="row">
+        <span class="badge b-warn">⚠ MÉDECIN</span>
+        <span class="row-text"><strong>Asthme associé · Échec traitement 2 semaines · Désensibilisation (immunothérapie) à envisager</strong></span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main-grid -->
+
+<!-- ═══════════════════════════ FOOTER GRID ═════════════════════════════ -->
+<div class="footer-grid">
+
+  <!-- Trousse de voyage type -->
+  <div class="fc fc-trousse">
+    <div class="fc-title">🎒 Trousse voyage recommandée</div>
+    <div class="fc-item"><strong>Douleur/fièvre :</strong> Paracétamol 1g · Ibuprofène 400 mg</div>
+    <div class="fc-item"><strong>Digestif :</strong> Tiorfan · SMECTA · SRO · Ercéfuryl</div>
+    <div class="fc-item"><strong>Antihistaminique :</strong> Cétirizine · Phenergan crème</div>
+    <div class="fc-item"><strong>Peau :</strong> Biafine · Bétadine · Compresses · SPF50+</div>
+    <div class="fc-item"><strong>Yeux :</strong> Larmes artificielles · Collyre antiH</div>
+    <div class="fc-item"><strong>Divers :</strong> Tire-tique · Répulsif · Préservatifs</div>
+    <div class="fc-item" style="font-size:5pt;color:#666;margin-top:0.5mm;">🌍 Zone palu : consulter médecin 1 mois avant pour prophylaxie</div>
+  </div>
+
+  <!-- Terrain à risque été -->
+  <div class="fc fc-terrain">
+    <div class="fc-title">⚠️ Médicaments à risque en chaleur</div>
+    <div class="fc-item"><strong>Déshydratation potentialisée :</strong> Diurétiques · IEC/ARA2 → surveiller poids, TA</div>
+    <div class="fc-item"><strong>Toxicité augmentée :</strong> Lithium · Digoxine · Aminosides → adapter si canicule</div>
+    <div class="fc-item"><strong>Régulation thermique ↓ :</strong> Neuroleptiques · Anticholinergiques (Ditropan) · Antiparkinsoniens</div>
+    <div class="fc-item"><strong>Photosensi +++ :</strong> Doxycycline · Kétoprofène gel · Amiodarone · Isotrétinoïne</div>
+    <div class="fc-item"><strong>Hypoglycémie ↑ :</strong> Sulfamides · Insuline (chaleur → absorption ↑↑)</div>
+    <div class="fc-item" style="font-size:5pt;color:#c62828;margin-top:0.5mm;">→ Mémo à chaque dispensation chez les &gt; 65 ans ou polypathologie</div>
+  </div>
+
+  <!-- Top CA vente été -->
+  <div class="fc fc-ca">
+    <div class="fc-title">💰 Top CA officine été</div>
+    <div class="fc-item"><strong>Solaires SPF50+ :</strong> CA estival ×3–4 vs hiver · Marge élevée · Complémentaire systématique</div>
+    <div class="fc-item"><strong>Répulsifs insectes :</strong> DEET · IR3535 · Marques parapharmacie · Upsell bracelet + spray</div>
+    <div class="fc-item"><strong>Dermo-cosmétique :</strong> Après-soleil · Corps hydratant · Produits pieds → rayon saisonnier à mettre en avant</div>
+    <div class="fc-item"><strong>Trousse voyage :</strong> Panier moyen ×2,5 · 1 question = 5 produits · Proposer à toute ordonnance de voyage</div>
+    <div class="fc-item"><strong>Antihistaminiques OTC :</strong> Cétirizine · Loratadine · Pic juin–juillet · Proposer spray nasal + collyre</div>
+    <div class="fc-item" style="font-size:5pt;color:#e65100;margin-top:0.5mm;">💡 Été = 2ème pic CA officine après novembre–décembre</div>
+  </div>
+
+</div><!-- /footer-grid -->
+
+<div class="footer-strip">
+  <span>Été 2026 · OTC · Saisonnalité · Guide comptoir officine · Pharmacie</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE ÉTÉ</span>
+  <span>Pratique · Vente · Formation · api-pharma</span>
+</div>
+
+</body>
+</html>
