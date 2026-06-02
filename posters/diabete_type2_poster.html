@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diabète Type 2 — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-dark:   #0f2d5e;
+    --blue-mid:    #1a56b0;
+    --blue-light:  #e8f0fb;
+    --teal:        #0097a7;
+    --teal-light:  #e0f7fa;
+    --amber:       #e65100;
+    --amber-light: #fff3e0;
+    --red:         #b71c1c;
+    --red-light:   #ffebee;
+    --green:       #1b5e20;
+    --green-light: #e8f5e9;
+    --grey:        #37474f;
+    --grey-light:  #f4f6f8;
+    --border:      #cfd8dc;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    font-size: 7.5pt;
+    color: #1a1a2e;
+    line-height: 1.35;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 60%, var(--teal) 100%);
+    padding: 9mm 8mm 7mm;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 6mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -20mm;
+    top: -20mm;
+    width: 60mm;
+    height: 60mm;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .header-title h1 {
+    font-size: 22pt;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .header-title .subtitle {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+    margin-top: 1.5mm;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-stats {
+    display: flex;
+    gap: 4mm;
+  }
+  .stat-pill {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 6px;
+    padding: 3mm 4mm;
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+  .stat-pill .val {
+    font-size: 13pt;
+    font-weight: 800;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+  .stat-pill .lbl {
+    font-size: 5.5pt;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1mm;
+  }
+
+  /* ── TAGS BARRE ── */
+  .tag-bar {
+    background: var(--blue-dark);
+    padding: 2mm 8mm;
+    display: flex;
+    gap: 3mm;
+    flex-wrap: wrap;
+  }
+  .tag {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+    font-size: 5.5pt;
+    padding: 0.8mm 2.5mm;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── CORPS PRINCIPAL ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 55mm 1fr;
+    gap: 0;
+    padding: 5mm 8mm 4mm;
+    column-gap: 5mm;
+  }
+
+  /* ── SECTION TITRES ── */
+  .section-label {
+    font-size: 5.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue-mid);
+    margin-bottom: 2mm;
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 2.5mm;
+    height: 2.5mm;
+    background: var(--blue-mid);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── PHYSIOPATHO ── */
+  .physio-card {
+    background: var(--blue-light);
+    border-radius: 7px;
+    padding: 3mm;
+    margin-bottom: 3mm;
+    border-left: 3px solid var(--blue-mid);
+  }
+  .cascade {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2mm;
+  }
+  .cascade-step {
+    background: white;
+    border-radius: 5px;
+    padding: 1.8mm 2.5mm;
+    font-size: 6.5pt;
+    font-weight: 500;
+    color: var(--blue-dark);
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .cascade-step .icon {
+    font-size: 9pt;
+    flex-shrink: 0;
+  }
+  .cascade-arrow {
+    text-align: center;
+    color: var(--blue-mid);
+    font-size: 8pt;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .compli-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5mm;
+    margin-top: 1mm;
+  }
+  .compli-box {
+    border-radius: 5px;
+    padding: 2mm;
+    font-size: 5.5pt;
+    font-weight: 500;
+  }
+  .compli-box .title {
+    font-size: 5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1mm;
+  }
+  .compli-box li {
+    list-style: none;
+    padding-left: 1.5mm;
+    position: relative;
+  }
+  .compli-box li::before { content: '·'; position: absolute; left: 0; }
+  .micro { background: var(--amber-light); border-left: 2.5px solid var(--amber); }
+  .micro .title { color: var(--amber); }
+  .macro { background: var(--red-light); border-left: 2.5px solid var(--red); }
+  .macro .title { color: var(--red); }
+
+  /* ── DIAGNOSTIC ── */
+  .diag-card {
+    background: var(--grey-light);
+    border-radius: 7px;
+    padding: 3mm;
+    margin-bottom: 3mm;
+  }
+  .diag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5mm;
+    margin-bottom: 2mm;
+  }
+  .diag-item {
+    background: white;
+    border-radius: 5px;
+    padding: 2mm 2.5mm;
+    border-top: 2.5px solid var(--teal);
+  }
+  .diag-item .val {
+    font-size: 8.5pt;
+    font-weight: 800;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .diag-item .lbl {
+    font-size: 5.5pt;
+    color: var(--grey);
+    margin-top: 0.5mm;
+  }
+  .hypo-alert {
+    background: var(--red-light);
+    border-radius: 5px;
+    padding: 2mm 2.5mm;
+    border-left: 3px solid var(--red);
+    font-size: 6pt;
+    color: var(--red);
+    font-weight: 600;
+  }
+  .hypo-alert span { font-weight: 800; }
+
+  /* ── INSULINES CONSERVATION ── */
+  .insulin-card {
+    background: var(--teal-light);
+    border-radius: 7px;
+    padding: 3mm;
+    border-left: 3px solid var(--teal);
+  }
+  .insulin-row {
+    display: flex;
+    gap: 1.5mm;
+  }
+  .insulin-item {
+    flex: 1;
+    background: white;
+    border-radius: 5px;
+    padding: 2mm;
+    text-align: center;
+  }
+  .insulin-item .big { font-size: 10pt; }
+  .insulin-item .val { font-size: 7pt; font-weight: 700; color: var(--teal); }
+  .insulin-item .sub { font-size: 5.5pt; color: var(--grey); }
+  .insulin-warning {
+    margin-top: 1.5mm;
+    font-size: 5.5pt;
+    color: var(--amber);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* ── MÉDICAMENTS TABLE ── */
+  .drugs-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+  }
+  .drug-class {
+    border-radius: 7px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .drug-class-header {
+    padding: 2mm 3mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2mm;
+  }
+  .drug-class-header .name {
+    font-size: 7pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .drug-class-header .badge {
+    font-size: 5pt;
+    font-weight: 700;
+    padding: 0.5mm 2mm;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .drug-class-body {
+    background: white;
+    padding: 2mm 3mm;
+  }
+  .drug-row {
+    display: grid;
+    grid-template-columns: 28mm 1fr 1fr;
+    gap: 1.5mm;
+    padding: 1.2mm 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci {
+    font-weight: 700;
+    font-size: 6.5pt;
+    color: var(--blue-dark);
+  }
+  .drug-dose {
+    font-size: 6pt;
+    color: var(--grey);
+  }
+  .drug-watch {
+    font-size: 6pt;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .drug-watch::before { content: '⚠ '; }
+
+  /* Couleurs par classe */
+  .cls-metformine .drug-class-header { background: #e3f2fd; }
+  .cls-metformine .drug-class-header .name { color: #0d47a1; }
+  .cls-metformine .drug-class-header .badge { background: #0d47a1; color: white; }
+
+  .cls-sglt2 .drug-class-header { background: #e8f5e9; }
+  .cls-sglt2 .drug-class-header .name { color: #1b5e20; }
+  .cls-sglt2 .drug-class-header .badge { background: #1b5e20; color: white; }
+
+  .cls-glp1 .drug-class-header { background: #f3e5f5; }
+  .cls-glp1 .drug-class-header .name { color: #4a148c; }
+  .cls-glp1 .drug-class-header .badge { background: #4a148c; color: white; }
+
+  .cls-dpp4 .drug-class-header { background: var(--teal-light); }
+  .cls-dpp4 .drug-class-header .name { color: #004d40; }
+  .cls-dpp4 .drug-class-header .badge { background: #004d40; color: white; }
+
+  .cls-sulfa .drug-class-header { background: var(--amber-light); }
+  .cls-sulfa .drug-class-header .name { color: var(--amber); }
+  .cls-sulfa .drug-class-header .badge { background: var(--amber); color: white; }
+
+  .cls-insuline .drug-class-header { background: var(--red-light); }
+  .cls-insuline .drug-class-header .name { color: var(--red); }
+  .cls-insuline .drug-class-header .badge { background: var(--red); color: white; }
+
+  /* ── BANDE STRATEGY ── */
+  .strategy-bar {
+    margin: 3mm 8mm 0;
+    background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid));
+    border-radius: 7px;
+    padding: 3mm 4mm;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+  .strategy-bar .label {
+    color: rgba(255,255,255,0.65);
+    font-size: 5.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .strategy-steps {
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+    flex: 1;
+  }
+  .strat-step {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    padding: 1.5mm 2.5mm;
+    text-align: center;
+    flex: 1;
+  }
+  .strat-step .num {
+    font-size: 5pt;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .strat-step .content {
+    font-size: 6pt;
+    font-weight: 700;
+    color: white;
+    margin-top: 0.5mm;
+  }
+  .strat-arrow {
+    color: rgba(255,255,255,0.5);
+    font-size: 9pt;
+    font-weight: 700;
+  }
+
+  /* ── FOOTER GRID ── */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+    padding: 3mm 8mm 5mm;
+  }
+
+  /* Réflexes */
+  .reflexes-card {
+    background: var(--green-light);
+    border-radius: 7px;
+    padding: 3mm;
+    border-left: 3px solid var(--green);
+  }
+  .reflex-item {
+    display: flex;
+    gap: 2mm;
+    align-items: flex-start;
+    margin-bottom: 2mm;
+  }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num {
+    background: var(--green);
+    color: white;
+    font-size: 6pt;
+    font-weight: 800;
+    width: 4mm;
+    height: 4mm;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.3mm;
+  }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+
+  /* Interactions */
+  .inter-card {
+    background: var(--red-light);
+    border-radius: 7px;
+    padding: 3mm;
+    border-left: 3px solid var(--red);
+  }
+  .inter-item {
+    padding: 1.5mm 0;
+    border-bottom: 1px solid rgba(183,28,28,0.1);
+  }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug {
+    font-size: 6.5pt;
+    font-weight: 700;
+    color: var(--red);
+  }
+  .inter-effect {
+    font-size: 5.5pt;
+    color: #7f0000;
+    margin-top: 0.3mm;
+  }
+
+  /* Patient */
+  .patient-card {
+    background: #fafafa;
+    border-radius: 7px;
+    padding: 3mm;
+    border: 1px solid var(--border);
+  }
+  .patient-item {
+    margin-bottom: 2mm;
+  }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble {
+    background: var(--blue-light);
+    border-radius: 4px;
+    padding: 1.5mm 2mm;
+    font-size: 6pt;
+    color: var(--blue-dark);
+    font-style: italic;
+    font-weight: 500;
+    position: relative;
+  }
+  .speech-resp {
+    font-size: 5.5pt;
+    color: var(--grey);
+    padding: 1mm 2mm 0;
+    font-weight: 500;
+  }
+  .speech-resp::before { content: '→ '; color: var(--teal); font-weight: 700; }
+
+  /* ── FOOTER ── */
+  .footer-strip {
+    background: var(--blue-dark);
+    padding: 2mm 8mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-strip span {
+    color: rgba(255,255,255,0.5);
+    font-size: 5pt;
+    letter-spacing: 0.5px;
+  }
+  .footer-strip .brand {
+    color: rgba(255,255,255,0.8);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 5.5pt;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { width: 210mm; margin: 0; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-title">
+    <h1>Diabète Type 2</h1>
+    <div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill">
+      <span class="val">4,5M</span>
+      <span class="lbl">Français traités</span>
+    </div>
+    <div class="stat-pill">
+      <span class="val">7%</span>
+      <span class="lbl">HbA1c cible</span>
+    </div>
+    <div class="stat-pill">
+      <span class="val">×2–3</span>
+      <span class="lbl">Risque CV</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAG BAR -->
+<div class="tag-bar">
+  <span class="tag">Insulinorésistance</span>
+  <span class="tag">Cellules β</span>
+  <span class="tag">HbA1c</span>
+  <span class="tag">Metformine 1ère ligne</span>
+  <span class="tag">Gliflozines CV+</span>
+  <span class="tag">GLP-1 poids</span>
+  <span class="tag">Hypoglycémie sulfamides</span>
+  <span class="tag">Conservation insuline 28j ouvert</span>
+  <span class="tag">Metformine = arrêt iode IV</span>
+</div>
+
+<!-- CORPS -->
+<div class="body-grid">
+
+  <!-- COLONNE GAUCHE -->
+  <div>
+
+    <!-- PHYSIOPATHO -->
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step"><span class="icon">🔴</span> Insulinorésistance (muscle · foie · tissu adipeux)</div>
+        <div class="cascade-arrow">+</div>
+        <div class="cascade-step"><span class="icon">🟠</span> Épuisement progressif des cellules β</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step"><span class="icon">📈</span> Hyperglycémie chronique</div>
+        <div class="cascade-arrow">↓</div>
+      </div>
+      <div class="compli-row">
+        <div class="compli-box micro">
+          <div class="title">Microvasculaire</div>
+          <ul>
+            <li>Rétinopathie</li>
+            <li>Néphropathie</li>
+            <li>Neuropathie</li>
+          </ul>
+        </div>
+        <div class="compli-box macro">
+          <div class="title">Macrovasculaire</div>
+          <ul>
+            <li>Infarctus</li>
+            <li>AVC</li>
+            <li>Artériopathie MI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIAGNOSTIC -->
+    <div class="section-label">Diagnostic</div>
+    <div class="diag-card">
+      <div class="diag-grid">
+        <div class="diag-item">
+          <div class="val">≥ 1,26 g/L</div>
+          <div class="lbl">Glycémie à jeun × 2</div>
+        </div>
+        <div class="diag-item">
+          <div class="val">≥ 6,5 %</div>
+          <div class="lbl">HbA1c × 2</div>
+        </div>
+        <div class="diag-item">
+          <div class="val">≥ 2,0 g/L</div>
+          <div class="lbl">Post-charge (HGPO)</div>
+        </div>
+        <div class="diag-item">
+          <div class="val">≥ 2,0 g/L</div>
+          <div class="lbl">Aléatoire + symptômes</div>
+        </div>
+      </div>
+      <div class="hypo-alert">⚡ Hypoglycémie : <span>&lt; 0,70 g/L</span> · Symptômes : &lt; 0,60 · Urgence : &lt; 0,40</div>
+    </div>
+
+    <!-- CONSERVATION INSULINE -->
+    <div class="section-label">Conservation Insuline</div>
+    <div class="insulin-card">
+      <div class="insulin-row">
+        <div class="insulin-item">
+          <div class="big">🧊</div>
+          <div class="val">2–8°C</div>
+          <div class="sub">Stock non ouvert</div>
+          <div class="sub">Jusqu'à péremption</div>
+        </div>
+        <div class="insulin-item">
+          <div class="big">✋</div>
+          <div class="val">28–30 j</div>
+          <div class="sub">Stylo en cours</div>
+          <div class="sub">T° ambiante &lt; 30°C</div>
+        </div>
+        <div class="insulin-item">
+          <div class="big">❌</div>
+          <div class="val">Jamais</div>
+          <div class="sub">Congélateur</div>
+          <div class="sub">Soleil / &gt; 30°C</div>
+        </div>
+      </div>
+      <div class="insulin-warning">⚠ NPH / Mélanges turbides : retourner stylo 10× avant injection</div>
+    </div>
+
+  </div><!-- fin colonne gauche -->
+
+  <!-- COLONNE DROITE — CLASSES -->
+  <div class="drugs-col">
+
+    <div class="section-label">Classes thérapeutiques</div>
+
+    <!-- METFORMINE -->
+    <div class="drug-class cls-metformine">
+      <div class="drug-class-header">
+        <div class="name">Metformine</div>
+        <div class="badge">1ère ligne</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Metformine</div>
+          <div class="drug-dose">500–3000 mg/j · 2–3 prises avec repas · LP si mauvaise tolérance digestive</div>
+          <div class="drug-watch">DFG &lt; 30 = CI · Arrêt avant iode IV · Surveiller B12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SGLT2 -->
+    <div class="drug-class cls-sglt2">
+      <div class="drug-class-header">
+        <div class="name">Gliflozines — iSGLT2</div>
+        <div class="badge">Bénéfice CV + Rénal</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Dapagliflozine</div>
+          <div class="drug-dose">10 mg × 1/j (Forxiga)</div>
+          <div class="drug-watch">Mycoses génitales · Arrêt si chirurgie (DKA)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Empagliflozine</div>
+          <div class="drug-dose">10–25 mg × 1/j (Jardiance)</div>
+          <div class="drug-watch">Déshydratation · Infections urinaires</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLP-1 -->
+    <div class="drug-class cls-glp1">
+      <div class="drug-class-header">
+        <div class="name">Agonistes GLP-1</div>
+        <div class="badge">Perte de poids · CV+</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Sémaglutide SC</div>
+          <div class="drug-dose">0,25 mg → 1 mg/sem (Ozempic)</div>
+          <div class="drug-watch">Nausées initiales · Pancréatite rare</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Sémaglutide oral</div>
+          <div class="drug-dose">3→7→14 mg/j (Rybelsus) — à jeun strict 30 min, 120 mL eau</div>
+          <div class="drug-watch">Prise à jeun obligatoire</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Dulaglutide</div>
+          <div class="drug-dose">0,75–1,5 mg/sem SC (Trulicity)</div>
+          <div class="drug-watch">Nausées · Conservation réfrigérateur</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DPP4 -->
+    <div class="drug-class cls-dpp4">
+      <div class="drug-class-header">
+        <div class="name">Gliptines — iDPP-4</div>
+        <div class="badge">Bien tolérées</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Sitagliptine · Vildagliptine · Saxagliptine</div>
+          <div class="drug-dose">Sita 100 mg/j · Vilda 50 mg × 2/j · Saxa 5 mg/j</div>
+          <div class="drug-watch">Infections ORL · Pancréatite rare</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SULFAMIDES -->
+    <div class="drug-class cls-sulfa">
+      <div class="drug-class-header">
+        <div class="name">Sulfamides hypoglycémiants</div>
+        <div class="badge">⚠ Hypo +++</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Gliclazide (LP)</div>
+          <div class="drug-dose">30–120 mg LP/j · Ne pas écraser</div>
+          <div class="drug-watch">Hypoglycémie · Prise de poids · Éviter sujet âgé</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Glimépiride</div>
+          <div class="drug-dose">1–6 mg/j</div>
+          <div class="drug-watch">Hypoglycémie sévère possible</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSULINES -->
+    <div class="drug-class cls-insuline">
+      <div class="drug-class-header">
+        <div class="name">Insulines</div>
+        <div class="badge">Basales + Rapides</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Glargine (Lantus · Toujeo) · Dégludec (Tresiba)</div>
+          <div class="drug-dose">Basale · 1 inj/j · Au coucher</div>
+          <div class="drug-watch">Hypoglycémie nocturne · Date ouverture stylo</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Asparte (NovoRapid) · Lispro (Humalog)</div>
+          <div class="drug-dose">Rapide · Avant repas (0–15 min)</div>
+          <div class="drug-watch">Hypo post-prandiale · Technique injection</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- fin colonne droite -->
+
+</div><!-- fin body-grid -->
+
+<!-- STRATÉGIE -->
+<div class="strategy-bar">
+  <div class="label">Stratégie HAS 2023</div>
+  <div class="strategy-steps">
+    <div class="strat-step">
+      <div class="num">Étape 1</div>
+      <div class="content">Metformine + RHD</div>
+    </div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step">
+      <div class="num">Étape 2</div>
+      <div class="content">+ Gliflozine (MCV/IRC) ou GLP-1 (obésité) ou Gliptine</div>
+    </div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step">
+      <div class="num">Étape 3</div>
+      <div class="content">Trithérapie orale</div>
+    </div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step">
+      <div class="num">Étape 4</div>
+      <div class="content">Insulinothérapie</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER GRID -->
+<div class="footer-grid">
+
+  <!-- RÉFLEXES -->
+  <div>
+    <div class="section-label" style="color: var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item">
+        <div class="reflex-num">1</div>
+        <div class="reflex-text">Lecteur glycémique → vérifier technique + bandelettes adaptées à chaque renouvellement</div>
+      </div>
+      <div class="reflex-item">
+        <div class="reflex-num">2</div>
+        <div class="reflex-text">Gliflozines → expliquer les mycoses génitales dès la 1ère dispensation (hygiène intime ++)</div>
+      </div>
+      <div class="reflex-item">
+        <div class="reflex-num">3</div>
+        <div class="reflex-text">Insuline → vérifier la date d'ouverture notée sur le stylo à chaque dispensation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIONS -->
+  <div>
+    <div class="section-label" style="color: var(--red);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item">
+        <div class="inter-drug">Corticoïdes</div>
+        <div class="inter-effect">Hyperglycémie rebond → surveiller glycémies</div>
+      </div>
+      <div class="inter-item">
+        <div class="inter-drug">Metformine + Iode IV</div>
+        <div class="inter-effect">Acidose lactique → arrêt 48h avant et après</div>
+      </div>
+      <div class="inter-item">
+        <div class="inter-drug">AINS + Sulfamides</div>
+        <div class="inter-effect">Potentialisation hypoglycémie → limiter durée</div>
+      </div>
+      <div class="inter-item">
+        <div class="inter-drug">Gliflozines + Diurétiques</div>
+        <div class="inter-effect">Déshydratation, hypotension → hydratation ++</div>
+      </div>
+      <div class="inter-item">
+        <div class="inter-drug">Alcool + Sulfamides/Insuline</div>
+        <div class="inter-effect">Hypoglycémie prolongée → éducation patient</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATIENT -->
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item">
+        <div class="speech-bubble">"Mon sucre était à 2,8 ce matin"</div>
+        <div class="speech-resp">Hypoglycémie → explorer cause (repas sauté, effort, alcool)</div>
+      </div>
+      <div class="patient-item">
+        <div class="speech-bubble">"J'ai des fourmillements dans les pieds"</div>
+        <div class="speech-resp">Neuropathie diabétique → signaler au médecin</div>
+      </div>
+      <div class="patient-item">
+        <div class="speech-bubble">"La metformine me dérange le ventre"</div>
+        <div class="speech-resp">Essayer la forme LP avec repas</div>
+      </div>
+      <div class="patient-item">
+        <div class="speech-bubble">"J'ai une infection urinaire depuis le nouveau cachet"</div>
+        <div class="speech-resp">Gliflozine → fréquent, mesures hygiène ++</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- fin footer-grid -->
+
+<!-- FOOTER STRIP -->
+<div class="footer-strip">
+  <span>DT2 · Insulinorésistance · Cellules β · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 1 · 80/20 · Pratique comptoir</span>
+</div>
+
+</body>
+</html>
