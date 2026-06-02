@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Dépression · Anxiété · Insomnie — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #283593; --c2: #3949ab; --c3: #7986cb;
+    --cl: #e8eaf6; --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 11pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  .info-card { border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .info-card .title { font-size: 6pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; }
+  .ic-blue { background: var(--cl); border-left: 3px solid var(--c2); }
+  .ic-blue .title { color: var(--c1); }
+  .info-card li { font-size: 6pt; list-style: none; padding-left: 2mm; position: relative; margin-bottom: 0.8mm; }
+  .info-card li::before { content: '·'; position: absolute; left: 0; font-weight: 700; color: var(--c2); }
+
+  .bzd-alert { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); margin-bottom: 3mm; }
+  .bzd-alert .title { font-size: 6pt; font-weight: 700; color: var(--red); margin-bottom: 1.5mm; }
+  .bzd-table { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; }
+  .bzd-item { background: white; border-radius: 5px; padding: 2mm; }
+  .bzd-item .dci { font-size: 6.5pt; font-weight: 700; color: var(--red); }
+  .bzd-item .info { font-size: 5.5pt; color: var(--grey); }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 28mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: var(--grey); }
+  .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+
+  .cls-isrs .drug-class-header { background: var(--cl); }
+  .cls-isrs .drug-class-header .name { color: var(--c1); }
+  .cls-isrs .drug-class-header .badge { background: var(--c1); color: white; }
+  .cls-irsn .drug-class-header { background: #e8eaf6; }
+  .cls-irsn .drug-class-header .name { color: #1a237e; }
+  .cls-irsn .drug-class-header .badge { background: #1a237e; color: white; }
+  .cls-nassa .drug-class-header { background: #fce4ec; }
+  .cls-nassa .drug-class-header .name { color: #880e4f; }
+  .cls-nassa .drug-class-header .badge { background: #880e4f; color: white; }
+  .cls-bzd .drug-class-header { background: var(--red-l); }
+  .cls-bzd .drug-class-header .name { color: var(--red); }
+  .cls-bzd .drug-class-header .badge { background: var(--red); color: white; }
+  .cls-hypn .drug-class-header { background: var(--amber-l); }
+  .cls-hypn .drug-class-header .name { color: var(--amber); }
+  .cls-hypn .drug-class-header .badge { background: var(--amber); color: white; }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), #880e4f); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--red); }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>Dépression · Anxiété · Insomnie</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">3M</span><span class="lbl">Dépressifs/an</span></div>
+    <div class="stat-pill"><span class="val">1/5</span><span class="lbl">Français anxieux</span></div>
+    <div class="stat-pill"><span class="val">#1</span><span class="lbl">Consommateur BZD EU</span></div>
+  </div>
+</div>
+<div class="tag-bar">
+  <span class="tag">Délai ISRS = 2–4 semaines</span><span class="tag">BZD max 4–12 semaines</span>
+  <span class="tag">Jamais arrêt brutal antidépresseur</span><span class="tag">Millepertuis = inducteur CYP3A4</span>
+  <span class="tag">Tramadol + ISRS = sérotonine</span><span class="tag">Zolpidem = ordonnance sécurisée</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Points clés — Dépression</div>
+    <div class="info-card ic-blue">
+      <div class="title">Diagnostic EDC (DSM-5)</div>
+      <li>≥ 5 symptômes dont humeur dépressive ou anhédonie</li>
+      <li>Durée ≥ 2 semaines · Retentissement fonctionnel</li>
+      <li>Légère / Modérée / Sévère</li>
+    </div>
+
+    <div class="section-label">BZD — La règle d'or</div>
+    <div class="bzd-alert">
+      <div class="title">⚠ Durées légales maximales</div>
+      <div class="bzd-table">
+        <div class="bzd-item"><div class="dci">Anxiété</div><div class="info">Max 12 semaines (toutes BZD)</div></div>
+        <div class="bzd-item"><div class="dci">Insomnie</div><div class="info">Max 4 semaines (Z-drugs, BZD)</div></div>
+        <div class="bzd-item"><div class="dci">Sujet âgé</div><div class="info">Oxazépam ou Lorazépam (pas de métabolite actif)</div></div>
+        <div class="bzd-item"><div class="dci">Arrêt</div><div class="info">Jamais brutal → convulsions, rebond</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">BZD — Demi-vies à connaître</div>
+    <div class="info-card ic-blue">
+      <div class="title">Courte (&lt;12h) : Alprazolam · Lorazépam · Oxazépam</div>
+      <li>Dépendance plus rapide · Meilleur pour sujet âgé</li>
+      <div class="title" style="margin-top:1.5mm;">Longue (&gt;20h) : Diazépam · Clorazépate</div>
+      <li>Accumulation chez l'âgé · Effet plus durable</li>
+    </div>
+
+    <div style="background:#fff9c4;border-radius:7px;padding:3mm;border-left:3px solid #f9a825;">
+      <div style="font-size:6pt;font-weight:700;color:#e65100;margin-bottom:1.5mm;">⚠ Millepertuis (St John's Wort)</div>
+      <div style="font-size:6pt;color:#37474f;">Inducteur puissant CYP3A4<br>↓ pilule contraceptive · ↓ AVK · ↓ immunosuppresseurs<br><b>Toujours interroger sur phytothérapie</b></div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    <div class="drug-class cls-isrs">
+      <div class="drug-class-header"><div class="name">ISRS — 1ère ligne dépression</div><div class="badge">Délai 2–4 semaines</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Escitalopram (Seroplex)</div>
+          <div class="drug-dose">10–20 mg/j · Moins d'interactions · Préféré si tamoxifène</div>
+          <div class="drug-watch">Allongement QT dose-dépendant · Max 20 mg</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Sertraline (Zoloft)</div>
+          <div class="drug-dose">50–200 mg/j · Référence dépression + TAG</div>
+          <div class="drug-watch">Nausées initiales (passagères) · Interactions modérées</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Fluoxétine (Prozac)</div>
+          <div class="drug-dose">20–60 mg/j · t½ très long (5 semaines)</div>
+          <div class="drug-watch">Inhibiteur CYP2D6 · CI tamoxifène · Peu de sevrage</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Paroxétine (Deroxat)</div>
+          <div class="drug-dose">20–60 mg/j</div>
+          <div class="drug-watch">Sevrage difficile (t½ court) · Anticholinergique · CI tamoxifène</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-irsn">
+      <div class="drug-class-header"><div class="name">IRSN</div><div class="badge">Dépression + Douleur neuro</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Venlafaxine (Effexor)</div>
+          <div class="drug-dose">75–225 mg/j LP · LP = avaler entier (ne pas écraser)</div>
+          <div class="drug-watch">↑ PA à forte dose · Sevrage brutal = vertiges, chocs électriques</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Duloxétine (Cymbalta)</div>
+          <div class="drug-dose">60–120 mg/j · TAG + douleur neuropathique</div>
+          <div class="drug-watch">Nausées initiales · Précaution HTA</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-nassa">
+      <div class="drug-class-header"><div class="name">NaSSA</div><div class="badge">Insomnie associée</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Mirtazapine (Norset)</div>
+          <div class="drug-dose">15–45 mg/j au coucher</div>
+          <div class="drug-watch">Sédation + appétit ↑ (utile si insomnie + perte de poids)</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-bzd">
+      <div class="drug-class-header"><div class="name">Benzodiazépines</div><div class="badge">⚠ Max 4–12 semaines</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Alprazolam (Xanax) · Lorazépam (Témesta)</div>
+          <div class="drug-dose">Anxiété aiguë · Courte demi-vie</div>
+          <div class="drug-watch">Dépendance rapide · Ne jamais arrêter brutalement</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Oxazépam (Séresta) ← sujet âgé</div>
+          <div class="drug-dose">Pas de métabolite actif · Moins d'accumulation</div>
+          <div class="drug-watch">1er choix chez le sujet âgé</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-hypn">
+      <div class="drug-class-header"><div class="name">Hypnotiques</div><div class="badge">Insomnie max 4 sem</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Zolpidem (Stilnox)</div>
+          <div class="drug-dose">10 mg au coucher · Ordonnance sécurisée</div>
+          <div class="drug-watch">Conduites auto le matin ! · Somnambulisme · Dépendance</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Mélatonine (Circadin)</div>
+          <div class="drug-dose">2 mg LP au coucher · Jet-lag · Sans dépendance</div>
+          <div class="drug-watch">Troubles rythme circadien · Enfants (hors AMM)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Doxylamine (Donormyl) · Hydroxyzine (Atarax)</div>
+          <div class="drug-dose">Antihistaminiques · OTC disponible</div>
+          <div class="drug-watch">Somnolence résiduelle · CI conduite le matin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Dépression — Stratégie</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">1ère ligne</div><div class="content">ISRS (sertraline ou escitalopram)</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Échec ou TAG</div><div class="content">IRSN (venlafaxine)</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Insomnie associée</div><div class="content">Mirtazapine</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Résistance</div><div class="content">TCA / IMAO / Augmentation</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Délai ISRS = 2–4 semaines → prévenir patient, ne pas arrêter si pas d'effet immédiat</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">BZD &gt;4–12 semaines → aborder la dépendance, signaler au médecin au renouvellement</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Arrêt antidépresseur → toujours progressif (4–8 semaines) → syndrome de discontinuation</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--red);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">ISRS + Tramadol / Triptans</div><div class="inter-effect">Syndrome sérotoninergique (agitation, hyperthermie, clonus) → éviter</div></div>
+      <div class="inter-item"><div class="inter-drug">ISRS + AINS / Aspirine</div><div class="inter-effect">Hémorragie digestive → IPP si association prolongée</div></div>
+      <div class="inter-item"><div class="inter-drug">BZD + Opioïdes / Alcool</div><div class="inter-effect">Dépression respiratoire → éducation renforcée</div></div>
+      <div class="inter-item"><div class="inter-drug">Fluoxétine/Paroxétine + Tamoxifène</div><div class="inter-effect">↓ efficacité tamoxifène (CYP2D6) → préférer sertraline</div></div>
+      <div class="inter-item"><div class="inter-drug">Millepertuis + tout</div><div class="inter-effect">CYP3A4 → ↓ pilule, AVK, ciclosporine → toujours interroger</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Je prends du Lexomil / Xanax depuis 10 ans"</div><div class="speech-resp">Dépendance chronique → ne pas couper, plan de sevrage médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Ça fait 3 semaines, ça ne marche pas encore"</div><div class="speech-resp">Délai ISRS normal → réassurer, continuer</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté d'un coup, j'ai des chocs électriques"</div><div class="speech-resp">Discontinuation ISRS → reprise progressive + médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends du millepertuis en plus"</div><div class="speech-resp">Interactions majeures → vérifier traitement complet</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer-strip">
+  <span>Dépression · Anxiété · ISRS · BZD · Insomnie · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 2 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

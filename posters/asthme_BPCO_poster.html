@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Asthme & BPCO — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #0277bd; --c2: #0288d1; --c3: #29b6f6;
+    --cl: #e1f5fe; --cm: #b3e5fc;
+    --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #01579b 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #01579b; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c1); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c1); border-radius: 50%; flex-shrink: 0; }
+
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-bottom: 3mm; }
+  .compare-box { border-radius: 7px; padding: 3mm; }
+  .asthme { background: var(--cl); border-left: 3px solid var(--c1); }
+  .asthme .title { font-size: 7pt; font-weight: 800; color: var(--c1); margin-bottom: 1.5mm; }
+  .bpco { background: var(--amber-l); border-left: 3px solid var(--amber); }
+  .bpco .title { font-size: 7pt; font-weight: 800; color: var(--amber); margin-bottom: 1.5mm; }
+  .compare-box li { font-size: 6pt; list-style: none; padding-left: 2mm; position: relative; margin-bottom: 0.8mm; }
+  .compare-box li::before { content: '·'; position: absolute; left: 0; font-weight: 700; }
+  .asthme li::before { color: var(--c1); }
+  .bpco li::before { color: var(--amber); }
+
+  .dispositifs { background: var(--grey-l); border-radius: 7px; padding: 3mm; }
+  .disp-row { display: grid; grid-template-columns: 20mm 1fr; gap: 1.5mm; padding: 1.5mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .disp-row:last-child { border-bottom: none; }
+  .disp-name { font-size: 6.5pt; font-weight: 700; color: var(--c1); }
+  .disp-detail { font-size: 6pt; color: var(--grey); }
+  .disp-detail b { color: var(--c1); }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 28mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: var(--grey); }
+  .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+
+  .cls-saba .drug-class-header { background: var(--cl); }
+  .cls-saba .drug-class-header .name { color: var(--c1); }
+  .cls-saba .drug-class-header .badge { background: var(--c1); color: white; }
+  .cls-laba .drug-class-header { background: #e8f5e9; }
+  .cls-laba .drug-class-header .name { color: var(--green); }
+  .cls-laba .drug-class-header .badge { background: var(--green); color: white; }
+  .cls-csi .drug-class-header { background: #fce4ec; }
+  .cls-csi .drug-class-header .name { color: #880e4f; }
+  .cls-csi .drug-class-header .badge { background: #880e4f; color: white; }
+  .cls-assoc .drug-class-header { background: #f3e5f5; }
+  .cls-assoc .drug-class-header .name { color: #4a148c; }
+  .cls-assoc .drug-class-header .badge { background: #4a148c; color: white; }
+  .cls-lama .drug-class-header { background: var(--amber-l); }
+  .cls-lama .drug-class-header .name { color: var(--amber); }
+  .cls-lama .drug-class-header .badge { background: var(--amber); color: white; }
+
+  .technique { background: var(--cl); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--c1); margin-top: 2.5mm; }
+  .technique .title { font-size: 6pt; font-weight: 700; color: var(--c1); margin-bottom: 1.5mm; }
+  .technique ol { padding-left: 3mm; }
+  .technique li { font-size: 6pt; color: var(--grey); margin-bottom: 0.8mm; }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), #4a148c); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--red); }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: #01579b; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>Asthme & BPCO</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">4M</span><span class="lbl">Asthmatiques</span></div>
+    <div class="stat-pill"><span class="val">3M</span><span class="lbl">BPCO France</span></div>
+    <div class="stat-pill"><span class="val">90%</span><span class="lbl">BPCO = tabac</span></div>
+  </div>
+</div>
+<div class="tag-bar">
+  <span class="tag">Ventoline &gt;2×/sem = fond insuffisant</span><span class="tag">Rincer bouche après CSI</span>
+  <span class="tag">β-bloquants CI asthme</span><span class="tag">AINS → crise 10%</span>
+  <span class="tag">MART = fond + crise = 1 inhalateur</span><span class="tag">Technique inhalation à vérifier</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Asthme vs BPCO</div>
+    <div class="compare">
+      <div class="compare-box asthme">
+        <div class="title">🫁 ASTHME</div>
+        <ul>
+          <li>Inflammation + allergie</li>
+          <li>Obstruction RÉVERSIBLE</li>
+          <li>Sifflement + dyspnée crises</li>
+          <li>Jeune, atopique</li>
+          <li>VEMS/CV &lt;0,7 + réversibilité &gt;12%</li>
+        </ul>
+      </div>
+      <div class="compare-box bpco">
+        <div class="title">🚬 BPCO</div>
+        <ul>
+          <li>Tabac (90%)</li>
+          <li>Obstruction IRRÉVERSIBLE</li>
+          <li>Toux productive + dyspnée</li>
+          <li>50+ ans, fumeur</li>
+          <li>VEMS/CV &lt;0,7 post-BD</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-label">Dispositifs Inhalés 🔑</div>
+    <div class="dispositifs">
+      <div class="disp-row"><div class="disp-name">MDI (aérosol)</div><div class="disp-detail">Ventoline, Becotide · <b>Coordination</b> bras + inspiration lente · Chambre si pb</div></div>
+      <div class="disp-row"><div class="disp-name">Autohaler</div><div class="disp-detail">Airomir · Autodéclenché par inspiration · Plus facile</div></div>
+      <div class="disp-row"><div class="disp-name">Turbuhaler</div><div class="disp-detail">Symbicort, Pulmicort · <b>Inspiration profonde et forcée</b> · Cliquetis = chargé</div></div>
+      <div class="disp-row"><div class="disp-name">Diskus</div><div class="disp-detail">Séretide, Flixotide · Glisser + inspiration <b>lente et profonde</b></div></div>
+      <div class="disp-row"><div class="disp-name">Respimat</div><div class="disp-detail">Spiriva, Striverdi · Nuage lent · Peu de coordination</div></div>
+      <div class="disp-row"><div class="disp-name">Ellipta</div><div class="disp-detail">Trelegy, Relvar · 1 clic = 1 dose · Inspiration profonde</div></div>
+      <div class="disp-row"><div class="disp-name">Breezhaler</div><div class="disp-detail">Onbrez, Seebri · Capsule perforée · Bruit = normal</div></div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    <div class="drug-class cls-saba">
+      <div class="drug-class-header"><div class="name">SABA — β2 agonistes courts</div><div class="badge">Traitement de CRISE</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Salbutamol (Ventoline) · Terbutaline (Bricanyl)</div>
+          <div class="drug-dose">1–2 bouffées à la demande · Durée 4–6h</div>
+          <div class="drug-watch">Si &gt;2×/sem → fond insuffisant → médecin</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-csi">
+      <div class="drug-class-header"><div class="name">CSI — Corticoïdes Inhalés</div><div class="badge">Fond asthme obligatoire</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Béclométasone · Budésonide · Fluticasone · Ciclésonide</div>
+          <div class="drug-dose">Selon molécule et dispositif · 1–2 inhalations × 2/j</div>
+          <div class="drug-watch">Rinçage bouche SYSTÉMATIQUE → candidose oropharyngée</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-assoc">
+      <div class="drug-class-header"><div class="name">Associations CSI + LABA</div><div class="badge">Fond asthme + BPCO</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Symbicort (Budésonide + Formotérol)</div>
+          <div class="drug-dose">Turbuhaler · Stratégie MART : fond ET crise</div>
+          <div class="drug-watch">MART → 1 seul inhalateur pour tout</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Séretide (Fluticasone + Salmétérol)</div>
+          <div class="drug-dose">Diskus ou MDI · 2 inhalations × 2/j</div>
+          <div class="drug-watch">Salmétérol = LABA → jamais seul sans CSI</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Trelegy (Fluticasone + Vilanterol + Uméclidinium)</div>
+          <div class="drug-dose">Ellipta · 1 inhalation × 1/j · Triple thérapie</div>
+          <div class="drug-watch">BPCO sévère · Anticholinergique inclus</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-lama">
+      <div class="drug-class-header"><div class="name">LAMA — Anticholinergiques longs</div><div class="badge">Fond BPCO</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tiotropium (Spiriva) · Glycopyrronium (Seebri) · Uméclidinium</div>
+          <div class="drug-dose">1 inhalation × 1/j · Durée 24h</div>
+          <div class="drug-watch">Rétention urinaire (HBP) · Glaucome angle fermé · Sécheresse buccale</div>
+        </div>
+      </div>
+    </div>
+    <div class="technique">
+      <div class="title">📋 Technique universelle MDI (à démontrer)</div>
+      <ol>
+        <li>Agiter l'inhalateur (MDI)</li>
+        <li>Expirer complètement (vider les poumons)</li>
+        <li>Placer embout en bouche (lèvres serrées)</li>
+        <li>Appuyer ET inspirer lentement 3–5 secondes</li>
+        <li>Apnée 10 secondes</li>
+        <li>Expirer par le nez</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">ASTHME — Stratégie GINA</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Palier 1</div><div class="content">SABA à la demande</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Palier 2</div><div class="content">CSI faible dose</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Palier 3</div><div class="content">CSI + LABA (MART)</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Palier 4–5</div><div class="content">Dose forte + biothérapie</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Ventoline &gt;2×/semaine → fond insuffisant → médecin urgent</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Rinçage bouche après CSI = systématique → candidose évitable</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">BPCO : arrêt tabac = seul traitement qui change l'évolution → orienter sevrage</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--red);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">β-bloquants non cardio-sélectifs</div><div class="inter-effect">Bronchospasme → CI absolue asthme / BPCO sévère (propranolol, carvédilol)</div></div>
+      <div class="inter-item"><div class="inter-drug">AINS / Aspirine</div><div class="inter-effect">Crise asthme (aspirine-sensibilité ~10%) → interroger à chaque dispensation</div></div>
+      <div class="inter-item"><div class="inter-drug">LAMA + atropiniques</div><div class="inter-effect">Effets anticholinergiques cumulés → rétention urinaire, confusion</div></div>
+      <div class="inter-item"><div class="inter-drug">Corticoïdes oraux prolongés</div><div class="inter-effect">Ostéoporose, diabète → Ca/VitD + surveillance glycémie</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Mon Symbicort, c'est pour la crise ou le fond ?"</div><div class="speech-resp">MART → les deux ! Expliquer double usage</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Depuis les cachets pour le cœur je souffle mal"</div><div class="speech-resp">β-bloquant → vérifier si cardio-sélectif ou non</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai oublié comment faire le Turbuhaler"</div><div class="speech-resp">Démonstration → inspiration profonde et forcée</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je tousse le matin avec des glaires"</div><div class="speech-resp">BPCO probable → spirométrie recommandée</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer-strip">
+  <span>Asthme · BPCO · SABA · CSI · LAMA · Inhalateurs · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 1 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>
