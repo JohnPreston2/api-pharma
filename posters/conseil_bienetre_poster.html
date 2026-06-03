@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Rayon Conseil & Compléments Alimentaires — SantéVeille Officine</title>
+<style>
+  :root {
+    --c1:#1b5e20; --c2:#2e7d32; --c3:#388e3c; --c4:#43a047;
+    --cl:#c8e6c9; --cm:#e8f5e9; --text:#1a1a1a;
+  }
+  @page { size:A4 portrait; margin:7mm; }
+  @media print { -webkit-print-color-adjust:exact; print-color-adjust:exact; body{margin:0;} }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:var(--text);
+    width:210mm;min-height:297mm;padding:6mm;background:#f9fbe7;
+  }
+
+  /* HEADER */
+  .hdr{
+    background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 55%,#43a047 100%);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .hdr h1{font-size:15px;font-weight:700;letter-spacing:.3px;}
+  .hdr .sub{font-size:8px;opacity:.88;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;white-space:nowrap;}
+
+  /* CATEGORY CHIPS */
+  .cat-strip{display:flex;gap:3px;margin-bottom:5px;}
+  .chip{flex:1;color:white;border-radius:3px;padding:3px 2px;font-size:6.5px;
+    font-weight:700;text-align:center;line-height:1.4;background:var(--c2);}
+  .chip.bl{background:#0d47a1;} .chip.or{background:#e65100;}
+  .chip.tl{background:#006064;} .chip.pu{background:#4a148c;}
+  .chip.re{background:#b71c1c;} .chip.br{background:#4e342e;}
+
+  /* GRID */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  /* CARD */
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.or{background:#e65100;} .ch.tl{background:#006064;}
+  .ch.bl{background:#0d47a1;} .ch.pu{background:#4a148c;}
+  .ch.re{background:#b71c1c;} .ch.br{background:#4e342e;}
+  .cb{padding:5px 7px;background:white;}
+
+  /* PRODUCT LINE */
+  .prod{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:baseline;
+    padding:2px 0;border-bottom:1px dotted #e0e0e0;font-size:7.5px;}
+  .prod:last-of-type{border-bottom:none;}
+  .pn{font-weight:700;color:var(--c1);white-space:nowrap;}
+  .pd{color:#555;font-size:7px;}
+  .pt{font-size:6.5px;background:var(--cm);color:var(--c1);border-radius:3px;
+    padding:1px 4px;white-space:nowrap;font-weight:600;}
+  .pt.or{background:#fff3e0;color:#e65100;}
+  .pt.bl{background:#e3f2fd;color:#0d47a1;}
+  .pt.pu{background:#f3e5f5;color:#4a148c;}
+  .pt.re{background:#ffebee;color:#b71c1c;}
+
+  .il{font-size:7px;color:#444;padding:1px 0 2px 7px;border-left:2px solid var(--cl);
+    margin:1px 0 2px 2px;font-style:italic;}
+
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;border-radius:0 3px 3px 0;color:#1b5e20;}
+  .nouv{background:linear-gradient(90deg,#4a148c,#6a1b9a);color:white;
+    padding:3px 8px;font-size:7px;border-radius:3px;margin-top:3px;}
+  .nouv strong{color:#ce93d8;}
+
+  /* SEVRAGE TABAC WIDE */
+  .tab-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+  .tab-col-h{font-weight:700;color:#4e342e;font-size:8px;margin-bottom:4px;
+    border-bottom:1px solid #d7ccc8;padding-bottom:2px;}
+  .tab-line{font-size:7px;margin-bottom:2.5px;}
+  .tab-line strong{color:#4e342e;}
+
+  /* REFLEXES */
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfx-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+
+  /* INTERACTIONS */
+  .ibar{background:#fce4ec;border:1.5px solid #e91e63;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .ibar h3{font-size:9px;font-weight:700;color:#880e4f;margin-bottom:3px;}
+  .igrid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+  .ii{background:white;border-radius:3px;padding:3px 5px;
+    border-left:3px solid #e91e63;font-size:7px;}
+  .ii strong{color:#880e4f;display:block;font-size:7.5px;}
+
+  /* PATIENT */
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:#f1f8e9;border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
+    margin:2px 0;font-size:7px;border-radius:0 3px 3px 0;color:#b71c1c;}
+  .sr{color:var(--c1);margin-top:2px;font-weight:600;font-size:7px;}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <h1>🌿 Rayon Conseil & Compléments Alimentaires</h1>
+    <div class="sub">Probiotiques · Oméga 3 · Minceur/Détox · Veineux · Vitamines · Digestion · Sevrage tabac</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+
+<!-- CATEGORY CHIPS -->
+<div class="cat-strip">
+  <div class="chip">🦠 Probiotiques<br>Microbiome</div>
+  <div class="chip bl">🐟 Oméga 3<br>Lipides</div>
+  <div class="chip or">⚖️ Minceur<br>Détox</div>
+  <div class="chip tl">🦵 Veineux<br>Jambes lourdes</div>
+  <div class="chip pu">💊 Vitamines<br>Énergie · Femme</div>
+  <div class="chip re">🍃 Digestion<br>Transit</div>
+  <div class="chip br">🚭 Sevrage<br>Tabac</div>
+</div>
+
+<!-- MAIN GRID 2x3 -->
+<div class="grid2">
+
+  <!-- PROBIOTIQUES -->
+  <div class="card">
+    <div class="ch">🦠 PROBIOTIQUES &amp; MICROBIOME</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Ultra Levure 200mg</span>
+        <span class="pd">Saccharomyces boulardii (levure)</span>
+        <span class="pt bl">Biocodex</span>
+      </div>
+      <div class="il">Diarrhée aiguë · Post-ATB · Diarrhée du voyageur — <strong>résiste aux antibiotiques !</strong></div>
+      <div class="prod">
+        <span class="pn">Lacteane / Lactibiane</span>
+        <span class="pd">Lactobacillus + Bifidobacterium</span>
+        <span class="pt or">Pilège</span>
+      </div>
+      <div class="il">Flore intestinale · Côlon irritable (SII) · Post-antibiothérapie</div>
+      <div class="prod">
+        <span class="pn">Multibiane</span>
+        <span class="pd">Multi-souches · 8 souches complémentaires</span>
+        <span class="pt">Pilège</span>
+      </div>
+      <div class="il">Résilience microbiome · Dysbiose · Après gastro / chimio</div>
+      <div class="prod">
+        <span class="pn">Protecthion</span>
+        <span class="pd">Probiotiques + Vitamine D3 + Zinc</span>
+        <span class="pt pu">Immunité</span>
+      </div>
+      <div class="il">Prévention infections ORL hivernales · Enfants / adultes</div>
+      <div class="prod">
+        <span class="pn">Microbiane / Plabiane</span>
+        <span class="pd">Souches spécifiques ciblées</span>
+        <span class="pt">Pilège</span>
+      </div>
+      <div class="il">Microbiome spécialisé · Peau (Plabiane) · Flore ciblée</div>
+      <div class="warn">⚠ <strong>Ultra Levure ≠ probio bactériens :</strong> levure = résiste aux ATB (prise simultanée OK). Lacteane/Multibiane = bactéries → attendre 2h après chaque prise d'antibiotique. Durée : jusqu'à 10j après fin du traitement.</div>
+    </div>
+  </div>
+
+  <!-- OMEGA 3 -->
+  <div class="card">
+    <div class="ch bl">🐟 OMÉGA 3 — OMEGABIANE (Pilège)</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Omegabiane EPA</span>
+        <span class="pd">660 mg EPA prédominant / capsule</span>
+        <span class="pt bl">Cœur</span>
+      </div>
+      <div class="il">Cardiovasculaire · Triglycérides · Anti-inflammatoire · Humeur</div>
+      <div class="prod">
+        <span class="pn">Omegabiane DHA</span>
+        <span class="pd">700 mg DHA prédominant / capsule</span>
+        <span class="pt pu">Cerveau · Vision</span>
+      </div>
+      <div class="il">Fonction cognitive · Vision · Grossesse (développement fœtal)</div>
+      <div class="prod">
+        <span class="pn">Omegabiane Krill</span>
+        <span class="pd">Phospholipides krill + astaxanthine</span>
+        <span class="pt or">Biodisponibilité</span>
+      </div>
+      <div class="il">Meilleure absorption · Moins de reflux poisson · Antioxydant</div>
+      <div class="prod">
+        <span class="pn">Omegabiane TG Réduction</span>
+        <span class="pd">EPA+DHA haute dose + Vitamine E</span>
+        <span class="pt re">Triglycérides</span>
+      </div>
+      <div class="il">Hypertriglycéridémie légère · En complément des statines</div>
+      <div class="tip">💡 Toujours pendant les repas (↑ absorption, ↓ reflux). EPA = inflammation/cœur · DHA = cerveau/vision. Krill si reflux récurrent après poisson.</div>
+      <div class="warn">⚠ <strong>Anticoagulants :</strong> dose standard = OK. > 3g/j EPA+DHA → surveiller INR/temps saignement. Signaler au médecin.</div>
+    </div>
+  </div>
+
+  <!-- MINCEUR / DETOX -->
+  <div class="card">
+    <div class="ch or">⚖️ MINCEUR &amp; DÉTOX HÉPATIQUE</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Détoxifiant Hépatique</span>
+        <span class="pd">Artichaut · Radis noir · Pissenlit · Fumeterre</span>
+        <span class="pt or">Arko Pharma</span>
+      </div>
+      <div class="il">Soutien drainage hépatique · Digestion lourde · Cure de printemps/automne</div>
+      <div class="prod">
+        <span class="pn">Arko Ultra Brûleur Bio</span>
+        <span class="pd">Guarana · Caféine · Chrome · Thé vert · Poivre noir</span>
+        <span class="pt re">Stimulant</span>
+      </div>
+      <div class="il">Thermogénèse · Contrôle glycémique (chrome) · Énergie · Appétit</div>
+      <div class="prod">
+        <span class="pn">Arko Programme Minceur Bio</span>
+        <span class="pd">Multi-ingrédients phyto · 3 étapes</span>
+        <span class="pt or">Programme</span>
+      </div>
+      <div class="il">Drainer + Brûler + Contrôler les envies · Programme complet</div>
+      <div class="prod">
+        <span class="pn">Weleda Détox Foie Bio</span>
+        <span class="pd">Gentiane · Chardon-Marie · Romarin bio</span>
+        <span class="pt">Weleda</span>
+      </div>
+      <div class="il">Phytothérapie bio · Cure 3 semaines · Support hépatique doux</div>
+      <div class="warn">⚠ <strong>Brûleurs CI absolues :</strong> grossesse · allaitement · HTA non contrôlée · palpitations/arythmies · hyperthyroïdie · < 18 ans. <strong>Attentes :</strong> effet ± 2% du poids — complémentaire au rééquilibrage alimentaire, pas substitut.</div>
+    </div>
+  </div>
+
+  <!-- VEINEUX -->
+  <div class="card">
+    <div class="ch tl">🦵 VEINOTONIQUES — JAMBES LOURDES</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Vénoflux+</span>
+        <span class="pd">Marronnier d'Inde · Vigne rouge · Ginkgo biloba</span>
+        <span class="pt" style="background:#e0f7fa;color:#006064;">Veineux</span>
+      </div>
+      <div class="il">Jambes lourdes · Varices débutantes · Chaleur / gonflement chevilles</div>
+      <div class="prod">
+        <span class="pn">Percutafeine (topique)</span>
+        <span class="pd">Caféine 3,5% gel local</span>
+        <span class="pt or">Anti-cellulite</span>
+      </div>
+      <div class="il">Peau d'orange · Circulation lymphatique · Application locale massage</div>
+      <div class="prod">
+        <span class="pn">Porméaline</span>
+        <span class="pd">Complexe veineux + flavonoïdes</span>
+        <span class="pt">Pilège</span>
+      </div>
+      <div class="il">Confort circulatoire · Perméabilité capillaire · Jambes lourdes</div>
+      <div class="tip">💡 Cure 3 mois · Saison chaude (chaleur dilate les veines). Marronnier = tonifie parois veineuses. Associer bas de contention Classe I pour vraies varices.</div>
+      <div class="warn">⚠ <strong>Ginkgo biloba :</strong> déconseillé avec AVK / aspirine / clopidogrel (↑ risque saignement). Daflon (ordonnance) reste la référence médicamenteuse.</div>
+    </div>
+  </div>
+
+  <!-- VITAMINES / FEMME -->
+  <div class="card">
+    <div class="ch pu">💊 VITAMINES, ÉNERGIE &amp; SANTÉ FEMME</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis Expert Santé des Femmes</span>
+        <span class="pd">Fer bisglycinate + Vit C + Folates + Vit D3 + Zinc</span>
+        <span class="pt pu">Hollis</span>
+      </div>
+      <div class="il">Fatigue · Règles abondantes · Femmes en âge de procréer · Péri-grossesse</div>
+      <div class="prod">
+        <span class="pn">Forté Pharma Expert Énergie</span>
+        <span class="pd">Vitamines B complex + Magnésium + Ginseng + Coenzyme Q10</span>
+        <span class="pt or">Forté Pharma</span>
+      </div>
+      <div class="il">Fatigue chronique · Stress · Baisse concentration · Récupération</div>
+      <div class="prod">
+        <span class="pn">Vitamine D3 1000–2000 UI/j</span>
+        <span class="pd">Cholécalciférol · Gouttes / capsules</span>
+        <span class="pt bl">Carence fréquente</span>
+      </div>
+      <div class="il">Immunité · Os · Humeur · Indispensable oct–mars en France</div>
+      <div class="prod">
+        <span class="pn">Magnésium bisglycinate</span>
+        <span class="pd">Mg bisglycinate > oxyde &gt; marin (biodispo supérieure)</span>
+        <span class="pt">Stress · Crampes</span>
+      </div>
+      <div class="il">Irritabilité · Fatigue musculaire · Crampes · Troubles du sommeil</div>
+      <div class="warn">⚠ <strong>Fer bisglycinate :</strong> à jeun ou loin café/thé/laitages (chélation). Vit C améliore absorption. Selles noires = normal. Vit D3 ≠ Vit D2 (moins efficace).</div>
+    </div>
+  </div>
+
+  <!-- DIGESTION -->
+  <div class="card">
+    <div class="ch re">🍃 DIGESTION, TRANSIT &amp; INCONFORTS</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Ultra Levure 200mg</span>
+        <span class="pd">Saccharomyces boulardii</span>
+        <span class="pt bl">Biocodex</span>
+      </div>
+      <div class="il">Diarrhée aiguë : 1 gél × 4/j adulte · Post-ATB : 1 gél × 2/j × 10j</div>
+      <div class="prod">
+        <span class="pn">Rennie (à croquer)</span>
+        <span class="pd">Carbonate Ca 680mg + Carbonate Mg 80mg</span>
+        <span class="pt or">Antiacide</span>
+      </div>
+      <div class="il">Brûlures d'estomac occasionnelles · Action 3–5 min · Court terme</div>
+      <div class="prod">
+        <span class="pn">Smectane / Diosmectite</span>
+        <span class="pd">Diosmectite 3g · Argile naturelle</span>
+        <span class="pt">Pansement digestif</span>
+      </div>
+      <div class="il">Diarrhée aiguë + protection muqueuse · SII · Nourrissons OK</div>
+      <div class="prod">
+        <span class="pn">Imodium / Lopéramide 2mg</span>
+        <span class="pd">Lopéramide · Ralentit transit</span>
+        <span class="pt re">CI fièvre/sang</span>
+      </div>
+      <div class="il">Diarrhée fonctionnelle sans signes d'alarme · ≠ diarrhée infectieuse</div>
+      <div class="warn">⚠ <strong>Rennie ≠ IPP :</strong> soulagement immédiat mais court. Si brûlures ≥ 2×/sem → IPP. Chélation : séparer Rennie de 2h des ATB, quinolones, lévothyrox. Lopéramide CI si fièvre, sang ou diarrhée < 2 ans.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SEVRAGE TABAC — PLEINE LARGEUR -->
+<div class="card" style="margin-bottom:5px;">
+  <div class="ch br">🚭 SEVRAGE TABAC — NICORETTE / TNS (Thérapies Nicotiniques de Substitution)</div>
+  <div class="cb">
+    <div class="tab-grid">
+      <div>
+        <div class="tab-col-h">📦 FORMATS DISPONIBLES</div>
+        <div class="prod"><span class="pn">Patchs 24h</span><span class="pd">7 · 14 · 21 mg (Nicorette, Nicotinell)</span><span class="pt">Niveau de base</span></div>
+        <div class="prod"><span class="pn">Gommes à mâcher</span><span class="pd">2 mg (léger) · 4 mg (fort fumeur)</span><span class="pt or">Envies ponctuelles</span></div>
+        <div class="prod"><span class="pn">Spray buccal</span><span class="pd">Nicorette Quickmist 1 mg/dose</span><span class="pt pu">Action 60 sec</span></div>
+        <div class="prod"><span class="pn">Inhaleur</span><span class="pd">Nicorette inhaleur 10 mg/cartouche</span><span class="pt">Geste oral</span></div>
+        <div class="prod"><span class="pn">Microtabs sublinguaux</span><span class="pd">2 mg · Discret · Sous la langue</span><span class="pt bl">Discret</span></div>
+      </div>
+      <div>
+        <div class="tab-col-h">🎯 CHOISIR LE BON DOSAGE</div>
+        <div class="tab-line"><strong>Fort fumeur (> 20 cig/j) :</strong> Patch 21mg + Gommes 4mg ou Spray buccal</div>
+        <div class="tab-line"><strong>Fumeur modéré (10–20 cig/j) :</strong> Patch 14mg + Gommes 2mg</div>
+        <div class="tab-line"><strong>Léger fumeur (< 10 cig/j) :</strong> Patch 7mg ou Gommes 2mg seules</div>
+        <div class="tab-line"><strong>1ère cigarette &lt; 30 min après réveil :</strong> Dépendance forte → patch 21mg d'emblée</div>
+        <div class="tab-line" style="margin-top:3px;"><strong>Fagerström ≥ 5 :</strong> Associer systématiquement patch + forme orale</div>
+        <div class="tip" style="margin-top:4px;">💡 <strong>Règle :</strong> Patch = niveau basal continu + Forme orale = envies ponctuelles. L'association <strong>double le taux de succès</strong> vs patch seul.</div>
+      </div>
+      <div>
+        <div class="tab-col-h">⚠ CONSEILS CLÉS</div>
+        <div class="tab-line">✅ <strong>Durée :</strong> 3 mois minimum, jusqu'à 6 mois si besoin</div>
+        <div class="tab-line">✅ <strong>Gommes :</strong> technique chew &amp; park (mâcher → gencive → remâcher)</div>
+        <div class="tab-line">✅ <strong>Patch :</strong> site différent chaque jour · Éviter zones avec poils</div>
+        <div class="tab-line">✅ <strong>Grossesse :</strong> TNS &gt; cigarettes — discuter avec médecin</div>
+        <div class="tab-line">🆕 <strong>Varénicline (Champix) :</strong> retour marché 2024 (impuretés NDMA résolues) · Ordonnance · Doublement taux de succès</div>
+        <div class="warn" style="margin-top:4px;">⚠ <strong>Patch + tabac simultané :</strong> surdosage nicotinique (nausées, palpitations, céphalées). Arrêt total du tabac dès le patch.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLEXES OFFICINE -->
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Officine — Rayon Conseil</h3>
+  <div class="rfx-grid">
+    <div class="ri">
+      <strong>🦠 Probio + Antibiotique</strong>
+      Ultra Levure (levure) = prendre en même temps que l'ATB, pas d'intervalle requis. Lacteane / Multibiane (bactéries) = attendre 2h après chaque prise. Continuer jusqu'à 10j après la fin du traitement.
+    </div>
+    <div class="ri">
+      <strong>🐟 Oméga 3 &amp; anticoagulants</strong>
+      Dose standard 1–2 caps/j : pas de risque clinique. Haute dose > 3g EPA+DHA/j + AVK/NACO → signaler au médecin. Systématiquement demander si traitement anticoagulant.
+    </div>
+    <div class="ri">
+      <strong>🚭 Sevrage tabac : combinaison</strong>
+      Patch seul = insuffisant pour les forts fumeurs. Proposer patch + forme orale d'emblée. Varénicline (Champix) de nouveau disponible sur ordonnance 2024 → doublement du taux de succès.
+    </div>
+  </div>
+</div>
+
+<!-- INTERACTIONS -->
+<div class="ibar">
+  <h3>⚡ Interactions &amp; Précautions Rayon Conseil</h3>
+  <div class="igrid">
+    <div class="ii">
+      <strong>Rennie + Lévothyrox</strong>
+      Chélation → séparer de 2h. Lévothyrox à jeun 30 min avant · Rennie après le petit-déj.
+    </div>
+    <div class="ii">
+      <strong>Ginkgo biloba + AVK / Aspirine</strong>
+      ↑ risque saignement. Éviter Vénoflux (Ginkgo) si anticoagulant ou antiagrégant plaquettaire.
+    </div>
+    <div class="ii">
+      <strong>Brûleurs caféine + médicaments CV</strong>
+      Guarana / caféine : palpitations, HTA. CI si bêtabloquant, antiarythmique, HTA non contrôlée.
+    </div>
+    <div class="ii">
+      <strong>Fer + café / laitages / thé</strong>
+      Chélation → ↓ absorption 50–80%. Séparer de 2h. Vitamine C en même temps = ↑ absorption.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT SPEECH -->
+<div class="pbar">
+  <h3>💬 Ce que dit le patient — Rayon Conseil</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "J'ai des antibiotiques, j'ai besoin de probiotiques"</div>
+      <div class="sh">↳ Ce que ça cache : confusion levure / bactéries · timing de prise inconnu</div>
+      <div class="sr">→ Ultra Levure en même temps que l'ATB + Lacteane/Multibiane 10j après la fin. Expliquer la différence levure/bactéries.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Vous avez quelque chose pour maigrir ?"</div>
+      <div class="sh">↳ Ce que ça cache : attentes miracles · CI cardio possibles · HTA, grossesse à vérifier</div>
+      <div class="sr">→ Vérifier CI (cœur, HTA, grossesse). Artichaut/radis noir si détox. Brûleur si pas de CI. Rappeler : complémentaire au rééquilibrage, pas miracle.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "J'arrête de fumer, je prends quoi ?"</div>
+      <div class="sh">↳ Ce que ça cache : moment de motivation clé · souvent tentative échouée avec forme unique</div>
+      <div class="sr">→ Quantifier cig/j + délai 1ère cigarette. Proposer patch + forme orale. Mentionner Champix sur ordonnance. Proposer suivi officinal à 4 semaines.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "C'est quoi la différence entre tous ces Omegabiane ?"</div>
+      <div class="sh">↳ Ce que ça cache : gamme confuse · souvent achat sans indication précise · marketing</div>
+      <div class="sr">→ EPA = cœur / triglycérides. DHA = cerveau / vision. Krill = meilleure absorption, moins de reflux. Pendant les repas. Anticoagulants ?</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  SantéVeille Officine · Rayon Conseil &amp; Compléments Alimentaires · Informations indicatives — toujours adapter au profil patient · Ne pas se substituer à un avis médical · 2026
+</div>
+
+</body>
+</html>
