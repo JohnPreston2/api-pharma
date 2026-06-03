@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Aromathérapie & Huiles Essentielles LCA — SantéVeille Officine</title>
+<style>
+  :root{
+    --c1:#1b5e20;--c2:#2e7d32;--c3:#388e3c;--cl:#c8e6c9;--cm:#f1f8e9;
+    --or:#e65100;--re:#b71c1c;--am:#f57f17;--pu:#4a148c;--te:#006064;
+  }
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+
+  /* HEADER */
+  .hdr{background:linear-gradient(135deg,#1b5e20,#2e7d32 40%,#43a047 80%,#66bb6a);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+
+  /* SAFETY BANNER */
+  .safety{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:5px;}
+  .sbox{border-radius:5px;padding:5px 7px;font-size:7px;}
+  .sbox h4{font-size:8px;font-weight:700;margin-bottom:3px;}
+  .sbox.dermocaust{background:#ffebee;border:1.5px solid #e53935;}
+  .sbox.dermocaust h4{color:#b71c1c;}
+  .sbox.photo{background:#fff8e1;border:1.5px solid #f9a825;}
+  .sbox.photo h4{color:#e65100;}
+  .sbox.grossesse{background:#fce4ec;border:1.5px solid #e91e63;}
+  .sbox.grossesse h4{color:#880e4f;}
+  .stag{display:inline-block;border-radius:2px;padding:1px 5px;margin:1.5px 2px 1.5px 0;
+    font-size:6.5px;font-weight:700;white-space:nowrap;}
+  .stag.red{background:#ffcdd2;color:#b71c1c;}
+  .stag.amber{background:#fff3e0;color:#e65100;}
+  .stag.pink{background:#fce4ec;color:#880e4f;}
+
+  /* MAIN GRID */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  /* CARD */
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.or{background:var(--or);} .ch.re{background:var(--re);}
+  .ch.te{background:var(--te);} .ch.pu{background:var(--pu);}
+  .ch.am{background:#bf360c;} .ch.na{background:#0d47a1;}
+  .cb{padding:5px 7px;background:white;}
+
+  /* HE ENTRY */
+  .he{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:baseline;
+    padding:2px 0;border-bottom:1px dotted #ddd;font-size:7.5px;}
+  .he:last-of-type{border-bottom:none;}
+  .hn{font-weight:700;color:var(--c1);white-space:nowrap;font-size:8px;}
+  .hi{color:#444;font-size:7px;}
+  .ht{font-size:6.5px;border-radius:3px;padding:1px 4px;white-space:nowrap;font-weight:600;}
+  .ht.gr{background:#e8f5e9;color:#2e7d32;}
+  .ht.bl{background:#e3f2fd;color:#0d47a1;}
+  .ht.or{background:#fff3e0;color:#e65100;}
+  .ht.re{background:#ffebee;color:#b71c1c;}
+  .ht.pu{background:#f3e5f5;color:#4a148c;}
+  .ht.am{background:#fff8e1;color:#f57f17;}
+  .ht.te{background:#e0f2f1;color:#006064;}
+
+  .sub-line{font-size:7px;color:#555;padding:1px 0 2px 8px;border-left:2px solid var(--cl);
+    margin:1px 0 2px 2px;font-style:italic;}
+
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:#1b5e20;}
+
+  /* DILUTION TABLE */
+  .dil-table{width:100%;border-collapse:collapse;font-size:7px;margin-top:3px;}
+  .dil-table th{background:var(--c2);color:white;padding:3px 5px;text-align:left;}
+  .dil-table td{padding:2.5px 5px;border-bottom:1px solid #e8f5e9;}
+  .dil-table tr:nth-child(even) td{background:#f9fbe7;}
+  .dil-table tr:last-child td{border-bottom:none;}
+  .dil-table td:first-child{font-weight:700;color:var(--c1);}
+
+  /* HV TABLE */
+  .hv-row{display:flex;gap:4px;margin-top:3px;}
+  .hv-item{flex:1;background:var(--cm);border:1px solid var(--cl);border-radius:4px;
+    padding:3px 5px;font-size:7px;}
+  .hv-item strong{color:var(--c1);display:block;font-size:7.5px;}
+
+  /* REFLEXES */
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+
+  /* PATIENT */
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
+    margin:2px 0;font-size:7px;color:#b71c1c;border-radius:0 3px 3px 0;}
+  .sr{color:var(--c1);font-weight:600;font-size:7px;margin-top:2px;}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <h1>🌿 Aromathérapie — Huiles Essentielles LCA</h1>
+    <div class="sub">Guide pratique officinal · Indications · Dilutions · Sécurité · Contre-indications</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+
+<!-- SAFETY BANNER -->
+<div class="safety">
+  <div class="sbox dermocaust">
+    <h4>🔥 DERMOCAUSTIQUES — jamais pur sur peau</h4>
+    <span class="stag red">Cannelle</span>
+    <span class="stag red">Origan compact</span>
+    <span class="stag red">Sarriette des Montagnes</span>
+    <span class="stag red">Girofle</span>
+    <span class="stag red">Thym thymol</span>
+    <span class="stag red">Bergamote</span><br>
+    <span style="font-size:6.5px;color:#555;">Dilution max 0,5–1% dans HV (1 goutte HE + 100 gouttes HV)</span>
+  </div>
+  <div class="sbox photo">
+    <h4>☀️ PHOTOSENSIBILISANTS — no soleil 8–12h</h4>
+    <span class="stag amber">Citron jaune</span>
+    <span class="stag amber">Pamplemousse</span>
+    <span class="stag amber">Mandarine</span>
+    <span class="stag amber">Orange douce</span>
+    <span class="stag amber">Bergamote</span>
+    <span class="stag amber">Lime</span><br>
+    <span style="font-size:6.5px;color:#555;">Agrumes pressés à froid = photosensibilisants. Distillés = OK. Appliquer le soir ou couvrir.</span>
+  </div>
+  <div class="sbox grossesse">
+    <h4>🤰 CI GROSSESSE &amp; ENFANTS</h4>
+    <span class="stag pink">T1 : TOUTES les HE CI</span>
+    <span class="stag pink">T2-T3 : Lavande fine · Tea Tree · Mandarine uniquement</span>
+    <span class="stag pink">&lt; 3 ans : diffusion Lavande/Mandarine seules</span>
+    <span class="stag pink">&lt; 7 ans : CI Menthe poivrée · Eucalyptus globulus</span>
+    <span class="stag pink">Épilepsie : CI Romarin camphre · Eucalyptus glob. · Sauge</span>
+  </div>
+</div>
+
+<!-- MAIN GRID 2x3 -->
+<div class="grid2">
+
+  <!-- IMMUNITÉ / ANTIVIRALE -->
+  <div class="card">
+    <div class="ch">🛡️ IMMUNITÉ &amp; ANTIVIRALE</div>
+    <div class="cb">
+      <div class="he">
+        <span class="hn">Ravintsara</span>
+        <span class="hi">1,8-cinéole · Madagascar</span>
+        <span class="ht gr">⭐ N°1 antiviral</span>
+      </div>
+      <div class="sub-line">Grippe · Rhume · Herpès · Immunostimulant · Fatigue hivernale</div>
+      <div class="he">
+        <span class="hn">Tea Tree</span>
+        <span class="hi">Melaleuca alternifolia</span>
+        <span class="ht gr">Antiseptique universel</span>
+      </div>
+      <div class="sub-line">Antibactérien · Antifongique · Antiviral · Usage peau, mycoses, acné</div>
+      <div class="he">
+        <span class="hn">Épinette noire</span>
+        <span class="hi">Picea mariana</span>
+        <span class="ht bl">Cortisone-like</span>
+      </div>
+      <div class="sub-line">Fatigue surrénalienne · Revitalisant · Immunostimulant · Asthénie profonde</div>
+      <div class="he">
+        <span class="hn">Laurier noble</span>
+        <span class="hi">Laurus nobilis</span>
+        <span class="ht or">Immunostimulant</span>
+      </div>
+      <div class="sub-line">Antiviral · Antibactérien · Lymphatique · Douleurs articulaires</div>
+      <div class="he">
+        <span class="hn">Niaouli</span>
+        <span class="hi">Melaleuca quinquenervia</span>
+        <span class="ht te">Voies resp. + immun.</span>
+      </div>
+      <div class="sub-line">Respiratoire · Antiseptique doux · Alternative Eucalyptus glob. (plus doux)</div>
+      <div class="tip">💡 Synergie immunité : Ravintsara + Tea Tree + Épinette noire, 2 gouttes chaque sur plexus solaire matin/soir, diluées 10% HV.</div>
+    </div>
+  </div>
+
+  <!-- VOIES RESPIRATOIRES -->
+  <div class="card">
+    <div class="ch na">💨 VOIES RESPIRATOIRES</div>
+    <div class="cb">
+      <div class="he">
+        <span class="hn">Eucalyptus radié</span>
+        <span class="hi">Eucalyptus radiata</span>
+        <span class="ht bl">⭐ Doux (> 3 ans)</span>
+      </div>
+      <div class="sub-line">Rhinite · Sinusite · Rhume · Décongestionnant nasal · Mucolytique</div>
+      <div class="he">
+        <span class="hn">Eucalyptus globulus</span>
+        <span class="hi">Eucalyptus globulus</span>
+        <span class="ht re">CI &lt; 12 ans · épilepsie</span>
+      </div>
+      <div class="sub-line">Bronchite · Toux productive · Puissant mais plus irritant</div>
+      <div class="he">
+        <span class="hn">Ravintsara</span>
+        <span class="hi">Cinnamomum camphora</span>
+        <span class="ht gr">Antiviral resp.</span>
+      </div>
+      <div class="sub-line">Grippe · Bronchite virale · Laryngite · Trachéite</div>
+      <div class="he">
+        <span class="hn">Thym à linalol</span>
+        <span class="hi">Thymus vulgaris ct linalol</span>
+        <span class="ht gr">Doux · > 6 ans OK</span>
+      </div>
+      <div class="sub-line">Angine · Sinusite · Antibactérien doux · Alternative aux antibiotiques légers</div>
+      <div class="he">
+        <span class="hn">Niaouli</span>
+        <span class="hi">Melaleuca quinquenervia</span>
+        <span class="ht bl">Mucolytique</span>
+      </div>
+      <div class="sub-line">Bronchite · Mucolyse · Moins irritant que Eucalyptus globulus</div>
+      <div class="warn">⚠ Diffusion max 20 min · jamais en continu. Eucalyptus glob. CI si asthme, épilepsie, enfants &lt; 12 ans.</div>
+    </div>
+  </div>
+
+  <!-- STRESS / SOMMEIL -->
+  <div class="card">
+    <div class="ch pu">😴 STRESS &amp; SOMMEIL</div>
+    <div class="cb">
+      <div class="he">
+        <span class="hn">Lavande fine vraie</span>
+        <span class="hi">Lavandula angustifolia · Haute altitude</span>
+        <span class="ht pu">⭐ Reine du calme</span>
+      </div>
+      <div class="sub-line">Anxiété · Insomnie · Stress · Spasmolytique · Cicatrisant (seule HE utilisable pure)</div>
+      <div class="he">
+        <span class="hn">Mandarine</span>
+        <span class="hi">Citrus reticulata (distillée)</span>
+        <span class="ht pu">Doux · > 3 ans</span>
+      </div>
+      <div class="sub-line">Sommeil enfants · Agitation · Anxiété légère · Digestion émotionnelle</div>
+      <div class="he">
+        <span class="hn">Néroli</span>
+        <span class="hi">Citrus aurantium (fleurs)</span>
+        <span class="ht pu">Choc émotionnel</span>
+      </div>
+      <div class="sub-line">Anxiété profonde · Palpitations émotionnelles · Deuil · Stress intense</div>
+      <div class="he">
+        <span class="hn">Géranium bourbon</span>
+        <span class="hi">Pelargonium asperum</span>
+        <span class="ht pu">Hormonal · Équilibrant</span>
+      </div>
+      <div class="sub-line">Stress hormonal · SPM · Ménopause · Peau mixte · Cicatrice</div>
+      <div class="he">
+        <span class="hn">Ylang-ylang</span>
+        <span class="hi">Cananga odorata</span>
+        <span class="ht pu">1 goutte max</span>
+      </div>
+      <div class="sub-line">Tachycardie émotionnelle · HTA · Libido · Très puissant — nausées si surdosage</div>
+      <div class="tip">💡 Sommeil : 1 goutte Lavande fine sur l'oreiller ou poignet. Diffusion 30 min avant lit + éteindre diffuseur.</div>
+    </div>
+  </div>
+
+  <!-- DIGESTION -->
+  <div class="card">
+    <div class="ch am">🫁 DIGESTION &amp; SPASMES</div>
+    <div class="cb">
+      <div class="he">
+        <span class="hn">Basilic exotique</span>
+        <span class="hi">Ocimum basilicum</span>
+        <span class="ht or">⭐ Antispasmodique</span>
+      </div>
+      <div class="sub-line">Spasmes intestinaux · Crampes · Aérophagie · Colon irritable</div>
+      <div class="he">
+        <span class="hn">Estragon de Provence</span>
+        <span class="hi">Artemisia dracunculus</span>
+        <span class="ht or">Antispasmodique fort</span>
+      </div>
+      <div class="sub-line">Spasmolytique puissant · Hoquet · Spasmes digestifs sévères</div>
+      <div class="he">
+        <span class="hn">Citron jaune</span>
+        <span class="hi">Citrus limon (distillé)</span>
+        <span class="ht am">Tonus digestif</span>
+      </div>
+      <div class="sub-line">Digestion lourde · Foie · Nausées légères · Tonus · Détox</div>
+      <div class="he">
+        <span class="hn">Camomille romaine</span>
+        <span class="hi">Anthemis nobilis</span>
+        <span class="ht pu">Peau + digestion</span>
+      </div>
+      <div class="sub-line">Digestion émotionnelle · Peau sensible · Allergie · Calmant enfants</div>
+      <div class="he">
+        <span class="hn">Copaïba</span>
+        <span class="hi">Copaifera officinalis</span>
+        <span class="ht te">Anti-inflammatoire</span>
+      </div>
+      <div class="sub-line">Anti-inflammatoire digestif et articulaire · Peau · Gencives</div>
+      <div class="tip">💡 Spasmes : 2 gttes Basilic exotique + 2 gttes Estragon + 5 gttes Amande douce → massage ventre sens horaire.</div>
+    </div>
+  </div>
+
+  <!-- DOULEURS MUSCLES -->
+  <div class="card">
+    <div class="ch re">💪 DOULEURS MUSCLES &amp; ARTICULATIONS</div>
+    <div class="cb">
+      <div class="he">
+        <span class="hn">Gaulthérie couchée</span>
+        <span class="hi">Gaultheria procumbens · 99% salicylate</span>
+        <span class="ht re">⭐ AINS naturel · CI aspirine</span>
+      </div>
+      <div class="sub-line">Douleurs musculaires · Tendinites · Arthrose · Très puissant</div>
+      <div class="he">
+        <span class="hn">Lavandin super</span>
+        <span class="hi">Lavandula hybrida</span>
+        <span class="ht or">Anti-contracturant</span>
+      </div>
+      <div class="sub-line">Contractures · Crampes · Courbatures · Douleurs lombaires légères</div>
+      <div class="he">
+        <span class="hn">Eucalyptus citr.</span>
+        <span class="hi">Eucalyptus citriodora</span>
+        <span class="ht te">Anti-inflammatoire</span>
+      </div>
+      <div class="sub-line">Rhumatismes · Arthrite · Anti-inflammatoire articulaire doux</div>
+      <div class="he">
+        <span class="hn">Citronnelle de Java</span>
+        <span class="hi">Cymbopogon nardus</span>
+        <span class="ht or">Anti-inflammatoire</span>
+      </div>
+      <div class="sub-line">Anti-inflammatoire musculaire · Anti-moustique · Contractures</div>
+      <div class="he">
+        <span class="hn">Laurier noble</span>
+        <span class="hi">Laurus nobilis</span>
+        <span class="ht bl">Articulaire + neural</span>
+      </div>
+      <div class="sub-line">Douleurs articulaires · Névralgie · Sciatique · En mélange</div>
+      <div class="warn">⚠ <strong>Gaulthérie CI absolue</strong> si allergie à l'aspirine (AAS), traitement anticoagulant, enfants &lt; 12 ans, grossesse. Toujours diluée 5–10%.</div>
+    </div>
+  </div>
+
+  <!-- PEAU / ANTISEPTIQUE -->
+  <div class="card">
+    <div class="ch te">🌸 PEAU, CICATRISATION &amp; ANTISEPTIQUE</div>
+    <div class="cb">
+      <div class="he">
+        <span class="hn">Tea Tree</span>
+        <span class="hi">Melaleuca alternifolia</span>
+        <span class="ht te">⭐ Polyvalent</span>
+      </div>
+      <div class="sub-line">Acné (ponctuel pur OK) · Mycoses · Plaies légères · Boutons · Herpès</div>
+      <div class="he">
+        <span class="hn">Lavande fine</span>
+        <span class="hi">Lavandula angustifolia</span>
+        <span class="ht gr">Pure OK (brûlures)</span>
+      </div>
+      <div class="sub-line">Brûlures légères (pure) · Piqûres insectes · Cicatrisation · Coups de soleil</div>
+      <div class="he">
+        <span class="hn">Lavande aspic</span>
+        <span class="hi">Lavandula spica</span>
+        <span class="ht re">Brûlures + piqûres venimeuses</span>
+      </div>
+      <div class="sub-line">Brûlures étendues · Piqûres méduse/guêpe/frelon · Plus puissante que lavande fine</div>
+      <div class="he">
+        <span class="hn">Camomille romaine</span>
+        <span class="hi">Anthemis nobilis</span>
+        <span class="ht pu">Peau sensible</span>
+      </div>
+      <div class="sub-line">Eczéma · Réaction allergique cutanée · Peau intolérante</div>
+      <div class="he">
+        <span class="hn">Géranium bourbon</span>
+        <span class="hi">Pelargonium asperum</span>
+        <span class="ht pu">Peau + cicatrice</span>
+      </div>
+      <div class="sub-line">Acné rosacée · Vergetures · Peau mixte · Cicatrice mature</div>
+      <div class="tip">💡 Bouton acné : Tea Tree pur punctiforme le soir. Brûlure légère : Lavande fine pure. Piqûre de guêpe : Lavande aspic pure immédiatement.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DILUTION + HV ROW -->
+<div class="grid2" style="margin-bottom:5px;">
+  <div class="card">
+    <div class="ch">📐 DILUTIONS — RÈGLES D'OR</div>
+    <div class="cb">
+      <table class="dil-table">
+        <tr><th>Usage</th><th>Dilution</th><th>Exemple pratique</th></tr>
+        <tr><td>Adulte courant</td><td>3–5%</td><td>3–5 gttes HE + 95–97 gttes HV (5 mL)</td></tr>
+        <tr><td>Dermocaustiques</td><td>0,5–1%</td><td>1 goutte HE + 99 gouttes HV — jamais pur !</td></tr>
+        <tr><td>Enfant 3–12 ans</td><td>1–2%</td><td>1–2 gttes HE + 98 gttes HV Amande douce</td></tr>
+        <tr><td>Nourrisson 3m–3 ans</td><td>0,5% · Plantes douces</td><td>Uniquement diffusion Lavande / Mandarine</td></tr>
+        <tr><td>Usage pur (exceptions)</td><td>Ponctuel</td><td>Lavande fine · Tea Tree (bouton acné)</td></tr>
+        <tr><td>Voie orale</td><td>Sur avis expert</td><td>Max 1–2 gttes sur support neutre · jamais pur</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch">🫙 HUILES VÉGÉTALES (HV) — SUPPORTS DE DILUTION</div>
+    <div class="cb">
+      <div class="hv-row">
+        <div class="hv-item">
+          <strong>Amande douce 🥜</strong>
+          HV universelle · Toutes peaux · Mixtures musculaires · Massage
+        </div>
+        <div class="hv-item">
+          <strong>Arnica 🌼</strong>
+          Hématomes · Contusions · Douleurs · Courbatures post-sport
+        </div>
+      </div>
+      <div class="hv-row">
+        <div class="hv-item">
+          <strong>Calendula 🟡</strong>
+          Peau sèche · Eczéma · Bébé · Cicatrisation · Fragilité cutanée
+        </div>
+        <div class="hv-item">
+          <strong>Rosier muscat 🌹</strong>
+          Cicatrices · Vergetures · Rides · Régénération · Anti-âge
+        </div>
+      </div>
+      <div class="hv-row">
+        <div class="hv-item">
+          <strong>Millepertuis 🌞</strong>
+          Douleurs nerveuses · Coups de soleil · Brûlures légères
+        </div>
+        <div class="hv-item">
+          <strong>Macadamia / Jojoba</strong>
+          Sèches/desquamation · Capillaire · Base neutre légère
+        </div>
+      </div>
+      <div class="warn" style="margin-top:4px;">⚠ <strong>Millepertuis HV :</strong> photosensibilisant — ne pas exposer au soleil après application.</div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLEXES -->
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Officine — Aromathérapie LCA</h3>
+  <div class="rfxg">
+    <div class="ri">
+      <strong>🔥 Dermocaustique ≠ pur</strong>
+      Cannelle, Origan, Sarriette, Girofle : JAMAIS pur sur la peau, même 1 goutte. Max 0,5–1% dans HV. Si brûlure accidentelle → rincer à l'HV (jamais à l'eau). Systématiquement rappeler avant vente.
+    </div>
+    <div class="ri">
+      <strong>🤰 Grossesse = quasi CI totale</strong>
+      1er trimestre : AUCUNE HE. T2–T3 : Lavande fine, Tea Tree, Mandarine uniquement, en dilution, sur avis. Toujours demander si grossesse avant de conseiller une HE.
+    </div>
+    <div class="ri">
+      <strong>💊 Gaulthérie + aspirine = CI absolue</strong>
+      Gaulthérie couchée = 99% salicylate de méthyle = AINS naturel puissant. CI si allergie à l'aspirine, anticoagulants (AVK/NACO), enfants &lt; 12 ans, grossesse. Vérifier systématiquement.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT -->
+<div class="pbar">
+  <h3>💬 Ce que dit le patient — Aromathérapie</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "C'est quoi le meilleur pour le rhume ?"</div>
+      <div class="sh">↳ Ce que ça cache : souvent veut tout-en-un · âge de l'enfant important · grossesse ?</div>
+      <div class="sr">→ Ravintsara (antiviral) + Eucalyptus radié (décongestionnant) + Thym à linalol si infection. Diffusion + application poitrine diluée 5%. Eucalyptus radié si enfant > 3 ans.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "J'ai du mal à dormir, quelque chose de naturel ?"</div>
+      <div class="sh">↳ Ce que ça cache : souvent déjà en BZD / Z-drugs · stress chronique · vouloir arrêter somnifères</div>
+      <div class="sr">→ Lavande fine : 1–2 gouttes sur l'oreiller ou poignets. Diffusion 30 min avant lit. Mandarine si nervosité · Néroli si anxiété profonde. Rappeler l'arrêt progressif des BZD avec médecin.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Pour les douleurs musculaires après le sport"</div>
+      <div class="sh">↳ Ce que ça cache : possible allergie aspirine à vérifier pour Gaulthérie · traitement anticoag ?</div>
+      <div class="sr">→ Vérifier CI aspirine/anticoagulants. Si OK : Gaulthérie 5% + Arnica HV. Si CI : Lavandin + Eucalyptus citronné dans Amande douce. Application sur zones douloureuses après effort.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Je mets du Tea Tree sur ma peau, ça pique beaucoup"</div>
+      <div class="sh">↳ Ce que ça cache : application pure sur grande surface · peau sèche ou sensible</div>
+      <div class="sr">→ Tea Tree pur = OK en ponctuel (bouton, petite plaie). Sur grande surface → diluer 3% dans Amande douce. Si réaction cutanée → rincer à l'HV, pas à l'eau.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  SantéVeille Officine · Aromathérapie LCA · Ce poster est indicatif — adapter au profil patient · Grossesse/enfants : toujours consulter avant usage · 2026
+</div>
+
+</body>
+</html>
