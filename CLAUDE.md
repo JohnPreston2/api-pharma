@@ -54,6 +54,8 @@ Prêts à imprimer (`Ctrl+P → A4 · couleurs activées`). **23 fichiers** :
 | `comptoir_ete_poster.html` | Orange soleil | 9 situations été |
 | `reprise_comptoir_poster.html` | Indigo | Guide reprise après 5 ans |
 | `quiz_revision_poster.html` | Multi-couleurs | 30 questions · 3 niveaux · 10 pathologies |
+| `quiz_revision_poster_2.html` | Rose/pink | 30 questions · 3 niveaux · pathologies 11-20 |
+| `soins_postop_cicatrisation_poster.html` | Teal/vert | Soins post-op · 4 phases cicatrisation · crèmes |
 
 **Chaque poster pathologie contient :**
 - DCI + Princeps + `📦 volume open-medic 2023`
@@ -70,7 +72,7 @@ api-pharma/
 ├── rag/                # ChromaDB + Ollama (Qwen 4B) — RAG pharmaceutique
 ├── data/               # BDPM JSON + open-medic CSV
 ├── fiches/             # 20 fiches Markdown pathologies + INDEX.md
-└── posters/            # 23 HTML A4 posters
+└── posters/            # 25 HTML A4 posters
 ```
 
 **RAG non encore déployé** (données sur le PC de l'utilisateur, pas dans le repo).
