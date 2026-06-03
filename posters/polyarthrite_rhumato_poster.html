@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Polyarthrite Rhumatoïde — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #37474f; --c2: #546e7a; --c3: #90a4ae;
+    --cl: #eceff1; --cm: #cfd8dc;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .diag-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .diag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-bottom: 1.5mm; }
+  .diag-item { background: white; border-radius: 5px; padding: 2mm 2.5mm; border-top: 2.5px solid var(--c2); }
+  .diag-item .val { font-size: 8.5pt; font-weight: 800; color: var(--c2); line-height: 1; }
+  .diag-item .lbl { font-size: 5.5pt; color: #37474f; margin-top: 0.5mm; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 32mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Polyarthrite Rhumatoïde</h1>
+    <div class="subtitle">Fiche officine · Pathologie 17 · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">1%</span><span class="lbl">Population adulte</span></div><div class="stat-pill"><span class="val">3:1</span><span class="lbl">Femmes/Hommes</span></div><div class="stat-pill"><span class="val">MTX</span><span class="lbl">Ancre du traitement</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Méthotrexate = 1ère ligne incontournable</span><span class="tag">Acide folique J+2 après MTX</span><span class="tag">Adalimumab biosimilaires disponibles</span><span class="tag">JAK-i prudence CV et oncologique</span><span class="tag">Jamais vaccin vivant sous biothérapie</span><span class="tag">DAS28 cible de rémission</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🧬 Activation lymphocytes T → cytokines pro-inflammatoires (TNF, IL-6, IL-17)</div><div class="cascade-arrow">↓</div><div class="cascade-step">💥 Synovite → destruction cartilage et os → érosions radiologiques</div><div class="cascade-arrow">↓</div><div class="cascade-step">🔗 Auto-anticorps : FR (facteur rhumatoïde) + ACPA (anti-CCP)</div><div class="cascade-arrow">↓</div><div class="cascade-step">📊 Score DAS28 : activité maladie · Cible : rémission ou faible activité</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Petites articulat.</div><div class="d">MCF, IPP symétriques</div></div><div class="target-box"><div class="t">Atteinte systémique</div><div class="d">Nodules, poumons, cœur</div></div><div class="target-box"><div class="t">Biologie</div><div class="d">CRP, VS, NFS</div></div><div class="target-box"><div class="t">Radiologie</div><div class="d">Érosions, pincement</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Diagnostic & Bilan</div>
+    <div class="diag-card">
+      <div class="diag-row">
+        <div class="diag-item"><div class="val">DAS28</div><div class="lbl">< 2.6 = rémission</div></div><div class="diag-item"><div class="val">ACPA</div><div class="lbl">Anti-CCP spécifique</div></div><div class="diag-item"><div class="val">FR</div><div class="lbl">Facteur rhumatoïde</div></div><div class="diag-item"><div class="val">CRP/VS</div><div class="lbl">Inflammation active</div></div>
+      </div>
+      <div style="background:var(--cl);border-radius:5px;padding:2mm;border-left:3px solid var(--c2);font-size:6pt;color:var(--c1);font-weight:600;">📋 FR + anti-CCP · Radiographies mains/pieds · Bilan pré-biothérapie : IGRA, NFS, BHC, sérologies</div>
+    </div>
+
+    <div class="section-label">CI / Précautions ⛔</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #c62828;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ MTX : CI grossesse (tératogène) · CI alcool · CI IRC sévère · Alcool même occasionnel = hépatotoxicité</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Biothérapies + vaccins vivants : CI absolue (rougeole, BCG, fièvre jaune, varicelle)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ JAK-i : pas chez patients > 65 ans avec ATCD CV ou cancer → lettre EMA 2023 restreint utilisation</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    
+    <div class="drug-class cls-mtx">
+      <div class="drug-class-header" style="background:#eceff1;">
+        <div class="name" style="color:#37474f;">Méthotrexate — Ancre Thérapeutique</div>
+        <div class="badge" style="background:#546e7a;color:white;">1ère ligne</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Méthotrexate 2,5 mg · 10 mg · 25 mg/mL SC<span class="princeps">Novatrex · Methofar · Imeth · Metoject SC</span><span class="vol-data">📦 4M boîtes · 8,50€ · 34M€/an</span></div>
+          <div class="drug-dose">Débuter 7,5-10 mg/sem · Titrer jusqu'à 20-25 mg/sem</div>
+          <div class="drug-watch">Acide folique J+2 · Alcool strictement CI · Hépatotoxicité · NFS mensuelle · CI grossesse</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Acide folique 5 mg<span class="princeps">Spéciafoldine · Génériques</span><span class="vol-data">📦 prescrit systématiquement avec MTX</span></div>
+          <div class="drug-dose">5 mg J+2 après la prise de MTX (2j après)</div>
+          <div class="drug-watch">Ne PAS le jour du MTX → réduit l'efficacité</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-dmard">
+      <div class="drug-class-header" style="background:#e0f2f1;">
+        <div class="name" style="color:#004d40;">csDMARDs — Autres Conventionnels</div>
+        <div class="badge" style="background:#00695c;color:white;">Alternatives ou combo</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Léflunomide · Hydroxychloroquine · Sulfasalazine<span class="princeps">Arava · Plaquenil · Salazopyrine</span><span class="vol-data">📦 1,5M boîtes combo · 9-25€</span></div>
+          <div class="drug-dose">Léflunomide 20 mg/j · Hydroxychloroquine 400 mg/j</div>
+          <div class="drug-watch">Léflunomide : washout si grossesse (demi-vie 2 ans) · Plaquenil : rétinopathie (fond d'œil/an)</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-antitnf">
+      <div class="drug-class-header" style="background:#fff3e0;">
+        <div class="name" style="color:#e65100;">Anti-TNFα — 1ères Biothérapies</div>
+        <div class="badge" style="background:#bf360c;color:white;">MTX insuffisant</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Adalimumab · Étanercept · Infliximab<span class="princeps">Humira (+ 14 biosimilaires) · Enbrel · Remicade</span><span class="vol-data">📦 adalimumab 150K patients · 800-1500€/mois</span></div>
+          <div class="drug-dose">Adalimumab 40 mg SC/2 sem · Étanercept 50 mg SC/sem</div>
+          <div class="drug-watch">Réactivation TB (IGRA avant) · Infections sévères · Démyélinisation · Insuffisance cardiaque</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Certolizumab · Golimumab<span class="princeps">Cimzia · Simponi</span><span class="vol-data">📦 remboursé PR MTX-résistante</span></div>
+          <div class="drug-dose">Certolizumab 200 mg/2 sem · Golimumab 50 mg/mois</div>
+          <div class="drug-watch">Certolizumab : autorisé grossesse (pas transfert placentaire)</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-autre-bio">
+      <div class="drug-class-header" style="background:#f3e5f5;">
+        <div class="name" style="color:#4a148c;">Autres Biothérapies — Anti-IL6 / Anti-CD20</div>
+        <div class="badge" style="background:#6a1b9a;color:white;">2ème ligne bio</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tocilizumab · Sarilumab (anti-IL-6R)<span class="princeps">Roactemra · Kevzara</span><span class="vol-data">📦 remboursé PR réfractaire · 1200€/mois</span></div>
+          <div class="drug-dose">Tocilizumab 8 mg/kg IV/4 sem ou 162 mg SC/sem</div>
+          <div class="drug-watch">Masque fièvre infectieuse · Perforations digestives · Hyperlipidémie</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Rituximab (anti-CD20)<span class="princeps">Mabthera · Truxima biosimilaire</span><span class="vol-data">📦 1000 mg x2 (J1+J15)/6 mois</span></div>
+          <div class="drug-dose">1000 mg IV x2 à 15j d'intervalle / 6 mois</div>
+          <div class="drug-watch">Hypoglobulinémie progressive · Infections · Vaccins avant traitement</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-jak-pr">
+      <div class="drug-class-header" style="background:#e8eaf6;">
+        <div class="name" style="color:#1a237e;">Inhibiteurs JAK Oraux</div>
+        <div class="badge" style="background:#283593;color:white;">Attention sécurité</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Baricitinib · Tofacitinib · Upadacitinib<span class="princeps">Olumiant 4mg · Xeljanz 5mg · Rinvoq 15mg</span><span class="vol-data">📦 remboursé PR réfractaire · 1000-1500€/mois</span></div>
+          <div class="drug-dose">Baricitinib 4 mg/j · Tofacitinib 5 mg x2/j</div>
+          <div class="drug-watch">MACE, DVT, cancers → prudence > 65 ans, ATCD CV/cancer · Herpès zona · Bilan NFS</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie EULAR 2022</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Précoce</div><div class="content">MTX ± HCQ + corticoïdes</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">MTX insuffisant</div><div class="content">Anti-TNF ou anti-IL6</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Bio inefficace</div><div class="content">Switch bio ou JAK-i</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Rémission</div><div class="content">Déescalade possible</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 NOUVEAUTÉS 2020–2026</span>
+  <span class="n-text"><strong>Biosimilaires adalimumab</strong> (14 commercialisés en France, remboursés à parité) depuis 2018-2023 · <strong>Lettre EMA 2023</strong> : JAK inhibiteurs - restriction chez patients > 65 ans / ATCD CV / cancer / tabac · Filgotinib (Jyseleca) retiré USA mais maintenu EU · Ozoralizumab (nano-anticorps) AMM Japon</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">MTX : acide folique J+2 obligatoire (jamais le même jour) · NFS + BHC mensuel la 1ère année · Surveiller alcool</div></div><div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Avant tout anti-TNF/biothérapie : IGRA (tuberculose latente) + sérologies VHB + VHC + bilan NFS/BHC</div></div><div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Biothérapie + fièvre : arrêter le traitement et consulter en urgence (masque les signes d'infection)</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">MTX + AINS (ibuprofène)</div><div class="inter-effect">↑ Toxicité MTX par compétition tubulaire · Paracétamol préférable</div></div><div class="inter-item"><div class="inter-drug">MTX + cotrimoxazole (Bactrim)</div><div class="inter-effect">Antifolate additif → pancytopénie · CI ou surveillance rapprochée</div></div><div class="inter-item"><div class="inter-drug">MTX + alcool</div><div class="inter-effect">Hépatotoxicité additive → CI · Même une bière/semaine risquée</div></div><div class="inter-item"><div class="inter-drug">Leflunomide + MTX</div><div class="inter-effect">Hépatotoxicité additionnelle → BHC obligatoire tous les 2 mois</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Je n'ai pas pris acide folique cette semaine"</div><div class="speech-hide">Acide folique réduit les EI digestifs et hématologiques du MTX SANS réduire son efficacité · J+2 = 2 jours après MTX</div><div class="speech-resp">Important de le prendre régulièrement · PAS le même jour que le MTX (réduit efficacité) · J+2</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai de la fièvre sous Humira, j'attends le médecin lundi"</div><div class="speech-hide">Biothérapies (anti-TNF) masquent la fièvre et les signes d'infection → risque sepsis méconnu → urgence médicale</div><div class="speech-resp">Urgences immédiates · Arrêt biothérapie · Infection sous biothérapie = urgence vitale</div></div>
+      <div class="patient-item"><div class="speech-bubble">"On me parle de biosimilaire d'Humira, c'est pareil ?"</div><div class="speech-hide">14 biosimilaires adalimumab commercialisés France · Bioéquivalents prouvés · Même efficacité et sécurité · Prix réduit 30-40%</div><div class="speech-resp">Oui, bioéquivalent cliniquement · Peut se faire sous surveillance rhumatologue · Économise le système de santé</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai commencé le Plaquenil, dois-je consulter l'ophtalmologue ?"</div><div class="speech-hide">Hydroxychloroquine → rétinopathie rare (1-2%) mais irréversible si dépistage tardif · Fond d'œil annuel recommandé</div><div class="speech-resp">Fond d'œil basal puis annuel à partir de 5 ans de traitement · Signaler au rhumatologue</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>PR · Méthotrexate · Anti-TNF · JAK-inhibiteurs · Biothérapies · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pathologie 17 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

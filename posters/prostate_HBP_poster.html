@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Prostate & HBP — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #0d47a1; --c2: #1565c0; --c3: #42a5f5;
+    --cl: #e3f2fd; --cm: #bbdefb;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .diag-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .diag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-bottom: 1.5mm; }
+  .diag-item { background: white; border-radius: 5px; padding: 2mm 2.5mm; border-top: 2.5px solid var(--c2); }
+  .diag-item .val { font-size: 8.5pt; font-weight: 800; color: var(--c2); line-height: 1; }
+  .diag-item .lbl { font-size: 5.5pt; color: #37474f; margin-top: 0.5mm; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 32mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Prostate & HBP</h1>
+    <div class="subtitle">Fiche officine · Pathologie 14 · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">50%</span><span class="lbl">Hommes > 50 ans HBP</span></div><div class="stat-pill"><span class="val">IPSS</span><span class="lbl">Score symptômes</span></div><div class="stat-pill"><span class="val">PSA</span><span class="lbl">Dépistage/suivi</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">α-bloquants = effet rapide (48h)</span><span class="tag">I5AR = 6 mois pour effet</span><span class="tag">Tamsulosine = hypo orthostatique</span><span class="tag">Éjaculation rétrograde sous α-bloquants</span><span class="tag">PSA divisé par 2 sous I5AR</span><span class="tag">Tadalafil 5mg/j si aussi DE</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🧬 Testostérone → DHT par 5α-réductase dans prostate</div><div class="cascade-arrow">↓</div><div class="cascade-step">📐 DHT stimule croissance cellules prostatiques → HBP</div><div class="cascade-arrow">↓</div><div class="cascade-step">🚰 Compression urétrale → dysurie, pollakiurie, RAU</div><div class="cascade-arrow">↓</div><div class="cascade-step">📊 IPSS > 7 = symptômes modérés · > 19 = sévères</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Urètre</div><div class="d">Obstruction, dysurie</div></div><div class="target-box"><div class="t">Vessie</div><div class="d">Hypertrophie detrusor</div></div><div class="target-box"><div class="t">Rein</div><div class="d">Obstruction chronique</div></div><div class="target-box"><div class="t">Qualité vie</div><div class="d">Nycturie, urgences</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Diagnostic & Bilan</div>
+    <div class="diag-card">
+      <div class="diag-row">
+        <div class="diag-item"><div class="val">IPSS</div><div class="lbl">Score 0-35</div></div><div class="diag-item"><div class="val">PSA total</div><div class="lbl">< 4 ng/mL normal</div></div><div class="diag-item"><div class="val">ΔV prostate</div><div class="lbl">Écho > 30 mL HBP</div></div><div class="diag-item"><div class="val">Débit max</div><div class="lbl">Qmax < 10 mL/s</div></div>
+      </div>
+      <div style="background:var(--cl);border-radius:5px;padding:2mm;border-left:3px solid var(--c2);font-size:6pt;color:var(--c1);font-weight:600;">📋 TR (toucher rectal) · PSA · Créatinine · Échographie vésico-prostatique · Débitmétrie · ECBU si infection</div>
+    </div>
+
+    <div class="section-label">CI / Précautions ⛔</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #c62828;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Tadalafil CI absolue avec dérivés nitrés (hypotension sévère, risque vital)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Tamsulosine : IFIS (Intraoperative Floppy Iris Syndrome) lors chirurgie cataracte → informer chirurgien</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ Finastéride/Dutastéride : PSA divisé par 2 → ne pas interpréter PSA sans tenir compte traitement</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    
+    <div class="drug-class cls-alpha" style="">
+      <div class="drug-class-header" style="background:#e3f2fd;">
+        <div class="name" style="color:#0d47a1;">α-Bloquants — Relaxation muscle lisse</div>
+        <div class="badge" style="background:#1565c0;color:white;">Effet rapide 48h</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tamsulosine · Alfuzosine<span class="princeps">Omix · Josir LP · Xatral LP · Génériques</span><span class="vol-data">📦 12M boîtes · 5,40€ · 65M€/an</span></div>
+          <div class="drug-dose">Tamsulosine 0,4 mg/j · Alfuzosine LP 10 mg/j</div>
+          <div class="drug-watch">Hypotension orthostatique (1ère dose) · Éjaculation rétrograde · IFIS chirurgie yeux</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Doxazosine · Térazosine<span class="princeps">Zoxan · Hytrine</span><span class="vol-data">📦 2M boîtes · 4,10€ · 8M€/an</span></div>
+          <div class="drug-dose">Doxazosine LP 4-8 mg/j</div>
+          <div class="drug-watch">Hypotension plus marquée · Titration progressive</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-i5ar" style="">
+      <div class="drug-class-header" style="background:#f3e5f5;">
+        <div class="name" style="color:#4a148c;">Inhibiteurs 5α-Réductase — Réduction volume</div>
+        <div class="badge" style="background:#6a1b9a;color:white;">Délai 6 mois</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Finastéride · Dutastéride<span class="princeps">Chibro-Proscar · Avodart · Génériques</span><span class="vol-data">📦 4M boîtes · 12€ · 48M€/an</span></div>
+          <div class="drug-dose">Finastéride 5 mg/j · Dutastéride 0,5 mg/j</div>
+          <div class="drug-watch">PSA divisé par 2 · Libido ↓ · Éjaculation rétrograde · ATCD dépression</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-combi" style="">
+      <div class="drug-class-header" style="background:#e8f5e9;">
+        <div class="name" style="color:#1b5e20;">Association α-bloquant + I5AR</div>
+        <div class="badge" style="background:#2e7d32;color:white;">HBP volumineuse</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tamsulosine + Dutastéride<span class="princeps">Combodart 0,4/0,5 mg</span><span class="vol-data">📦 1,5M boîtes · 22€ · 33M€/an</span></div>
+          <div class="drug-dose">1 gélule/j · Combiner les deux effets</div>
+          <div class="drug-watch">Effets cumulés des 2 classes · Coûteux</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-pde5" style="">
+      <div class="drug-class-header" style="background:#fff3e0;">
+        <div class="name" style="color:#e65100;">Inhibiteurs PDE5 — Si HBP + Dysfonction Érectile</div>
+        <div class="badge" style="background:#bf360c;color:white;">Si aussi DE</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tadalafil 5 mg/j<span class="princeps">Cialis 5 mg · Tadalafil Generics</span><span class="vol-data">📦 remboursé HBP 2022 · 5mg/j</span></div>
+          <div class="drug-dose">5 mg/j en continu · HBP + DE</div>
+          <div class="drug-watch">CI nitrés (hypotension sévère) · Hypotension orthostatique</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-phyto" style="">
+      <div class="drug-class-header" style="background:#fafafa;">
+        <div class="name" style="color:#546e7a;">Phytothérapie — Efficacité modeste</div>
+        <div class="badge" style="background:#607d8b;color:white;">Service médical rendu</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Serenoa repens (palmier nain)<span class="princeps">Permixon 160 mg · Prostamol</span><span class="vol-data">📦 2,5M boîtes · 8,50€ · 21M€/an</span></div>
+          <div class="drug-dose">160 mg x2/j</div>
+          <div class="drug-watch">Efficacité modest vs placebo · Non remboursé · Rassurant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie HAS</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">IPSS < 8</div><div class="content">Surveillance · RHD</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">IPSS 8-19</div><div class="content">α-bloquant en 1ère ligne</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">HBP volumineuse</div><div class="content">I5AR ou combinaison</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">HBP + DE</div><div class="content">Tadalafil 5 mg/j</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 NOUVEAUTÉS 2020–2026</span>
+  <span class="n-text"><strong>Tadalafil 5 mg/j</strong> remboursé pour HBP symptomatique depuis 2022 · Recommandations EAU 2023 : chirurgie (résection) réservée aux formes sévères · <strong>Dutastéride biosimilaire</strong> disponible · Étude REDUCE : I5AR réduisent incidence cancer prostate haut grade controversée</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">α-bloquants : prévenir hypotension 1ère prise → prendre le soir au coucher, éviter lever brutal</div></div><div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Finastéride/Dutastéride : PSA toujours interprété × 2 · Effets libido/érection → reversible à l'arrêt</div></div><div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Tamsulosine + chirurgie yeux (cataracte) : IFIS grave → informer chirurgien à l'avance</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">α-bloquants + antihypertenseurs</div><div class="inter-effect">Hypotension orthostatique potentialisée → surveillance TA</div></div><div class="inter-item"><div class="inter-drug">Tadalafil + nitrés</div><div class="inter-effect">Hypotension sévère, choc → CI absolue et formelle</div></div><div class="inter-item"><div class="inter-drug">Finastéride + warfarine</div><div class="inter-effect">Légère augmentation INR → surveiller</div></div><div class="inter-item"><div class="inter-drug">Tamsulosine + fluconazole/kétoconazole</div><div class="inter-effect">↑ concentration tamsulosine par CYP3A4 · Prudence</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Mon médecin m'a mis Avodart mais ça ne marche pas après 1 mois"</div><div class="speech-hide">I5AR agissent sur le volume prostatique → délai de 3-6 mois avant bénéfice symptomatique attendu</div><div class="speech-resp">Normal, l'effet se développe sur 3-6 mois · Vérifier observance · Ne pas arrêter</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Depuis que je prends Josir, j'ai du mal à éjaculer"</div><div class="speech-hide">Éjaculation rétrograde = effet de classe des α-bloquants · Bénin, réversible à l'arrêt · Pas dangereux</div><div class="speech-resp">Effet connu et réversible · Si insupportable → avis médecin pour switch</div></div>
+      <div class="patient-item"><div class="speech-bubble">"On m'a opéré des yeux la semaine prochaine"</div><div class="speech-hide">Tamsulosine → IFIS (Intraoperative Floppy Iris Syndrome) = risque peropératoire grave · Le chirurgien doit le savoir</div><div class="speech-resp">Informer impérativement l'ophtalmologiste de la prise de tamsulosine même ancienne</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon PSA était à 3 avant, maintenant à 1.5 sous Avodart, c'est bien ?"</div><div class="speech-hide">Finastéride/dutastéride divisent le PSA par 2 · Un PSA 1.5 sous I5AR équivaut à 3 → surveillance normale</div><div class="speech-resp">PSA sous I5AR doit être multiplié par 2 pour interprétation réelle · Expliquer au médecin</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Prostate · HBP · α-bloquants · I5AR · Tamsulosine · Tadalafil · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pathologie 14 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>
