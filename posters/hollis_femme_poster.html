@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Hollis Expert Santé des Femmes — SantéVeille Officine</title>
+<style>
+  :root{
+    --c1:#880e4f;--c2:#ad1457;--c3:#c2185b;--cl:#f8bbd0;--cm:#fce4ec;
+    --gr:#1b5e20;--bl:#0d47a1;--or:#e65100;--te:#006064;--pu:#4a148c;
+  }
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+
+  .hdr{background:linear-gradient(135deg,#880e4f,#ad1457 45%,#c2185b 80%,#e91e63);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+
+  /* LIFECYCLE BAR */
+  .lifecycle{display:flex;gap:0;margin-bottom:5px;border-radius:5px;overflow:hidden;
+    border:1px solid var(--cl);}
+  .lc{flex:1;padding:5px 4px;text-align:center;font-size:6.5px;font-weight:700;
+    color:white;line-height:1.4;}
+  .lc .num{font-size:10px;display:block;font-weight:900;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.gr{background:var(--gr);} .ch.bl{background:var(--bl);}
+  .ch.or{background:var(--or);} .ch.te{background:var(--te);}
+  .ch.pu{background:var(--pu);} .ch.teal{background:#00695c;}
+  .ch.warm{background:#bf360c;}
+  .cb{padding:5px 7px;background:white;}
+
+  .prod{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:baseline;
+    padding:2px 0;border-bottom:1px dotted #ddd;font-size:7.5px;}
+  .prod:last-of-type{border-bottom:none;}
+  .pn{font-weight:700;color:var(--c1);white-space:nowrap;}
+  .pi{color:#444;font-size:7px;}
+  .pt{font-size:6.5px;border-radius:3px;padding:1px 4px;white-space:nowrap;font-weight:600;}
+  .pt.pi2{background:var(--cm);color:var(--c1);}
+  .pt.gr{background:#e8f5e9;color:#2e7d32;}
+  .pt.bl{background:#e3f2fd;color:#0d47a1;}
+  .pt.or{background:#fff3e0;color:#e65100;}
+  .pt.pu{background:#f3e5f5;color:#4a148c;}
+  .pt.re{background:#ffebee;color:#b71c1c;}
+  .pt.te{background:#e0f7fa;color:#006064;}
+
+  .sub-line{font-size:7px;color:#444;padding:1px 0 2px 7px;border-left:2px solid var(--cl);
+    margin:1px 0 2px 2px;font-style:italic;}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .nouv{background:linear-gradient(90deg,#4a148c,#6a1b9a);color:white;
+    padding:3px 8px;font-size:7px;border-radius:3px;margin-top:3px;}
+  .nouv strong{color:#ce93d8;}
+
+  /* LIFECYCLE INDICATOR TIMELINE */
+  .timeline{display:flex;gap:3px;margin-bottom:5px;}
+  .tl-step{flex:1;border-radius:4px;padding:4px 5px;text-align:center;font-size:7px;
+    font-weight:700;color:white;line-height:1.4;}
+
+  /* COMPOSITION TABLE */
+  .comp-table{width:100%;border-collapse:collapse;font-size:7px;margin-top:3px;}
+  .comp-table th{background:var(--c2);color:white;padding:3px 5px;text-align:left;}
+  .comp-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);}
+  .comp-table tr:nth-child(even) td{background:#fce4ec;}
+  .comp-table tr:last-child td{border-bottom:none;}
+  .comp-table td:first-child{font-weight:700;color:var(--c1);}
+
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#fff3e0;border-left:3px solid #ff8f00;padding:2px 5px;
+    margin:2px 0;border-radius:0 3px 3px 0;color:#bf360c;}
+  .sr{color:var(--c1);font-weight:600;margin-top:2px;}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <h1>🌸 Hollis — Expert de la Santé des Femmes</h1>
+    <div class="sub">Guide officinal · Fertilité · Grossesse · Allaitement · Post-partum · Cycle · Fer · Calme · Oméga 3</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+
+<!-- LIFECYCLE TIMELINE -->
+<div class="timeline" style="margin-bottom:5px;">
+  <div class="tl-step" style="background:#880e4f;">🌸 Cycle<br>menstruel</div>
+  <div class="tl-step" style="background:#ad1457;">🥚 Péri-<br>conception</div>
+  <div class="tl-step" style="background:#c2185b;">🤰 1er<br>Trimestre</div>
+  <div class="tl-step" style="background:#d81b60;">🤰 2e–3e<br>Trimestre</div>
+  <div class="tl-step" style="background:#e91e63;">🍼 Allaitement</div>
+  <div class="tl-step" style="background:#f06292;">💊 Post-<br>partum</div>
+  <div class="tl-step" style="background:#e65100;">🔴 Carences<br>&amp; Fatigue</div>
+  <div class="tl-step" style="background:#6a1b9a;">🧘 Calme<br>&amp; Stress</div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="grid2">
+
+  <!-- FER -->
+  <div class="card">
+    <div class="ch or">🔴 HOLLIS FER — La Carence N°1 chez la Femme</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (fer)</span>
+        <span class="pi">Fer bisglycinate 14mg + Vitamine C 80mg + B9 200mcg + B12</span>
+        <span class="pt or">⭐ Bisglycinate</span>
+      </div>
+      <div class="sub-line">Anémie ferriprive · Fatigue · Règles abondantes · Végétariennes · Sport féminin</div>
+      <table class="comp-table">
+        <tr><th>Signe</th><th>Ce que ça peut être</th><th>Seuil alerte</th></tr>
+        <tr><td>Fatigue inexpliquée</td><td>Ferritine basse (souvent si &lt; 30 µg/L)</td><td>Ferritine &lt; 15 = carence</td></tr>
+        <tr><td>Chute de cheveux</td><td>Carence martiale subclinique</td><td>Ferritine &lt; 40 recommandée</td></tr>
+        <tr><td>Teint pâle · Tachycardie</td><td>Anémie constituée (Hb &lt; 12 g/dL)</td><td>Bilan NFS urgent</td></tr>
+      </table>
+      <div class="tip">💡 <strong>Bisglycinate &gt; sulfate ferreux :</strong> meilleure tolérance digestive · moins de constipation. Prendre à jeun + vit C pour absorption. Selles plus foncées = normal.</div>
+      <div class="warn">⚠ Séparer de 2h : thé · café · laitages · calcaire · zinc (chélation). Interaction IPP/Gaviscon : prendre à distance. Fer seul insuffisant si carence sévère → bilan médical.</div>
+    </div>
+  </div>
+
+  <!-- FERTILITÉ -->
+  <div class="card">
+    <div class="ch">🥚 HOLLIS FERTILITÉ — Préconception</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (fertilité) Femme</span>
+        <span class="pi">Folates (5-MTHF actif) · Inositol · CoQ10 · Vitamine D3 · Zinc · Sélénium</span>
+        <span class="pt pi2">Femme</span>
+      </div>
+      <div class="sub-line">Projet bébé · Qualité ovocytaire · Régulation cycle · SOPK (inositol)</div>
+      <div class="prod">
+        <span class="pn">Hollis (fertilité) Couple / Homme</span>
+        <span class="pi">Zinc · Sélénium · CoQ10 · Vitamine E · Lycopène · Oméga 3</span>
+        <span class="pt bl">Homme</span>
+      </div>
+      <div class="sub-line">Qualité spermatique · Mobilité · Morphologie · Antioxydant sperme</div>
+      <div class="tip">💡 <strong>Folates = acide folique actif (5-MTHF)</strong> : supérieur à l'acide folique classique (meilleure absorption, efficace même si mutation MTHFR). Débuter au moins 4 semaines avant conception.</div>
+      <div class="warn">⚠ Folates 400 mcg/j minimum dès projet bébé → prévention spina bifida. Si ATCD anomalie tube neural ou traitement méthotrexate : 5 mg/j sur ordonnance.</div>
+      <div class="nouv">🆕 <strong>Inositol myoinositol + D-chiroinositol</strong> : recommandé SOPK (améliore sensibilité insuline, cycles, qualité ovocytaire). Rapport optimal 40:1.</div>
+    </div>
+  </div>
+
+  <!-- GROSSESSE -->
+  <div class="card">
+    <div class="ch warm">🤰 HOLLIS GROSSESSE — T1 · T2 · T3</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (grossesse)</span>
+        <span class="pi">Folates 400mcg · Fer 14mg · Iode 150mcg · Vit D3 500UI · Mg · DHA · B6 · B12 · Zinc</span>
+        <span class="pt pi2">Formule complète</span>
+      </div>
+      <div class="sub-line">Couverture complète besoins grossesse · Un seul complément pour tout</div>
+      <table class="comp-table">
+        <tr><th>Nutriment</th><th>Pourquoi en grossesse</th><th>Vigilance</th></tr>
+        <tr><td>Folates (B9)</td><td>Tube neural · Développement cérébral</td><td>Dès J1 grossesse</td></tr>
+        <tr><td>Iode</td><td>Thyroïde fœtale · QI</td><td>Insuffisance fréquente</td></tr>
+        <tr><td>Fer</td><td>Volume sanguin × 1,5 · Anémie grossesse</td><td>Constipation si mal toléré</td></tr>
+        <tr><td>DHA oméga-3</td><td>Cerveau et rétine fœtale</td><td>T3 ++</td></tr>
+        <tr><td>Vit D</td><td>Ossification · Immunité néonatale</td><td>Carence quasi-universelle</td></tr>
+      </table>
+      <div class="warn">⚠ CI en grossesse (rappel) : Vit A &gt; 3000 UI/j (tératogène) · Huiles essentielles T1 · Plantes abortives. Hollis Grossesse = formule adaptée et sécurisée.</div>
+    </div>
+  </div>
+
+  <!-- ALLAITEMENT -->
+  <div class="card">
+    <div class="ch teal">🍼 HOLLIS ALLAITEMENT — Besoins Augmentés</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (allaitement)</span>
+        <span class="pi">Iode 200mcg · Vit D3 · DHA 250mg · Vit B12 · Calcium · Fer · Zinc · Sélénium</span>
+        <span class="pt te">Continuité grossesse</span>
+      </div>
+      <div class="sub-line">Continuation de la couverture nutritionnelle · Qualité du lait maternel · Énergie mère</div>
+      <table class="comp-table">
+        <tr><th>Nutriment clé</th><th>Pourquoi pendant l'allaitement</th></tr>
+        <tr><td>Iode (200 mcg/j)</td><td>Besoins allaitement &gt; grossesse · Thyroïde bébé</td></tr>
+        <tr><td>DHA (250 mg/j)</td><td>Cerveau bébé · Qualité lait maternel</td></tr>
+        <tr><td>Vit D 400–600 UI/j</td><td>Lait maternel pauvre en vit D → supplémenter bébé aussi</td></tr>
+        <tr><td>Calcium 1000 mg/j</td><td>Demande osseuse augmentée · Perte osseuse temporaire</td></tr>
+      </table>
+      <div class="tip">💡 Pendant allaitement : iode est le nutriment le plus critique (souvent oublié). Lait maternel contient naturellement peu de vit D → supplémenter bébé en parallèle (Adrigyl/Zyma D 400–800 UI/j selon âge).</div>
+    </div>
+  </div>
+
+  <!-- POST-PARTUM -->
+  <div class="card">
+    <div class="ch">💊 HOLLIS POST-PARTUM — Récupération</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (post partum)</span>
+        <span class="pi">Fer · Collagène · Biotine · Vit C · Zinc · CoQ10 · Acides aminés</span>
+        <span class="pt pi2">Récupération</span>
+      </div>
+      <div class="sub-line">Récupération physique · Tonus · Chute de cheveux post-partum · Cicatrisation</div>
+      <div class="prod">
+        <span class="pn">Hollis (calme)</span>
+        <span class="pi">Magnésium bisglycinate · Ashwagandha · L-Théanine · Vit B6 · Passiflore</span>
+        <span class="pt pu">Stress · Baby-blues</span>
+      </div>
+      <div class="sub-line">Anxiété post-partum · Stress chronique · Baby-blues · Irritabilité · Sommeil fragmenté</div>
+      <div class="tip">💡 Chute de cheveux post-partum (effluvium télogène) à 2–4 mois = normale et transitoire. Rassurer + Hollis post-partum pour accélérer repousse. Ferritine à vérifier.</div>
+      <div class="warn">⚠ Dépression post-partum ≠ baby-blues : si tristesse intense, pensées négatives, durée &gt; 2 sem → orientation psychiatrique urgente. Hollis calme = soutien mild, pas substitut traitement.</div>
+    </div>
+  </div>
+
+  <!-- CYCLE + RÈGLES -->
+  <div class="card">
+    <div class="ch">🌸 HOLLIS RÈGLES &amp; CYCLE MENSTRUEL</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (règles)</span>
+        <span class="pi">Magnésium · Vit B6 · Safran · Gattilier · Fer · Zinc · Oméga 6 (EPO)</span>
+        <span class="pt pi2">SPM · Douleurs</span>
+      </div>
+      <div class="sub-line">Syndrome prémenstruel (SPM) · Dysménorrhée · Humeur · Gonflement · Crampes</div>
+      <div class="prod">
+        <span class="pn">Hollis (calme)</span>
+        <span class="pi">Magnésium bisglycinate · Ashwagandha · L-théanine · B6</span>
+        <span class="pt pu">Stress cyclique</span>
+      </div>
+      <div class="sub-line">Irritabilité cyclique · Anxiété prémenstruelle · Tensions émotionnelles</div>
+      <table class="comp-table" style="margin-top:4px;">
+        <tr><th>Symptôme</th><th>Nutriment clé</th><th>Mécanisme</th></tr>
+        <tr><td>Crampes · douleurs</td><td>Magnésium + Oméga 6</td><td>Relaxation utérine · ↓ PG2</td></tr>
+        <tr><td>Humeur · pleurs</td><td>B6 + Safran</td><td>Sérotonine · dopamine</td></tr>
+        <tr><td>Gonflement · rétention</td><td>B6 + Potassium</td><td>Régulation aldostérone</td></tr>
+        <tr><td>Fatigue · pâleur</td><td>Fer + B12</td><td>Pertes sanguines</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- OMEGA 3 + COMPARISON TABLE -->
+<div class="grid2" style="margin-bottom:5px;">
+  <div class="card">
+    <div class="ch bl">🐟 HOLLIS OMÉGA 3 — Formule Femme</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Hollis (omega 3)</span>
+        <span class="pi">DHA 250mg + EPA 125mg + Vit E · Huile de poisson purifiée</span>
+        <span class="pt bl">Cerveau · Cœur</span>
+      </div>
+      <div class="sub-line">Santé cognitive · Cardiovasculaire · Humeur · Peau · Anti-inflammatoire</div>
+      <div class="tip">💡 DHA prédominant = formule femme (cerveau, humeur, fertilité). EPA = anti-inflammatoire, humeur. Pendant les repas pour meilleure absorption.</div>
+      <div class="warn">⚠ Vérifier anticoagulants si dose élevée. Pendant grossesse : pas de huile de foie de morue (trop de vit A) → préférer huile de poisson purifiée comme Hollis.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch gr">📋 QUAND CONSEILLER QUOI — Tableau Synthèse</div>
+    <div class="cb">
+      <table class="comp-table">
+        <tr><th>Situation</th><th>Hollis recommandé</th></tr>
+        <tr><td>Projet bébé · règles irrégulières</td><td>(fertilité) + (règles) si SPM</td></tr>
+        <tr><td>Grossesse confirmée</td><td>(grossesse) · continuer tout la durée</td></tr>
+        <tr><td>Allaitement</td><td>(allaitement) · bébé : Vit D séparée</td></tr>
+        <tr><td>Post-accouchement fatigue</td><td>(post partum) + vérifier ferritine</td></tr>
+        <tr><td>Chute cheveux post-bébé</td><td>(post partum) + (fer) si ferritine basse</td></tr>
+        <tr><td>Fatigue + règles abondantes</td><td>(fer) + (règles) · bilan NFS</td></tr>
+        <tr><td>SPM · douleurs · humeur</td><td>(règles) · J15 au J1 cycle</td></tr>
+        <tr><td>Stress chronique · anxiété</td><td>(calme) · (omega 3)</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- REFLEXES -->
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Officine — Hollis Santé des Femmes</h3>
+  <div class="rfxg">
+    <div class="ri">
+      <strong>🥚 Fertilité : folates actifs dès J0</strong>
+      Hollis fertilité contient du 5-MTHF (folates actifs) et non de l'acide folique synthétique — supérieur notamment si mutation MTHFR (30% de la population). Débuter 4 semaines minimum avant conception.
+    </div>
+    <div class="ri">
+      <strong>🔴 Fer bisglycinate = tolérance ++</strong>
+      Bisglycinate vs sulfate ferreux : nettement moins de constipation et nausées. Prendre à jeun + vitamine C. Selles foncées = normal. Si ferritine connue &lt; 15 → associer et informer médecin.
+    </div>
+    <div class="ri">
+      <strong>🍼 Allaitement : supplémenter bébé aussi</strong>
+      Lait maternel est naturellement pauvre en vitamine D même si maman prend Hollis allaitement. Bébé doit recevoir Adrigyl ou Zyma D séparément : 800–1200 UI/j. Rappeler systématiquement.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT SPEECH -->
+<div class="pbar">
+  <h3>💬 Ce que dit le patient — Hollis Santé des Femmes</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "J'ai mes règles douloureuses, vous avez quelque chose de naturel ?"</div>
+      <div class="sh">↳ Ce que ça cache : SPM vs dysménorrhée primaire vs endométriose à ne pas manquer</div>
+      <div class="sr">→ Hollis (règles) : magnésium + B6 + safran + gattilier. Prendre dès J15 du cycle. Si douleurs sévères depuis longtemps → orienter vers gynécologue (éliminer endométriose).</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Je viens d'accoucher, j'ai beaucoup de cheveux qui tombent"</div>
+      <div class="sh">↳ Ce que ça cache : effluvium télogène post-partum = normal · mais ferritine souvent basse en cause</div>
+      <div class="sr">→ Rassurer : chute à 2–4 mois = normale (hormones), transitoire. Hollis post-partum + vérifier ferritine (souvent &lt; 30 post-accouchement). Repoussé en 6 mois.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "J'allaite, je peux donner quoi à mon bébé pour la vitamine D ?"</div>
+      <div class="sh">↳ Ce que ça cache : carence vit D du nourrisson fréquente même si mère supplémentée</div>
+      <div class="sr">→ Adrigyl 800–1200 UI/j selon poids. Zyma D 400 UI si prématurité ou peau foncée → ajuster. À donner séparément du lait maternel. Maman continue Hollis (allaitement) en parallèle.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Je fais un projet bébé, lequel prendre : fertilité ou grossesse ?"</div>
+      <div class="sh">↳ Ce que ça cache : souvent confondent préconception vs grossesse · partenaire oublié</div>
+      <div class="sr">→ Avant conception (projet bébé) → Hollis (fertilité) pour les deux partenaires. Dès test positif → passer sur Hollis (grossesse). Ne pas attendre pour les folates.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  SantéVeille Officine · Hollis Expert Santé des Femmes · Informations indicatives — adapter au profil patient · Dépression post-partum : orientation médicale urgente · 2026
+</div>
+
+</body>
+</html>

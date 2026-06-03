@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Arko Pharma — Phytothérapie Guide Officinal — SantéVeille</title>
+<style>
+  :root{
+    --c1:#004d40;--c2:#00695c;--c3:#00897b;--cl:#b2dfdb;--cm:#e0f2f1;
+    --or:#e65100;--re:#b71c1c;--am:#f57f17;--pu:#4a148c;
+  }
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+
+  .hdr{background:linear-gradient(135deg,#004d40,#00695c 45%,#00897b 80%,#26a69a);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+
+  /* CATEGORY STRIP */
+  .cat-strip{display:flex;gap:3px;margin-bottom:5px;}
+  .chip{flex:1;color:white;border-radius:3px;padding:3px 2px;font-size:6.5px;
+    font-weight:700;text-align:center;line-height:1.4;background:var(--c2);}
+  .chip.or{background:#e65100;} .chip.pu{background:#4a148c;}
+  .chip.na{background:#0d47a1;} .chip.re{background:#b71c1c;}
+  .chip.am{background:#bf360c;} .chip.br{background:#4e342e;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.or{background:#e65100;} .ch.pu{background:#4a148c;}
+  .ch.na{background:#0d47a1;} .ch.re{background:#b71c1c;}
+  .ch.am{background:#bf360c;} .ch.br{background:#3e2723;}
+  .cb{padding:5px 7px;background:white;}
+
+  .prod{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:baseline;
+    padding:2px 0;border-bottom:1px dotted #ddd;font-size:7.5px;}
+  .prod:last-of-type{border-bottom:none;}
+  .pn{font-weight:700;color:var(--c1);white-space:nowrap;}
+  .pi{color:#444;font-size:7px;}
+  .pt{font-size:6.5px;border-radius:3px;padding:1px 4px;white-space:nowrap;font-weight:600;}
+  .pt.gr{background:#e0f2f1;color:#00695c;}
+  .pt.or{background:#fff3e0;color:#e65100;}
+  .pt.re{background:#ffebee;color:#b71c1c;}
+  .pt.pu{background:#f3e5f5;color:#4a148c;}
+  .pt.bl{background:#e3f2fd;color:#0d47a1;}
+  .pt.am{background:#fff8e1;color:#e65100;}
+
+  .sub-line{font-size:7px;color:#444;padding:1px 0 2px 7px;border-left:2px solid var(--cl);
+    margin:1px 0 2px 2px;font-style:italic;}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .nouv{background:linear-gradient(90deg,#4a148c,#6a1b9a);color:white;
+    padding:3px 8px;font-size:7px;border-radius:3px;margin-top:3px;}
+  .nouv strong{color:#ce93d8;}
+
+  /* ALERT BOX - Levure de Riz Rouge */
+  .alert-lrr{background:#fff3e0;border:2px solid #e65100;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .alert-lrr h3{font-size:9px;font-weight:700;color:#bf360c;margin-bottom:3px;}
+  .lrr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .lrr-item{background:white;border-radius:3px;padding:3px 5px;
+    border-left:3px solid #e65100;font-size:7px;}
+  .lrr-item strong{color:#bf360c;display:block;font-size:7.5px;}
+
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+
+  .ibar{background:#fce4ec;border:1.5px solid #e91e63;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .ibar h3{font-size:9px;font-weight:700;color:#880e4f;margin-bottom:3px;}
+  .igrid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+  .ii{background:white;border-radius:3px;padding:3px 5px;
+    border-left:3px solid #e91e63;font-size:7px;}
+  .ii strong{color:#880e4f;display:block;font-size:7.5px;}
+
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
+    margin:2px 0;border-radius:0 3px 3px 0;color:#b71c1c;}
+  .sr{color:var(--c1);font-weight:600;margin-top:2px;}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <h1>🌿 Arko Pharma — Phytothérapie Guide Officinal</h1>
+    <div class="sub">Digestion · Articulations · Stress/Sommeil · Cholestérol · Circulation · Vitalité · Urinaire</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+
+<div class="cat-strip">
+  <div class="chip">🫁 Digestion</div>
+  <div class="chip am">🦴 Articulations<br>Muscles</div>
+  <div class="chip pu">🧠 Stress<br>Équilibre</div>
+  <div class="chip">😴 Sommeil</div>
+  <div class="chip or">❤️ Cholestérol<br>Métabolisme</div>
+  <div class="chip na">🫀 Circulation<br>Mémoire</div>
+  <div class="chip re">⚡ Vitalité<br>Shilajit</div>
+  <div class="chip br">💧 Urinaire<br>Prostate</div>
+</div>
+
+<div class="grid2">
+
+  <!-- DIGESTION -->
+  <div class="card">
+    <div class="ch">🫁 DIGESTION — FOIE — TRANSIT</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Digestion Facilitée</span>
+        <span class="pi">Artichaut · Radis noir · Pissenlit</span>
+        <span class="pt gr">Drainage hépatique</span>
+      </div>
+      <div class="sub-line">Digestion lourde · Ballonnements post-repas · Sensation de pesanteur</div>
+      <div class="prod">
+        <span class="pn">Arko Ballonnements &amp; Flatulences</span>
+        <span class="pi">Charbon végétal · Fenouil · Cumin</span>
+        <span class="pt gr">Gaz · Météorisme</span>
+      </div>
+      <div class="sub-line">Gaz intestinaux · Aérophagie · Ballonnements post-prandials</div>
+      <div class="prod">
+        <span class="pn">Arko Détoxifiant Hépatique</span>
+        <span class="pi">Chardon-Marie · Desmodium · Fumeterre</span>
+        <span class="pt or">Détox cure</span>
+      </div>
+      <div class="sub-line">Soutien hépatique · Médicaments · Alcool · Surcharge printemps/automne</div>
+      <div class="prod">
+        <span class="pn">Arko Constipation Occasionnelle</span>
+        <span class="pi">Ispaghul (Psyllium blond) · Cascara</span>
+        <span class="pt gr">Transit doux</span>
+      </div>
+      <div class="sub-line">Constipation passagère · Mucilage hygrophile · Ramollisseur fèces</div>
+      <div class="warn">⚠ Chardon-Marie CI si allergie Astéracées (chrysanthème, marguerite). Constipation chronique → bilan médical. Cascara non conseillé au long cours (laxatif stimulant).</div>
+    </div>
+  </div>
+
+  <!-- STRESS / ÉQUILIBRE ÉMOTIONNEL -->
+  <div class="card">
+    <div class="ch pu">🧠 STRESS &amp; ÉQUILIBRE ÉMOTIONNEL</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Nervosité</span>
+        <span class="pi">Aubépine · Mélisse · Passiflore</span>
+        <span class="pt pu">Anxiété légère</span>
+      </div>
+      <div class="sub-line">Nervosité · Palpitations émotionnelles · Irritabilité · Agitation</div>
+      <div class="prod">
+        <span class="pn">Arko Équilibre du Système Nerveux</span>
+        <span class="pi">Griffonia (5-HTP) · Safran</span>
+        <span class="pt pu">⭐ 5-HTP · Sérotonine</span>
+      </div>
+      <div class="sub-line">Humeur · Anxiété · Troubles émotionnels · Précurseur sérotonine</div>
+      <div class="prod">
+        <span class="pn">Arko Résistance au Stress Passager</span>
+        <span class="pi">Rhodiole (adaptogène) · Ginseng</span>
+        <span class="pt or">Adaptogène</span>
+      </div>
+      <div class="sub-line">Stress chronique · Fatigue mentale · Résistance · Cure 3 mois · Prendre le matin</div>
+      <div class="prod">
+        <span class="pn">PazaFlore / Arko Passiflore</span>
+        <span class="pi">Passiflora incarnata</span>
+        <span class="pt pu">Anxiété + sommeil</span>
+      </div>
+      <div class="sub-line">Anxiété · Irritabilité · Préparation au sommeil · Synergique valériane</div>
+      <div class="warn">⚠ <strong>Griffonia (5-HTP) CI absolue :</strong> ISRS · IMAO · Triptans (risque syndrome sérotoninergique). Toujours vérifier le traitement antidépresseur.</div>
+    </div>
+  </div>
+
+  <!-- ARTICULATIONS -->
+  <div class="card">
+    <div class="ch am">🦴 ARTICULATIONS &amp; DOULEURS MUSCULAIRES</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Douleurs Articulaires</span>
+        <span class="pi">Harpagophytum (griffe du diable) · Saule</span>
+        <span class="pt am">Anti-inflammatoire phyto</span>
+      </div>
+      <div class="sub-line">Arthrose · Lombalgies · Douleurs articulaires chroniques · Périarthrite</div>
+      <div class="prod">
+        <span class="pn">Arko Souplesse Musculaire</span>
+        <span class="pi">Harpagophytum · Arnica · Gaulthérie</span>
+        <span class="pt am">Muscles + tendons</span>
+      </div>
+      <div class="sub-line">Contractures · Courbatures · Raideur matinale · Sport</div>
+      <div class="prod">
+        <span class="pn">Arko Mobilité Articulaire</span>
+        <span class="pi">Glucosamine · Chondroïtine · Curcuma</span>
+        <span class="pt gr">Cartilage</span>
+      </div>
+      <div class="sub-line">Arthrose genou/hanche · Entretien cartilage · Cure 3 mois minimum</div>
+      <div class="prod">
+        <span class="pn">Arko Massage (gel/crème topique)</span>
+        <span class="pi">Arnica · Menthol · HE Eucalyptus</span>
+        <span class="pt or">Voie locale</span>
+      </div>
+      <div class="sub-line">Application locale · Traumatismes · Échauffement musculaire · Sport</div>
+      <div class="warn">⚠ <strong>Harpagophytum CI :</strong> ulcère gastroduodénal actif · Interactions anticoagulants (surveiller INR). Glucosamine : prudence diabète (surveillance glycémique).</div>
+    </div>
+  </div>
+
+  <!-- SOMMEIL -->
+  <div class="card">
+    <div class="ch">😴 SOMMEIL &amp; RÉCUPÉRATION</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Sommeil (Passiflore)</span>
+        <span class="pi">Passiflora incarnata · Eschscholtzia</span>
+        <span class="pt">Endormissement</span>
+      </div>
+      <div class="sub-line">Difficultés d'endormissement · Pensées envahissantes · Sommeil agité</div>
+      <div class="prod">
+        <span class="pn">Arko Sommeil Réparateur (Valériane)</span>
+        <span class="pi">Valeriana officinalis · Mélisse</span>
+        <span class="pt">Qualité du sommeil</span>
+      </div>
+      <div class="sub-line">Sommeil fragmenté · Réveils nocturnes · Qualité de récupération</div>
+      <div class="prod">
+        <span class="pn">Arko Sommeil + Mélatonine</span>
+        <span class="pi">Mélatonine 1,9 mg + Passiflore</span>
+        <span class="pt bl">Décalage horaire</span>
+      </div>
+      <div class="sub-line">Décalage horaire · Sommeil décalé · Travailleurs de nuit · Jet lag</div>
+      <div class="prod">
+        <span class="pn">Ananas (extrait 95%)</span>
+        <span class="pi">Bromélaïne · Vigne rouge · Frêne · Fenouil</span>
+        <span class="pt gr">Drainage · Jambes</span>
+      </div>
+      <div class="sub-line">Drainage · Rétention eau · Circulation lymphatique · Complément minceur</div>
+      <div class="tip">💡 Valériane : délai d'action 2–4 semaines. Mélatonine : prendre 30 min avant coucher. Somnolence le lendemain possible → ne pas conduire.</div>
+      <div class="warn">⚠ Valériane : pas de combinaison avec BZD / hypnotiques (additivité sédative). Mélatonine : déconseillée si épilepsie non contrôlée.</div>
+    </div>
+  </div>
+
+  <!-- CIRCULATION / MÉMOIRE -->
+  <div class="card">
+    <div class="ch na">🫀 CIRCULATION, MÉMOIRE &amp; CHEVEUX</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Mémoire &amp; Concentration</span>
+        <span class="pi">Ginkgo biloba (EGb 761) · Bacopa</span>
+        <span class="pt bl">Circulation cérébrale</span>
+      </div>
+      <div class="sub-line">Mémoire · Concentration · Circulation cérébrale · Sénescence légère</div>
+      <div class="prod">
+        <span class="pn">Arko Confort Veineux</span>
+        <span class="pi">Marronnier d'Inde (esculoside) · Mélilot</span>
+        <span class="pt na">Tonicité veineuse</span>
+      </div>
+      <div class="sub-line">Jambes lourdes · Varices débutantes · Œdèmes chevilles · Chaleur été</div>
+      <div class="prod">
+        <span class="pn">Arko Jambes Légères</span>
+        <span class="pi">Vigne rouge · Hamamélis · Cyprès</span>
+        <span class="pt na">Légèreté</span>
+      </div>
+      <div class="sub-line">Sensation de lourdeur · Gonflement vespéral · Prévention télangiectasies</div>
+      <div class="prod">
+        <span class="pn">Arko Beauté Ongles &amp; Cheveux</span>
+        <span class="pi">Prêle · Biotine · Zinc · Kératine</span>
+        <span class="pt gr">Chute · Fragilité</span>
+      </div>
+      <div class="sub-line">Chute de cheveux · Ongles cassants · Fragilité · Après grossesse/maladie</div>
+      <div class="warn">⚠ Ginkgo biloba CI : anticoagulants (AVK, NACO, aspirine). Vigne rouge : CI si allergie aux salicylates. Chute cheveux persistante → bilan ferritine/TSH/B12.</div>
+    </div>
+  </div>
+
+  <!-- VITALITÉ / SHILAJIT -->
+  <div class="card">
+    <div class="ch re">⚡ VITALITÉ, ÉNERGIE &amp; IMMUNITÉ</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Shilajit 🆕</span>
+        <span class="pi">Résine minérale himalayenne · Acide fulvique · 85+ minéraux</span>
+        <span class="pt re">Nouveauté 2023</span>
+      </div>
+      <div class="sub-line">Énergie cellulaire · Vitalité profonde · Adaptation au stress · Anti-âge cellulaire</div>
+      <div class="prod">
+        <span class="pn">Arko Tonus &amp; Vitalité</span>
+        <span class="pi">Açaï · Ginseng · Eleuthérocoque</span>
+        <span class="pt or">Adaptogène</span>
+      </div>
+      <div class="sub-line">Fatigue physique et mentale · Convalescence · Période d'effort</div>
+      <div class="prod">
+        <span class="pn">Arko Source Vitamines A &amp; D</span>
+        <span class="pi">Huile de foie de morue · Vitamines A + D3</span>
+        <span class="pt bl">Immunité · Os</span>
+      </div>
+      <div class="sub-line">Déficits vitamines liposolubles · Immunité hivernale · Os · Vision</div>
+      <div class="prod">
+        <span class="pn">Arko Santé Cardiovasculaire</span>
+        <span class="pi">Aubépine · Coenzyme Q10 · Magnésium</span>
+        <span class="pt na">Cœur</span>
+      </div>
+      <div class="sub-line">Tonus cardiaque · Palpitations bénignes · Complément post-infarctus (avis médical)</div>
+      <div class="nouv">🆕 <strong>Shilajit</strong> : tendance 2022–2024 · Données cliniques limitées mais prometteuses · Énergie mitochondriale · Acide fulvique = fixateur minéraux.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LEVURE DE RIZ ROUGE — ALERTE -->
+<div class="alert-lrr">
+  <h3>⚠️ LEVURE DE RIZ ROUGE (Arko) — ATTENTION RÉGLEMENTAIRE 2022</h3>
+  <div class="lrr-grid">
+    <div class="lrr-item">
+      <strong>Mécanisme</strong>
+      Contient monacolines naturelles (monacoline K = lovastatine). Inhibe HMG-CoA réductase = même mécanisme que les statines médicamenteuses.
+    </div>
+    <div class="lrr-item">
+      <strong>CI &amp; Interactions ABSOLUES</strong>
+      ⛔ Jamais avec statines médicamenteuses (doublon + toxicité).<br>
+      ⛔ CI : grossesse · allaitement · insuffisance hépatique · &lt; 18 ans.<br>
+      ⛔ Pamplemousse (inhibe CYP3A4).
+    </div>
+    <div class="lrr-item">
+      <strong>Surveillance obligatoire</strong>
+      Douleurs musculaires = arrêt immédiat + consulter (risque rhabdomyolyse). EFSA 2022 : dose 3mg monacolines/j · ne pas dépasser. Bilan hépatique initial recommandé.
+    </div>
+  </div>
+</div>
+
+<!-- CRANBERRY + PROSTATE -->
+<div class="grid2" style="margin-bottom:5px;">
+  <div class="card">
+    <div class="ch br">💧 URINAIRE — CRANBERRY</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Cranberry</span>
+        <span class="pi">Vaccinium macrocarpon · PAC-A2 36mg/j</span>
+        <span class="pt bl">Cystites récidivantes</span>
+      </div>
+      <div class="sub-line">Prévention cystites récidivantes · Anti-adhérence E.coli sur urothélium</div>
+      <div class="prod">
+        <span class="pn">D-Mannose associé</span>
+        <span class="pi">D-Mannose + Cranberry · Canneberge</span>
+        <span class="pt gr">Prévention renforcée</span>
+      </div>
+      <div class="sub-line">Association synergique · Piège à E.coli avant adhérence · Cystites à répétition</div>
+      <div class="tip">💡 Cranberry = <strong>prévention</strong> uniquement, pas traitement curatif (ATB si cystite déclarée). Cure 3 mois. Hydratation : 1,5–2L/j essentielle.</div>
+      <div class="warn">⚠ Cranberry + warfarine : données contradictoires → surveiller INR. Ne pas remplacer un ATB lors d'une cystite avérée (fièvre, brûlures intenses).</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch br">🫘 CONFORT PROSTATIQUE (HBP légère)</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Arko Confort Prostatique</span>
+        <span class="pi">Serenoa repens (Sabal) · Épilobe · Ortie</span>
+        <span class="pt br" style="background:#efebe9;color:#4e342e;">HBP légère</span>
+      </div>
+      <div class="sub-line">Gêne mictionnelle légère · Nycturie · Jet faible · Résidu post-mictionnel léger</div>
+      <div class="prod">
+        <span class="pn">Veinoflux Jambes Légères</span>
+        <span class="pi">Escine · Vigne rouge · Diosmine</span>
+        <span class="pt na">Veineux</span>
+      </div>
+      <div class="sub-line">Jambes lourdes · Varices · Complémentaire aux bas de contention</div>
+      <div class="warn">⚠ HBP : orienter vers médecin si symptômes modérés/sévères (IPSS &gt; 8), infections urinaires récidivantes, PSA en hausse. Sabal déconseillé si cancer prostate.</div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLEXES -->
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Officine — Arko Phytothérapie</h3>
+  <div class="rfxg">
+    <div class="ri">
+      <strong>❤️ Levure de Riz Rouge + Statines</strong>
+      CI absolue si patient déjà sous statine médicamenteuse (doublon). Vérifier systématiquement l'ordonnance. Douleurs musculaires = arrêt immédiat + consulter. EFSA 2022 : max 3mg monacolines/j.
+    </div>
+    <div class="ri">
+      <strong>🧠 Griffonia (5-HTP) + Antidépresseurs</strong>
+      CI absolue avec ISRS, IMAO, triptans : risque de syndrome sérotoninergique (agitation, tremblements, hyperthermie → urgence). Toujours demander le traitement antidépresseur avant de vendre.
+    </div>
+    <div class="ri">
+      <strong>💧 Cranberry = préventif, pas curatif</strong>
+      Rappeler au patient : cranberry ne traite pas une cystite déclarée. Si brûlures, fièvre, douleurs lombaires → ATB nécessaire, orienter vers médecin. Cranberry = prévention après résolution.
+    </div>
+  </div>
+</div>
+
+<!-- INTERACTIONS -->
+<div class="ibar">
+  <h3>⚡ Interactions Majeures Phytothérapie Arko</h3>
+  <div class="igrid">
+    <div class="ii">
+      <strong>Levure Riz Rouge + Statines</strong>
+      Doublon pharmacologique → rhabdomyolyse. CI absolue.
+    </div>
+    <div class="ii">
+      <strong>Griffonia 5-HTP + ISRS / Triptans</strong>
+      Syndrome sérotoninergique. CI absolue.
+    </div>
+    <div class="ii">
+      <strong>Ginkgo + AVK / Aspirine</strong>
+      ↑ risque hémorragique. Éviter. Surveiller INR si association.
+    </div>
+    <div class="ii">
+      <strong>Valériane + BZD / Alcool</strong>
+      Potentialisation sédative. Prudence conduite.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT -->
+<div class="pbar">
+  <h3>💬 Ce que dit le patient — Phytothérapie Arko</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "Je prends Arko Levure de Riz Rouge, je peux continuer avec mes statines ?"</div>
+      <div class="sh">↳ Ce que ça cache : doublon avec risque de rhabdomyolyse — très fréquent</div>
+      <div class="sr">→ NON — CI absolue. Levure de riz rouge = statine naturelle. Avec statine médicamenteuse = doublon + toxicité musculaire. Arrêt et informer le médecin.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "J'ai acheté Griffonia pour mon moral, je prends aussi du Lexomil"</div>
+      <div class="sh">↳ Ce que ça cache : Griffonia 5-HTP + benzodiazépine = OK · mais si ISRS associé = danger</div>
+      <div class="sr">→ Vérifier si ISRS (Prozac, Deroxat, Effexor...) : CI absolue avec 5-HTP. BZD seule = OK avec Griffonia mais somnolence additive. Demander la liste complète des médicaments.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  SantéVeille Officine · Arko Pharma Phytothérapie · Informations indicatives — adapter au profil patient · 2026
+</div>
+
+</body>
+</html>
