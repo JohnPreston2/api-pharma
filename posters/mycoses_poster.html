@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Mycoses Cutanées & Vaginales — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #4e342e; --c2: #6d4c41; --c3: #a1887f;
+    --cl: #efebe9; --cm: #d7ccc8;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #3e2723 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #3e2723; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-bottom: 3mm; }
+  .compare-box { border-radius: 7px; padding: 3mm; }
+  .compare-box .title { font-size: 7pt; font-weight: 800; margin-bottom: 1.5mm; }
+  .compare-box li { font-size: 6pt; list-style: none; padding-left: 2mm; position: relative; margin-bottom: 0.8mm; }
+  .compare-box li::before { content: '·'; position: absolute; left: 0; font-weight: 700; }
+  .cutan { background: var(--cl); border-left: 3px solid var(--c1); }
+  .cutan .title { color: var(--c1); }
+  .vagin { background: #fce4ec; border-left: 3px solid #880e4f; }
+  .vagin .title { color: #880e4f; }
+  .vagin li::before { color: #880e4f; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #3e2723, var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: #3e2723; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Mycoses Cutanées & Vaginales</h1>
+    <div class="subtitle">Fiche officine · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">75%</span><span class="lbl">Femmes 1 épisode vaginal</span></div>
+    <div class="stat-pill"><span class="val">Candida</span><span class="lbl">Albicans 85–90%</span></div>
+    <div class="stat-pill"><span class="val">OTC</span><span class="lbl">Topiques disponibles</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Dermatophytes = peau/ongles · Candida = muqueuses/plis</span>
+  <span class="tag">Éconazole = polyvalent 1ère ligne</span>
+  <span class="tag">Terbinafine = dermatophytes +++</span>
+  <span class="tag">Mycose vaginale récidivante ≥ 4/an = bilan</span>
+  <span class="tag">Sécher les plis +++ </span>
+  <span class="tag">Onychomycose = traitement long (3–12 mois)</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Types de mycoses</div>
+    <div class="compare">
+      <div class="compare-box cutan">
+        <div class="title">🦶 Cutanées (Dermatophytes)</div>
+        <ul>
+          <li>Intertrigo inter-orteils (pied d'athlète)</li>
+          <li>Herpès circiné (anneau sur peau glabre)</li>
+          <li>Teigne (cuir chevelu, enfant)</li>
+          <li>Onychomycose (ongle jaune, épaissi)</li>
+          <li>Trichophyton, Microsporum</li>
+        </ul>
+      </div>
+      <div class="compare-box vagin">
+        <div class="title">🔴 Candidoses (Candida)</div>
+        <ul>
+          <li>Vulvo-vaginite (leucorrhées, prurit)</li>
+          <li>Intertrigo des plis (sous-mammaire, inguinal)</li>
+          <li>Candidose orale (muguet)</li>
+          <li>Balanite (homme)</li>
+          <li>C. albicans 85–90%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-label">Diagnostic au comptoir</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🔍 Pied d'athlète : fissures inter-orteils, desquamation, prurit → OTC</div>
+        <div class="cascade-step">🔴 Vulvo-vaginite : leucorrhées blanches caillebottées, prurit vulvaire → OTC si typique</div>
+        <div class="cascade-step">💅 Onychomycose : ongle jaune/blanc, épaissi, friable, débute bord libre → médecin si &gt;2 ongles</div>
+        <div class="cascade-step">👶 Teigne enfant : plaque alopécique squameuse → JAMAIS OTC, médecin obligatoire</div>
+      </div>
+    </div>
+
+    <div class="section-label">Drapeaux rouges → Médecin</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #b71c1c;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Mycose vaginale récidivante ≥ 4/an → bilan (diabète, VIH, immunodépression)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Teigne enfant → griséofulvine PO obligatoire (topique insuffisant)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Onychomycose &gt;2 ongles ou matrice atteinte → terbinafine PO (médecin)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ Immunodéprimé / Diabétique → risque mycose invasive → médecin</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:var(--cl);"><div class="name" style="color:var(--c1);">Azolés Topiques — Polyvalents</div><div class="badge" style="background:var(--c1);color:white;">1ère ligne OTC</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Éconazole 1%<span class="princeps">Pévaryl · Mycoapaisyl · Génériques</span><span class="vol-data">📦 12M tubes · 3,50€ · 42M€/an</span></div>
+          <div class="drug-dose">Crème/spray 1–2×/j · 2–4 sem cutané · Bien sécher peau avant · Déborder 2 cm autour de la lésion</div>
+          <div class="drug-watch">Polyvalent (dermatophytes + Candida) · Brûlure locale transitoire · Traiter 1 sem après disparition symptômes (rechute sinon)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Clotrimazole · Miconazole<span class="princeps">Mycohydralin · Daktarin</span><span class="vol-data">📦 5M boîtes · 4,80€</span></div>
+          <div class="drug-dose">Clotrimazole crème/ovule vaginal · Miconazole gel buccal (muguet) · Daktarin buccal 4×/j</div>
+          <div class="drug-watch">Mycohydralin = OTC pour candidose vaginale · Miconazole buccal : interactions AVK (↑ INR) · Gel buccal ≥ 4 mois</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Fenticonazole<span class="princeps">Lomexin 600 mg ovule / 2% crème</span><span class="vol-data">📦 2M boîtes · 5,20€</span></div>
+          <div class="drug-dose">Lomexin ovule 600 mg dose unique vaginale OU 200 mg × 3 soirs · Crème vulvaire 2×/j 7j</div>
+          <div class="drug-watch">Dose unique pratique (observance ↑) · Brûlure locale possible J1 · Partenaire : traiter si symptomatique</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#efebe9;"><div class="name" style="color:#3e2723;">Terbinafine — Dermatophytes +++</div><div class="badge" style="background:#4e342e;color:white;">Pied d'athlète</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Terbinafine 1% crème/spray<span class="princeps">Lamisil · Lamisilate Monodose · Génériques</span><span class="vol-data">📦 6M boîtes · 5,80€ · 35M€/an</span></div>
+          <div class="drug-dose">Crème 1×/j 1–2 sem · Lamisilate Monodose = 1 application unique (film) · Spray si intertrigos humides</div>
+          <div class="drug-watch">Fongicide (tue le champignon) vs azolés fongistatiques · Meilleur taux guérison dermatophytes · Monodose = observance optimale · PAS efficace sur Candida</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Terbinafine 250 mg PO<span class="princeps">Lamisil cp · Génériques</span><span class="vol-data">📦 Rx uniquement</span></div>
+          <div class="drug-dose">Onychomycose : 250 mg/j · 6 sem (mains) à 12 sem (pieds) · Teigne : 4–6 sem</div>
+          <div class="drug-watch">BHC avant et /6 sem (hépatotoxicité rare) · Dysgueusie 3% (réversible) · Efficacité 70–80% onychomycose · Repousse ongle = 6–12 mois</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fce4ec;"><div class="name" style="color:#880e4f;">Fluconazole PO — Candidose systémique</div><div class="badge" style="background:#ad1457;color:white;">Rx</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Fluconazole 150 mg<span class="princeps">Beagyne · Triflucan · Génériques</span><span class="vol-data">📦 3M boîtes · 4,20€</span></div>
+          <div class="drug-dose">150 mg dose unique PO (candidose vaginale) · Récidivante : 150 mg/sem × 6 mois prophylaxie</div>
+          <div class="drug-watch">Interactions CYP2C9/3A4 +++ (AVK ↑ INR, statines ↑ myopathie, BZD ↑) · CI 1er trimestre grossesse · Hépatotoxicité rare · Beagyne = OTC (1 gélule)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e0f2f1;"><div class="name" style="color:#004d40;">Vernis Antifongiques — Onychomycose</div><div class="badge" style="background:#00695c;color:white;">Traitement long</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Amorolfine 5%<span class="princeps">Locéryl vernis · Curanail</span><span class="vol-data">📦 2M boîtes · 18€ · 36M€/an</span></div>
+          <div class="drug-dose">1×/sem · Limer ongle avant · Appliquer sur toute la surface · 6 mois (mains) à 9–12 mois (pieds)</div>
+          <div class="drug-watch">Efficacité 50–60% si &lt;50% de l'ongle atteint · Inefficace si matrice touchée → PO nécessaire · Patience +++ (ongle repousse 1 mm/mois)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Ciclopirox 8%<span class="princeps">Mycoster vernis</span><span class="vol-data">📦 1M boîtes · 14€</span></div>
+          <div class="drug-dose">1×/j · Retirer vernis 1×/sem à l'acétone · 3–6 mois</div>
+          <div class="drug-watch">Application quotidienne (vs hebdo amorolfine) → observance moindre · Association vernis + PO si sévère</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie par localisation</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Peau glabre</div><div class="content">Éconazole ou terbinafine topique</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Vaginale</div><div class="content">Ovule azolé ± fluconazole PO</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Ongle &lt;50%</div><div class="content">Amorolfine vernis 9–12 mois</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Ongle &gt;50% / Teigne</div><div class="content">Terbinafine PO (médecin)</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Sécher les plis +++ = conseil n°1 · Serviette dédiée pieds · Chaussettes coton · Tongs piscine</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Traiter 1 semaine APRÈS disparition des symptômes → prévient rechute (spores persistantes)</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Mycose vaginale récidivante (≥ 4/an) → rechercher diabète, ATB récents, immunodépression · Médecin</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions & Alertes</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Fluconazole + AVK (warfarine)</div><div class="inter-effect">↑ INR × 2 → hémorragie · Contrôle INR à J3–J5 systématique</div></div>
+      <div class="inter-item"><div class="inter-drug">Fluconazole + Statines (simva, atorva)</div><div class="inter-effect">CYP3A4 inhibé → ↑ statine → rhabdomyolyse · Éviter ou réduire dose statine</div></div>
+      <div class="inter-item"><div class="inter-drug">Miconazole buccal + AVK</div><div class="inter-effect">Absorption systémique suffisante → ↑ INR · Même le gel buccal Daktarin !</div></div>
+      <div class="inter-item"><div class="inter-drug">Terbinafine PO + CYP2D6 substrats</div><div class="inter-effect">Inhibiteur CYP2D6 → ↑ codéine inefficace (pas de conversion) · ↑ β-bloquants · ↑ antidépresseurs</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"J'ai des pertes blanches et ça gratte"</div><div class="speech-hide">Candidose vaginale classique · leucorrhées caillebottées, prurit vulvaire intense · C. albicans 85% · non sexuellement transmissible</div><div class="speech-resp">Si 1er épisode ou connu → Mycohydralin/Lomexin OTC · Si récidivant, enceinte ou fièvre → médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon ongle de pied est jaune et épais depuis 1 an"</div><div class="speech-hide">Onychomycose probable · Vérifier : &lt;50% ongle atteint et matrice saine → vernis possible · Sinon → PO nécessaire</div><div class="speech-resp">Locéryl vernis 1×/sem 9–12 mois si &lt;50% · Si matrice atteinte → médecin pour terbinafine PO</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai mis la crème 5 jours, c'est parti, j'arrête"</div><div class="speech-hide">Arrêt prématuré = rechute quasi certaine · Les spores survivent dans la couche cornée → continuer 1 sem après guérison clinique</div><div class="speech-resp">Continuer 7 jours après disparition · Sinon rechute garantie → respecter la durée prescrite</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon fils a une plaque sur le crâne sans cheveux"</div><div class="speech-hide">Teigne = mycose cuir chevelu enfant · Trichophyton/Microsporum · Contagieux (école) · Topique seul INSUFFISANT → griséofulvine PO</div><div class="speech-resp">Teigne = médecin obligatoire · Traitement oral nécessaire · Contagieux → éviction scolaire possible</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Mycoses · Dermatophytes · Candida · Éconazole · Terbinafine · Fluconazole · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pratique comptoir · 80/20</span>
+</div>
+</body>
+</html>
