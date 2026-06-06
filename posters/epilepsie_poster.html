@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Épilepsie — Fiche Officine</title>
+<style>
+  :root { --c1: #311b92; --c2: #4527a0; --c3: #9575cd; --cl: #ede7f6; --cm: #d1c4e9; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #ffebee; border-radius: 7px; padding: 3mm; border-left: 3px solid #b71c1c; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #b71c1c; }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><h1>Épilepsie</h1><div class="subtitle">Fiche officine · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">600K</span><span class="lbl">Patients en France</span></div>
+    <div class="stat-pill"><span class="val">70%</span><span class="lbl">Contrôlés sous ttt</span></div>
+    <div class="stat-pill"><span class="val">Valproate</span><span class="lbl">CI femme fertile</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">JAMAIS arrêt brutal antiépileptique</span>
+  <span class="tag">Valproate CI absolue femme en âge de procréer</span>
+  <span class="tag">Substitution générique = prudence marge étroite</span>
+  <span class="tag">Inducteurs enzymatiques = ↓ pilule, AVK, NACO</span>
+  <span class="tag">Lamotrigine = Stevens-Johnson si titration trop rapide</span>
+  <span class="tag">Lévétiracétam = peu d'interactions</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Types de crises</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">⚡ Focale : début localisé (temporal, frontal) · Conscience altérée ou non · Aura possible</div>
+        <div class="cascade-step">🌊 Généralisée : tonico-clonique (grand mal) · Absence (petit mal) · Myoclonique</div>
+        <div class="cascade-step">🔴 État de mal : crise &gt;5 min ou crises répétées sans récupération → URGENCE VITALE</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Tonico-clonique</div><div class="d">Perte conscience, mouvements</div></div>
+        <div class="target-box"><div class="t">Absence</div><div class="d">Rupture contact &lt;30s, enfant</div></div>
+        <div class="target-box"><div class="t">Focale consciente</div><div class="d">Signes moteurs/sensitifs</div></div>
+        <div class="target-box"><div class="t">Myoclonique</div><div class="d">Secousses brèves matinales</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Valproate — Alerte ANSM</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #b71c1c;margin-bottom:3mm;">
+      <div style="font-size:6pt;font-weight:700;color:#b71c1c;text-transform:uppercase;margin-bottom:1.5mm;">CI absolue femme en âge de procréer</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">• Tératogène 10% malformations majeures (spina bifida, cardiopathies)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">• Troubles neuro-développementaux 30–40% (QI ↓, autisme)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">• Prescription initiale SPÉCIALISTE uniquement</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">• Formulaire d'accord de soins annuel OBLIGATOIRE</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">• Si homme : notice spécifique (risque via sperme débattu)</div>
+    </div>
+
+    <div class="section-label">Gestion de crise — Premiers gestes</div>
+    <div style="background:#e8f5e9;border-radius:7px;padding:3mm;border-left:3px solid #1b5e20;">
+      <div style="font-size:6pt;font-weight:700;color:#1b5e20;text-transform:uppercase;margin-bottom:1.5mm;">À enseigner au patient et à l'entourage</div>
+      <div style="font-size:6pt;color:#37474f;line-height:1.5;">
+        <b>✅</b> Protéger la tête (coussin) · Écarter les objets dangereux<br>
+        <b>✅</b> Mettre en PLS après la crise · Noter la durée<br>
+        <b>✅</b> Appeler 15 si &gt;5 min ou 1ère crise ou traumatisme<br>
+        <b>❌</b> NE PAS mettre d'objet dans la bouche<br>
+        <b>❌</b> NE PAS immobiliser les membres
+      </div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Antiépileptiques — Principales molécules</div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:var(--cl);"><div class="name" style="color:var(--c1);">Lévétiracétam — 1ère ligne large spectre</div><div class="badge" style="background:var(--c1);color:white;">Peu d'interactions</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Lévétiracétam<span class="princeps">Keppra · Génériques</span><span class="vol-data">📦 5M boîtes · 8,50€ · 43M€/an</span></div>
+          <div class="drug-dose">500 → 1500 mg ×2/j · Titration sur 2–4 sem · Pas de dosage plasmatique nécessaire</div>
+          <div class="drug-watch">Irritabilité/agressivité 10% (surtout enfant/ado → prévenir famille) · Somnolence initiale · PAS d'interaction CYP → idéal si polymédiqué · OK grossesse (données rassurantes)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fce4ec;"><div class="name" style="color:#880e4f;">Lamotrigine — 1ère ligne focale + généralisée</div><div class="badge" style="background:#ad1457;color:white;">Titration LENTE</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Lamotrigine<span class="princeps">Lamictal · Génériques</span><span class="vol-data">📦 4M boîtes · 6,20€ · 25M€/an</span></div>
+          <div class="drug-dose">25 mg/j sem 1–2 → 50 mg sem 3–4 → 100–200 mg/j · Si valproate associé : demi-dose (interaction PK)</div>
+          <div class="drug-watch">Stevens-Johnson/Lyell si titration trop rapide (1/1000 → 1/100 si rapide) · JAMAIS sauter les paliers · Pilule EP ↓ lamotrigine 50% (ajuster dose) · Préférée en grossesse (avec lévétiracétam)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#ffebee;"><div class="name" style="color:#b71c1c;">Valproate — CI femme fertile</div><div class="badge" style="background:#b71c1c;color:white;">ANSM restriction</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Valproate de sodium<span class="princeps">Dépakine · Dépakine Chrono · Micropakine</span><span class="vol-data">📦 3M boîtes · 5,80€ · 17M€/an</span></div>
+          <div class="drug-dose">Adulte : 600–2000 mg/j en 2 prises · Dosage plasmatique cible 50–100 mg/L · Chrono = LP ne PAS écraser</div>
+          <div class="drug-watch">TÉRATOGÈNE MAJEUR (10% malfo + 30–40% neurodéveloppement) · Hépatotoxicité (BHC /6 mois) · Prise de poids · Tremblements · Alopécie · Pancréatite rare · Inhibe CYP → ↑ lamotrigine ×2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fff3e0;"><div class="name" style="color:#e65100;">Carbamazépine — Focale (inducteur)</div><div class="badge" style="background:#bf360c;color:white;">Inducteur CYP</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Carbamazépine<span class="princeps">Tégrétol · Tégrétol LP · Génériques</span><span class="vol-data">📦 2M boîtes · 4,50€ · 9M€/an</span></div>
+          <div class="drug-dose">200 mg ×2/j → titrer · Cible plasmatique 4–12 mg/L · LP = 2 prises/j · NE PAS écraser LP</div>
+          <div class="drug-watch">INDUCTEUR CYP3A4 puissant → ↓ pilule, AVK, NACO, statines, ciclosporine · Hyponatrémie (sujet âgé) · SJS (HLA-B*15:02 Asie SE) · NFS : agranulocytose rare · Auto-induction (dose ↑ nécessaire à 1 mois)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e0f2f1;"><div class="name" style="color:#004d40;">Autres antiépileptiques courants</div><div class="badge" style="background:#00695c;color:white;">2ème ligne</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Topiramate<span class="princeps">Epitomax · Génériques</span><span class="vol-data">📦 2M boîtes · 8€</span></div>
+          <div class="drug-dose">25 → 200 mg/j · Titration lente · Aussi migraine</div>
+          <div class="drug-watch">Lithiases rénales (hydratation ++) · Troubles cognitifs ("cerveau ralenti") · Perte poids · ↓ pilule (inducteur) · Tératogène (fentes labiales)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Lacosamide<span class="princeps">Vimpat</span><span class="vol-data">📦 1M boîtes · 45€</span></div>
+          <div class="drug-dose">50 → 200 mg ×2/j · Peu d'interactions · Bien toléré</div>
+          <div class="drug-watch">Allongement PR (ECG avant si cardio) · Vertiges, diplopie · Bonne tolérance globale</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Phénytoïne<span class="princeps">Di-Hydan · Dilantin</span><span class="vol-data">📦 0,5M boîtes · ancien</span></div>
+          <div class="drug-dose">Cinétique non linéaire · Dosage plasmatique OBLIGATOIRE (15–20 mg/L) · Marge thérapeutique étroite</div>
+          <div class="drug-watch">Inducteur CYP majeur · Hyperplasie gingivale · Hirsutisme · Ostéomalacie · Neuropathie · En retrait en France (2ème ligne)</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff9c4;border-radius:7px;padding:3mm;border-left:3px solid #f9a825;margin-top:1mm;">
+      <div style="font-size:6pt;font-weight:700;color:#e65100;text-transform:uppercase;margin-bottom:1.5mm;">Substitution générique — Marge étroite</div>
+      <div style="font-size:6pt;color:#37474f;">Antiépileptiques = marge thérapeutique étroite · Substitution de marque peut déstabiliser (biodisponibilité ±20%) · ANSM recommande : <b>garder le MÊME générique</b> une fois équilibré · Si changement imposé → surveillance clinique + dosage plasmatique</div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Choix selon type</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Focale</div><div class="content">Lévétiracétam ou Lamotrigine</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Généralisée</div><div class="content">Valproate (H) ou Lamotrigine (F)</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Absence enfant</div><div class="content">Éthosuximide ou Valproate</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Grossesse</div><div class="content">Lamotrigine ou Lévétiracétam</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">JAMAIS arrêt brutal → crises en cascade, état de mal · Sevrage TOUJOURS progressif sur semaines</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Valproate + femme fertile → vérifier formulaire d'accord · Contraception efficace · β-hCG récent</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Changement de générique → garder le même fabricant si équilibré · Signaler tout symptôme nouveau</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#b71c1c;">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Carbamazépine/Phénytoïne + Pilule</div><div class="inter-effect">Inducteurs CYP3A4 → ↓ efficacité contraceptive → DIU ou préservatif</div></div>
+      <div class="inter-item"><div class="inter-drug">Valproate + Lamotrigine</div><div class="inter-effect">Valproate inhibe métabolisme lamotrigine ×2 → réduire dose lamotrigine de 50%</div></div>
+      <div class="inter-item"><div class="inter-drug">Carbamazépine + AVK/NACO</div><div class="inter-effect">↓ concentration anticoagulant → risque embolie · Contrôle INR systématique</div></div>
+      <div class="inter-item"><div class="inter-drug">Pilule EP + Lamotrigine</div><div class="inter-effect">EP ↑ clairance lamotrigine 50% → sous-dosage → crises · Ajuster dose selon cycle</div></div>
+      <div class="inter-item"><div class="inter-drug">Tramadol + Antiépileptiques</div><div class="inter-effect">Tramadol ↓ seuil épileptogène → risque convulsions · Préférer paracétamol</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"La pharmacie m'a donné un autre générique"</div><div class="speech-hide">Marge thérapeutique étroite · Changement de fabricant peut modifier biodisponibilité · Risque crise si sous-dosage</div><div class="speech-resp">Essayer de garder le même fabricant · Si changement → surveiller 2–4 sem · Dosage plasmatique si doute</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pas eu de crise depuis 2 ans, j'arrête ?"</div><div class="speech-hide">Arrêt = décision médicale spécialisée · Sevrage progressif sur 3–6 mois minimum · Rechute 30–50% dans les 2 ans</div><div class="speech-resp">JAMAIS seul → neurologue · Sevrage très progressif · Risque rechute 30–50% · Conduite = arrêt 6 mois après sevrage</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je suis enceinte et je prends Dépakine"</div><div class="speech-hide">URGENCE ABSOLUE · Valproate = 10% malformations + 30–40% retard neuro · Switch urgent lamotrigine sous couvert neurologue</div><div class="speech-resp">Urgence → neurologue IMMÉDIAT · Ne PAS arrêter seule (état de mal) · Switch guidé par spécialiste</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai une éruption cutanée sous Lamictal"</div><div class="speech-hide">Éruption sous lamotrigine = URGENCE (Stevens-Johnson/Lyell possible) · Surtout si titration rapide ou association valproate</div><div class="speech-resp">ARRÊT immédiat + urgences · Stevens-Johnson possible · Ne jamais reprendre sans avis dermato/neuro</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Épilepsie · Antiépileptiques · Valproate · Lamotrigine · Lévétiracétam · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pratique comptoir · 80/20</span>
+</div>
+</body>
+</html>
