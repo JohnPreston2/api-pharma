@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Obésité & GLP-1 — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #1a237e; --c2: #283593; --c3: #5c6bc0;
+    --cl: #e8eaf6; --cm: #c5cae9;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .diag-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .diag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-bottom: 1.5mm; }
+  .diag-item { background: white; border-radius: 5px; padding: 2mm 2.5mm; border-top: 2.5px solid var(--c2); }
+  .diag-item .val { font-size: 8.5pt; font-weight: 800; color: var(--c2); line-height: 1; }
+  .diag-item .lbl { font-size: 5.5pt; color: #37474f; margin-top: 0.5mm; }
+  .imc-table { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .imc-row { display: grid; grid-template-columns: 14mm 1fr; gap: 1.5mm; margin-bottom: 1mm; align-items: center; }
+  .imc-row:last-child { margin-bottom: 0; }
+  .imc-val { font-size: 7pt; font-weight: 800; border-radius: 4px; padding: 1.5mm 2mm; text-align: center; color: white; }
+  .imc-label { font-size: 6pt; color: #37474f; font-weight: 500; }
+  .imc-label b { color: var(--c1); }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 32mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Obésité & Agonistes GLP-1</h1>
+    <div class="subtitle">Fiche officine · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">17%</span><span class="lbl">Adultes FR obèses</span></div>
+    <div class="stat-pill"><span class="val">–15%</span><span class="lbl">Poids sous sémaglutide</span></div>
+    <div class="stat-pill"><span class="val">IMC≥30</span><span class="lbl">Seuil obésité</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Wegovy ≠ Ozempic (même molécule, doses différentes)</span>
+  <span class="tag">Titration lente = moins de nausées</span>
+  <span class="tag">Conservation frigo 2–8°C</span>
+  <span class="tag">Reprise poids fréquente à l'arrêt</span>
+  <span class="tag">Orlistat OTC = stéatorrhée</span>
+  <span class="tag">Chirurgie si IMC ≥ 40 ou ≥ 35 + comorbidités</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Classification IMC</div>
+    <div class="imc-table">
+      <div class="imc-row"><div class="imc-val" style="background:#4caf50;">18.5–25</div><div class="imc-label"><b>Normal</b></div></div>
+      <div class="imc-row"><div class="imc-val" style="background:#ff9800;">25–30</div><div class="imc-label"><b>Surpoids</b> · RHD seule sauf comorbidités</div></div>
+      <div class="imc-row"><div class="imc-val" style="background:#f44336;">30–35</div><div class="imc-label"><b>Obésité I</b> · RHD + médicament si comorbidités</div></div>
+      <div class="imc-row"><div class="imc-val" style="background:#c62828;">35–40</div><div class="imc-label"><b>Obésité II</b> · Médicament + discussion chirurgie</div></div>
+      <div class="imc-row"><div class="imc-val" style="background:#b71c1c;">≥ 40</div><div class="imc-label"><b>Obésité III</b> (morbide) · Chirurgie bariatrique discutée</div></div>
+    </div>
+
+    <div class="section-label">Comorbidités associées</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">💓 HTA · Dyslipidémie · Insuffisance cardiaque</div>
+        <div class="cascade-step">🩸 Diabète type 2 · Insulinorésistance · Stéatose hépatique (NASH)</div>
+        <div class="cascade-step">😴 SAHOS (apnée du sommeil) · Arthrose (genoux, hanches)</div>
+        <div class="cascade-step">🧠 Dépression · Stigmatisation · Trouble du comportement alimentaire</div>
+      </div>
+    </div>
+
+    <div class="section-label">Tour de taille — Risque métabolique</div>
+    <div class="diag-card">
+      <div class="diag-row">
+        <div class="diag-item"><div class="val">≥ 94 cm</div><div class="lbl">Homme — risque ↑</div></div>
+        <div class="diag-item"><div class="val">≥ 80 cm</div><div class="lbl">Femme — risque ↑</div></div>
+        <div class="diag-item"><div class="val">≥ 102 cm</div><div class="lbl">Homme — risque élevé</div></div>
+        <div class="diag-item"><div class="val">≥ 88 cm</div><div class="lbl">Femme — risque élevé</div></div>
+      </div>
+    </div>
+
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #b71c1c;">
+      <div style="font-size:6pt;font-weight:700;color:#b71c1c;margin-bottom:1.5mm;text-transform:uppercase;">CI / Précautions GLP-1</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ ATCD personnel ou familial carcinome médullaire thyroïdien (CMT)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ NEM2 (néoplasie endocrinienne multiple type 2)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ ATCD pancréatite → prudence (signal pancréatite rare)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ Grossesse CI (arrêt ≥ 2 mois avant conception pour sémaglutide)</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e8eaf6;">
+        <div class="name" style="color:var(--c1);">Sémaglutide SC — Agoniste GLP-1</div>
+        <div class="badge" style="background:var(--c1);color:white;">Révolution 2022</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Sémaglutide 2,4 mg/sem<span class="princeps">Wegovy (obésité)</span><span class="vol-data">📦 AMM 2022 FR · ~250€/mois · Pénuries fréquentes</span></div>
+          <div class="drug-dose">Titration : 0,25 → 0,5 → 1 → 1,7 → 2,4 mg/sem SC · Paliers de 4 semaines · Jour fixe, heure indifférente</div>
+          <div class="drug-watch">Nausées 40% (↓ en 4–8 sem → titration lente = clé) · Diarrhée/constipation · Perte masse musculaire → activité physique essentielle · Pancréatite rare · Reprise poids 2/3 à l'arrêt (STEP 4 trial)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Sémaglutide 1 mg/sem<span class="princeps">Ozempic (DT2 uniquement)</span><span class="vol-data">📦 AMM diabète · PAS remboursé en obésité seule</span></div>
+          <div class="drug-dose">0,25 → 0,5 → 1 → 2 mg/sem SC · AMM = DT2 uniquement</div>
+          <div class="drug-watch">Ozempic ≠ Wegovy : même DCI mais AMM différente · Prescription hors AMM pour obésité = non remboursée · Pénuries impact diabétiques</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#f3e5f5;">
+        <div class="name" style="color:#4a148c;">Tirzépatide — Double agoniste GIP/GLP-1</div>
+        <div class="badge" style="background:#6a1b9a;color:white;">Nouveau 2023</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tirzépatide 5–10–15 mg/sem<span class="princeps">Mounjaro (DT2) · Zepbound (obésité, AMM US)</span><span class="vol-data">📦 AMM EU DT2 2023 · Obésité en cours FR</span></div>
+          <div class="drug-dose">2,5 → 5 → 7,5 → 10 → 12,5 → 15 mg/sem SC · Paliers 4 sem · Perte poids –20% (SURMOUNT-1)</div>
+          <div class="drug-watch">Nausées/vomissements (idem classe, titration lente) · Plus puissant que sémaglutide sur poids · CMT/NEM2 = CI · Conservation frigo · AMM obésité FR attendue 2025–2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e8f5e9;">
+        <div class="name" style="color:#1b5e20;">Liraglutide — Agoniste GLP-1 quotidien</div>
+        <div class="badge" style="background:#2e7d32;color:white;">Quotidien</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Liraglutide 3 mg/j<span class="princeps">Saxenda (obésité)</span><span class="vol-data">📦 AMM obésité 2015 · ~300€/mois · Non remboursé</span></div>
+          <div class="drug-dose">0,6 → 1,2 → 1,8 → 2,4 → 3 mg/j SC · Paliers 1 sem · Injection quotidienne</div>
+          <div class="drug-watch">Perte poids –8% (moins que sémaglutide) · Injection QUOTIDIENNE (vs hebdo) → observance moindre · Mêmes EI classe · Non remboursé</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fff3e0;">
+        <div class="name" style="color:#e65100;">Orlistat — Inhibiteur lipases</div>
+        <div class="badge" style="background:#bf360c;color:white;">OTC 60 mg</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Orlistat 60 mg (OTC) / 120 mg (Rx)<span class="princeps">Alli 60 mg OTC · Xenical 120 mg</span><span class="vol-data">📦 2M boîtes · 25–40€/mois</span></div>
+          <div class="drug-dose">60–120 mg × 3/j PENDANT repas contenant des graisses · Si repas sans gras → sauter la dose</div>
+          <div class="drug-watch">Stéatorrhée +++ (selles grasses, urgences fécales → prévenir !) · Flatulences huileuses · ↓ absorption vitamines liposolubles (A, D, E, K) → supplémenter · ↓ absorption pilule contraceptive si diarrhée</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fafafa;">
+        <div class="name" style="color:#546e7a;">Chirurgie Bariatrique — Repère officine</div>
+        <div class="badge" style="background:#607d8b;color:white;">IMC ≥ 40 ou ≥ 35+</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Sleeve gastrectomie · Bypass gastrique · Anneau<span class="princeps">Actes chirurgicaux</span></div>
+          <div class="drug-dose">Suivi nutritionnel à vie · Supplémentation vitamines B12, fer, calcium, D obligatoire · Fractionnement repas</div>
+          <div class="drug-watch">Formes LP/grands comprimés = CI post-bypass (malabsorption) · Vérifier TOUTES les formes galéniques · Dumping syndrome (sucres rapides) · Suivi biologique /6 mois</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie HAS 2023</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Base</div><div class="content">RHD + activité physique</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">IMC ≥ 30 + comorbidité</div><div class="content">GLP-1 (sémaglutide)</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">IMC ≥ 35 + échec</div><div class="content">Discussion chirurgie</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">IMC ≥ 40</div><div class="content">Chirurgie bariatrique</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 NOUVEAUTÉS 2022–2026</span>
+  <span class="n-text"><strong>Wegovy (sémaglutide 2,4 mg)</strong> AMM obésité 2022 · Perte –15% poids · <strong>Tirzépatide (Mounjaro)</strong> dual GIP/GLP-1 : –20% poids · AMM EU DT2 2023, obésité en cours · <strong>SELECT trial 2023</strong> : sémaglutide réduit événements CV –20% chez obèses non diabétiques · <strong>Orforglipron</strong> (GLP-1 oral) : phase 3 en cours, potentielle révolution si pas d'injection · Pénuries Ozempic/Wegovy mondiales 2023-2025</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Ozempic ≠ Wegovy : même molécule mais AMM différente · Ozempic n'est PAS remboursé pour l'obésité seule · Ne pas confondre</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Nausées GLP-1 : la titration lente est la CLÉ · Manger peu et lentement · Éviter aliments gras · Ça s'améliore en 4–8 semaines</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Post-chirurgie bariatrique : vérifier CHAQUE médicament (formes LP, grands cp = CI) · Supplémentation vitamines À VIE</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions & Alertes</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">GLP-1 + Sulfamides/Insuline</div><div class="inter-effect">↑ risque hypoglycémie → réduire dose sulfamide/insuline dès initiation</div></div>
+      <div class="inter-item"><div class="inter-drug">GLP-1 + Contraceptifs oraux</div><div class="inter-effect">Ralentissement vidange gastrique → absorption retardée · Efficacité probablement maintenue mais préservatif en titration</div></div>
+      <div class="inter-item"><div class="inter-drug">Orlistat + Ciclosporine/Lévothyroxine/AVK</div><div class="inter-effect">↓ absorption par malabsorption graisses → espacer ≥ 2h · Contrôler INR et TSH</div></div>
+      <div class="inter-item"><div class="inter-drug">Post-bypass + Formes LP/Entériques</div><div class="inter-effect">Malabsorption → formes LP inefficaces, préférer formes LI ou liquides</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Je voudrais Ozempic pour perdre du poids"</div><div class="speech-hide">Ozempic = AMM DT2 uniquement · Wegovy = AMM obésité · Prescription hors AMM non remboursée · Pénuries impactent les diabétiques</div><div class="speech-resp">Orienter vers médecin · Wegovy = AMM obésité · Ozempic réservé DT2 · Pénuries en cours</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai des nausées terribles depuis le Wegovy"</div><div class="speech-hide">Nausées = EI #1 des GLP-1 (40%) · Dose-dépendant · Titration trop rapide = cause principale · S'atténue en 4–8 semaines</div><div class="speech-resp">Titration trop rapide ? Manger petit + lentement · Éviter gras · Discuter avec médecin pour palier plus long</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris Alli et j'ai eu des accidents au bureau"</div><div class="speech-hide">Orlistat = stéatorrhée (selles grasses, urgences fécales) = effet pharmacologique attendu si repas gras · Pas un EI au sens strict</div><div class="speech-resp">Normal si repas gras · Réduire les graisses alimentaires · Sauter la dose si repas sans gras</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté Wegovy il y a 3 mois, j'ai tout repris"</div><div class="speech-hide">Reprise pondérale 2/3 du poids perdu dans l'année suivant l'arrêt (STEP 4) · L'obésité est une maladie chronique, pas un traitement ponctuel</div><div class="speech-resp">Reprise fréquente → traitement au long cours · Activité physique + RHD = maintien · Discuter durée avec médecin</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Obésité · GLP-1 · Sémaglutide · Tirzépatide · Orlistat · Chirurgie bariatrique · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pratique comptoir · 80/20</span>
+</div>
+</body>
+</html>

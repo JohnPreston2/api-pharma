@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>10 Interactions Dangereuses — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #b71c1c; --c2: #c62828; --c3: #ef5350;
+    --cl: #ffebee; --cm: #ffcdd2;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #880e4f 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 18pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #880e4f; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .interactions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; padding: 5mm 8mm 3mm; }
+
+  .inter-card { border-radius: 7px; overflow: hidden; border: 1px solid #e0e0e0; }
+  .inter-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .inter-header .num { font-size: 11pt; font-weight: 900; color: white; background: var(--c1); width: 6mm; height: 6mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .inter-header .title { font-size: 7pt; font-weight: 800; flex: 1; margin-left: 2mm; }
+  .inter-header .sev { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .sev-ci { background: #b71c1c; color: white; }
+  .sev-ad { background: #e65100; color: white; }
+  .sev-pe { background: #f9a825; color: #4a148c; }
+  .inter-body { background: white; padding: 2.5mm 3mm; }
+  .inter-assoc { font-size: 7pt; font-weight: 700; color: var(--c1); margin-bottom: 1mm; }
+  .inter-meca { font-size: 6pt; color: #37474f; margin-bottom: 1mm; line-height: 1.4; }
+  .inter-risque { font-size: 6pt; color: #b71c1c; font-weight: 600; margin-bottom: 1mm; }
+  .inter-risque::before { content: '⚠ '; }
+  .inter-cad { font-size: 5.5pt; color: #1b5e20; font-weight: 600; background: #e8f5e9; border-radius: 4px; padding: 1mm 2mm; }
+  .inter-cad::before { content: '✅ '; }
+  .inter-freq { font-size: 5pt; color: #546e7a; margin-top: 1mm; font-style: italic; }
+
+  .bg-1 .inter-header { background: #ffebee; }
+  .bg-1 .inter-header .title { color: #b71c1c; }
+  .bg-2 .inter-header { background: #fce4ec; }
+  .bg-2 .inter-header .title { color: #880e4f; }
+  .bg-3 .inter-header { background: #f3e5f5; }
+  .bg-3 .inter-header .title { color: #4a148c; }
+  .bg-4 .inter-header { background: #e8eaf6; }
+  .bg-4 .inter-header .title { color: #1a237e; }
+  .bg-5 .inter-header { background: #e1f5fe; }
+  .bg-5 .inter-header .title { color: #01579b; }
+  .bg-6 .inter-header { background: #e0f2f1; }
+  .bg-6 .inter-header .title { color: #004d40; }
+  .bg-7 .inter-header { background: #fff3e0; }
+  .bg-7 .inter-header .title { color: #e65100; }
+  .bg-8 .inter-header { background: #fff8e1; }
+  .bg-8 .inter-header .title { color: #f57f17; }
+  .bg-9 .inter-header { background: #e8f5e9; }
+  .bg-9 .inter-header .title { color: #1b5e20; }
+  .bg-10 .inter-header { background: #efebe9; }
+  .bg-10 .inter-header .title { color: #4e342e; }
+
+  .footer-box { padding: 3mm 8mm 5mm; }
+  .memo-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .memo-title { font-size: 6pt; font-weight: 700; color: var(--c1); text-transform: uppercase; margin-bottom: 2mm; }
+  .memo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
+  .memo-item { font-size: 5.5pt; color: #37474f; background: white; border-radius: 4px; padding: 1.5mm 2mm; border-left: 2.5px solid var(--c2); }
+  .memo-item b { color: var(--c1); }
+
+  .footer-strip { background: #880e4f; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>10 Interactions Dangereuses</h1>
+    <div class="subtitle">Les pires au comptoir · Fiche transversale · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">10</span><span class="lbl">Interactions mortelles</span></div>
+    <div class="stat-pill"><span class="val">30%</span><span class="lbl">Hospitalisations iatrogènes</span></div>
+    <div class="stat-pill"><span class="val">#1</span><span class="lbl">AINS en cause</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Triplette mortelle AINS+IEC+diurétique</span>
+  <span class="tag">AVK+AINS = hémorragie</span>
+  <span class="tag">Tramadol+ISRS = sérotonine</span>
+  <span class="tag">BZD+opioïdes = dépression respi</span>
+  <span class="tag">Millepertuis = inducteur universel</span>
+  <span class="tag">Pamplemousse+statines</span>
+</div>
+
+<div class="interactions-grid">
+
+  <!-- 1 -->
+  <div class="inter-card bg-1">
+    <div class="inter-header">
+      <div class="num">1</div>
+      <div class="title">Triplette Mortelle</div>
+      <div class="sev sev-ci">CI</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">AINS + IEC/ARA2 + Diurétique</div>
+      <div class="inter-meca">AINS bloquent les prostaglandines rénales → IEC/ARA2 dilatent l'artériole efférente → diurétique déshydrate = triple agression rénale</div>
+      <div class="inter-risque">IRA aiguë en 48–72h · Hyperkaliémie · Potentiellement mortelle chez le sujet âgé</div>
+      <div class="inter-cad">Paracétamol systématiquement · Alerter dès qu'un patient HTA/IC demande un AINS OTC</div>
+      <div class="inter-freq">Fréquence comptoir : quotidienne (ibuprofène en automédication)</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="inter-card bg-2">
+    <div class="inter-header">
+      <div class="num">2</div>
+      <div class="title">Anticoagulant + AINS</div>
+      <div class="sev sev-ci">CI</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">AVK ou NACO + Ibuprofène / Aspirine / Naproxène</div>
+      <div class="inter-meca">AINS = anti-agrégant + ulcérogène gastrique · AVK/NACO = anticoagulant → synergie hémorragique majeure</div>
+      <div class="inter-risque">Hémorragie digestive haute × 5–10 · Risque vital · 1ère cause d'hospitalisation iatrogène</div>
+      <div class="inter-cad">Paracétamol seul · Vérifier AVK/NACO dans l'historique AVANT toute dispensation AINS</div>
+      <div class="inter-freq">Fréquence comptoir : hebdomadaire (patient qui "oublie" son anticoagulant)</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="inter-card bg-3">
+    <div class="inter-header">
+      <div class="num">3</div>
+      <div class="title">Syndrome Sérotoninergique</div>
+      <div class="sev sev-ad">AD</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Tramadol + ISRS (fluoxétine, sertraline, paroxétine) ou Triptans</div>
+      <div class="inter-meca">Tramadol = inhibiteur recapture sérotonine · ISRS idem · Addition = excès sérotonine synaptique</div>
+      <div class="inter-risque">Agitation, hyperthermie &gt;40°C, clonus, confusion, rigidité → urgence vitale</div>
+      <div class="inter-cad">Préférer paracétamol/codéine si antalgique nécessaire sous ISRS · Alerter si prescription tramadol + ISRS</div>
+      <div class="inter-freq">Fréquence comptoir : fréquente (tramadol très prescrit, dépression très prévalente)</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="inter-card bg-4">
+    <div class="inter-header">
+      <div class="num">4</div>
+      <div class="title">Dépression Respiratoire</div>
+      <div class="sev sev-ci">CI</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Opioïdes (morphine, fentanyl, codéine) + BZD (alprazolam, zolpidem) ± Alcool</div>
+      <div class="inter-meca">Dépression centrale additive : opioïde (mu) + BZD (GABA) + alcool = abolition réflexe respiratoire</div>
+      <div class="inter-risque">Apnée, coma, décès · FDA black box warning · Risque majoré sujet âgé et BPCO</div>
+      <div class="inter-cad">Éduquer patient sur alcool · Si prescrit ensemble : doses minimales + surveillance · Naloxone à domicile si opioïdes forts</div>
+      <div class="inter-freq">Fréquence comptoir : fréquente (polymédication sujet âgé)</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="inter-card bg-5">
+    <div class="inter-header">
+      <div class="num">5</div>
+      <div class="title">Millepertuis — Inducteur Universel</div>
+      <div class="sev sev-ci">CI</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Millepertuis + Pilule / AVK / Ciclosporine / ISRS / Digoxine / NACO</div>
+      <div class="inter-meca">Inducteur puissant CYP3A4, CYP2C9, P-gp → accélère métabolisme de dizaines de médicaments</div>
+      <div class="inter-risque">↓ Pilule → grossesse · ↓ AVK → embolie · ↓ Ciclosporine → rejet greffe · + ISRS → syndrome sérotonine</div>
+      <div class="inter-cad">TOUJOURS demander "Prenez-vous des plantes ?" · Millepertuis OTC = piège · Arrêt = effet retour en 2 semaines</div>
+      <div class="inter-freq">Fréquence comptoir : sous-estimée ("c'est naturel, c'est sans risque")</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="inter-card bg-6">
+    <div class="inter-header">
+      <div class="num">6</div>
+      <div class="title">Hyperkaliémie Létale</div>
+      <div class="sev sev-ad">AD</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">IEC/ARA2 + Spironolactone + Sel de régime (KCl) ± AINS ± Cotrimoxazole</div>
+      <div class="inter-meca">IEC/ARA2 = ↓ excrétion K+ · Spironolactone = épargne K+ · KCl = apport direct · AINS = ↓ DFG</div>
+      <div class="inter-risque">K+ &gt; 6 mmol/L → arythmie ventriculaire → arrêt cardiaque · Sujet âgé + IRC = terrain à risque maximal</div>
+      <div class="inter-cad">Sel de régime = KCl → INTERDIRE si IEC + ARM · Demander systématiquement · Contrôle K+ et créat J7–J14</div>
+      <div class="inter-freq">Fréquence comptoir : sous-estimée (sel de régime = OTC anodin en apparence)</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="inter-card bg-7">
+    <div class="inter-header">
+      <div class="num">7</div>
+      <div class="title">Pamplemousse + Statines</div>
+      <div class="sev sev-ci">CI simva</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Pamplemousse (jus ou fruit) + Simvastatine (CI) · Atorvastatine (prudence)</div>
+      <div class="inter-meca">Furanocoumarines du pamplemousse inhibent CYP3A4 intestinal → ↑ concentration statine × 5–15</div>
+      <div class="inter-risque">Rhabdomyolyse (myoglobinurie → IRA) · Myalgies sévères · Urines foncées = urgence</div>
+      <div class="inter-cad">CI absolue simvastatine · Atorvastatine : moindre risque · Rosuvastatine/Pravastatine = OK</div>
+      <div class="inter-freq">Fréquence comptoir : question fréquente (patient informé par les médias)</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="inter-card bg-8">
+    <div class="inter-header">
+      <div class="num">8</div>
+      <div class="title">Méthotrexate + AINS</div>
+      <div class="sev sev-ad">AD</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Méthotrexate (Novatrex, Imeth) + Ibuprofène / Kétoprofène / Naproxène</div>
+      <div class="inter-meca">AINS ↓ clairance rénale MTX par compétition tubulaire → accumulation toxique</div>
+      <div class="inter-risque">Pancytopénie · Hépatite toxique · Mucite · Potentiellement fatal à forte dose MTX</div>
+      <div class="inter-cad">Paracétamol TOUJOURS · Si AINS nécessaire : durée mini + dose mini + contrôle NFS · Corticoïdes faible dose en relais</div>
+      <div class="inter-freq">Fréquence comptoir : régulière (PR + douleur = patient tente l'ibuprofène OTC)</div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="inter-card bg-9">
+    <div class="inter-header">
+      <div class="num">9</div>
+      <div class="title">Vérapamil/Diltiazem + BB</div>
+      <div class="sev sev-ci">CI</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Vérapamil ou Diltiazem + β-bloquant (bisoprolol, métoprolol, aténolol)</div>
+      <div class="inter-meca">Double freinage nœud AV : ICa non-DHP (inotrope/chronotrope négatif) + BB (chronotrope négatif)</div>
+      <div class="inter-risque">BAV complet · Bradycardie sévère · Choc cardiogénique · CI absolue</div>
+      <div class="inter-cad">Amlodipine + BB = OK (DHP ≠ non-DHP) · Vérifier CHAQUE ICa prescrit : DHP vs non-DHP</div>
+      <div class="inter-freq">Fréquence comptoir : rare mais mortelle si manquée</div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="inter-card bg-10">
+    <div class="inter-header">
+      <div class="num">10</div>
+      <div class="title">Colchicine + CYP3A4 Inhib.</div>
+      <div class="sev sev-ci">CI</div>
+    </div>
+    <div class="inter-body">
+      <div class="inter-assoc">Colchicine + Clarithromycine / Kétoconazole / Vérapamil / Ciclosporine</div>
+      <div class="inter-meca">Colchicine a un index thérapeutique très étroit · Inhibition CYP3A4 + P-gp → accumulation toxique rapide</div>
+      <div class="inter-risque">Myopathie · Neuropathie · Pancytopénie · Défaillance multi-organes · Décès rapportés</div>
+      <div class="inter-cad">Si antibiotique nécessaire pendant crise de goutte : éviter macrolides → amoxicilline · Réduire dose colchicine de 50%</div>
+      <div class="inter-freq">Fréquence comptoir : rare mais gravissime quand elle survient</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-box">
+  <div class="memo-card">
+    <div class="memo-title">Mémo rapide — Réflexes comptoir</div>
+    <div class="memo-grid">
+      <div class="memo-item"><b>AINS demandé ?</b> → Vérifier : HTA, IC, IRC, AVK/NACO, IEC, diurétique, MTX, grossesse, âge</div>
+      <div class="memo-item"><b>Plantes / phyto ?</b> → Millepertuis = bombe à interactions · Toujours demander</div>
+      <div class="memo-item"><b>Opioïde + BZD ?</b> → Éduquer sur alcool · Vérifier la prescription · Alerter si ajout</div>
+      <div class="memo-item"><b>Antibiotique + AVK ?</b> → Contrôle INR à J3–J4 systématique (quinolones, métronidazole, cotrimoxazole)</div>
+      <div class="memo-item"><b>Sel de régime ?</b> → KCl = danger si IEC + ARM → patient ne sait souvent pas</div>
+      <div class="memo-item"><b>Pamplemousse ?</b> → CI simvastatine · Prudence atorvastatine · OK rosuvastatine/pravastatine</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Interactions · AINS · AVK · ISRS · Opioïdes · Millepertuis · CYP · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Fiche transversale · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

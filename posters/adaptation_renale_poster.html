@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Adaptation Rénale — Tableau DFG × Molécules</title>
+<style>
+  :root {
+    --c1: #0d47a1; --c2: #1565c0; --c3: #42a5f5;
+    --cl: #e3f2fd; --cm: #bbdefb;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 8mm 8mm 6mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 18pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+
+  .stades-bar { background: var(--c1); padding: 2mm 8mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; }
+  .stade { border-radius: 5px; padding: 1.5mm 2mm; text-align: center; }
+  .stade .v { font-size: 7pt; font-weight: 800; color: white; }
+  .stade .l { font-size: 5pt; color: rgba(255,255,255,0.8); }
+  .s1 { background: #4caf50; }
+  .s2 { background: #8bc34a; }
+  .s3 { background: #ff9800; }
+  .s4 { background: #f44336; }
+  .s5 { background: #b71c1c; }
+
+  .main-table { padding: 4mm 8mm 3mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 6pt; }
+  thead th { background: var(--c1); color: white; padding: 2mm 2mm; font-size: 5.5pt; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 0.3px; }
+  thead th:first-child { text-align: left; border-radius: 5px 0 0 0; }
+  thead th:last-child { border-radius: 0 5px 0 0; }
+  tbody td { padding: 1.5mm 2mm; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  .mol { font-weight: 700; color: var(--c1); font-size: 6.5pt; }
+  .mol-sub { font-size: 5pt; color: #546e7a; font-style: italic; }
+  .ok { color: #1b5e20; font-weight: 600; text-align: center; }
+  .adapt { color: #e65100; font-weight: 600; text-align: center; }
+  .ci { color: #b71c1c; font-weight: 700; text-align: center; background: #ffebee; }
+  .prud { color: #f57f17; font-weight: 600; text-align: center; }
+  .note { font-size: 5pt; color: #546e7a; }
+
+  .cat-header td { background: var(--cl); font-weight: 800; color: var(--c1); font-size: 6pt; text-transform: uppercase; letter-spacing: 0.5px; padding: 2mm; border-bottom: 2px solid var(--c2); }
+
+  .footer-notes { padding: 3mm 8mm; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+  .fn-card { border-radius: 7px; padding: 3mm; }
+  .fn-green { background: #e8f5e9; border-left: 3px solid #1b5e20; }
+  .fn-orange { background: #fff3e0; border-left: 3px solid #e65100; }
+  .fn-red { background: #ffebee; border-left: 3px solid #b71c1c; }
+  .fn-title { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .fn-green .fn-title { color: #1b5e20; }
+  .fn-orange .fn-title { color: #e65100; }
+  .fn-red .fn-title { color: #b71c1c; }
+  .fn-text { font-size: 5.5pt; color: #37474f; line-height: 1.4; }
+
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Adaptation Rénale</h1>
+    <div class="subtitle">Tableau DFG × Molécules clés · Fiche transversale · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">3M</span><span class="lbl">IRC en France</span></div>
+    <div class="stat-pill"><span class="val">CKD-EPI</span><span class="lbl">Formule DFG</span></div>
+    <div class="stat-pill"><span class="val">#1</span><span class="lbl">Cause iatrogénie rénale</span></div>
+  </div>
+</div>
+
+<div class="stades-bar">
+  <div class="stade s1"><div class="v">≥ 90</div><div class="l">Stade 1 — Normal</div></div>
+  <div class="stade s2"><div class="v">60–89</div><div class="l">Stade 2 — Léger</div></div>
+  <div class="stade s3"><div class="v">30–59</div><div class="l">Stade 3 — Modéré</div></div>
+  <div class="stade s4"><div class="v">15–29</div><div class="l">Stade 4 — Sévère</div></div>
+  <div class="stade s5"><div class="v">&lt; 15</div><div class="l">Stade 5 — Terminal</div></div>
+</div>
+
+<div class="main-table">
+<table>
+<thead>
+  <tr>
+    <th style="width:38mm;">Molécule (Princeps)</th>
+    <th style="width:26mm;">DFG ≥ 60</th>
+    <th style="width:26mm;">DFG 30–59</th>
+    <th style="width:26mm;">DFG 15–29</th>
+    <th style="width:26mm;">DFG &lt; 15</th>
+    <th style="width:42mm;">Note pratique officine</th>
+  </tr>
+</thead>
+<tbody>
+  <!-- ANTIDIABÉTIQUES -->
+  <tr class="cat-header"><td colspan="6">Antidiabétiques</td></tr>
+  <tr><td><span class="mol">Metformine</span><br><span class="mol-sub">Glucophage</span></td><td class="ok">Standard</td><td class="adapt">Max 1500 mg/j si 30–45 · Max 1000 mg si 45–60</td><td class="ci">CI</td><td class="ci">CI</td><td class="note">Arrêt jour scanner iodé · Dosage créat /3–6 mois</td></tr>
+  <tr><td><span class="mol">Dapagliflozine</span><br><span class="mol-sub">Forxiga</span></td><td class="ok">10 mg/j</td><td class="ok">10 mg/j (IC/IRC)</td><td class="adapt">Initier si ≥ 25 · Maintenir si ≥ 15</td><td class="ci">CI &lt; 15</td><td class="note">AMM IC/IRC élargie 2024 · Ne pas initier si &lt; 25</td></tr>
+  <tr><td><span class="mol">Sitagliptine</span><br><span class="mol-sub">Januvia</span></td><td class="ok">100 mg/j</td><td class="adapt">50 mg/j</td><td class="adapt">25 mg/j</td><td class="adapt">25 mg/j</td><td class="note">Seule gliptine avec 3 paliers de dose · Pas d'hypo</td></tr>
+
+  <!-- ANTICOAGULANTS -->
+  <tr class="cat-header"><td colspan="6">Anticoagulants (AOD)</td></tr>
+  <tr><td><span class="mol">Dabigatran</span><br><span class="mol-sub">Pradaxa</span></td><td class="ok">150 mg ×2/j</td><td class="adapt">110 mg ×2/j si &gt;75 ans</td><td class="ci">CI</td><td class="ci">CI</td><td class="note">Le + dépendant du rein (80% élim. rénale) · Antidote : Praxbind</td></tr>
+  <tr><td><span class="mol">Rivaroxaban</span><br><span class="mol-sub">Xarelto</span></td><td class="ok">20 mg/j + repas</td><td class="ok">20 mg (15 mg si risque hémorr.)</td><td class="adapt">15 mg/j · Prudence</td><td class="ci">CI</td><td class="note">AVEC repas obligatoire · Absorption +39% avec aliments</td></tr>
+  <tr><td><span class="mol">Apixaban</span><br><span class="mol-sub">Eliquis</span></td><td class="ok">5 mg ×2/j</td><td class="ok">Standard (sauf critères)</td><td class="adapt">2,5 mg ×2/j si critères</td><td class="ci">CI</td><td class="note">Meilleur profil rénal des AOD · Critères : ≥80 ans, ≤60 kg, créat ≥133</td></tr>
+
+  <!-- ANTIHYPERTENSEURS -->
+  <tr class="cat-header"><td colspan="6">Antihypertenseurs</td></tr>
+  <tr><td><span class="mol">IEC / ARA2</span><br><span class="mol-sub">Ramipril, Valsartan</span></td><td class="ok">Standard</td><td class="ok">Néphroprotecteur · Dose standard</td><td class="adapt">Débuter bas · Surveiller K+/créat J7</td><td class="prud">Prudence extrême</td><td class="note">Bénéfice rénal prouvé · Mais K+ ↑ + créat transitoire 20–30% OK</td></tr>
+  <tr><td><span class="mol">Spironolactone</span><br><span class="mol-sub">Aldactone</span></td><td class="ok">25–50 mg/j</td><td class="adapt">25 mg/j max · K+ ++</td><td class="ci">CI si K+ &gt; 5</td><td class="ci">CI</td><td class="note">Hyperkaliémie ++ si IEC + IRC · Contrôle K+ /mois · Jamais sel de régime</td></tr>
+
+  <!-- ANTALGIQUES -->
+  <tr class="cat-header"><td colspan="6">Antalgiques</td></tr>
+  <tr><td><span class="mol">Paracétamol</span><br><span class="mol-sub">Doliprane</span></td><td class="ok">4 g/j</td><td class="ok">3–4 g/j</td><td class="adapt">3 g/j · Espacer 8h</td><td class="adapt">2–3 g/j · Espacer 8h</td><td class="note">Antalgique de choix en IRC · Seul safe à tous les stades</td></tr>
+  <tr><td><span class="mol">AINS (ibuprofène)</span><br><span class="mol-sub">Advil, Voltarène</span></td><td class="prud">Court terme</td><td class="ci">CI relative</td><td class="ci">CI absolue</td><td class="ci">CI absolue</td><td class="note">Première cause d'IRA iatrogène · Même topique CI si IRC sévère</td></tr>
+  <tr><td><span class="mol">Tramadol</span><br><span class="mol-sub">Topalgic</span></td><td class="ok">Standard</td><td class="adapt">Espacer 12h · 200 mg/j max</td><td class="adapt">100 mg/j · Espacer 12h</td><td class="ci">CI</td><td class="note">Métabolite actif accumulé · + ISRS = sérotonine</td></tr>
+  <tr><td><span class="mol">Morphine</span><br><span class="mol-sub">Skénan</span></td><td class="ok">Standard</td><td class="adapt">Réduire 25–50%</td><td class="adapt">Réduire 50–75%</td><td class="prud">Oxycodone préférée</td><td class="note">Métabolite M6G actif accumulé en IRC → surdosage · Oxycodone = alternative plus sûre</td></tr>
+
+  <!-- ANTI-INFECTIEUX -->
+  <tr class="cat-header"><td colspan="6">Anti-infectieux</td></tr>
+  <tr><td><span class="mol">Amoxicilline</span><br><span class="mol-sub">Clamoxyl</span></td><td class="ok">Standard</td><td class="ok">Standard</td><td class="adapt">Espacer 12h</td><td class="adapt">Espacer 24h</td><td class="note">Bon profil rénal · Adapter intervalle, pas la dose unitaire</td></tr>
+  <tr><td><span class="mol">Nitrofurantoïne</span><br><span class="mol-sub">Furadantine</span></td><td class="ok">Standard 5j</td><td class="adapt">Prudence si &lt; 45</td><td class="ci">CI &lt; 40</td><td class="ci">CI</td><td class="note">Concentration urinaire insuffisante si DFG bas → inefficace + toxique</td></tr>
+
+  <!-- GOUTTE -->
+  <tr class="cat-header"><td colspan="6">Goutte</td></tr>
+  <tr><td><span class="mol">Allopurinol</span><br><span class="mol-sub">Zyloric</span></td><td class="ok">100–900 mg/j</td><td class="adapt">Max 200–300 mg/j</td><td class="adapt">Max 100 mg/j</td><td class="adapt">Max 100 mg/j ou 100 mg 1j/2</td><td class="note">Titrer selon uricémie ET DFG · SJS risque si surdosage rénal</td></tr>
+  <tr><td><span class="mol">Colchicine</span><br><span class="mol-sub">Colchicine Opocalcium</span></td><td class="ok">Standard</td><td class="adapt">Réduire dose 50%</td><td class="ci">CI si DFG &lt; 30</td><td class="ci">CI</td><td class="note">Index thérapeutique étroit · Accumulation → myopathie + pancytopénie</td></tr>
+
+  <!-- DIVERS -->
+  <tr class="cat-header"><td colspan="6">Divers</td></tr>
+  <tr><td><span class="mol">Gabapentine</span><br><span class="mol-sub">Neurontin</span></td><td class="ok">300–3600 mg/j</td><td class="adapt">Max 1400 mg/j</td><td class="adapt">Max 700 mg/j</td><td class="adapt">Max 300 mg/j</td><td class="note">100% élimination rénale · Sédation ++ si surdosage · Adapter systématiquement</td></tr>
+  <tr><td><span class="mol">Prégabaline</span><br><span class="mol-sub">Lyrica</span></td><td class="ok">75–600 mg/j</td><td class="adapt">Max 300 mg/j</td><td class="adapt">Max 150 mg/j</td><td class="adapt">Max 75 mg/j</td><td class="note">Paliers proportionnels au DFG · Post-dialyse : dose supplémentaire</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer-notes">
+  <div class="fn-card fn-green">
+    <div class="fn-title">3 Réflexes Officine</div>
+    <div class="fn-text">
+      <b>1.</b> DFG &lt; 60 = vérifier CHAQUE dispensation d'AINS, gabapentine, colchicine, NACO, metformine<br>
+      <b>2.</b> Paracétamol = antalgique de choix en IRC · Max 3 g/j si DFG &lt; 30<br>
+      <b>3.</b> Tout nouveau médicament chez patient IRC → vérifier adaptation · Banque Thériaque ou GPR
+    </div>
+  </div>
+  <div class="fn-card fn-orange">
+    <div class="fn-title">Légende tableau</div>
+    <div class="fn-text">
+      <span style="color:#1b5e20;font-weight:700;">Standard</span> = dose habituelle<br>
+      <span style="color:#e65100;font-weight:700;">Adapter</span> = réduire dose ou espacer<br>
+      <span style="color:#f57f17;font-weight:700;">Prudence</span> = cas par cas, spécialiste<br>
+      <span style="color:#b71c1c;font-weight:700;">CI</span> = contre-indication formelle<br><br>
+      DFG en mL/min/1,73m² (CKD-EPI)
+    </div>
+  </div>
+  <div class="fn-card fn-red">
+    <div class="fn-title">Top 5 médicaments néphrotoxiques OTC</div>
+    <div class="fn-text">
+      <b>1.</b> AINS (ibuprofène, kétoprofène) = IRA<br>
+      <b>2.</b> IPP au long cours = néphrite interstitielle<br>
+      <b>3.</b> Lithium = IRC progressive<br>
+      <b>4.</b> Aminosides (gentamicine) = NTA<br>
+      <b>5.</b> Produits iodés (scanner) + metformine = acidose lactique
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>IRC · DFG · CKD-EPI · Adaptation posologique · Néphrotoxicité · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Fiche transversale · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>
