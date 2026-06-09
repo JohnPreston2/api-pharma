@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Corticoïdes — Guide pratique officine</title>
+<style>
+@page { size: A4 portrait; margin: 7mm; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7px;
+  line-height: 1.3;
+  color: #1a1a1a;
+  background: #fff;
+  width: 196mm;
+  min-height: 283mm;
+}
+:root {
+  --c1: #7a2200;
+  --c2: #b83410;
+  --c3: #e07050;
+  --cl: #fff8f5;
+  --cm: #4e1500;
+  --danger: #b00000;
+  --warn: #c46a00;
+  --ok: #2e7d32;
+}
+.header {
+  background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, #d44a20 100%);
+  color: white;
+  padding: 5px 8px 4px;
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.header h1 { font-size: 14px; font-weight: 900; letter-spacing: 0.8px; }
+.header .sub { font-size: 7.5px; opacity: 0.9; margin-top: 1px; }
+.header .badge { font-size: 6.5px; background: rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 10px; white-space: nowrap; }
+
+.section {
+  background: var(--cl);
+  border-left: 3px solid var(--c2);
+  border-radius: 2px;
+  padding: 4px 5px;
+  margin-bottom: 3px;
+}
+.section-title {
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--c1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid var(--c3);
+  padding-bottom: 1px;
+}
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 3px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; margin-bottom: 3px; }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 6.5px; }
+th { background: var(--c1); color: white; padding: 2px 3px; text-align: left; font-size: 6.5px; font-weight: 700; }
+td { padding: 1.5px 3px; border-bottom: 1px solid #eadcd8; vertical-align: top; }
+tr:nth-child(even) td { background: #fdf2ee; }
+
+.alert-danger { background: #fff0f0; border: 1.5px solid var(--danger); border-radius: 3px; padding: 3px 5px; margin: 2px 0; }
+.alert-danger .atitle { font-size: 7.5px; font-weight: 700; color: var(--danger); }
+.alert-warn { background: #fffaf0; border: 1.5px solid var(--warn); border-radius: 3px; padding: 3px 5px; margin: 2px 0; }
+.alert-warn .atitle { font-size: 7.5px; font-weight: 700; color: var(--warn); }
+.alert-ok { background: #f2fff2; border: 1.5px solid var(--ok); border-radius: 3px; padding: 3px 5px; margin: 2px 0; }
+.alert-ok .atitle { font-size: 7.5px; font-weight: 700; color: var(--ok); }
+
+.topo-card { border-radius: 3px; padding: 3px 5px; margin-bottom: 2px; }
+.classe1 { background: #7a2200; color: white; }
+.classe2 { background: #b83410; color: white; }
+.classe3 { background: #f0a080; color: #3a1000; }
+.classe4 { background: #fdf2ee; color: #3a1000; border: 1px solid var(--c3); }
+.topo-card .tlabel { font-size: 7.5px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 1px; margin-bottom: 2px; }
+.classe4 .tlabel { border-bottom-color: var(--c3); }
+.topo-card .tmol { font-size: 6.5px; line-height: 1.4; }
+.topo-card .trule { font-size: 6px; margin-top: 2px; opacity: 0.85; font-style: italic; }
+
+.nouveaute { background: #6c3483; color: white; padding: 1px 5px; border-radius: 2px; font-size: 6.5px; font-weight: 700; display: inline-block; margin-bottom: 2px; }
+
+.reflexes {
+  background: linear-gradient(135deg, var(--c1), var(--cm));
+  color: white;
+  padding: 4px 8px;
+  border-radius: 0 0 3px 3px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-top: 2px;
+}
+.reflex-item .rnum { font-size: 11px; font-weight: 900; opacity: 0.4; line-height: 1; }
+.reflex-item .rtxt { font-size: 6.5px; line-height: 1.35; }
+.reflex-item .rtxt b { font-size: 7px; }
+
+@media print {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <h1>💊 CORTICOÏDES — Guide pratique officine</h1>
+    <div class="sub">Systémiques · Dermocorticoïdes · Inhalés · Nasaux | Anti-inflammatoires &amp; immunosuppresseurs de référence</div>
+  </div>
+  <div class="badge">37ᵉ poster · Juin 2026</div>
+</div>
+
+<!-- ROW 1 : Équivalences + Décroissance -->
+<div class="grid2">
+
+  <div class="section">
+    <div class="section-title">⚖️ Équivalences anti-inflammatoires — corticoïdes systémiques</div>
+    <table>
+      <tr>
+        <th>Molécule (DCI)</th><th>Princeps FR</th><th>Dose équiv.</th><th>Demi-vie</th><th>Minéral.</th>
+      </tr>
+      <tr><td>Hydrocortisone</td><td>Hydrocortisone Roussel®</td><td style="font-weight:700; color:#7a2200;">20 mg</td><td>8–12 h</td><td>+++</td></tr>
+      <tr><td>Prednisone</td><td>Cortancyl®</td><td style="font-weight:700; color:#7a2200;">5 mg</td><td>12–36 h</td><td>+</td></tr>
+      <tr><td>Prednisolone</td><td>Solupred®</td><td style="font-weight:700; color:#7a2200;">5 mg</td><td>12–36 h</td><td>+</td></tr>
+      <tr><td>Méthylprednisolone</td><td>Médrol® · Solu-Médrol® IV</td><td style="font-weight:700; color:#7a2200;">4 mg</td><td>12–36 h</td><td>0</td></tr>
+      <tr><td>Triamcinolone</td><td>Kenacort® (inj. IA)</td><td style="font-weight:700; color:#7a2200;">4 mg</td><td>18–36 h</td><td>0</td></tr>
+      <tr><td>Dexaméthasone</td><td>Dectancyl®</td><td style="font-weight:700; color:#7a2200;">0,75 mg</td><td>36–54 h</td><td>0</td></tr>
+      <tr><td>Bétaméthasone</td><td>Célestène®</td><td style="font-weight:700; color:#7a2200;">0,75 mg</td><td>36–54 h</td><td>0</td></tr>
+    </table>
+    <div style="font-size:6px; color:#888; margin-top:2px;">Minéral. = effet minéralocorticoïde → rétention Na⁺/eau → HTA · œdèmes (+++  hydrocortisone · 0 = nul)</div>
+    <div style="font-size:6.5px; margin-top:2px; color:#4e1500;">
+      <b>Dose physiologique :</b> équivalent ≈ 5–7,5 mg/j prednisolone (cortisol endogène ≈ 20 mg/j)<br>
+      <b>Dose anti-inflammatoire :</b> &gt; 0,5 mg/kg/j prednisolone<br>
+      <b>Bolus IV :</b> Solu-Médrol® 500 mg – 1 g (SEP, lupus, PR sévère)
+    </div>
+    <div style="margin-top:3px;">
+      <span class="nouveaute">🆕 Nouveautés 2020–2026</span>
+      <div style="font-size:6.5px; margin-top:1px;">
+        • <b>Dexaméthasone IV 6 mg/j × 10 j</b> : recommandée COVID-19 réanimation (RECOVERY 2020, RR mortalité –35%)<br>
+        • <b>Prednisolone + MTX</b> en PR : protocole COBRA confirmé (décroissance rapide jusqu'à arrêt à 6 mois)<br>
+        • <b>Diprostène® infiltrations</b> (bétaméthasone IA) : maintenu en 1ʳᵉ intention épaule/genou
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📉 Décroissance — Ne jamais arrêter brutalement</div>
+    <table>
+      <tr><th>Durée de traitement</th><th>Conduite à tenir</th></tr>
+      <tr>
+        <td style="color:#2e7d32; font-weight:700;">&lt; 10 jours (cure courte)</td>
+        <td>Arrêt direct si dose &lt; 40 mg/j prednisolone</td>
+      </tr>
+      <tr>
+        <td style="color:#c46a00; font-weight:700;">10 jours – 3 semaines</td>
+        <td>Décroissance rapide sur 5–7 jours (paliers de 5 mg)</td>
+      </tr>
+      <tr>
+        <td style="color:#b83410; font-weight:700;">3 semaines – 3 mois</td>
+        <td>Paliers de 10 mg/sem jusqu'à 20 mg, puis 5 mg/sem</td>
+      </tr>
+      <tr>
+        <td style="color:#7a2200; font-weight:700;">&gt; 3 mois</td>
+        <td>Décroissance lente : paliers de 10 % / 1–2 semaines</td>
+      </tr>
+      <tr>
+        <td style="color:#4e1500; font-weight:700;">&gt; 1 an · dose physiologique</td>
+        <td>Avis endocrinologue · test stimulation ACTH</td>
+      </tr>
+    </table>
+
+    <div class="alert-danger" style="margin-top:3px;">
+      <div class="atitle">⛔ Insuffisance surrénale aiguë — Urgence vitale</div>
+      <div style="font-size:6.5px; margin-top:1px;">
+        <b>Signes :</b> asthénie brutale intense · hypotension · nausées/vomissements · douleurs abdominales · confusion<br>
+        <b>Causes :</b> arrêt brutal · infection intercurrente · chirurgie sans adaptation de dose<br>
+        <b>CAT :</b> Appel SAMU 15 · <b>Hydrocortisone hémisuccinate 100 mg IM</b> (Hydrocortisone Roussel® injectable) · G5% si hypoglycémie
+      </div>
+    </div>
+
+    <div class="alert-warn" style="margin-top:2px;">
+      <div class="atitle">🤒 Sick day rule — Jours de maladie/stress</div>
+      <div style="font-size:6.5px; margin-top:1px;">
+        Fièvre ≥ 38°C · infection · acte chirurgical → <b>doubler la dose habituelle</b> le temps du stress<br>
+        Ne jamais diminuer ni arrêter si patient malade — signaler cette règle à chaque délivrance
+      </div>
+    </div>
+
+    <div class="alert-ok" style="margin-top:2px;">
+      <div class="atitle">🪪 Carte de soins et d'urgences corticoïdes</div>
+      <div style="font-size:6.5px; margin-top:1px;">
+        Établie par le médecin si traitement ≥ 3 mois ou ≥ 20 mg/j<br>
+        Contient : molécule · dose · durée · coordonnées médecin<br>
+        À montrer : urgences · anesthésiste · tout soignant · IDE
+      </div>
+    </div>
+
+    <div style="font-size:6.5px; margin-top:3px; background:#fff; border-radius:2px; padding:2px 4px; border:1px solid var(--c3);">
+      💡 <b>Prise unique le matin</b> (8 h, pic cortisol endogène) → réduit la suppression de l'axe HPA et l'insomnie
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2 : EI + Interactions -->
+<div class="grid2">
+
+  <div class="section">
+    <div class="section-title">⚠️ Effets indésirables systémiques — dose- et durée-dépendants</div>
+    <table>
+      <tr><th>Système</th><th>Effets principaux</th><th>Prévention / suivi officine</th></tr>
+      <tr><td><b>Métabolique</b></td><td>Hyperglycémie · hypokaliémie · rétention hydrosodée</td><td>Surveiller glycémie diabétiques · KCl si &gt;15 j</td></tr>
+      <tr><td><b>Cardio-vasculaire</b></td><td>HTA · œdèmes · ↑ risque CV</td><td>Auto-mesure TA · régime hyposodé</td></tr>
+      <tr><td><b>Osseux</b></td><td>Ostéoporose · fractures · nécrose osseuse avasculaire</td><td>Ca 1 000 mg + Vit D 800 UI/j dès &gt; 3 mois</td></tr>
+      <tr><td><b>Digestif</b></td><td>Ulcère gastroduodénal (↑↑ si + AINS)</td><td>IPP si AINS associé ou ATCD ulcère</td></tr>
+      <tr><td><b>Oculaire</b></td><td>Cataracte sous-capsulaire · glaucome (long terme)</td><td>Signaler vision floue · contrôle TO annuel</td></tr>
+      <tr><td><b>Cutané</b></td><td>Atrophie · vergetures · acné · retard cicatrisation</td><td>Hydratation · éviter topiques classe I visage</td></tr>
+      <tr><td><b>Neuropsychique</b></td><td>Insomnie · euphorie · excitabilité · dépression</td><td>Prise unique le matin · signaler médecin</td></tr>
+      <tr><td><b>Immunitaire</b></td><td>↑ infections · réactivation TB · pneumocystose</td><td>IDR avant si &gt; 1 mois · Bactrim® si &gt; 20 mg/j</td></tr>
+      <tr><td><b>Endocrinien</b></td><td>Syndrome de Cushing iatrogène · ISA à l'arrêt</td><td>Jamais arrêt brutal — décroissance</td></tr>
+      <tr><td><b>Musculaire</b></td><td>Myopathie cortisonique (ceintures prox.)</td><td>Maintien activité physique · kiné si besoin</td></tr>
+    </table>
+
+    <div style="font-size:6.5px; margin-top:3px; padding:2px 4px; background:#fff; border-radius:2px; border:1px solid var(--c3);">
+      <b>📋 Bilan avant corticothérapie longue (&gt; 3 mois) :</b> Glycémie · ionogramme · créatinine · NFS · TA · poids · IDR tuberculine ou IGRA (QuantiFERON®) · sérologie VHB · ostéodensitométrie si ≥ 1 FR fracturaire
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🔴 Interactions majeures &amp; questions patient</div>
+
+    <div class="alert-danger">
+      <div class="atitle">⛔ CONTRE-INDICATIONS / ASSOCIATIONS DANGEREUSES</div>
+      <div style="font-size:6.5px; margin-top:1px;">
+        <b>Vaccins vivants atténués</b> (ROR · varicelle · BCG · fièvre jaune) : CI si prednisolone ≥ 10 mg/j depuis &gt; 2 semaines<br>
+        <b>AINS (ibuprofène, kétoprofène, diclofénac…)</b> : risque ulcère/hémorragie digestive × 15 → IPP systématique<br>
+        <b>Millepertuis</b> : inducteur CYP3A4/P-gp → ↓ taux plasmatiques corticoïdes
+      </div>
+    </div>
+
+    <div class="alert-warn" style="margin-top:2px;">
+      <div class="atitle">⚠️ ASSOCIATIONS NÉCESSITANT SURVEILLANCE</div>
+      <div style="font-size:6.5px; margin-top:1px;">
+        <b>Diurétiques hypokaliémiants</b> (thiazidiques, furosémide) : hypokaliémie additive → ECG si doute · KCl<br>
+        <b>Antidiabétiques / insuline</b> : hyperglycémie cortisonique → adapter doses (parfois +30–50%)<br>
+        <b>AVK (warfarine, acénocoumarol)</b> : variation INR imprévisible (hausse ou baisse) → INR à J3–J7<br>
+        <b>Antihypertenseurs</b> : rétention sodée peut déséquilibrer l'HTA → contrôle TA<br>
+        <b>Bisphosphonates</b> : à initier en prophylaxie ostéoporose dès &gt; 3 mois de corticoïdes
+      </div>
+    </div>
+
+    <div style="font-size:7px; font-weight:700; color:var(--c1); margin-top:4px; border-top:1px solid var(--c3); padding-top:2px; margin-bottom:2px;">
+      💬 Questions fréquentes au comptoir
+    </div>
+    <div style="font-size:6.5px; line-height:1.45;">
+      <b>❓ "J'ai oublié ma prise"</b><br>
+      ↳ Prendre dès que possible si &lt; 12 h. Sinon sauter la dose. Ne jamais doubler.<br><br>
+      <b>❓ "Je me sens mieux, je peux arrêter ?"</b><br>
+      ↳ Non — arrêt brutal interdit. Risque d'insuffisance surrénale. Décroissance selon ordonnance.<br><br>
+      <b>❓ "Je peux me faire vacciner ?"</b><br>
+      ↳ Vaccins inactivés (grippe injectable, COVID, pneumocoque) : OUI.<br>
+      ↳ Vaccins vivants (ROR, varicelle, fièvre jaune) : NON si dose immunosuppressive.<br><br>
+      <b>❓ "J'ai de la fièvre, je prends mes corticoïdes ?"</b><br>
+      ↳ OUI et doubler la dose le temps de la maladie (sick day rule). Contacter le médecin si doute.
+    </div>
+  </div>
+</div>
+
+<!-- ROW 3 : Dermocorticoïdes -->
+<div class="section">
+  <div class="section-title">🧴 Dermocorticoïdes — Classification française (I = plus fort → IV = plus faible)</div>
+  <div class="grid4">
+    <div class="topo-card classe1">
+      <div class="tlabel">CLASSE I — Très forte activité</div>
+      <div class="tmol">
+        <b>Clobétasol propionate 0,05 %</b><br>
+        Dermoval® crème · gel · lotion<br>
+        Clarelux® mousse
+      </div>
+      <div class="trule" style="color:#ffb0a0;">Durée max 2 sem · Jamais visage · plis · enfant · occlusion</div>
+    </div>
+    <div class="topo-card classe2">
+      <div class="tlabel">CLASSE II — Forte activité</div>
+      <div class="tmol">
+        <b>Bétaméthasone dipropionate</b> — Diprosone®<br>
+        <b>Mométasone furoate 0,1 %</b> — Elocom®<br>
+        <b>Prednicarbate 0,25 %</b> — Dermatop®<br>
+        <b>Bétaméthasone valérate 0,1 %</b> — Betneval®
+      </div>
+      <div class="trule" style="color:#ffd0c0;">Adulte · zones épaisses (paumes, plantes, cuir chevelu)</div>
+    </div>
+    <div class="topo-card classe3">
+      <div class="tlabel">CLASSE III — Activité modérée</div>
+      <div class="tmol">
+        <b>Désonide 0,1 %</b><br>
+        Locapred® · Tridesonit®<br>
+        <b>Hydrocortisone butyrate 0,1 %</b><br>
+        Locoïd® crème · lotion · émulsion
+      </div>
+      <div class="trule">Visage · plis · génitaux · enfants &gt; 1 an · zones délicates</div>
+    </div>
+    <div class="topo-card classe4">
+      <div class="tlabel">CLASSE IV — Faible activité</div>
+      <div class="tmol">
+        <b>Hydrocortisone acétate 0,5–1 %</b><br>
+        Hydracort® (Gifrer) 0,5 %<br>
+        <br>
+        Disponible sans ordonnance (adulte)<br>
+        Eczéma léger · piqûres d'insectes
+      </div>
+      <div class="trule">Enfant &lt; 2 ans : prescription obligatoire</div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:3px;">
+    <div>
+      <div style="font-size:7px; font-weight:700; color:var(--c1); margin-bottom:2px;">⚠️ Règles absolues officine</div>
+      <div style="font-size:6.5px; line-height:1.45;">
+        • <b>Visage · plis · génitaux · seins</b> : classe III max (désonide, HC butyrate)<br>
+        • <b>Paupières</b> : ↑ risque glaucome + cataracte → éviter si possible<br>
+        • <b>Enfants &lt; 2 ans</b> : sur prescription uniquement, classe III max<br>
+        • <b>Enfants &lt; 10 ans</b> : classe I contre-indiquée<br>
+        • <b>Peau infectée</b> (bactérie · fungi · virus) : traiter l'infection d'abord<br>
+        • <b>Rosacée · acné</b> : contre-indiqués (aggravation rebond)<br>
+        • <b>Occlusion prolongée</b> avec classe I : ↑↑ absorption systémique → éviter
+      </div>
+    </div>
+    <div>
+      <div style="font-size:7px; font-weight:700; color:var(--c1); margin-bottom:2px;">🤏 Unité phalangette (FTU) = 0,5 g ≈ 2 paumes adulte</div>
+      <table>
+        <tr><th>Zone corporelle adulte</th><th>FTU nécessaires</th></tr>
+        <tr><td>Visage + cou</td><td>2,5 FTU</td></tr>
+        <tr><td>Une main (deux faces)</td><td>1 FTU</td></tr>
+        <tr><td>Bras entier</td><td>3 FTU</td></tr>
+        <tr><td>Jambe entière</td><td>6 FTU</td></tr>
+        <tr><td>Tronc face antérieure</td><td>7 FTU</td></tr>
+        <tr><td>Tronc face postérieure</td><td>7 FTU</td></tr>
+      </table>
+      <div style="font-size:6px; color:#888; margin-top:1px;">Corps entier adulte ≈ 40 FTU · 1 tube 30 g ≈ 60 FTU → surveiller consommation mensuelle</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 4 : Inhalés + Nasaux -->
+<div class="grid2">
+
+  <div class="section">
+    <div class="section-title">💨 Corticoïdes inhalés (CSI) — Asthme · BPCO</div>
+    <table>
+      <tr><th>Molécule</th><th>Spécialité seule</th><th>Associations (CSI + BDLA ±BDCA)</th></tr>
+      <tr><td>Béclométasone</td><td>Qvar®</td><td>Fostair® (+ formotérol) · Trimbow® (+ formotérol + glycopyrronium)</td></tr>
+      <tr><td>Budésonide</td><td>Pulmicort®</td><td>Symbicort®, DuoResp® (+ formotérol)</td></tr>
+      <tr><td>Fluticasone P.</td><td>Flixotide®</td><td>Seretide® (+ salmétérol)</td></tr>
+      <tr><td>Fluticasone FF</td><td>—</td><td>Relvar® (+ vilantérol) · Trelegy® (+ vilantérol + uméclidinium)</td></tr>
+      <tr><td>Mométasone</td><td>Asmanex®</td><td>—</td></tr>
+    </table>
+    <div class="alert-warn" style="margin-top:3px;">
+      <div class="atitle">⚠️ Candidose oropharyngée — effet indésirable local principal</div>
+      <div style="font-size:6.5px; margin-top:1px;">
+        → Rincer la bouche (eau ou bain de bouche) après chaque inhalation<br>
+        → Chambre d'inhalation (spacer) : ↓ dépôt oropharyngé, ↑ efficacité, ↓ risque candidose<br>
+        → Si candidose : amphotéricine B suspension buvable (Fungizone®) ou fluconazole
+      </div>
+    </div>
+    <div style="font-size:6.5px; margin-top:2px;">
+      <b>Effet systémique des CSI :</b> faible aux doses usuelles · croissance chez l'enfant à surveiller si forte dose · cataracts (suivi long terme)
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">👃 Corticoïdes nasaux — Rhinite allergique · Polypose nasale</div>
+    <table>
+      <tr><th>Molécule</th><th>Spécialité</th></tr>
+      <tr><td>Béclométasone dipropionate</td><td>Béconase® · Rhinomaxil®</td></tr>
+      <tr><td>Budésonide</td><td>Rhinocort Aqua®</td></tr>
+      <tr><td>Fluticasone propionate</td><td>Flixonase®</td></tr>
+      <tr><td>Fluticasone furoate</td><td>Avamys®</td></tr>
+      <tr><td>Mométasone furoate</td><td>Nasonex®</td></tr>
+    </table>
+    <div style="font-size:6.5px; margin-top:3px; line-height:1.45;">
+      <b>Technique correcte :</b> tête légèrement penchée en avant · viser l'extérieur de la narine (pas la cloison) · inspirer doucement par le nez pendant le spray<br>
+      <b>Délai d'action :</b> 1–2 semaines pour plein effet → ne pas arrêter si "pas d'effet immédiat"<br>
+      <b>Épistaxis :</b> DRP sérum physio avant administration · si persistant → vérifier technique<br>
+      <b>Polypose nasale réfractaire :</b> Dupilumab Dupixent® (biothérapie anti-IL4/IL13) depuis 2022
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER : 3 réflexes -->
+<div class="reflexes">
+  <div class="reflex-item">
+    <div class="rnum">①</div>
+    <div class="rtxt"><b>Ca + Vit D dès 3 mois</b><br>Tout patient &gt; 3 mois ou &gt; 20 mg/j prednisolone → supplémenter Ca 1 000 mg + Vit D 800 UI/j sans attendre l'ostéodensitométrie. Proposer la supplémentation si absente de l'ordonnance.</div>
+  </div>
+  <div class="reflex-item">
+    <div class="rnum">②</div>
+    <div class="rtxt"><b>IPP si AINS associé</b><br>Corticoïdes + AINS = risque ulcère × 15. Vérifier systématiquement la co-prescription d'un IPP (oméprazole, pantoprazole) et le proposer au prescripteur si absent.</div>
+  </div>
+  <div class="reflex-item">
+    <div class="rnum">③</div>
+    <div class="rtxt"><b>Jamais d'arrêt brutal</b><br>Rappeler à chaque délivrance : décroissance obligatoire si &gt; 10 jours. Si patient stoppe seul → expliquer risque d'insuffisance surrénale aiguë et contacter le médecin. Remettre la carte de soins si absente.</div>
+  </div>
+</div>
+
+</body>
+</html>
