@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Urgences au Comptoir — SantéVeille Officine</title>
+<style>
+  :root{
+    --c1:#b71c1c;--c2:#c62828;--c3:#d32f2f;--cl:#ffcdd2;--cm:#ffebee;
+    --gr:#1b5e20;--bl:#0d47a1;--or:#e65100;--pu:#4a148c;--am:#f57f17;
+  }
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+
+  .hdr{background:linear-gradient(135deg,#b71c1c,#c62828 45%,#d32f2f 80%,#ef5350);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+
+  /* APPEL D'URGENCE TOP STRIP */
+  .call-strip{display:flex;gap:4px;margin-bottom:5px;}
+  .call-box{flex:1;border-radius:5px;padding:5px 8px;text-align:center;color:white;font-weight:700;}
+  .call-box .num{font-size:18px;font-weight:900;display:block;letter-spacing:1px;}
+  .call-box .lbl{font-size:7px;opacity:.9;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  /* URGENCE CARD */
+  .ucard{border-radius:5px;border:2px solid;overflow:hidden;}
+  .uch{color:white;padding:5px 8px;font-size:9px;font-weight:700;
+    display:flex;align-items:center;justify-content:space-between;}
+  .ucb{padding:5px 7px;background:white;}
+
+  .step{display:flex;align-items:flex-start;gap:6px;padding:3px 0;
+    border-bottom:1px dotted #eee;}
+  .step:last-of-type{border-bottom:none;}
+  .step-num{background:var(--c1);color:white;border-radius:50%;width:14px;height:14px;
+    display:flex;align-items:center;justify-content:center;font-size:7px;
+    font-weight:700;flex-shrink:0;margin-top:1px;}
+  .step-num.gr{background:#1b5e20;}
+  .step-num.bl{background:#0d47a1;}
+  .step-num.or{background:#e65100;}
+  .step-num.pu{background:#4a148c;}
+  .step-text{font-size:7.5px;color:#1a1a1a;flex:1;}
+  .step-text strong{color:var(--c1);}
+
+  .drug-box{background:#fff3e0;border-left:3px solid #ff6f00;border-radius:0 3px 3px 0;
+    padding:3px 6px;margin-top:4px;font-size:7px;}
+  .drug-box strong{color:#bf360c;}
+
+  .ci-box{background:#ffebee;border-left:3px solid #e53935;border-radius:0 3px 3px 0;
+    padding:3px 6px;margin-top:3px;font-size:7px;color:#b71c1c;}
+
+  .tip-box{background:#e8f5e9;border-left:3px solid #2e7d32;border-radius:0 3px 3px 0;
+    padding:3px 6px;margin-top:3px;font-size:7px;color:#1b5e20;}
+
+  /* KIT URGENCE */
+  .kit{background:white;border:2px solid #b71c1c;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .kit h3{font-size:9px;font-weight:700;color:#b71c1c;margin-bottom:4px;
+    border-bottom:2px solid #ffcdd2;padding-bottom:2px;}
+  .kit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;}
+  .ki{background:var(--cm);border-radius:3px;padding:3px 5px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ki strong{color:var(--c1);display:block;font-size:7.5px;}
+
+  /* SIGNES D'ALARME TABLE */
+  .alarm-table{width:100%;border-collapse:collapse;font-size:7px;margin-bottom:5px;}
+  .alarm-table th{padding:3px 5px;text-align:left;color:white;}
+  .alarm-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);}
+  .alarm-table tr:nth-child(even) td{background:var(--cm);}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <h1>🚨 Urgences au Comptoir — Protocoles</h1>
+    <div class="sub">Choc anaphylactique · Malaise/syncope · AVC · Hypoglycémie · Détresse respiratoire · Overdose</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4 — AFFICHER</div>
+</div>
+
+<!-- NUMÉROS D'URGENCE -->
+<div class="call-strip">
+  <div class="call-box" style="background:#b71c1c;">
+    <span class="num">15</span>
+    <span class="lbl">SAMU · Urgence médicale</span>
+  </div>
+  <div class="call-box" style="background:#c62828;">
+    <span class="num">18</span>
+    <span class="lbl">Pompiers · Détresse physique</span>
+  </div>
+  <div class="call-box" style="background:#0d47a1;">
+    <span class="num">112</span>
+    <span class="lbl">Numéro européen · Tout</span>
+  </div>
+  <div class="call-box" style="background:#1b5e20;">
+    <span class="num">3114</span>
+    <span class="lbl">Prévention suicide</span>
+  </div>
+  <div class="call-box" style="background:#6a1b9a;">
+    <span class="num">3237</span>
+    <span class="lbl">IFEC · Info médicament</span>
+  </div>
+  <div class="call-box" style="background:#e65100;">
+    <span class="num">01 40 05 48 48</span>
+    <span class="lbl">Centre Anti-Poisons Paris</span>
+  </div>
+</div>
+
+<!-- URGENCES GRID -->
+<div class="grid2">
+
+  <!-- CHOC ANAPHYLACTIQUE -->
+  <div class="ucard" style="border-color:#b71c1c;">
+    <div class="uch" style="background:#b71c1c;">
+      <span>⚡ CHOC ANAPHYLACTIQUE</span>
+      <span style="font-size:8px;background:white;color:#b71c1c;border-radius:3px;padding:1px 6px;">APPELER 15 EN MÊME TEMPS</span>
+    </div>
+    <div class="ucb">
+      <div style="font-size:7px;color:#b71c1c;font-weight:700;margin-bottom:3px;">
+        Signes : urticaire généralisée · hypotension · détresse resp. · angio-œdème · après piqûre/médicament/aliment
+      </div>
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Allonger le patient</strong> · Jambes surélevées (sauf détresse respiratoire → demi-assis)</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Adrénaline auto-injecteur</strong> (Emerade · Jext · Anapen) si disponible — face externe mi-cuisse · tenir 10 sec</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Appeler 15 immédiatement</strong> — même si amélioration rapide (effet rebond à 4–8h)</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text">Si pas d'auto-injecteur : <strong>adrénaline injectable 1 mg/mL</strong> kit urgence → 0,3–0,5 mL IM cuisse</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-text">Surveillance continue jusqu'à arrivée SAMU · Préparer informations (médicament/aliment incriminé)</div></div>
+      <div class="drug-box">
+        <strong>Kit officine :</strong> Adrénaline 1 mg/mL ampoules · Seringues 1 mL · Antihistaminiques IV · O2 si disponible
+      </div>
+      <div class="ci-box">⚠ Antihistaminique SEUL = INSUFFISANT pour choc anaphylactique — Adrénaline OBLIGATOIRE</div>
+    </div>
+  </div>
+
+  <!-- MALAISE / SYNCOPE -->
+  <div class="ucard" style="border-color:#e65100;">
+    <div class="uch" style="background:#e65100;">
+      <span>😵 MALAISE / SYNCOPE</span>
+      <span style="font-size:8px;background:white;color:#e65100;border-radius:3px;padding:1px 6px;">ÉVALUER D'ABORD</span>
+    </div>
+    <div class="ucb">
+      <div style="font-size:7px;color:#e65100;font-weight:700;margin-bottom:3px;">
+        Syncope vasovagale (fréquente) ou urgence cardiaque ? → Différencier rapidement
+      </div>
+      <div class="step"><div class="step-num or">1</div><div class="step-text"><strong>Sécuriser la chute</strong> · Allonger jambes surélevées · Desserrer vêtements</div></div>
+      <div class="step"><div class="step-num or">2</div><div class="step-text"><strong>Évaluer : réponse verbale · pouls · respiration</strong> dans les 10 secondes</div></div>
+      <div class="step"><div class="step-num or">3</div><div class="step-text">Vasovagale : reprise rapide (30 sec) · pâleur · nausée · cause identifiable (stress/chaleur/douleur)</div></div>
+      <div class="step"><div class="step-num or">4</div><div class="step-text">Si inconscient + absence respiration normale → <strong>RCP immédiat + appeler 15</strong></div></div>
+      <div class="step"><div class="step-num or">5</div><div class="step-text">Si reprise conscience : garder allongé 15 min · ne pas laisser seul · contrôle FC/PA si tensiomètre</div></div>
+      <div class="tip-box">💡 Défibrillateur (DEA) : obligation légaliste officine. Savoir où il est. Formation obligatoire.</div>
+      <div class="ci-box">⚠ Appeler 15 si : douleur thoracique · palpitations avant syncope · reprise lente &gt; 30 sec · traumatisme crânien à la chute</div>
+    </div>
+  </div>
+
+  <!-- AVC - FAST -->
+  <div class="ucard" style="border-color:#4a148c;">
+    <div class="uch" style="background:#4a148c;">
+      <span>🧠 AVC — PROTOCOLE F.A.S.T.</span>
+      <span style="font-size:8px;background:white;color:#4a148c;border-radius:3px;padding:1px 6px;">CHAQUE MINUTE COMPTE</span>
+    </div>
+    <div class="ucb">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin-bottom:5px;">
+        <div style="background:#f3e5f5;border-radius:3px;padding:4px;text-align:center;border:1px solid #ce93d8;">
+          <div style="font-size:16px;font-weight:900;color:#4a148c;">F</div>
+          <div style="font-size:7px;font-weight:700;color:#4a148c;">FACE</div>
+          <div style="font-size:6.5px;color:#333;">Asymétrie visage · sourire dévié</div>
+        </div>
+        <div style="background:#f3e5f5;border-radius:3px;padding:4px;text-align:center;border:1px solid #ce93d8;">
+          <div style="font-size:16px;font-weight:900;color:#4a148c;">A</div>
+          <div style="font-size:7px;font-weight:700;color:#4a148c;">ARM</div>
+          <div style="font-size:6.5px;color:#333;">Bras : un tombe quand levés</div>
+        </div>
+        <div style="background:#f3e5f5;border-radius:3px;padding:4px;text-align:center;border:1px solid #ce93d8;">
+          <div style="font-size:16px;font-weight:900;color:#4a148c;">S</div>
+          <div style="font-size:7px;font-weight:700;color:#4a148c;">SPEECH</div>
+          <div style="font-size:6.5px;color:#333;">Discours : incohérent · difficile</div>
+        </div>
+        <div style="background:#b71c1c;border-radius:3px;padding:4px;text-align:center;border:1px solid #e53935;">
+          <div style="font-size:16px;font-weight:900;color:white;">T</div>
+          <div style="font-size:7px;font-weight:700;color:white;">TIME</div>
+          <div style="font-size:6.5px;color:#ffcdd2;">Appeler 15 MAINTENANT</div>
+        </div>
+      </div>
+      <div class="step"><div class="step-num pu" style="background:#4a148c;">1</div><div class="step-text">Un seul signe FAST positif → <strong>appeler 15 immédiatement</strong> · Ne pas attendre</div></div>
+      <div class="step"><div class="step-num pu" style="background:#4a148c;">2</div><div class="step-text"><strong>Ne rien donner à avaler</strong> (risque fausse route si trouble déglutition)</div></div>
+      <div class="step"><div class="step-num pu" style="background:#4a148c;">3</div><div class="step-text">Position demi-assise · Rassurer · Heure de début des symptômes = information cruciale pour le SAMU</div></div>
+      <div class="ci-box">⚠ NE PAS donner d'aspirine ! Possible AVC hémorragique → contre-productif. Seul le scanner distingue ischémique/hémorragique.</div>
+    </div>
+  </div>
+
+  <!-- HYPOGLYCÉMIE -->
+  <div class="ucard" style="border-color:#f57f17;">
+    <div class="uch" style="background:#f57f17;">
+      <span>🍬 HYPOGLYCÉMIE — Patient Diabétique</span>
+      <span style="font-size:8px;background:white;color:#f57f17;border-radius:3px;padding:1px 6px;">GLYCÉMIE &lt; 0,70 g/L</span>
+    </div>
+    <div class="ucb">
+      <div style="font-size:7px;color:#bf360c;font-weight:700;margin-bottom:3px;">
+        Signes : sueurs · tremblement · pâleur · tachycardie · confusion · agitation · malaise
+      </div>
+      <div class="step"><div class="step-num" style="background:#f57f17;">1</div><div class="step-text">Si <strong>conscient et peut avaler</strong> : 15g sucres rapides (3 morceaux sucre / 150 mL jus d'orange / gel glucose)</div></div>
+      <div class="step"><div class="step-num" style="background:#f57f17;">2</div><div class="step-text"><strong>Attendre 15 minutes</strong> · Vérifier glycémie si lecteur disponible · Resucrage si toujours &lt; 0,70</div></div>
+      <div class="step"><div class="step-num" style="background:#f57f17;">3</div><div class="step-text">Après resucrage : <strong>collation glucides complexes</strong> (pain, biscuits) pour maintenir la glycémie</div></div>
+      <div class="step"><div class="step-num" style="background:#f57f17;">4</div><div class="step-text">Si <strong>inconscient ou ne peut avaler</strong> : <strong>Glucagen 1 mg IM/SC</strong> (kit urgence · face externe cuisse) → appeler 15</div></div>
+      <div class="drug-box"><strong>Glucagen 1 mg :</strong> flacons en vente officine. Reconstituer poudre + solvant. Injecter IM ou SC. Délai d'action : 10–15 min.</div>
+      <div class="tip-box">💡 Règle 15-15 : 15g sucre → attendre 15 min → revérifier. Pas d'excès de resucrage (rebond hyperglycémie).</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- DÉTRESSE RESPIRATOIRE + OVERDOSE LIGNE -->
+<div class="grid2" style="margin-bottom:5px;">
+
+  <div class="ucard" style="border-color:#0d47a1;">
+    <div class="uch" style="background:#0d47a1;">
+      <span>🫁 DÉTRESSE RESPIRATOIRE AIGUË</span>
+    </div>
+    <div class="ucb">
+      <div style="font-size:7px;color:#0d47a1;font-weight:700;margin-bottom:3px;">
+        Causes : choc ana · crise asthme sévère · OAP · corps étranger · pneumothorax
+      </div>
+      <div class="step"><div class="step-num bl">1</div><div class="step-text"><strong>Appeler 15</strong> · Position demi-assise (jamais allongé en OAP/asthme)</div></div>
+      <div class="step"><div class="step-num bl">2</div><div class="step-text">Asthme aigu grave : <strong>Ventoline 10–20 bouffées</strong> par chambre d'inhalation (si disponible)</div></div>
+      <div class="step"><div class="step-num bl">3</div><div class="step-text">Corps étranger visible : manœuvre de Heimlich · Sinon : ne pas mettre les doigts</div></div>
+      <div class="step"><div class="step-num bl">4</div><div class="step-text">Oxygène si disponible · Rassurer · Ne pas laisser seul · Surveiller conscience + pouls</div></div>
+      <div class="ci-box">⚠ Crise d'asthme grave : FR &gt; 30/min · SpO2 &lt; 90% · parle par mots · appeler 15 sans attendre l'effet Ventoline</div>
+    </div>
+  </div>
+
+  <div class="ucard" style="border-color:#1b5e20;">
+    <div class="uch" style="background:#1b5e20;">
+      <span>💊 OVERDOSE — OPIOÏDES / MÉDICAMENTS</span>
+    </div>
+    <div class="ucb">
+      <div style="font-size:7px;color:#1b5e20;font-weight:700;margin-bottom:3px;">
+        Signes overdose opioïdes : myosis serré · bradypnée &lt; 12/min · somnolence profonde · cyanose
+      </div>
+      <div class="step"><div class="step-num gr">1</div><div class="step-text"><strong>Appeler 15</strong> · Position latérale de sécurité si inconscient</div></div>
+      <div class="step"><div class="step-num gr">2</div><div class="step-text"><strong>Naloxone (Nalscue spray nasal) si disponible</strong> : 1 dose dans 1 narine · peut répéter 2–3 min si pas de réponse</div></div>
+      <div class="step"><div class="step-num gr">3</div><div class="step-text">Si bradypnée + inconscience → ventilation assistée (bouche-à-bouche · BAVU si disponible)</div></div>
+      <div class="step"><div class="step-num gr">4</div><div class="step-text">Intoxication médicamenteuse (BZD, paracétamol, autre) → <strong>Centre Anti-Poisons 01 40 05 48 48</strong></div></div>
+      <div class="drug-box"><strong>Naloxone (Nalscue) :</strong> disponible sans ordonnance en officine depuis 2021. Recommandé pour proches de patients sous opioïdes. Courte durée d'action → surveillance.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- KIT URGENCE OFFICINE -->
+<div class="kit">
+  <h3>🧰 KIT URGENCE OFFICINE — Vérifier mensuellement</h3>
+  <div class="kit-grid">
+    <div class="ki">
+      <strong>Adrénaline 1 mg/mL</strong>
+      Ampoules 1 mL · Seringues 1 mL et 5 mL · Aiguilles IM 0,8×40 mm
+    </div>
+    <div class="ki">
+      <strong>Glucagen 1 mg</strong>
+      Poudre + solvant · Reconstitution à démontrer à l'équipe · Date péremption
+    </div>
+    <div class="ki">
+      <strong>Naloxone (Nalscue)</strong>
+      Spray nasal · Disponible sans ordonnance · Vérifier stock
+    </div>
+    <div class="ki">
+      <strong>DEA (Défibrillateur)</strong>
+      Localisation connue · Pads changés · Batteries OK · Formation équipe
+    </div>
+    <div class="ki">
+      <strong>Oxygène médical</strong>
+      Si disponible · Masque adulte + pédiatrique · Détendeur vérifié
+    </div>
+    <div class="ki">
+      <strong>Glucomètre + bandelettes</strong>
+      Lecteur glycémie · Gel glucose · Sucres rapides (morceaux sucre)
+    </div>
+  </div>
+</div>
+
+<!-- SIGNES D'ALARME À NE PAS MANQUER -->
+<table class="alarm-table">
+  <tr>
+    <th style="background:#b71c1c;width:20%;">Situation courante</th>
+    <th style="background:#b71c1c;width:30%;">Signe d'alarme → appeler 15</th>
+    <th style="background:#b71c1c;width:50%;">Ne pas dire "attendez de voir"</th>
+  </tr>
+  <tr><td>Douleur thoracique</td><td>Irradiation bras gauche · mâchoire · sueurs froides</td><td>SCA possible · Aspirine 250mg si conscient · Appeler 15 immédiatement</td></tr>
+  <tr><td>Maux de tête brutaux</td><td>"Pire douleur de ma vie" · Raideur nuque · Fièvre</td><td>Hémorragie méningée ou méningite · Ne rien donner · Appeler 15</td></tr>
+  <tr><td>Vertiges + troubles visuels</td><td>Associés à trouble parole ou faiblesse membre</td><td>AVC possible (tronc cérébral) · FAST · Appeler 15</td></tr>
+  <tr><td>Douleur abdominale intense</td><td>Tableau chirurgical · Défense abdominale · Fièvre élevée</td><td>Appendicite · Péritonite · Anévrisme · Ne pas donner antalgique fort sans bilan</td></tr>
+</table>
+
+<div class="footer">
+  SantéVeille Officine · Urgences au Comptoir · Protocoles indicatifs — formation aux gestes d'urgence obligatoire · En cas de doute, toujours appeler le 15 · 2026
+</div>
+
+</body>
+</html>
