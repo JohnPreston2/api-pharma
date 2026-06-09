@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Stupéfiants & Médicaments à Risque — SantéVeille Officine</title>
+<style>
+  :root{--c1:#37474f;--c2:#455a64;--c3:#546e7a;--cl:#cfd8dc;--cm:#eceff1;
+    --re:#b71c1c;--or:#e65100;--gr:#1b5e20;--pu:#4a148c;--am:#f57f17;}
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+  .hdr{background:linear-gradient(135deg,#263238,#37474f 45%,#455a64 80%,#607d8b);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;}
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.re{background:#b71c1c;} .ch.or{background:#e65100;}
+  .ch.gr{background:#1b5e20;} .ch.pu{background:#4a148c;}
+  .ch.am{background:#e65100;}
+  .cb{padding:5px 7px;background:white;}
+  .drug-table{width:100%;border-collapse:collapse;font-size:7px;}
+  .drug-table th{background:var(--c2);color:white;padding:3px 5px;text-align:left;}
+  .drug-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);vertical-align:top;}
+  .drug-table tr:nth-child(even) td{background:var(--cm);}
+  .drug-table tr:last-child td{border-bottom:none;}
+  .drug-table td:first-child{font-weight:700;color:var(--c1);}
+  .tag{font-size:6px;border-radius:2px;padding:0 3px;font-weight:700;white-space:nowrap;}
+  .tag.re{background:#ffcdd2;color:#b71c1c;}
+  .tag.or{background:#fff3e0;color:#e65100;}
+  .tag.gr{background:#e8f5e9;color:#2e7d32;}
+  .tag.pu{background:#f3e5f5;color:#4a148c;}
+  .tag.new{background:#e8f5e9;color:#1b5e20;font-weight:700;}
+  .rule-item{display:flex;gap:6px;align-items:flex-start;padding:2.5px 0;
+    border-bottom:1px dotted #cfd8dc;font-size:7.5px;}
+  .rule-item:last-child{border-bottom:none;}
+  .rule-icon{font-size:10px;flex-shrink:0;}
+  .rule-text strong{color:var(--c1);}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .alert-red{background:#ffebee;border:2px solid #e53935;border-radius:4px;
+    padding:5px 7px;margin-bottom:5px;}
+  .alert-red h3{font-size:9px;font-weight:700;color:#b71c1c;margin-bottom:3px;}
+  .falsif-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .fi{background:white;border-radius:3px;padding:3px 6px;
+    border-left:3px solid #e53935;font-size:7px;}
+  .fi strong{color:#b71c1c;display:block;font-size:7.5px;}
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;padding:5px 8px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
+    margin:2px 0;border-radius:0 3px 3px 0;color:#b71c1c;}
+  .sr{color:var(--c1);font-weight:600;margin-top:2px;}
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>🔐 Stupéfiants &amp; Médicaments à Risque — Règles Dispensation</h1>
+    <div class="sub">Ordonnances sécurisées · BZD · Tramadol · Prégabaline · BHD · Détection falsification</div></div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+<!-- ORDONNANCES SÉCURISÉES -->
+<div class="card" style="margin-bottom:5px;">
+  <div class="ch re">🔴 ORDONNANCES SÉCURISÉES OBLIGATOIRES — Médicaments Liste Stupéfiants</div>
+  <div class="cb">
+    <table class="drug-table">
+      <tr><th>Médicament</th><th>DCI · Spécialité</th><th>Durée max</th><th>Règles spéciales</th></tr>
+      <tr><td>Morphine</td><td>MST Continus · Actiskenan · Sevredol · Moscontin</td><td>28 jours</td><td>Ordonnance sécurisée · Quantité en chiffres ET lettres</td></tr>
+      <tr><td>Oxycodone</td><td>Oxycontin LP · Oxynorm · Oxynormoro</td><td>28 jours</td><td>Ordonnance sécurisée · Pas d'initiation en MG (spécialiste)</td></tr>
+      <tr><td>Fentanyl</td><td>Durogesic (patch) · Actiq · Abstral (sublingual)</td><td>28 jours</td><td>Initiation : 7 jours première délivrance · Patch : formation recommandée</td></tr>
+      <tr><td>Hydromorphone</td><td>Sophidone LP</td><td>28 jours</td><td>Réservé douleur cancer · Ordo sécurisée</td></tr>
+      <tr><td>BHD (buprénorphine)</td><td>Subutex 0,4–8–16 mg · Suboxone (+ naloxone)</td><td>28 jours (7 jours si précisé)</td><td>⭐ Médecin agréé CSST · Pharmacie désignée · Fractionnement obligatoire si noté</td></tr>
+      <tr><td>Méthadone sirop</td><td>Méthadone Biogaran</td><td>14 jours</td><td>Délivrance quotidienne ou hebdomadaire · Médecin agréé CSST uniquement</td></tr>
+      <tr><td>Prégabaline <span class="tag new">🆕 Stupéfiant 2021</span></td><td>Lyrica · Génériques prégabaline</td><td>28 jours</td><td>Ordonnance sécurisée depuis juil. 2021 · Chevauchement interdit</td></tr>
+      <tr><td>Kétamine usage thérapeutique</td><td>Kétamine Panpharma</td><td>Prescription hospitalière</td><td>ATU ou usage hospitalier strictement</td></tr>
+    </table>
+    <div class="warn">⚠ <strong>Ordonnance sécurisée = </strong> papier blanc avec filigrane "Sécurisé" visible en transparence · Numérotation 10 chiffres en haut à droite · Signature manuscrite · Quantité en toutes lettres · Cachet médecin.</div>
+  </div>
+</div>
+<div class="grid2">
+  <!-- BZD RÈGLES -->
+  <div class="card">
+    <div class="ch or">🟠 BENZODIAZÉPINES — Règles Légales (Liste IV)</div>
+    <div class="cb">
+      <table class="drug-table" style="margin-bottom:4px;">
+        <tr><th>Catégorie</th><th>Exemples</th><th>Durée max légale</th></tr>
+        <tr><td>Anxiolytiques</td><td>Xanax · Lexomil · Seresta · Valium</td><td><strong>12 semaines</strong></td></tr>
+        <tr><td>Hypnotiques</td><td>Stilnox (zolpidem) · Imovane (zopiclone)</td><td><strong>4 semaines</strong></td></tr>
+        <tr><td>Antiépileptiques</td><td>Rivotril (clonazépam) · Urbanyl</td><td>Renouvellement neurologique</td></tr>
+        <tr><td>Prégabaline</td><td>Lyrica · Génériques</td><td><strong>28 jours</strong> (stupéfiant)</td></tr>
+      </table>
+      <div class="rule-item"><span class="rule-icon">🚫</span><div class="rule-text"><strong>Chevauchement interdit</strong> entre 2 ordonnances BZD/Z-drugs (même molécule ou molécule différente de la même classe)</div></div>
+      <div class="rule-item"><span class="rule-icon">📅</span><div class="rule-text"><strong>Dispensation à la date</strong> indiquée sur l'ordonnance (pas avant). Si médecin note "ne pas délivrer avant le XX" → respecter scrupuleusement</div></div>
+      <div class="rule-item"><span class="rule-icon">✂️</span><div class="rule-text"><strong>Fractionnement</strong> : si médecin note "délivrer par semaine" → fractionner et garder ordo à la pharmacie</div></div>
+      <div class="rule-item"><span class="rule-icon">📋</span><div class="rule-text"><strong>Ordonnance simple</strong> (pas sécurisée) mais avec durée de traitement obligatoirement indiquée</div></div>
+      <div class="warn">⚠ Zolpidem (Stilnox) : ordonnance sécurisée depuis 2017. Durée max 4 semaines. Pas de renouvellement sans réévaluation médicale.</div>
+    </div>
+  </div>
+  <!-- TRAMADOL + NOUVELLES MOLÉCULES -->
+  <div class="card">
+    <div class="ch am">🟡 TRAMADOL &amp; OPIOÏDES FAIBLES — Vigilance</div>
+    <div class="cb">
+      <table class="drug-table" style="margin-bottom:4px;">
+        <tr><th>Médicament</th><th>Liste</th><th>Règle</th></tr>
+        <tr><td>Tramadol <span class="tag new">🆕 Liste II 2020</span></td><td>Liste II (ord. simple)</td><td>Max 12 sem. renouvelable · Dépendance documentée</td></tr>
+        <tr><td>Codéine</td><td>Liste I</td><td>CI &lt; 12 ans (HAS 2013) · Ordonnance simple</td></tr>
+        <tr><td>Dihydrocodéine (Dicodin)</td><td>Liste I</td><td>Moins utilisé · Même règles codéine</td></tr>
+        <tr><td>Tapentadol (Palexia)</td><td>Stupéfiant</td><td>Ordonnance sécurisée · 28 jours</td></tr>
+        <tr><td>Buprénorphine faible dose (Temgesic)</td><td>Stupéfiant</td><td>Antalgie · ≠ Subutex (CSST)</td></tr>
+      </table>
+      <div class="rule-item"><span class="rule-icon">⚠️</span><div class="rule-text"><strong>Tramadol + ISRS</strong> : syndrome sérotoninergique + abaissement seuil épileptique. Très fréquent en pratique.</div></div>
+      <div class="rule-item"><span class="rule-icon">⚠️</span><div class="rule-text"><strong>Tramadol + BZD</strong> : dépression respiratoire. Black box FDA. Dispensation avec conseil obligatoire.</div></div>
+      <div class="rule-item"><span class="rule-icon">🚫</span><div class="rule-text"><strong>Codéine CI &lt; 12 ans</strong> (arrêt 2013). Adultes métaboliseurs ultrarapides CYP2D6 : risque surdose morphine.</div></div>
+    </div>
+  </div>
+</div>
+<!-- BHD RÈGLES SPÉCIALES -->
+<div class="card" style="margin-bottom:5px;">
+  <div class="ch gr">🟢 BHD — SUBUTEX / SUBOXONE · Règles CSST</div>
+  <div class="cb">
+    <div class="grid3" style="gap:5px;">
+      <div>
+        <div style="font-weight:700;color:#1b5e20;font-size:8px;margin-bottom:3px;">PRESCRIPTEURS AUTORISÉS</div>
+        <div class="rule-item"><span class="rule-icon">✅</span><div class="rule-text">Médecin agréé (CSST, médecin addictologue, généraliste formé)</div></div>
+        <div class="rule-item"><span class="rule-icon">✅</span><div class="rule-text">Médecin de ville avec accord CSST</div></div>
+        <div class="rule-item"><span class="rule-icon">🚫</span><div class="rule-text">Spécialiste non agréé = refus légal</div></div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#1b5e20;font-size:8px;margin-bottom:3px;">DISPENSATION</div>
+        <div class="rule-item"><span class="rule-icon">📋</span><div class="rule-text">Ordonnance sécurisée obligatoire · 28 jours max (7 si précisé)</div></div>
+        <div class="rule-item"><span class="rule-icon">📍</span><div class="rule-text">Pharmacie désignée par le patient (engagement)</div></div>
+        <div class="rule-item"><span class="rule-icon">✂️</span><div class="rule-text">Fractionnement si noté sur ordonnance (quotidien, hebdomadaire)</div></div>
+        <div class="rule-item"><span class="rule-icon">📊</span><div class="rule-text">Traçabilité registre stupéfiants obligatoire</div></div>
+      </div>
+      <div>
+        <div style="font-weight:700;color:#1b5e20;font-size:8px;margin-bottom:3px;">SUBOXONE vs SUBUTEX</div>
+        <div class="rule-item"><span class="rule-icon">💊</span><div class="rule-text"><strong>Subutex</strong> (BHD seul) : risque injection IV détournement</div></div>
+        <div class="rule-item"><span class="rule-icon">🛡️</span><div class="rule-text"><strong>Suboxone</strong> (BHD + naloxone) : naloxone précipite sevrage si injecté → dissuasif</div></div>
+        <div class="rule-item"><span class="rule-icon">⚠️</span><div class="rule-text">BHD + BZD = mort : association responsable de nombreux décès. Toujours signaler.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- DÉTECTION FALSIFICATION -->
+<div class="alert-red">
+  <h3>🔍 DÉTECTION FALSIFICATION — Ordonnances Sécurisées</h3>
+  <div class="falsif-grid">
+    <div class="fi"><strong>✅ Ordonnance authentique — vérifier</strong>
+      Filigrane "Sécurisé" visible en transparence · Numéro 10 chiffres en haut droite · Police d'imprimerie standard · Signature manuscrite · Cachet médecin · Quantité en lettres ET chiffres</div>
+    <div class="fi"><strong>🚨 Signes de falsification possibles</strong>
+      Taches blanches (effacement chimique) · Police différente dans la quantité · Surcharge ou correction · Incohérence posologie (ex: 300 mg morphine/j) · Médecin inconnu · Patient nerveux/pressé · Multiples demandes récentes</div>
+    <div class="fi"><strong>🔎 En cas de doute</strong>
+      Appeler le médecin prescripteur (numéro sur ordonnance ou annuaire.sante.fr) · Ne JAMAIS appeler le numéro donné par le patient · Si falsification confirmée → Garder l'ordonnance · Appeler le 17 (police) · Ne pas accuser directement</div>
+    <div class="fi"><strong>📱 Outils de vérification</strong>
+      RPPS médecin : annuaire.sante.fr · Numérotation ordonnances sécurisées (tracée) · Dossier Pharmaceutique (DP) : historique délivrances · Vidal/Thériaque : doses maximales · En cas de doute → refus légal justifié</div>
+  </div>
+</div>
+<div class="rfx">
+  <h3>⚡ 3 Réflexes — Stupéfiants &amp; Médicaments à Risque</h3>
+  <div class="rfxg">
+    <div class="ri"><strong>🔴 Prégabaline → ordonnance sécurisée</strong>
+      Depuis juillet 2021, la prégabaline (Lyrica) est classée stupéfiant. Ordonnance sécurisée obligatoire. Max 28 jours. Chevauchement interdit. Beaucoup de médecins encore sur ordonnance simple → refus légal et réorienter.</div>
+    <div class="ri"><strong>🟠 BHD + BZD → risque mortel</strong>
+      L'association buprénorphine + BZD est responsable de la majorité des décès par surdose BHD. Si patient sous Subutex demande aussi des BZD : alerter médecin, tracer, conseil anti-association obligatoire.</div>
+    <div class="ri"><strong>🔍 Doute falsification → appeler le médecin</strong>
+      Ne jamais appeler le numéro donné par le patient (numéro factice). Appeler le standard de l'hôpital ou le numéro annuaire RPPS. Si non joignable → refus légal justifié. Garder l'ordonnance si falsifiée.</div>
+  </div>
+</div>
+<div class="pbar">
+  <h3>💬 Ce que dit le patient</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "Mon médecin a prescrit Lyrica sur une ordonnance normale, ça passe ?"</div>
+      <div class="sh">↳ Ce que ça cache : médecin non informé du changement 2021 · prescrit encore sur ordo simple</div>
+      <div class="sr">→ Depuis juil. 2021 : ordonnance sécurisée obligatoire. Refuser l'ordonnance simple. Contacter le médecin pour qu'il refasse sur sécurisée. Expliquer sans accuser.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Je veux les 3 boîtes de Xanax d'un coup, c'est écrit sur l'ordonnance"</div>
+      <div class="sh">↳ Ce que ça cache : durée légale = 12 semaines · chevauchement possible si pas de fractionnement</div>
+      <div class="sr">→ Vérifier date dernière délivrance BZD. Si pas de fractionnement noté → délivrer. Mais rappeler durée max légale 12 semaines. Si chevauchement → refuser et contacter prescripteur.</div>
+    </div>
+  </div>
+</div>
+<div class="footer">SantéVeille Officine · Stupéfiants &amp; Médicaments à Risque · Textes de référence : ANSM · Code de la Santé Publique · 2026</div>
+</body></html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Pédiatrie au Comptoir — SantéVeille Officine</title>
+<style>
+  :root{--c1:#e65100;--c2:#f4511e;--c3:#ff7043;--cl:#ffccbc;--cm:#fbe9e7;
+    --gr:#1b5e20;--bl:#0d47a1;--re:#b71c1c;--pu:#4a148c;--te:#006064;}
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+  .hdr{background:linear-gradient(135deg,#e65100,#f4511e 45%,#ff7043 80%,#ff8a65);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.re{background:#b71c1c;} .ch.gr{background:#1b5e20;}
+  .ch.bl{background:#0d47a1;} .ch.pu{background:#4a148c;}
+  .ch.te{background:#006064;}
+  .cb{padding:5px 7px;background:white;}
+  .dose-table{width:100%;border-collapse:collapse;font-size:7px;}
+  .dose-table th{padding:3px 5px;text-align:left;color:white;}
+  .dose-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);text-align:center;}
+  .dose-table td:first-child{text-align:left;font-weight:700;color:var(--c1);}
+  .dose-table tr:nth-child(even) td{background:var(--cm);}
+  .dose-table tr:last-child td{border-bottom:none;}
+  .forbidden{background:#ffebee;border:2px solid #e53935;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .forbidden h3{font-size:9px;font-weight:700;color:#b71c1c;margin-bottom:4px;}
+  .forb-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;}
+  .fbox{background:white;border-radius:3px;padding:4px 5px;
+    border-left:3px solid #e53935;font-size:7px;}
+  .fbox .age{font-size:12px;font-weight:900;color:#b71c1c;display:block;text-align:center;}
+  .fbox strong{color:#b71c1c;display:block;margin-bottom:2px;font-size:7.5px;}
+  .path-item{display:flex;gap:5px;align-items:flex-start;padding:2.5px 0;
+    border-bottom:1px dotted #ffccbc;font-size:7.5px;}
+  .path-item:last-child{border-bottom:none;}
+  .path-icon{font-size:10px;flex-shrink:0;}
+  .path-text strong{color:var(--c1);}
+  .path-text .bad{color:#b71c1c;font-weight:600;}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .vaccin-table{width:100%;border-collapse:collapse;font-size:6.5px;}
+  .vaccin-table th{background:#4a148c;color:white;padding:2px 4px;text-align:left;}
+  .vaccin-table td{padding:2px 4px;border-bottom:1px solid #e1bee7;vertical-align:top;}
+  .vaccin-table tr:nth-child(even) td{background:#f3e5f5;}
+  .vaccin-table tr:last-child td{border-bottom:none;}
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>👶 Pédiatrie au Comptoir — Guide Pratique</h1>
+    <div class="sub">Doses par poids · Interdits par âge · Fièvre · Toux · Otite · Gastro · Vaccins 2024</div></div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+<!-- INTERDITS ABSOLUS PAR ÂGE -->
+<div class="forbidden">
+  <h3>🚫 INTERDITS ABSOLUS — À connaître par cœur</h3>
+  <div class="forb-grid">
+    <div class="fbox">
+      <span class="age">&lt; 1 mois</span>
+      <strong>Paracétamol seul autorisé</strong>
+      Ibuprofène CI · Aspirine CI · Tout autre AINS CI · Codéine CI · Antihistaminiques CI
+    </div>
+    <div class="fbox">
+      <span class="age">&lt; 3 mois</span>
+      <strong>Ibuprofène CI</strong>
+      Immaturité rénale · Risque IRA · Varicelle (tout âge) · Déshydratation
+    </div>
+    <div class="fbox">
+      <span class="age">&lt; 2 ans</span>
+      <strong>Sirops toux CI absolue</strong>
+      Codéine CI · Décongestionnants nasaux oraux CI · Antihistaminiques sédatifs CI · Lopéramide CI
+    </div>
+    <div class="fbox">
+      <span class="age">&lt; 6–12 ans</span>
+      <strong>Aspirine CI &lt; 6 ans</strong>
+      Syndrome de Reye · Codéine CI &lt; 12 ans (HAS 2013) · Méfloquine CI &lt; 5 kg
+    </div>
+  </div>
+</div>
+<div class="grid2">
+  <!-- FIÈVRE -->
+  <div class="card">
+    <div class="ch">🌡️ FIÈVRE — Antithermiques par Poids</div>
+    <div class="cb">
+      <div style="font-size:7.5px;color:#333;margin-bottom:4px;">
+        <strong style="color:var(--c1);">Paracétamol :</strong> 15 mg/kg/prise · Toutes les 6h · Max 60 mg/kg/j · Max 4 prises/j<br>
+        <strong style="color:#0d47a1)">Ibuprofène :</strong> 10 mg/kg/prise · Toutes les 8h · Max 30 mg/kg/j · CI &lt; 3 mois / varicelle / déshydratation
+      </div>
+      <table class="dose-table">
+        <tr>
+          <th style="background:#e65100;">Poids / Âge estimé</th>
+          <th style="background:#e65100;">Paracétamol<br>150 mg/5 mL</th>
+          <th style="background:#0d47a1;">Ibuprofène<br>20 mg/mL</th>
+          <th style="background:#e65100;">Suppositoire<br>Paracétamol</th>
+        </tr>
+        <tr><td>5 kg / ~2 mois</td><td>2,5 mL</td><td>CI &lt; 3 mois</td><td>80 mg × 3/j</td></tr>
+        <tr><td>8 kg / ~6 mois</td><td>4 mL</td><td>2 mL</td><td>80 mg × 4/j</td></tr>
+        <tr><td>10 kg / ~1 an</td><td>5 mL</td><td>2,5 mL</td><td>100 mg × 4/j</td></tr>
+        <tr><td>15 kg / ~3 ans</td><td>7,5 mL</td><td>3,5 mL</td><td>150 mg × 4/j</td></tr>
+        <tr><td>20 kg / ~6 ans</td><td>10 mL</td><td>5 mL</td><td>200 mg × 4/j</td></tr>
+        <tr><td>25 kg / ~8 ans</td><td>12 mL</td><td>6 mL</td><td>300 mg × 4/j</td></tr>
+        <tr><td>30 kg / ~10 ans</td><td>15 mL</td><td>7,5 mL</td><td>300 mg × 4/j</td></tr>
+        <tr><td>&gt; 35 kg / &gt; 12 ans</td><td>500 mg comprimé</td><td>200–400 mg cp</td><td>Cp adulte</td></tr>
+      </table>
+      <div class="warn">⚠ Ibuprofène CI en cas de varicelle (risque fasciite nécrosante). CI si déshydratation (vomissements, diarrhée). Ne pas alterner systématiquement si 1 seul suffit.</div>
+      <div class="tip">💡 Fièvre ≤ 38,5°C sans altération état général : pas d'antithermique obligatoire. Fièvre = défense. Traiter si inconfort ou &gt; 38,5°C.</div>
+    </div>
+  </div>
+  <!-- PATHOLOGIES COURANTES -->
+  <div class="card">
+    <div class="ch gr">🏥 PATHOLOGIES COURANTES — Conduite à Tenir</div>
+    <div class="cb">
+      <div class="path-item">
+        <span class="path-icon">👂</span>
+        <div class="path-text">
+          <strong>Otite Moyenne Aiguë</strong><br>
+          &lt; 2 ans : amoxicilline d'emblée 80 mg/kg/j × 8–10j · 2–12 ans : antalgiques + attendre 48–72h<br>
+          Échec/aggravation : amoxicilline-ac.clavulanique (Augmentin) · Pénicilline-allergie : azithromycine<br>
+          <span class="bad">⚠ Pas d'ATB topique seul · Pas de décongestionnant · Pas d'antihistaminique</span>
+        </div>
+      </div>
+      <div class="path-item">
+        <span class="path-icon">🤧</span>
+        <div class="path-text">
+          <strong>Rhinopharyngite</strong><br>
+          Virus dans 95% → jamais d'ATB · Sérum physiologique nasal × 4/j (DRP) · Paracétamol si fièvre/douleur<br>
+          <span class="bad">⚠ CI &lt; 12 ans : décongestionnants oraux (vasoconstricteurs) → AVC signalés</span>
+        </div>
+      </div>
+      <div class="path-item">
+        <span class="path-icon">😮‍💨</span>
+        <div class="path-text">
+          <strong>Toux de l'enfant</strong><br>
+          <span class="bad">CI &lt; 2 ans : TOUS sirops antitussifs (HAS 2011) · CI &lt; 12 ans : codéine</span><br>
+          &gt; 2 ans : mucolytiques doux (Carbocistéine) avec avis médical · Sérum physio + position demi-assise<br>
+          Toux grasse : humidification, DRP · Toux sèche nocturne : évaluer asthme
+        </div>
+      </div>
+      <div class="path-item">
+        <span class="path-icon">🤮</span>
+        <div class="path-text">
+          <strong>Gastro-entérite aiguë</strong><br>
+          SRO (Adiaril, Fanolyte) = traitement central · Réhydratation 50–100 mL/kg en 4h · Réalimentation précoce<br>
+          <span class="bad">⚠ Lopéramide CI &lt; 2 ans · Métoclopramide CI &lt; 1 an · Dompéridone CI &lt; 35 kg</span><br>
+          Smectane (diosmectite) OK nourrisson · Probiotiques (Saccharomyces boulardii) OK
+        </div>
+      </div>
+      <div class="path-item">
+        <span class="path-icon">💩</span>
+        <div class="path-text">
+          <strong>Constipation</strong><br>
+          PEG (Forlax 4g, Movicol enfant) : 0,4 g/kg/j · Lactulose · Suppositoires glycérine (nourr.)<br>
+          Huile de vaseline &gt; 1 an · Pas de laxatifs stimulants (bisacodyl) sans avis médical
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- VACCINS CALENDRIER -->
+<div class="card" style="margin-bottom:5px;">
+  <div class="ch pu">💉 CALENDRIER VACCINAL 2024 — Résumé Officinal</div>
+  <div class="cb">
+    <table class="vaccin-table">
+      <tr><th>Âge</th><th>Vaccins obligatoires / recommandés</th><th>Spécialités</th></tr>
+      <tr><td><strong>2 mois</strong></td><td>DTCaPolio-Hib + Pneumocoque + HépatiteB + Rotavirus oral</td><td>Hexyon/InfanrixHexa · Prevenar20 · Rotarix</td></tr>
+      <tr><td><strong>4 mois</strong></td><td>Rappels DTCaPolio-Hib + Pneumocoque + HépatiteB + Rotavirus</td><td>Idem + 2e dose Rotarix</td></tr>
+      <tr><td><strong>5 mois</strong></td><td>Méningocoque B (1re dose)</td><td>Bexsero</td></tr>
+      <tr><td><strong>11 mois</strong></td><td>DTCaPolio-Hib + Pneumocoque + HépatiteB · Méningocoque C + B</td><td>Rappels · Nimenrix · Bexsero</td></tr>
+      <tr><td><strong>12 mois</strong></td><td>ROR (1re dose) · Méningocoque B (4e dose)</td><td>MMRvaxPro/Priorix · Bexsero</td></tr>
+      <tr><td><strong>16–18 mois</strong></td><td>DTCaPolio (rappel) · Pneumocoque · ROR (2e dose)</td><td>InfanrixTetraHib · Prevenar · ROR</td></tr>
+      <tr><td><strong>6 ans</strong></td><td>DTCaPolio (rappel scolaire)</td><td>Infanrix Tetra/Tetravac</td></tr>
+      <tr><td><strong>11–13 ans</strong></td><td>HPV (2 doses, 6 mois d'intervalle) · dTcaPolio rappel · Méningo ACWY</td><td>Gardasil9 · Boostrix/Repevax · Nimenrix</td></tr>
+      <tr><td><strong>25 ans</strong></td><td>dTcaPolio rappel (1 dose adulte)</td><td>Boostrix Polio · Repevax</td></tr>
+      <tr><td><strong>≥ 65 ans</strong></td><td>Grippe annuelle · Pneumocoque · Zona (Shingrix)</td><td>Fluzone · Prevenar20 · Shingrix</td></tr>
+    </table>
+    <div class="tip" style="margin-top:4px;">💡 Vérifier statut vaccinal sur Mon Espace Santé. Rappeler aux parents : carnet de vaccination physique + numérique. Rattrapage possible à tout âge pour vaccins manqués.</div>
+  </div>
+</div>
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Pédiatrie — Au Comptoir</h3>
+  <div class="rfxg">
+    <div class="ri"><strong>🚫 Toux &lt; 2 ans : rien par voie orale</strong>
+      Aucun sirop antitussif avant 2 ans (HAS 2011 : rapport bénéfice/risque défavorable). Conseiller sérum physiologique nasal, humidificateur, position demi-assise. Si toux persistante → consultation pédiatre.</div>
+    <div class="ri"><strong>🌡️ Ibuprofène + varicelle = CI absolue</strong>
+      Ibuprofène (et tout AINS) est contre-indiqué lors de varicelle → risque fasciite nécrosante (infection bactérienne grave des tissus mous). Paracétamol seul. Rappeler systématiquement lors de délivrance ibuprofène pédiatrique.</div>
+    <div class="ri"><strong>💧 SRO d'abord dans la gastro</strong>
+      Avant tout autre traitement dans la gastro : SRO (Adiaril, Fanolyte, Picolyte). Proposer systématiquement. Lopéramide CI &lt; 2 ans. Smectane OK nourrisson. Réalimentation normale précoce (pas de régime restrictif).</div>
+  </div>
+</div>
+<div class="footer">SantéVeille Officine · Pédiatrie au Comptoir · Doses indicatives — adapter au poids réel · En cas de doute → pédiatre · 2026</div>
+</body></html>

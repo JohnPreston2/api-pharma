@@ -27,7 +27,7 @@ Approche : 80/20 — 20 pathologies qui représentent ~85% des prescriptions chr
 Enrichissements inclus : **DCI + Princeps** (noms de marque) + **volumes open-medic 2023** (boîtes/prix/CA).
 
 ### Posters HTML A4 — `posters/`
-Prêts à imprimer (`Ctrl+P → A4 · couleurs activées`). **23 fichiers** :
+Prêts à imprimer (`Ctrl+P → A4 · couleurs activées`). **36 fichiers** :
 
 | Fichier | Couleur | Contenu |
 |---|---|---|
@@ -56,6 +56,17 @@ Prêts à imprimer (`Ctrl+P → A4 · couleurs activées`). **23 fichiers** :
 | `quiz_revision_poster.html` | Multi-couleurs | 30 questions · 3 niveaux · 10 pathologies |
 | `quiz_revision_poster_2.html` | Rose/pink | 30 questions · 3 niveaux · pathologies 11-20 |
 | `soins_postop_cicatrisation_poster.html` | Teal/vert | Soins post-op · 4 phases cicatrisation · crèmes |
+| `conseil_bienetre_poster.html` | Vert teal | Compléments alimentaires · Probiotiques · Oméga-3 · Nicorette |
+| `huiles_essentielles_poster.html` | Vert forêt | HE LCA · Safety banner · 6 indications · Dilution · HV |
+| `arko_phytotherapie_poster.html` | Teal sombre | 8 gammes Arko · ⚠️ Levure riz rouge CI statines · Griffonia/ISRS |
+| `hollis_femme_poster.html` | Rose/magenta | Lifecycle féminin · Grossesse · Fer bis. · Folates 5-MTHF · Vit D bébé |
+| `glp1_obesite_poster.html` | Bleu électrique | GLP-1/GIP 2026 · Ozempic/Wegovy/Mounjaro · Pénurie · SE · CI |
+| `urgences_comptoir_poster.html` | Rouge | 6 protocoles urgence · Adrénaline · AVC FAST · Nalscue · Glucagen |
+| `vaccinations_officine_poster.html` | Violet | 10 vaccins officine 2024-2026 · Protocol 9 étapes · CI · Anaphylaxie |
+| `interactions_frequentes_poster.html` | Magenta/rose | Top 15 interactions · DANGER/ÉLEVÉ/MODÉRÉ · Aliments/plantes |
+| `stupefiants_risques_poster.html` | Gris acier | Ordo sécurisées · BZD règles · Prégabaline stupéfiant 2021 · BHD |
+| `pediatrie_poster.html` | Orange | CI par âge · Doses poids · Otite/Rhino/Gastro · Vaccins 2024 |
+| `polypharmacie_PA_poster.html` | Gris bleu acier | Chutes · STOPP/START · Cascade médicamenteuse · BPM · Cockroft |
 
 **Chaque poster pathologie contient :**
 - DCI + Princeps + `📦 volume open-medic 2023`
@@ -72,7 +83,7 @@ api-pharma/
 ├── rag/                # ChromaDB + Ollama (Qwen 4B) — RAG pharmaceutique
 ├── data/               # BDPM JSON + open-medic CSV
 ├── fiches/             # 20 fiches Markdown pathologies + INDEX.md
-└── posters/            # 25 HTML A4 posters
+└── posters/            # 36 HTML A4 posters
 ```
 
 **RAG non encore déployé** (données sur le PC de l'utilisateur, pas dans le repo).
@@ -91,8 +102,9 @@ Prochaine étape possible : brancher le RAG sur les fiches/BDPM pour Q&A en lang
 
 ## Idées de suite (non démarrées)
 1. **RAG au comptoir** — brancher ChromaDB+Ollama sur les fiches pour Q&A naturel
-2. **Poster hiver** — équivalent du `comptoir_ete_poster.html` pour nov–jan
-3. **Fiches pédiatriques** — dosages enfant, vaccins, fièvre/otite
-4. **Interactions checker** — UI simple pour entrer une liste de médicaments et voir les CI
-5. **Poster Tier 3 supplémentaires** — IRC, glaucome, épilepsie, BPCO seul, arthrose
-6. **Mise à jour quiz** — intégrer pathologies 11-20 dans le quiz révision
+2. **Poster hiver** — équivalent du `comptoir_ete_poster.html` pour nov–jan (bronchiolite, grippe, gastro enfant)
+3. **Interactions checker** — UI simple pour entrer une liste de médicaments et voir les CI
+4. **Poster Tier 3 supplémentaires** — IRC, glaucome, épilepsie, arthrose
+5. **Situations difficiles au comptoir** — refus d'ordonnance, erreur médicamenteuse, patient agressif
+6. **Biosimilaires substituables** — liste en vigueur, règles de substitution
+7. **Mise à jour quiz** — intégrer pathologies 11-20 + sujets transverses dans le quiz révision

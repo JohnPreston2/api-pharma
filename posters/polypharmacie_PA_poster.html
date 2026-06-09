@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Polypharmacie & Personne Âgée — SantéVeille Officine</title>
+<style>
+  :root{--c1:#37474f;--c2:#455a64;--c3:#546e7a;--cl:#cfd8dc;--cm:#eceff1;
+    --re:#b71c1c;--or:#e65100;--gr:#1b5e20;--pu:#4a148c;--am:#f57f17;}
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+  .hdr{background:linear-gradient(135deg,#263238,#37474f 45%,#455a64 80%,#607d8b);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+  .def-strip{display:flex;gap:3px;margin-bottom:5px;}
+  .ds{flex:1;border-radius:3px;padding:4px 6px;text-align:center;font-weight:700;font-size:7px;color:white;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;}
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.re{background:#b71c1c;} .ch.or{background:#e65100;}
+  .ch.gr{background:#1b5e20;} .ch.pu{background:#4a148c;} .ch.bl{background:#0d47a1;}
+  .cb{padding:5px 7px;background:white;}
+  .stopp-table{width:100%;border-collapse:collapse;font-size:7px;}
+  .stopp-table th{padding:3px 5px;text-align:left;color:white;}
+  .stopp-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);vertical-align:top;}
+  .stopp-table tr:nth-child(even) td{background:var(--cm);}
+  .stopp-table tr:last-child td{border-bottom:none;}
+  .stopp-table td:first-child{font-weight:700;color:var(--c1);}
+  .fall-item{display:flex;justify-content:space-between;align-items:baseline;
+    padding:2px 0;border-bottom:1px dotted #cfd8dc;font-size:7.5px;}
+  .fall-item:last-child{border-bottom:none;}
+  .fall-drug{font-weight:700;color:#b71c1c;}
+  .fall-meca{font-size:7px;color:#555;}
+  .fall-risk{font-size:6.5px;border-radius:3px;padding:1px 5px;
+    font-weight:700;white-space:nowrap;background:#ffcdd2;color:#b71c1c;}
+  .cascade{background:#fff3e0;border:2px solid #ff6f00;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .cascade h3{font-size:9px;font-weight:700;color:#bf360c;margin-bottom:3px;}
+  .cas-flow{display:flex;align-items:center;gap:2px;flex-wrap:wrap;font-size:7px;}
+  .cas-step{background:#bf360c;color:white;border-radius:3px;padding:2px 5px;
+    white-space:nowrap;font-weight:600;}
+  .cas-arrow{color:#e65100;font-size:10px;font-weight:700;}
+  .anticholinergique{background:#f3e5f5;border:1.5px solid #9c27b0;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .anticholinergique h3{font-size:9px;font-weight:700;color:#4a148c;margin-bottom:3px;}
+  .ac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+  .ac-item{background:white;border-radius:3px;padding:3px 5px;
+    border-left:3px solid #9c27b0;font-size:7px;}
+  .ac-item strong{color:#4a148c;display:block;font-size:7.5px;}
+  .ac-score{background:#9c27b0;color:white;border-radius:2px;padding:0 4px;
+    font-size:7px;font-weight:700;float:right;}
+  .bpm-box{background:#e8f5e9;border:1.5px solid #2e7d32;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .bpm-box h3{font-size:9px;font-weight:700;color:#1b5e20;margin-bottom:3px;}
+  .bpm-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .bi{background:white;border-radius:3px;padding:3px 6px;
+    border-left:3px solid #2e7d32;font-size:7px;}
+  .bi strong{color:#1b5e20;display:block;font-size:7.5px;}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>👴 Polypharmacie &amp; Personne Âgée — Guide Officinal</h1>
+    <div class="sub">STOPP/START · Médicaments chute · Cascade · Anticholinergiques · BPM · Adaptation rénale</div></div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+<div class="def-strip">
+  <div class="ds" style="background:#455a64;">📋 Polypharmacie : ≥ 5 médicaments</div>
+  <div class="ds" style="background:#37474f;">⚠️ Hyperpolypharmacie : ≥ 10 médicaments</div>
+  <div class="ds" style="background:#b71c1c;">🇫🇷 France : 45% des PA ≥ 75 ans sous 5+ médicaments · 10% sous 10+</div>
+  <div class="ds" style="background:#e65100;">⚡ "Start Low, Go Slow" · Règle d'or PA</div>
+</div>
+<div class="grid2">
+  <!-- MÉDICAMENTS CHUTE -->
+  <div class="card">
+    <div class="ch re">🦴 MÉDICAMENTS "HIGH FALL RISK" — Chutes PA</div>
+    <div class="cb">
+      <div class="fall-item">
+        <span class="fall-drug">Benzodiazépines / Z-drugs</span>
+        <span class="fall-meca">Sédation · Hypotonie musculaire · Désorientation nocturne</span>
+        <span class="fall-risk">ÉLEVÉ ×2</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Opioïdes (morphine, tramadol)</span>
+        <span class="fall-meca">Sédation · Hypotension orthostatique · Confusion</span>
+        <span class="fall-risk">ÉLEVÉ</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Antidépresseurs tricycliques</span>
+        <span class="fall-meca">Sédation · Anticholinergique · HTO · QT long</span>
+        <span class="fall-risk">TRÈS ÉLEVÉ</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Antipsychotiques (halopéridol, risperidone)</span>
+        <span class="fall-meca">Extra-pyramidal · Hypotension · Sédation</span>
+        <span class="fall-risk">ÉLEVÉ ×3</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Alpha-bloquants (tamsulosine, doxazosine)</span>
+        <span class="fall-meca">Hypotension orthostatique ++ (HTO au lever)</span>
+        <span class="fall-risk">MODÉRÉ</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Diurétiques (furosémide, thiazidiques)</span>
+        <span class="fall-meca">Déshydratation → HTO · Hypokaliémie → faiblesse musculaire</span>
+        <span class="fall-risk">MODÉRÉ</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Antihypertenseurs tous (IEC, sartans, amlodipine)</span>
+        <span class="fall-meca">Hypotension si surdosage · HTO · Surtout en été/déshydratation</span>
+        <span class="fall-risk">CONTEXTUEL</span>
+      </div>
+      <div class="fall-item">
+        <span class="fall-drug">Antidiabétiques (sulfamides, insuline)</span>
+        <span class="fall-meca">Hypoglycémie → malaise · confusion · chute</span>
+        <span class="fall-risk">ÉLEVÉ si HbA1c trop bas</span>
+      </div>
+      <div class="tip">💡 En cas de chute récente : faire l'inventaire médicamenteux complet. Souvent 2–3 médicaments à risque combinés. Signaler au médecin. Vérifier TA couché/debout (HTO).</div>
+    </div>
+  </div>
+  <!-- STOPP / START -->
+  <div class="card">
+    <div class="ch or">⚠️ STOPP / START — Critères Clés en Officine</div>
+    <div class="cb">
+      <div style="font-weight:700;color:#b71c1c;font-size:8px;margin-bottom:3px;
+        border-bottom:1px solid #ffcdd2;padding-bottom:2px;">🔴 STOPP — Médicaments à éviter / questionner chez PA</div>
+      <table class="stopp-table">
+        <tr><th style="background:#b71c1c;">Médicament</th><th style="background:#b71c1c;">Risque PA</th></tr>
+        <tr><td>AINS &gt; 3 mois</td><td>IRA · Hémorragie digestive · HTA aggravée</td></tr>
+        <tr><td>BZD longue durée</td><td>Chutes · Fractures · Confusion · Dépendance</td></tr>
+        <tr><td>Glibenclamide (sulfamide)</td><td>Hypoglycémies sévères prolongées · ↑ mortalité</td></tr>
+        <tr><td>Antipsychotiques si démence</td><td>Surmortalité · Confusion · Chutes · AVC</td></tr>
+        <tr><td>Antihistaminiques sédatifs (Phénergan)</td><td>Confusion · Rétention urinaire · Chutes</td></tr>
+        <tr><td>Digoxine &gt; 125 mcg si DFG &lt; 30</td><td>Toxicité digitale (accumulation)</td></tr>
+        <tr><td>IPP &gt; 8 semaines sans indication</td><td>Fractures · Hypomagn. · Infections digestives</td></tr>
+      </table>
+      <div style="font-weight:700;color:#1b5e20;font-size:8px;margin:5px 0 3px;
+        border-bottom:1px solid #c8e6c9;padding-bottom:2px;">🟢 START — Médicaments sous-prescrits à vérifier</div>
+      <table class="stopp-table">
+        <tr><th style="background:#1b5e20;">Indication</th><th style="background:#1b5e20;">Médicament souvent manquant</th></tr>
+        <tr><td>ATCD IDM/AVC + FA</td><td>Antiagrégant ou anticoagulant absent ?</td></tr>
+        <tr><td>Opioïdes prescrits</td><td>Laxatif systématique (jamais d'opioïde sans laxatif !)</td></tr>
+        <tr><td>Ostéoporose + corticoïdes</td><td>Calcium + Vitamine D + bisphosphonate</td></tr>
+        <tr><td>AINS prescrit PA</td><td>IPP de protection gastrique souvent absent</td></tr>
+        <tr><td>Grippe annuelle</td><td>Vaccination à proposer systématiquement ≥ 65 ans</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- CASCADE MÉDICAMENTEUSE -->
+<div class="cascade">
+  <h3>🌊 CASCADE MÉDICAMENTEUSE — Exemple Classique À Identifier</h3>
+  <div class="cas-flow">
+    <div class="cas-step">AINS prescrit arthrose</div><div class="cas-arrow">→</div>
+    <div class="cas-step">HTA aggravée</div><div class="cas-arrow">→</div>
+    <div class="cas-step">+ Antihypertenseur</div><div class="cas-arrow">→</div>
+    <div class="cas-step">Hypotension + vertiges</div><div class="cas-arrow">→</div>
+    <div class="cas-step">+ Bêtahistine</div><div class="cas-arrow">→</div>
+    <div class="cas-step">Sédation</div><div class="cas-arrow">→</div>
+    <div class="cas-step">Chute + fracture</div><div class="cas-arrow">→</div>
+    <div class="cas-step">+ Opioïde</div><div class="cas-arrow">→</div>
+    <div class="cas-step">Constipation</div><div class="cas-arrow">→</div>
+    <div class="cas-step">+ Laxatif</div><div class="cas-arrow">→</div>
+    <div class="cas-step">Déshydratation</div><div class="cas-arrow">→</div>
+    <div class="cas-step">IRA !</div>
+  </div>
+  <div style="font-size:7px;color:#bf360c;margin-top:4px;font-weight:600;">
+    ⚠ Solution : remonter à la cause initiale (AINS) · Arrêter l'AINS → cascade se dénoue. Signaler au médecin. Le pharmacien est le seul à voir toute la médication.
+  </div>
+</div>
+<!-- SCORE ANTICHOLINERGIQUE -->
+<div class="anticholinergique">
+  <h3>🧠 CHARGE ANTICHOLINERGIQUE — Effet Cumulatif sur Cognition &amp; Chutes</h3>
+  <div class="ac-grid">
+    <div class="ac-item">
+      <strong>Score 3 (fort) <span class="ac-score">+++</span></strong>
+      Amitriptyline (Laroxyl) · Imipramine · Oxybutynine (Ditropan) · Toltérodine · Hydroxyzine · Diphénhydramine (Noctyl)
+    </div>
+    <div class="ac-item">
+      <strong>Score 2 (modéré) <span class="ac-score">++</span></strong>
+      Paroxétine (Deroxat) · Digoxine · Nifédipine · Codéine · Prochlorpérazine
+    </div>
+    <div class="ac-item">
+      <strong>Score 1 (faible) <span class="ac-score">+</span></strong>
+      Tramadol · Ranitidine · Furosémide · Loratadine · Prednisolone · Métoprolol
+    </div>
+  </div>
+  <div style="font-size:7px;color:#4a148c;margin-top:4px;">
+    ⚠ Charge totale ≥ 3 : ↑ risque déclin cognitif, confusion, chutes, rétention urinaire, constipation.
+    Alternatives préférées PA : solifénacine (moins anticholinergique) pour vessie · Mirtazapine/ISRS pour dépression (vs tricycliques).
+  </div>
+</div>
+<!-- BPM + INSUFFISANCE RÉNALE -->
+<div class="bpm-box">
+  <h3>📋 BILAN PARTAGÉ DE MÉDICATION (BPM) — Nouveau depuis 2021</h3>
+  <div class="bpm-grid">
+    <div class="bi"><strong>Qui est concerné ?</strong>
+      Patients ≥ 65 ans avec ≥ 5 médicaments chroniques (ou ≥ 3 pathologies + polypharmacie)
+      Offre annuelle gratuite · Remboursé par l'Assurance Maladie
+    </div>
+    <div class="bi"><strong>Contenu de l'entretien (30–45 min)</strong>
+      Revue complète de toute la médication · Identification problèmes : doublons · CI · effets indés. non signalés · mauvaise observance · Propose simplification au médecin
+    </div>
+    <div class="bi"><strong>Comment proposer ?</strong>
+      "Nous pouvons faire ensemble un bilan de tous vos médicaments, c'est gratuit et remboursé par la CPAM. Ça permet de repérer si un médicament pourrait en causer un autre."
+    </div>
+    <div class="bi"><strong>Adaptation rénale — règle rapide</strong>
+      Cockroft : DFG = [(140-âge) × poids × 0,85 (F)] / (créatinine × 0,0113)<br>
+      DFG &lt; 60 → attention metformine · NACO (ajuster) · ATB · digoxine<br>
+      DFG &lt; 30 → arrêt metformine · prudence extrême NACO · dialyse ?
+    </div>
+  </div>
+</div>
+<div class="rfx">
+  <h3>⚡ 3 Réflexes — Polypharmacie &amp; PA</h3>
+  <div class="rfxg">
+    <div class="ri"><strong>🦴 Chute récente → revue médicamenteuse</strong>
+      Systématiquement : inventaire complet des médicaments si patient PA vient chercher des anti-douleurs post-chute. Identifier les médicaments chutogènes. Proposer BPM. Signaler au médecin les associations à risque.</div>
+    <div class="ri"><strong>💊 Opioïde prescrit → laxatif systématique</strong>
+      JAMAIS d'opioïde sans laxatif osmotique associé (PEG, lactulose). Si médecin ne l'a pas prescrit : délivrer + conseiller d'appeler le médecin. La constipation aux opioïdes n'est pas une cascade à traiter → c'est une prévention obligatoire.</div>
+    <div class="ri"><strong>📋 Proposer le BPM à chaque PA 5+ médicaments</strong>
+      Toute ordonnance PA avec ≥ 5 médicaments = occasion de proposer le BPM. Gratuit, remboursé, valorisant pour la pharmacie. Repère les cascades, les CI, les doublons. Améliore la relation de confiance avec le patient.</div>
+  </div>
+</div>
+<div class="footer">SantéVeille Officine · Polypharmacie &amp; Personne Âgée · STOPP/START version 3 (2023) · HAS — Bilan Partagé de Médication · 2026</div>
+</body></html>
