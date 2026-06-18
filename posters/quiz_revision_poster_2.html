@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Révision Officine — Pathologies 11-20</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 6.5pt; color: #1a1a2e; line-height: 1.3; }
+
+  /* ── HEADER ── */
+  .header { background: linear-gradient(135deg, #880e4f 0%, #ad1457 40%, #c2185b 70%, #e91e63 100%); padding: 5mm 7mm 4mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 5mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -10mm; top: -10mm; width: 45mm; height: 45mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 17pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header h1 span { font-size: 7.5pt; font-weight: 400; color: rgba(255,255,255,0.65); display: block; margin-top: 1mm; letter-spacing: 1px; text-transform: uppercase; }
+  .header-pills { display: flex; gap: 2.5mm; }
+  .pill { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; padding: 2mm 3mm; text-align: center; }
+  .pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 4.5pt; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 0.5mm; display: block; }
+
+  /* ── TAG BAR ── */
+  .tag-bar { background: #880e4f; padding: 1.5mm 7mm; display: flex; gap: 3mm; align-items: center; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 4.8pt; padding: 0.6mm 2mm; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .diff-legend { display: flex; gap: 2mm; margin-left: auto; align-items: center; }
+  .dl { font-size: 4.5pt; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.8mm; }
+
+  /* ── QUIZ GRID ── */
+  .quiz-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.8mm; padding: 2mm 7mm 2mm; }
+
+  /* ── CARD ── */
+  .card { border: 1px solid #cfd8dc; border-radius: 5px; overflow: hidden; border-left: 3px solid var(--clr, #37474f); display: flex; flex-direction: column; }
+  .card-head { background: color-mix(in srgb, var(--clr, #37474f) 8%, #fff); padding: 1.2mm 2mm; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid color-mix(in srgb, var(--clr, #37474f) 20%, #fff); }
+  .patho { font-size: 4.5pt; font-weight: 800; color: var(--clr, #37474f); text-transform: uppercase; letter-spacing: 0.4px; }
+  .diff { font-size: 6pt; letter-spacing: 0.5px; }
+  .d-easy { color: #2e7d32; }
+  .d-med  { color: #e65100; }
+  .d-hard { color: #b71c1c; }
+  .card-q { padding: 1.8mm 2mm 1mm; font-size: 6pt; font-weight: 600; color: #1a1a2e; line-height: 1.3; flex: 1; }
+  .card-a { padding: 1.5mm 2mm; font-size: 5.5pt; color: #37474f; background: #f4f6f8; border-top: 1px dashed #cfd8dc; line-height: 1.3; }
+  .card-a::before { content: '→ '; color: var(--clr, #37474f); font-weight: 800; }
+  .card-a strong { color: #1a1a2e; font-weight: 700; }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-row { grid-column: 1 / -1; display: flex; align-items: center; gap: 2mm; margin: 0.5mm 0; }
+  .section-row .sline { flex: 1; height: 1px; background: #e0e0e0; }
+  .section-row .slabel { font-size: 4.5pt; font-weight: 700; color: var(--clr); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; background: color-mix(in srgb, var(--clr) 10%, #fff); padding: 0.5mm 2mm; border-radius: 20px; border: 1px solid color-mix(in srgb, var(--clr) 20%, #ddd); }
+
+  /* ── FOOTER ── */
+  .footer { background: #880e4f; padding: 1.8mm 7mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer span { color: rgba(255,255,255,0.5); font-size: 4.5pt; }
+  .footer .brand { color: rgba(255,255,255,0.85); font-weight: 700; font-size: 5pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Quiz Révision Officine — Vol. 2
+      <span>30 questions · Pathologies 11–20 · Remise à niveau comptoir · 2026</span>
+    </h1>
+  </div>
+  <div class="header-pills">
+    <div class="pill"><span class="val">30</span><span class="lbl">Questions</span></div>
+    <div class="pill"><span class="val">10</span><span class="lbl">Pathos</span></div>
+    <div class="pill"><span class="val">3</span><span class="lbl">Niveaux</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Ostéoporose</span><span class="tag">Allergie</span><span class="tag">Contraception</span>
+  <span class="tag">Prostate/HBP</span><span class="tag">Migraine</span><span class="tag">Eczéma/DA</span>
+  <span class="tag">Polyarthrite</span><span class="tag">Addictologie</span><span class="tag">Ménopause</span><span class="tag">Goutte</span>
+  <div class="diff-legend">
+    <span class="dl"><span style="color:#2e7d32">●○○</span> Facile</span>
+    <span class="dl"><span style="color:#e65100">●●○</span> Moyen</span>
+    <span class="dl"><span style="color:#b71c1c">●●●</span> Difficile</span>
+  </div>
+</div>
+
+<!-- ═══════════════ QUIZ GRID ═══════════════ -->
+<div class="quiz-grid">
+
+  <!-- ── OSTÉOPOROSE ── -->
+  <div class="section-row" style="--clr:#0277bd">
+    <div class="sline"></div><span class="slabel" style="color:#0277bd">Ostéoporose</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#0277bd">
+    <div class="card-head"><span class="patho">Ostéoporose</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Règle d'or des bisphosphonates oraux (alendronate, risédronate) ?</div>
+    <div class="card-a"><strong>À jeun · eau plate uniquement · rester debout ou assis 30 min</strong> · puis attendre avant de manger · risque : œsophagite si non respecté</div>
+  </div>
+
+  <div class="card" style="--clr:#0277bd">
+    <div class="card-head"><span class="patho">Ostéoporose</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Dénosumab (Prolia) : que risque-t-on en arrêtant sans transition ?</div>
+    <div class="card-a"><strong>Rebond fracturaire vertébral</strong> sévère en quelques semaines · JAMAIS d'arrêt sans relais bisphosphonate · urgence médicale si arrêt accidentel</div>
+  </div>
+
+  <div class="card" style="--clr:#0277bd">
+    <div class="card-head"><span class="patho">Ostéoporose</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Romosozumab (Evenity) : quelle CI cardiovasculaire et quelle durée maximale ?</div>
+    <div class="card-a">CI si <strong>ATCD IDM ou AVC récent</strong> · <strong>12 mois maximum</strong> · double mécanisme (formation ↑ + résorption ↓) · relais bisphosphonate obligatoire après</div>
+  </div>
+
+  <!-- ── ALLERGIE ── -->
+  <div class="section-row" style="--clr:#2e7d32">
+    <div class="sline"></div><span class="slabel" style="color:#2e7d32">Allergie / Rhinite</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#2e7d32">
+    <div class="card-head"><span class="patho">Allergie</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Cétirizine vs loratadine pour un conducteur de camion : lequel choisir ?</div>
+    <div class="card-a"><strong>Loratadine</strong> (ou fexofénadine · bilastine) · non sédatifs · cétirizine = sédation résiduelle 10–20% · réflexe AH2G non sédatif pour tout métier à risque</div>
+  </div>
+
+  <div class="card" style="--clr:#2e7d32">
+    <div class="card-head"><span class="patho">Allergie</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Pseudoéphédrine : durée max et 3 CI absolues à retenir en officine ?</div>
+    <div class="card-a"><strong>5 jours max</strong> · CI : <strong>HTA · glaucome · IMAO</strong> (+ hyperthyroïdie, grossesse, > 65 ans) · rhinite rebond si usage prolongé</div>
+  </div>
+
+  <div class="card" style="--clr:#2e7d32">
+    <div class="card-head"><span class="patho">Allergie</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">ITA sublinguale acariens (Acarizax) : dès quel âge, remboursée, durée ?</div>
+    <div class="card-a"><strong>Dès 5 ans · remboursé</strong> · 3–5 ans de traitement quotidien · seul traitement modificateur de la maladie (curatif) · prescrit par allergologue</div>
+  </div>
+
+  <!-- ── CONTRACEPTION ── -->
+  <div class="section-row" style="--clr:#880e4f">
+    <div class="sline"></div><span class="slabel" style="color:#880e4f">Contraception</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#880e4f">
+    <div class="card-head"><span class="patho">Contracep.</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">EllaOne vs Norlevo : lequel choisir si le rapport date de 80h ?</div>
+    <div class="card-a"><strong>EllaOne</strong> (ulipristal) · efficace jusqu'à <strong>120h (5j)</strong> · supérieur à Norlevo au-delà de 72h · Norlevo efficace jusqu'à 72h seulement</div>
+  </div>
+
+  <div class="card" style="--clr:#880e4f">
+    <div class="card-head"><span class="patho">Contracep.</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Patiente sous Cerazette : peut-elle prendre EllaOne comme CU ?</div>
+    <div class="card-a"><strong>Non</strong> · EllaOne = modulateur récepteur progestérone → <strong>antagonise Cerazette → CU inefficace</strong> · solution : DIU cuivre (le mieux) ou LNG (Norlevo)</div>
+  </div>
+
+  <div class="card" style="--clr:#880e4f">
+    <div class="card-head"><span class="patho">Contracep.</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Patiente épileptique sous topiramate + pilule EP : quel risque et quelle solution ?</div>
+    <div class="card-a">Topiramate = <strong>inducteur enzymatique</strong> → ↓ efficacité pilule → <strong>grossesses documentées</strong> · solution : <strong>DIU non hormonal</strong> ou préservatif systématique</div>
+  </div>
+
+  <!-- ── PROSTATE / HBP ── -->
+  <div class="section-row" style="--clr:#0d47a1">
+    <div class="sline"></div><span class="slabel" style="color:#0d47a1">Prostate / HBP</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#0d47a1">
+    <div class="card-head"><span class="patho">Prostate</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">α-bloquants (tamsulosine) vs I5AR (dutastéride) : délai d'action respectif ?</div>
+    <div class="card-a">α-bloquants : <strong>48–72h</strong> (relaxation musculaire) · I5AR : <strong>3–6 mois</strong> (réduction volume prostatique) · patient qui abandonne Avodart à 1 mois = erreur</div>
+  </div>
+
+  <div class="card" style="--clr:#0d47a1">
+    <div class="card-head"><span class="patho">Prostate</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">IFIS + tamsulosine : c'est quoi, et que dire avant une opération des yeux ?</div>
+    <div class="card-a"><strong>Intraoperative Floppy Iris Syndrome</strong> · complication grave chirurgie cataracte · informer l'ophtalmologiste <strong>même si tamsulosine déjà arrêtée</strong></div>
+  </div>
+
+  <div class="card" style="--clr:#0d47a1">
+    <div class="card-head"><span class="patho">Prostate</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">PSA à 1,8 ng/mL sous finastéride (Chibro-Proscar) : que représente-t-il réellement ?</div>
+    <div class="card-a">I5AR <strong>divisent le PSA par 2</strong> → PSA réel = 1,8 × 2 = <strong>3,6 ng/mL</strong> · toujours multiplier par 2 pour l'interprétation biologique · signaler au médecin</div>
+  </div>
+
+  <!-- ── MIGRAINE ── -->
+  <div class="section-row" style="--clr:#6a1b9a">
+    <div class="sline"></div><span class="slabel" style="color:#6a1b9a">Migraine</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#6a1b9a">
+    <div class="card-head"><span class="patho">Migraine</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Quand prendre le triptan : pendant l'aura ou au début de la douleur ?</div>
+    <div class="card-a">Au <strong>début de la douleur</strong> · jamais pendant l'aura (vasoconstricteurs → CI) · AINS ou métoclopramide pendant l'aura · prendre tôt = meilleure efficacité</div>
+  </div>
+
+  <div class="card" style="--clr:#6a1b9a">
+    <div class="card-head"><span class="patho">Migraine</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Migraine avec aura + pilule œstroprogestative : quel risque et que conseiller ?</div>
+    <div class="card-a">Risque <strong>AVC × 8</strong> · <strong>CI EP absolue</strong> · changer pour microprogestative (Cerazette) ou DIU · jamais normaliser cette association</div>
+  </div>
+
+  <div class="card" style="--clr:#6a1b9a">
+    <div class="card-head"><span class="patho">Migraine</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Rimégépant (Vydura) : en quoi est-il différent des triptans ?</div>
+    <div class="card-a"><strong>Gépant</strong> (antagoniste CGRP oral) · utilisable <strong>crise ET prophylaxie</strong> dans le même médicament · <strong>moins de rebond</strong> · AMM Europe 2022 · CI CV moins strictes</div>
+  </div>
+
+  <!-- ── ECZÉMA / DA ── -->
+  <div class="section-row" style="--clr:#bf360c">
+    <div class="sline"></div><span class="slabel" style="color:#bf360c">Eczéma / DA</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#bf360c">
+    <div class="card-head"><span class="patho">Eczéma/DA</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Corticostérophobie : 1ère cause d'échec de la DA. Comment la gérer ?</div>
+    <div class="card-a">Rassurer : <strong>DC classe I (hydrocortisone 1%)</strong> visage nourrisson = très sûr si 5–7j · risque atrophie uniquement si classe IV prolongée · sous-traitement = pire que traitement</div>
+  </div>
+
+  <div class="card" style="--clr:#bf360c">
+    <div class="card-head"><span class="patho">Eczéma/DA</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Protopic (tacrolimus) : les brûlures des premières applications sont-elles normales ?</div>
+    <div class="card-a"><strong>Oui · normales 7–10 premiers jours</strong> · disparaissent spontanément · 1ère cause d'abandon injustifié · persévérer · phototoxicité → protection solaire</div>
+  </div>
+
+  <div class="card" style="--clr:#bf360c">
+    <div class="card-head"><span class="patho">Eczéma/DA</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Dupilumab (Dupixent) DA : quel EI oculaire fréquent à anticiper (20%) ?</div>
+    <div class="card-a"><strong>Conjonctivite</strong> chez 20% des patients · collyres humidifiants à proposer · ne pas arrêter le traitement pour autant · avis ophtalmologiste si sévère</div>
+  </div>
+
+  <!-- ── POLYARTHRITE RHUMATOÏDE ── -->
+  <div class="section-row" style="--clr:#37474f">
+    <div class="sline"></div><span class="slabel" style="color:#37474f">Polyarthrite rhumatoïde</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#37474f">
+    <div class="card-head"><span class="patho">Polyarthrite</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Acide folique + méthotrexate : quel jour le prendre et pourquoi jamais le même jour ?</div>
+    <div class="card-a"><strong>J+2</strong> (2 jours après le MTX) · réduit EI digestifs et hématologiques <strong>sans réduire l'efficacité</strong> · le même jour → antagonisme → perte d'efficacité</div>
+  </div>
+
+  <div class="card" style="--clr:#37474f">
+    <div class="card-head"><span class="patho">Polyarthrite</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Patient sous Humira (adalimumab) avec 39°C de fièvre : attitude immédiate ?</div>
+    <div class="card-a"><strong>Urgences médicales immédiatement</strong> · biothérapies <strong>masquent les signes d'infection</strong> · sepsis peut être masqué · arrêt traitement + bilan urgence</div>
+  </div>
+
+  <div class="card" style="--clr:#37474f">
+    <div class="card-head"><span class="patho">Polyarthrite</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">MTX + cotrimoxazole (Bactrim) : quel danger, quelle conduite ?</div>
+    <div class="card-a">Deux <strong>antifolates cumulés</strong> → pancytopénie sévère · <strong>CI ou surveillance NFS rapprochée</strong> · aussi : MTX + AINS → ↑ toxicité MTX · paracétamol préférable</div>
+  </div>
+
+  <!-- ── ADDICTOLOGIE ── -->
+  <div class="section-row" style="--clr:#004d40">
+    <div class="sline"></div><span class="slabel" style="color:#004d40">Addictologie</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#004d40">
+    <div class="card-head"><span class="patho">Addictologie</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Substituts nicotiniques : quel remboursement et quelle condition depuis 2019 ?</div>
+    <div class="card-a"><strong>150€/an</strong> remboursés sur prescription médicale · toutes formes (patchs, gommes, pastilles, inhalateur) · proposer systématiquement à tout fumeur qui consulte</div>
+  </div>
+
+  <div class="card" style="--clr:#004d40">
+    <div class="card-head"><span class="patho">Addictologie</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">BHD (Subutex) + benzodiazépine : quel danger documenté ?</div>
+    <div class="card-a"><strong>Dépression respiratoire mortelle</strong> · association documentée dans des décès · toujours vérifier ordonnance complète d'un patient TAOD · signaler au prescripteur</div>
+  </div>
+
+  <div class="card" style="--clr:#004d40">
+    <div class="card-head"><span class="patho">Addictologie</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Naltrexone (Revia) pour l'alcool : quelle CI absolue à vérifier systématiquement ?</div>
+    <div class="card-a">CI si <strong>opioïde en cours</strong> (morphine, codéine, tramadol, BHD) → <strong>précipite sevrage brutal en 30 min</strong> · toujours vérifier le traitement complet avant dispensation</div>
+  </div>
+
+  <!-- ── MÉNOPAUSE ── -->
+  <div class="section-row" style="--clr:#6a1b9a">
+    <div class="sline"></div><span class="slabel" style="color:#7b1fa2">Ménopause / THS</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#8e24aa">
+    <div class="card-head"><span class="patho">Ménopause</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Gel d'estradiol (Oestrogel) : quelle précaution après application ?</div>
+    <div class="card-a">Laisser sécher <strong>5 minutes</strong> · couvrir le bras avec un vêtement · <strong>transfert cutané possible</strong> sur partenaire/enfants si contact immédiat · zone bras/épaules</div>
+  </div>
+
+  <div class="card" style="--clr:#8e24aa">
+    <div class="card-head"><span class="patho">Ménopause</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Pourquoi préférer l'estradiol transdermique à la voie orale pour le THS ?</div>
+    <div class="card-a">Voie transdermique = <strong>pas de 1er passage hépatique</strong> → pas d'↑ facteurs de coagulation → <strong>moins de risque thromboembolique</strong> · voie orale augmente SHBG et TG</div>
+  </div>
+
+  <div class="card" style="--clr:#8e24aa">
+    <div class="card-head"><span class="patho">Ménopause</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Progestérone naturelle (Utrogestan) vs progestatifs synthétiques : quelle différence clé ?</div>
+    <div class="card-a">Progestérone naturelle = <strong>moindre risque cancer du sein</strong> (études E3N/WHI) · progestatifs synthétiques (MPA, noréthistérone) = risque plus élevé · <strong>Utrogestan = standard actuel</strong></div>
+  </div>
+
+  <!-- ── GOUTTE ── -->
+  <div class="section-row" style="--clr:#4e342e">
+    <div class="sline"></div><span class="slabel" style="color:#6d4c41">Goutte</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#6d4c41">
+    <div class="card-head"><span class="patho">Goutte</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Un patient en crise de goutte veut démarrer son Zyloric (allopurinol) : que lui dire ?</div>
+    <div class="card-a"><strong>JAMAIS pendant la crise</strong> · mobilise les cristaux → aggrave et prolonge la crise · attendre la résolution complète <strong>+ 3–6 semaines</strong> · traiter d'abord la crise</div>
+  </div>
+
+  <div class="card" style="--clr:#6d4c41">
+    <div class="card-head"><span class="patho">Goutte</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Colchicine 0,5 mg/j prescrite sans crise : pourquoi pendant 6 mois ?</div>
+    <div class="card-a">Prophylaxie au démarrage de l'allopurinol · <strong>prévient les crises de mobilisation</strong> des cristaux lors de la baisse d'uricémie · standard ACR 2020 · 3–6 mois minimum</div>
+  </div>
+
+  <div class="card" style="--clr:#6d4c41">
+    <div class="card-head"><span class="patho">Goutte</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Allopurinol + azathioprine (Imurel) : quel danger, quelle conduite ?</div>
+    <div class="card-a">Même voie catabolisme (xanthine-oxydase) → <strong>toxicité azathioprine × 4</strong> (pancytopénie) · <strong>CI ou réduire aza de 75%</strong> · interaction grave souvent méconnue</div>
+  </div>
+
+</div><!-- /quiz-grid -->
+
+<div class="footer">
+  <span>Quiz Révision Officine Vol.2 · 30 questions · Pathologies 11–20 · Pratique comptoir 2026</span>
+  <span class="brand">SANTÉVEILLE · api-pharma</span>
+  <span>●○○ Facile · ●●○ Moyen · ●●● Difficile</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Hypothyroïdie — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #004d40; --c2: #00695c; --c3: #26a69a;
+    --cl: #e0f2f1; --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; }
+
+  .signes { background: var(--grey-l); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .signes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; }
+  .signe-item { background: white; border-radius: 5px; padding: 2mm; text-align: center; border-top: 2.5px solid var(--c2); }
+  .signe-item .emoji { font-size: 10pt; }
+  .signe-item .lbl { font-size: 5.5pt; color: var(--grey); margin-top: 0.5mm; }
+
+  .prise-rules { background: var(--cl); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--c2); }
+  .prise-rules .title { font-size: 6pt; font-weight: 700; color: var(--c1); margin-bottom: 1.5mm; }
+  .rule { display: flex; align-items: center; gap: 2mm; margin-bottom: 1.2mm; font-size: 6pt; }
+  .rule-ok { color: var(--green); font-weight: 600; }
+  .rule-ko { color: var(--red); font-weight: 600; }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+
+  .levo-card { background: white; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+  .levo-header { background: linear-gradient(90deg, var(--c1), var(--c2)); padding: 3mm; }
+  .levo-header h3 { font-size: 10pt; font-weight: 900; color: white; }
+  .levo-header p { font-size: 6pt; color: rgba(255,255,255,0.8); margin-top: 0.5mm; }
+  .levo-body { padding: 3mm; }
+  .doses-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm; margin-bottom: 3mm; }
+  .dose-pill { background: var(--cl); border-radius: 5px; padding: 2mm; text-align: center; border: 1px solid rgba(0,105,92,0.2); }
+  .dose-pill .d { font-size: 7.5pt; font-weight: 800; color: var(--c1); }
+  .dose-pill .u { font-size: 5pt; color: var(--grey); }
+
+  .produits-table { width: 100%; border-collapse: collapse; margin-bottom: 3mm; }
+  .produits-table th { background: var(--cl); font-size: 5.5pt; font-weight: 700; color: var(--c1); padding: 1.5mm 2mm; text-align: left; }
+  .produits-table td { font-size: 6pt; color: var(--grey); padding: 1.5mm 2mm; border-bottom: 1px solid var(--border); }
+  .produits-table tr:last-child td { border-bottom: none; }
+
+  .posologie { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+  .poso-box { border-radius: 5px; padding: 2.5mm; }
+  .poso-adulte { background: var(--green-l); border-left: 2.5px solid var(--green); }
+  .poso-adulte .t { font-size: 5.5pt; font-weight: 700; color: var(--green); margin-bottom: 1mm; }
+  .poso-age { background: var(--amber-l); border-left: 2.5px solid var(--amber); }
+  .poso-age .t { font-size: 5.5pt; font-weight: 700; color: var(--amber); margin-bottom: 1mm; }
+  .poso-box p { font-size: 6pt; color: var(--grey); }
+
+  .crise2017 { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .crise2017 .title { font-size: 6pt; font-weight: 700; color: var(--red); margin-bottom: 1.5mm; }
+  .crise2017 p { font-size: 6pt; color: #7f0000; }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--amber-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--amber); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--amber); }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .vol-badge { display: inline-block; background: rgba(0,0,0,0.07); border-radius: 4px; padding: 1mm 2mm; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.45); margin-top: 1.5mm; letter-spacing: 0.2px; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>Hypothyroïdie</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">3M</span><span class="lbl">Français traités</span></div>
+    <div class="stat-pill"><span class="val">8/1</span><span class="lbl">Sex-ratio F/H</span></div>
+    <div class="stat-pill"><span class="val">Top 3</span><span class="lbl">Prescriptions France</span></div>
+  </div>
+</div>
+<div class="tag-bar">
+  <span class="tag">À jeun 30 min avant</span><span class="tag">Espacer Ca/Fer/IPP de 4h</span>
+  <span class="tag">TSH = seul marqueur de suivi</span><span class="tag">Crise 2017 Lévothyrox</span>
+  <span class="tag">Grossesse = dose +25%</span><span class="tag">Jamais substitution sans médecin</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🧠 Hypothalamus → TRH → Hypophyse → TSH</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">🦋 Thyroïde → T4 → T3 (désiodation)</div>
+        <div class="cascade-arrow">↓ en hypothyroïdie</div>
+        <div class="cascade-step">📉 T4/T3 ↓ → TSH ↑ (rétrocontrôle cassé)</div>
+      </div>
+    </div>
+
+    <div class="section-label">Signes cliniques</div>
+    <div class="signes">
+      <div class="signes-grid">
+        <div class="signe-item"><div class="emoji">⚖️</div><div class="lbl">Prise de poids</div></div>
+        <div class="signe-item"><div class="emoji">🥶</div><div class="lbl">Frilosité</div></div>
+        <div class="signe-item"><div class="emoji">💤</div><div class="lbl">Fatigue</div></div>
+        <div class="signe-item"><div class="emoji">😔</div><div class="lbl">Dépression</div></div>
+        <div class="signe-item"><div class="emoji">💇</div><div class="lbl">Cheveux cassants</div></div>
+        <div class="signe-item"><div class="emoji">💓</div><div class="lbl">Bradycardie</div></div>
+        <div class="signe-item"><div class="emoji">🚽</div><div class="lbl">Constipation</div></div>
+        <div class="signe-item"><div class="emoji">🧴</div><div class="lbl">Peau sèche</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Règles de prise — CRITIQUES</div>
+    <div class="prise-rules">
+      <div class="title">Lévothyroxine</div>
+      <div class="rule rule-ok">✅ À jeun, 30 min AVANT le petit-déjeuner</div>
+      <div class="rule rule-ok">✅ Avec un grand verre d'eau froide</div>
+      <div class="rule rule-ok">✅ Heure fixe chaque matin</div>
+      <div class="rule rule-ko">❌ Jamais avec café, lait, jus d'orange</div>
+      <div class="rule rule-ko">❌ Jamais en même temps que Ca, Fer, IPP</div>
+      <div class="rule" style="color:var(--amber);font-weight:600;">⏰ Ca/Fer/IPP → espacer ≥ 4 heures</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Traitement — Lévothyroxine</div>
+
+    <div class="levo-card">
+      <div class="levo-header">
+        <h3>Lévothyroxine sodique</h3>
+        <p>Substitution en T4 → conversion périphérique en T3 active</p>
+        <div class="vol-badge">📦 42M boîtes · 2,35€ · 99M€/an (open-medic 2023)</div>
+      </div>
+      <div class="levo-body">
+        <div style="font-size:5.5pt;font-weight:700;color:var(--c1);margin-bottom:1.5mm;text-transform:uppercase;">Dosages disponibles (µg)</div>
+        <div class="doses-grid">
+          <div class="dose-pill"><div class="d">25</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">50</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">75</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">100</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">125</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">150</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">175</div><div class="u">µg</div></div>
+          <div class="dose-pill"><div class="d">200</div><div class="u">µg</div></div>
+        </div>
+
+        <div style="font-size:5.5pt;font-weight:700;color:var(--c1);margin-bottom:1.5mm;text-transform:uppercase;">Produits disponibles</div>
+        <table class="produits-table">
+          <tr><th>Produit</th><th>Forme</th><th>Note</th></tr>
+          <tr><td><b>Lévothyrox</b> (nouvelle formule)</td><td>Comprimé</td><td>Mannitol + acide citrique (sans lactose)</td></tr>
+          <tr><td>L-Thyroxine Serb</td><td>Comprimé</td><td>Alternative si intolérance nouvelle formule</td></tr>
+          <tr><td>Thyrofix</td><td>Comprimé</td><td>Nouvelle formule</td></tr>
+          <tr><td><b>Tcaps</b></td><td>Gélule</td><td>Meilleure tolérance / sensibilité excipients</td></tr>
+        </table>
+
+        <div class="posologie">
+          <div class="poso-box poso-adulte">
+            <div class="t">Adulte jeune et sain</div>
+            <p>Débuter 1,5–1,7 µg/kg/j d'emblée<br>Entretien : 50–200 µg/j<br>Contrôle TSH à 6–8 semaines</p>
+          </div>
+          <div class="poso-box poso-age">
+            <div class="t">Sujet âgé / Cardiopathe</div>
+            <p>Démarrer 12,5–25 µg/j<br>Augmenter par paliers de 25 µg<br>Toutes les 4–6 semaines</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="crise2017">
+      <div class="title">⚠ Crise Lévothyrox 2017 — À connaître</div>
+      <p>Changement de formule (lactose → mannitol + acide citrique) → plaintes de milliers de patients malgré TSH normale.<br><br><b>Conduite officinale :</b> écouter le patient · ne pas substituer sans accord médecin · alternatives : L-Thyroxine Serb ou Tcaps sur prescription.</p>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Suivi TSH</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Initiation</div><div class="content">TSH à 6–8 semaines</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Cible adulte</div><div class="content">TSH 0,5–2,5 mUI/L</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Sujet âgé</div><div class="content">TSH 1–3 mUI/L</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Grossesse</div><div class="content">TSH &lt;2,5 T1 · +25% dose</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Règle de prise à jeun 30 min avant = 1ère cause de mauvais équilibre → redire à chaque dispensation</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Changement Lévothyrox → L-Thyroxine Serb → contrôle TSH à 6–8 semaines obligatoire</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Grossesse → augmenter dose rapidement dès le 1er trimestre → TSH en urgence</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--amber);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Calcium · Fer · Magnésium</div><div class="inter-effect">↓ absorption lévothyroxine → espacer ≥ 4 heures</div></div>
+      <div class="inter-item"><div class="inter-drug">IPP (oméprazole, pantoprazole)</div><div class="inter-effect">↓ absorption (↑ pH) → espacer ≥ 4 heures</div></div>
+      <div class="inter-item"><div class="inter-drug">Antiépileptiques (phénytoïne, carbamazépine)</div><div class="inter-effect">↑ métabolisme T4 → besoin dose ↑</div></div>
+      <div class="inter-item"><div class="inter-drug">AVK (Préviscan, Coumadine)</div><div class="inter-effect">↑ INR après changement dose → contrôle INR</div></div>
+      <div class="inter-item"><div class="inter-drug">Amiodarone</div><div class="inter-effect">Riche en iode → peut induire hypo OU hyperthyroïdie</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Je prends mon Lévothyrox avec mon café"</div><div class="speech-hide">Café (et lait) ↓ absorption 30-40% → 1ère cause de déséquilibre TSH inexpliqué</div><div class="speech-resp">Erreur fréquente → absorption ↓ → réexpliquer à jeun</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Depuis la nouvelle formule j'ai plein de symptômes"</div><div class="speech-hide">Crise 2017 bien réelle pour certains patients (excipients changés) → écouter sans minimiser</div><div class="speech-resp">Crise 2017 → écouter, expliquer, orienter si besoin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je grossis malgré mon régime"</div><div class="speech-hide">Signe classique d'hypothyroïdie ou de TSH mal équilibrée → contrôle TSH récent ? Dose suffisante ?</div><div class="speech-resp">Signe hypothyroïdie → TSH à vérifier ?</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon médecin a augmenté la dose, j'ai des palp."</div><div class="speech-hide">Surdosage → hyperthyroïdie iatrogène · risque FA + ostéoporose si chronique → TSH urgent</div><div class="speech-resp">Surdosage → contrôle TSH urgent, signaler</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer-strip">
+  <span>Hypothyroïdie · Lévothyrox · TSH · T4 · Hashimoto · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 2 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

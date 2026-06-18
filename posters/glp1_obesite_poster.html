@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>GLP-1 / Ozempic / Mounjaro — SantéVeille Officine</title>
+<style>
+  :root{
+    --c1:#01579b;--c2:#0277bd;--c3:#0288d1;--cl:#b3e5fc;--cm:#e1f5fe;
+    --or:#e65100;--re:#b71c1c;--gr:#1b5e20;--pu:#4a148c;--am:#f57f17;
+  }
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+
+  .hdr{background:linear-gradient(135deg,#01579b,#0277bd 45%,#0288d1 80%,#29b6f6);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+
+  /* MÉCANISME STRIP */
+  .meca{display:flex;gap:0;margin-bottom:5px;border-radius:5px;overflow:hidden;}
+  .ms{flex:1;padding:5px 4px;text-align:center;font-size:6.5px;font-weight:700;
+    color:white;line-height:1.4;position:relative;}
+  .ms::after{content:'→';position:absolute;right:-5px;top:50%;transform:translateY(-50%);
+    font-size:10px;z-index:1;color:white;}
+  .ms:last-child::after{display:none;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.or{background:var(--or);} .ch.gr{background:var(--gr);}
+  .ch.re{background:var(--re);} .ch.pu{background:var(--pu);}
+  .ch.am{background:#bf360c;} .ch.teal{background:#006064;}
+  .cb{padding:5px 7px;background:white;}
+
+  .drug-table{width:100%;border-collapse:collapse;font-size:7px;margin-top:2px;}
+  .drug-table th{background:var(--c2);color:white;padding:3px 5px;text-align:left;}
+  .drug-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);}
+  .drug-table tr:nth-child(even) td{background:var(--cm);}
+  .drug-table tr:last-child td{border-bottom:none;}
+  .drug-table td:first-child{font-weight:700;color:var(--c1);}
+  .drug-table .new{background:#e8f5e9;color:#2e7d32;font-weight:700;
+    font-size:6.5px;border-radius:2px;padding:0 3px;}
+  .drug-table .obese{background:#fce4ec;color:#880e4f;font-weight:700;
+    font-size:6.5px;border-radius:2px;padding:0 3px;}
+
+  .prod{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:baseline;
+    padding:2px 0;border-bottom:1px dotted #ddd;font-size:7.5px;}
+  .prod:last-of-type{border-bottom:none;}
+  .pn{font-weight:700;color:var(--c1);}
+  .pi{color:#444;font-size:7px;}
+  .pt{font-size:6.5px;border-radius:3px;padding:1px 4px;white-space:nowrap;font-weight:600;}
+  .pt.gr{background:#e8f5e9;color:#2e7d32;}
+  .pt.or{background:#fff3e0;color:#e65100;}
+  .pt.re{background:#ffebee;color:#b71c1c;}
+  .pt.pu{background:#f3e5f5;color:#4a148c;}
+  .pt.bl{background:#e3f2fd;color:#0d47a1;}
+
+  .sub-line{font-size:7px;color:#444;padding:1px 0 2px 7px;border-left:2px solid var(--cl);
+    margin:1px 0 2px 2px;font-style:italic;}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .alert{background:#ffebee;border:2px solid #e53935;border-radius:4px;
+    padding:4px 7px;margin-top:4px;font-size:7px;}
+  .alert strong{color:#b71c1c;}
+  .nouv{background:linear-gradient(90deg,#4a148c,#6a1b9a);color:white;
+    padding:3px 8px;font-size:7px;border-radius:3px;margin-top:3px;}
+  .nouv strong{color:#ce93d8;}
+
+  /* PÉNURIE BANNER */
+  .penurie{background:linear-gradient(135deg,#bf360c,#e65100);color:white;
+    border-radius:5px;padding:6px 10px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .penurie h3{font-size:9px;font-weight:700;margin-bottom:2px;}
+  .penurie p{font-size:7px;opacity:.93;}
+
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+
+  .ibar{background:#fce4ec;border:1.5px solid #e91e63;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .ibar h3{font-size:9px;font-weight:700;color:#880e4f;margin-bottom:3px;}
+  .igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+  .ii{background:white;border-radius:3px;padding:3px 5px;
+    border-left:3px solid #e91e63;font-size:7px;}
+  .ii strong{color:#880e4f;display:block;font-size:7.5px;}
+
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
+    margin:2px 0;border-radius:0 3px 3px 0;color:#b71c1c;}
+  .sr{color:var(--c1);font-weight:600;margin-top:2px;}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <h1>💉 GLP-1 — Ozempic · Mounjaro · Wegovy · Rybelsus</h1>
+    <div class="sub">Agonistes GLP-1 &amp; GIP · Diabète Type 2 · Obésité · Cardioprotection · Pénurie · Conseils injection</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+
+<!-- MÉCANISME -->
+<div class="meca">
+  <div class="ms" style="background:#01579b;">🧬 GLP-1 naturel<br>libéré après repas</div>
+  <div class="ms" style="background:#0277bd;">📈 Stimule insuline<br>(glucose-dépendant)</div>
+  <div class="ms" style="background:#0288d1;">📉 Inhibe glucagon<br>et vidange gastrique</div>
+  <div class="ms" style="background:#039be5;">🧠 Action centrale :<br>satiété hypothalamique</div>
+  <div class="ms" style="background:#03a9f4;">⚖️ Perte de poids<br>10–22% du PC</div>
+  <div class="ms" style="background:#29b6f6; color:#01579b;">❤️ Cardioprotection<br>démontrée (LEADER)</div>
+</div>
+
+<!-- MOLÉCULES TABLEAU -->
+<div class="card" style="margin-bottom:5px;">
+  <div class="ch">💊 MOLÉCULES GLP-1 EN FRANCE 2026</div>
+  <div class="cb">
+    <table class="drug-table">
+      <tr><th>DCI</th><th>Spécialité</th><th>Indication AMM</th><th>Posologie</th><th>Particularité</th></tr>
+      <tr>
+        <td>Sémaglutide SC</td>
+        <td><strong>Ozempic</strong> 0,5 · 1 · 2 mg</td>
+        <td>DT2 + RCV établi</td>
+        <td>1×/sem · stylo</td>
+        <td>⭐ Cardioprotection SUSTAIN-6 · <span class="obese">Détourné obésité</span></td>
+      </tr>
+      <tr>
+        <td>Sémaglutide SC</td>
+        <td><strong>Wegovy</strong> 2,4 mg</td>
+        <td>Obésité IMC ≥ 30 (ou ≥ 27 + comorbidité)</td>
+        <td>1×/sem · titration 16 sem.</td>
+        <td><span class="obese">AMM obésité</span> · Remboursement partiel 2024</td>
+      </tr>
+      <tr>
+        <td>Sémaglutide oral</td>
+        <td><strong>Rybelsus</strong> 3 · 7 · 14 mg</td>
+        <td>DT2</td>
+        <td>1×/j à jeun · 30 min avant repas</td>
+        <td>Seul GLP-1 oral · Absorption faible (1–2%)</td>
+      </tr>
+      <tr>
+        <td>Tirzépatide</td>
+        <td><strong>Mounjaro</strong> 2,5→15 mg</td>
+        <td>DT2 · Obésité (AMM 2024)</td>
+        <td>1×/sem · titration mensuelle</td>
+        <td><span class="new">🆕 Dual GIP+GLP-1</span> · Supérieur séma. en perte poids (−22%)</td>
+      </tr>
+      <tr>
+        <td>Dulaglutide</td>
+        <td><strong>Trulicity</strong> 0,75 · 1,5 mg</td>
+        <td>DT2</td>
+        <td>1×/sem · stylo prérempli</td>
+        <td>Bonne tolérance · Pas besoin réfrigération > 14j</td>
+      </tr>
+      <tr>
+        <td>Liraglutide</td>
+        <td><strong>Victoza</strong> 1,2 · 1,8 mg</td>
+        <td>DT2</td>
+        <td>1×/j</td>
+        <td>Cardioprotection LEADER · Ancien gold standard</td>
+      </tr>
+      <tr>
+        <td>Liraglutide</td>
+        <td><strong>Saxenda</strong> 3 mg</td>
+        <td>Obésité</td>
+        <td>1×/j · titration 5 sem.</td>
+        <td><span class="obese">Obésité uniquement</span> · Non remboursé</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- PÉNURIE BANNER -->
+<div class="penurie">
+  <div>
+    <h3>⚠️ PÉNURIE SÉMAGLUTIDE (OZEMPIC) — 2022 → 2026</h3>
+    <p>Cause : explosion de la demande pour usage minceur hors AMM diabète → rupture mondiale. Arrêté priorité France : réserver aux patients DT2 traités. Wegovy seul autorisé pour obésité.</p>
+  </div>
+  <div style="min-width:150px;background:rgba(255,255,255,.15);border-radius:4px;padding:5px 8px;font-size:7px;">
+    <strong>Refus légal de délivrer si :</strong><br>
+    • Ordonnance DT2 mais patient non diabétique connu<br>
+    • Prescription hors spécialiste (non remboursé Wegovy par généraliste)<br>
+    • Suspicion usage minceur sur Ozempic DT2
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="grid2">
+
+  <!-- EFFETS SECONDAIRES + GESTION -->
+  <div class="card">
+    <div class="ch or">🤢 EFFETS SECONDAIRES &amp; GESTION</div>
+    <div class="cb">
+      <div class="prod">
+        <span class="pn">Nausées / Vomissements</span>
+        <span class="pi">50% des patients · 1ères semaines</span>
+        <span class="pt or">Très fréquent</span>
+      </div>
+      <div class="sub-line">Passent après 4–8 semaines avec la titration. Manger lentement, petits repas, éviter aliments gras.</div>
+      <div class="prod">
+        <span class="pn">Diarrhée / Constipation</span>
+        <span class="pi">Transit perturbé · Ralentissement vidange</span>
+        <span class="pt or">Fréquent</span>
+      </div>
+      <div class="sub-line">Hydratation ++. Transitoire. Constipation si dose augmentée rapidement.</div>
+      <div class="prod">
+        <span class="pn">Réactions injection</span>
+        <span class="pi">Érythème · Prurit · Nodule site</span>
+        <span class="pt bl">Site injection</span>
+      </div>
+      <div class="sub-line">Rotation obligatoire : abdomen / cuisse / bras. Attendre 2 cm du nombril.</div>
+      <div class="prod">
+        <span class="pn">Pancréatite aiguë</span>
+        <span class="pi">Rare mais grave · Douleur abdominale intense irradiant dos</span>
+        <span class="pt re">⚠ Arrêt + Urgences</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Masse thyroïdienne</span>
+        <span class="pi">Risque théorique cellules C (données animales)</span>
+        <span class="pt re">CI si ATCD</span>
+      </div>
+      <div class="warn">⚠ <strong>Attention "Ozempic face" :</strong> perte de poids rapide → visage creusé, ptose. Pas d'effet secondaire médicamenteux direct mais signaler au médecin si perte &gt; 10 kg/mois.</div>
+    </div>
+  </div>
+
+  <!-- CI + INTERACTIONS -->
+  <div class="card">
+    <div class="ch re">🚫 CONTRE-INDICATIONS &amp; INTERACTIONS</div>
+    <div class="cb">
+      <div style="font-weight:700;color:#b71c1c;font-size:8px;margin-bottom:4px;
+        border-bottom:1px solid #ffcdd2;padding-bottom:2px;">CI ABSOLUES</div>
+      <div class="prod">
+        <span class="pn">Cancer médullaire thyroïde</span>
+        <span class="pi">Personnel ou familial (NEM type 2)</span>
+        <span class="pt re">CI absolue</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Pancréatite chronique / ATCD</span>
+        <span class="pi">Risque aggravation</span>
+        <span class="pt re">CI absolue</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Grossesse / Allaitement</span>
+        <span class="pi">Tératogénique · Arrêter 2 mois avant conception</span>
+        <span class="pt re">CI absolue</span>
+      </div>
+      <div style="font-weight:700;color:#880e4f;font-size:8px;margin:5px 0 3px;
+        border-bottom:1px solid #f8bbd0;padding-bottom:2px;">⚡ INTERACTIONS IMPORTANTES</div>
+      <div class="prod">
+        <span class="pn">Insuline + GLP-1</span>
+        <span class="pi">Risque hypoglycémie → réduire dose insuline</span>
+        <span class="pt or">Ajuster dose</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Sulfamides + GLP-1</span>
+        <span class="pi">Hypoglycémie → réduire sulfamide 20–50%</span>
+        <span class="pt or">Ajuster dose</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Médicaments oraux à absorption critique</span>
+        <span class="pi">Vidange gastrique ralentie → ↓ Cmax contraceptifs · lévothyrox · AVK</span>
+        <span class="pt or">Prendre à distance</span>
+      </div>
+      <div class="tip">💡 Rybelsus oral : prendre à jeun 30 min avant tout médicament ou repas. Absorption très sensible aux aliments et autres médicaments.</div>
+    </div>
+  </div>
+
+  <!-- CONSEILS INJECTION -->
+  <div class="card">
+    <div class="ch teal">💉 CONSEILS INJECTION — STYLOS GLP-1</div>
+    <div class="cb">
+      <div style="font-weight:700;color:#006064;font-size:8px;margin-bottom:3px;">📦 CONSERVATION</div>
+      <div class="prod">
+        <span class="pn">Avant ouverture</span>
+        <span class="pi">Réfrigérateur 2–8°C · Protéger lumière</span>
+        <span class="pt bl">Frigo</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Après première utilisation</span>
+        <span class="pi">T° ambiante ≤ 30°C · Ozempic : 6 semaines · Mounjaro : 4 semaines</span>
+        <span class="pt gr">Hors frigo OK</span>
+      </div>
+      <div class="prod">
+        <span class="pn">Oubli de dose (hebdomadaire)</span>
+        <span class="pi">Délai restant &lt; 5 jours → injecter maintenant · &gt; 5 jours → attendre date suivante</span>
+        <span class="pt or">Règle 5 jours</span>
+      </div>
+      <div style="font-weight:700;color:#006064;font-size:8px;margin:5px 0 3px;">💊 TECHNIQUE D'INJECTION</div>
+      <div style="font-size:7px;color:#333;line-height:1.6;">
+        ✅ Sites rotation : abdomen · cuisse · bras (face externe)<br>
+        ✅ Abdomen : à &gt; 5 cm du nombril<br>
+        ✅ Changer de site chaque semaine (même jour OK)<br>
+        ✅ Pincer la peau si masse grasse faible<br>
+        ✅ Aiguille : 4 ou 5 mm (personnes minces : 4 mm)<br>
+        ✅ Laisser l'aiguille 6 secondes avant de retirer<br>
+        ✅ Ne jamais réutiliser une aiguille (risque lipodystrophie)
+      </div>
+    </div>
+  </div>
+
+  <!-- TIRZÉPATIDE / MOUNJARO FOCUS -->
+  <div class="card">
+    <div class="ch pu">🆕 TIRZÉPATIDE (MOUNJARO) — Double Agoniste GIP+GLP-1</div>
+    <div class="cb">
+      <div class="nouv" style="margin-bottom:5px;">🆕 <strong>Mécanisme unique :</strong> agoniste GIP (glucose-dependent insulinotropic polypeptide) + GLP-1 → synergie sur perte de poids et contrôle glycémique supérieure aux GLP-1 seuls.</div>
+      <table class="drug-table">
+        <tr><th>Dose</th><th>Titration</th><th>Tolérance</th></tr>
+        <tr><td>2,5 mg</td><td>Mois 1–2</td><td>Initiation · Évaluation tolérance</td></tr>
+        <tr><td>5 mg</td><td>Mois 3–4</td><td>Dose minimale efficace DT2</td></tr>
+        <tr><td>7,5 mg · 10 mg</td><td>Mois 5–8</td><td>Escalade si tolérance OK</td></tr>
+        <tr><td>12,5 mg · 15 mg</td><td>Mois 9–12</td><td>Dose maximale · Obésité</td></tr>
+      </table>
+      <div class="tip" style="margin-top:4px;">💡 Essai SURMOUNT-1 (obésité) : −22,5% du poids à 72 sem. vs −2,4% placebo. Essai SURPASS-2 : supérieur à sémaglutide 1 mg sur HbA1c et poids.</div>
+      <div class="warn">⚠ Même CI que GLP-1 classiques. Effets secondaires digestifs similaires mais titration plus lente recommandée (↑ tolérance).</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- RÉFLEXES -->
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Officine — GLP-1 au Quotidien</h3>
+  <div class="rfxg">
+    <div class="ri">
+      <strong>🚫 Ozempic pénurie : vérifier indication</strong>
+      Si patient non connu diabétique demande Ozempic pour "maigrir" → refuser sans ordonnance DT2 valide. Orientation vers Wegovy si obésité + ordonnance spécialiste. Expliquer sans juger la différence d'AMM.
+    </div>
+    <div class="ri">
+      <strong>💊 Interactions oraux critiques</strong>
+      GLP-1 ralentit vidange gastrique → ↓ absorption oraux. Vérifier lévothyrox (prendre 30 min avant Rybelsus), contraceptifs oraux (efficacité réduite → contraception complémentaire), AVK (surveiller INR).
+    </div>
+    <div class="ri">
+      <strong>🤢 Gérer les nausées initiales</strong>
+      50% des patients ont des nausées au début → rassurer : transitoires (4–8 sem). Conseils : manger lentement · petits repas · éviter aliments gras/sucrés · injection le soir si nausées matinales. Ne pas arrêter le traitement.
+    </div>
+  </div>
+</div>
+
+<!-- INTERACTIONS -->
+<div class="ibar">
+  <h3>⚡ Interactions GLP-1 à Surveiller</h3>
+  <div class="igrid">
+    <div class="ii">
+      <strong>Insuline + GLP-1</strong>
+      Hypoglycémie possible. Réduire dose insuline basale de 20% à l'initiation. Surveiller glycémies.
+    </div>
+    <div class="ii">
+      <strong>Sulfamides (glibenclamide)</strong>
+      Hypoglycémie. Réduire sulfamide. GLP-1 seul = pas d'hypoglycémie (glucose-dépendant).
+    </div>
+    <div class="ii">
+      <strong>Contraceptifs oraux + Rybelsus</strong>
+      Absorption réduite. Utiliser contraception complémentaire. Préférer Ozempic SC chez femme sous pilule.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT SPEECH -->
+<div class="pbar">
+  <h3>💬 Ce que dit le patient — GLP-1</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "Mon médecin m'a prescrit Ozempic mais c'est pour maigrir, pas pour le diabète"</div>
+      <div class="sh">↳ Ce que ça cache : prescription hors AMM très fréquente · pénurie · patient parfois non DT2</div>
+      <div class="sr">→ Vérifier l'ordonnance. Ozempic AMM = DT2 uniquement. Pour obésité sans DT2 : Wegovy (autre produit, même molécule). Expliquer sans juger, orienter le médecin si besoin.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "J'ai des nausées terribles depuis Ozempic, j'arrête"</div>
+      <div class="sh">↳ Ce que ça cache : souvent titration trop rapide · repas trop copieux · dose augmentée trop vite</div>
+      <div class="sr">→ Ne pas arrêter. Nausées passent après 4–8 sem. Conseils diététiques (petits repas, lenteur). Injection le soir réduit nausées matinales. Si vomissements sévères → contacter prescripteur.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Mounjaro c'est mieux qu'Ozempic ?"</div>
+      <div class="sh">↳ Ce que ça cache : info vu sur les réseaux · souvent pression du patient pour basculer</div>
+      <div class="sr">→ Tirzépatide (Mounjaro) = double agoniste, supérieur sur la perte de poids (−22% vs −15%). Mais uniquement sur prescription et décision médicale. Ne pas substituer sans accord médecin.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "Mon Ozempic était dans la voiture sous la chaleur, je peux quand même l'utiliser ?"</div>
+      <div class="sh">↳ Ce que ça cache : stylo non ouvert ou déjà utilisé ? température dépassée ?</div>
+      <div class="sr">→ Non ouvert : tolérance courte à T° ambiante (&lt; 30°C). Si chaleur excessive (&gt; 40°C, soleil direct) : jeter et renouveler. Après ouverture : max 6 sem. à ≤ 30°C. Fissures, cristaux, couleur changée = jeter.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  SantéVeille Officine · GLP-1 / Ozempic / Mounjaro · Données 2026 · Toujours vérifier AMM et ordonnance avant dispensation · 2026
+</div>
+
+</body>
+</html>

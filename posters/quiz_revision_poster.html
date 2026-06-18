@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Révision Officine — 30 Questions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 6.5pt; color: #1a1a2e; line-height: 1.3; }
+
+  /* ── HEADER ── */
+  .header { background: linear-gradient(135deg, #1a237e 0%, #283593 55%, #5c6bc0 100%); padding: 5mm 7mm 4mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 5mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -10mm; top: -10mm; width: 45mm; height: 45mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 17pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header h1 span { font-size: 7.5pt; font-weight: 400; color: rgba(255,255,255,0.65); display: block; margin-top: 1mm; letter-spacing: 1px; text-transform: uppercase; }
+  .header-pills { display: flex; gap: 2.5mm; }
+  .pill { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); border-radius: 6px; padding: 2mm 3mm; text-align: center; }
+  .pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 4.5pt; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 0.5mm; display: block; }
+
+  /* ── TAG BAR ── */
+  .tag-bar { background: #1a237e; padding: 1.5mm 7mm; display: flex; gap: 3mm; align-items: center; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 4.8pt; padding: 0.6mm 2mm; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+  .diff-legend { display: flex; gap: 2mm; margin-left: auto; align-items: center; }
+  .dl { font-size: 4.5pt; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.8mm; }
+
+  /* ── QUIZ GRID ── */
+  .quiz-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.8mm; padding: 2mm 7mm 2mm; }
+
+  /* ── CARD ── */
+  .card { border: 1px solid #cfd8dc; border-radius: 5px; overflow: hidden; border-left: 3px solid var(--clr, #37474f); display: flex; flex-direction: column; }
+  .card-head { background: color-mix(in srgb, var(--clr, #37474f) 8%, #fff); padding: 1.2mm 2mm; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid color-mix(in srgb, var(--clr, #37474f) 20%, #fff); }
+  .patho { font-size: 4.5pt; font-weight: 800; color: var(--clr, #37474f); text-transform: uppercase; letter-spacing: 0.4px; }
+  .diff { font-size: 6pt; letter-spacing: 0.5px; }
+  .d-easy { color: #2e7d32; }
+  .d-med  { color: #e65100; }
+  .d-hard { color: #b71c1c; }
+  .card-q { padding: 1.8mm 2mm 1mm; font-size: 6pt; font-weight: 600; color: #1a1a2e; line-height: 1.3; flex: 1; }
+  .card-a { padding: 1.5mm 2mm; font-size: 5.5pt; color: #37474f; background: #f4f6f8; border-top: 1px dashed #cfd8dc; line-height: 1.3; }
+  .card-a::before { content: '→ '; color: var(--clr, #37474f); font-weight: 800; }
+  .card-a strong { color: #1a1a2e; font-weight: 700; }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-row { grid-column: 1 / -1; display: flex; align-items: center; gap: 2mm; margin: 0.5mm 0; }
+  .section-row .sline { flex: 1; height: 1px; background: #e0e0e0; }
+  .section-row .slabel { font-size: 4.5pt; font-weight: 700; color: var(--clr); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; background: color-mix(in srgb, var(--clr) 10%, #fff); padding: 0.5mm 2mm; border-radius: 20px; border: 1px solid color-mix(in srgb, var(--clr) 20%, #ddd); }
+
+  /* ── FOOTER ── */
+  .footer { background: #1a237e; padding: 1.8mm 7mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer span { color: rgba(255,255,255,0.5); font-size: 4.5pt; }
+  .footer .brand { color: rgba(255,255,255,0.85); font-weight: 700; font-size: 5pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Quiz Révision Officine
+      <span>30 questions · 10 pathologies · Remise à niveau comptoir · 2026</span>
+    </h1>
+  </div>
+  <div class="header-pills">
+    <div class="pill"><span class="val">30</span><span class="lbl">Questions</span></div>
+    <div class="pill"><span class="val">10</span><span class="lbl">Pathos</span></div>
+    <div class="pill"><span class="val">3</span><span class="lbl">Niveaux</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">HTA</span><span class="tag">Diabète T2</span><span class="tag">Dyslipidémie</span>
+  <span class="tag">Douleur</span><span class="tag">Asthme/BPCO</span><span class="tag">Dépression</span>
+  <span class="tag">Hypothyroïdie</span><span class="tag">RGO/IPP</span><span class="tag">Anticoagulation</span><span class="tag">IC</span>
+  <div class="diff-legend">
+    <span class="dl"><span style="color:#2e7d32">●●○</span> Facile</span>
+    <span class="dl"><span style="color:#e65100">●●○</span> Moyen</span>
+    <span class="dl"><span style="color:#b71c1c">●●●</span> Difficile</span>
+  </div>
+</div>
+
+<!-- ═══════════════ QUIZ GRID ═══════════════ -->
+<div class="quiz-grid">
+
+  <!-- ── HTA ── -->
+  <div class="section-row" style="--clr:#c62828">
+    <div class="sline"></div><span class="slabel" style="color:#c62828">Hypertension artérielle</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#c62828">
+    <div class="card-head"><span class="patho">HTA</span><span class="diff d-easy">●●○</span></div>
+    <div class="card-q">Quel est l'effet indésirable de classe des IEC (ramipril, périndopril…) ?</div>
+    <div class="card-a">Toux sèche chez 10–20% des patients · <strong>pas une allergie</strong> · switch vers ARA2 sur avis médecin</div>
+  </div>
+
+  <div class="card" style="--clr:#c62828">
+    <div class="card-head"><span class="patho">HTA</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Quelle bithérapie est recommandée en 1ère intention selon HAS 2023 ?</div>
+    <div class="card-a"><strong>IEC (ou ARA2) + ICa dihydropyridine</strong> · ex : ramipril + amlodipine · jamais IEC + ARA2</div>
+  </div>
+
+  <div class="card" style="--clr:#c62828">
+    <div class="card-head"><span class="patho">HTA</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Danger de l'ibuprofène chez un hypertendu sous IEC en été ?</div>
+    <div class="card-a"><strong>Triple whammy :</strong> IEC + AINS + déshydratation = IRA · remplacer par paracétamol systématiquement</div>
+  </div>
+
+  <!-- ── DIABÈTE T2 ── -->
+  <div class="section-row" style="--clr:#00695c">
+    <div class="sline"></div><span class="slabel" style="color:#00695c">Diabète type 2</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#00695c">
+    <div class="card-head"><span class="patho">Diabète T2</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">À quel DFG la metformine est-elle contre-indiquée ?</div>
+    <div class="card-a"><strong>DFG &lt; 30 mL/min</strong> = CI absolue · précaution si 30–45 (dose réduite) · arrêter si injection iode IV</div>
+  </div>
+
+  <div class="card" style="--clr:#00695c">
+    <div class="card-head"><span class="patho">Diabète T2</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Ozempic : quelle DCI ? Quelle classe ? Existe en oral ?</div>
+    <div class="card-a"><strong>Sémaglutide</strong> · agoniste GLP-1 injectable · existe en oral = <strong>Rybelsus</strong> · rupture de stock chronique</div>
+  </div>
+
+  <div class="card" style="--clr:#00695c">
+    <div class="card-head"><span class="patho">Diabète T2</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Que faire avec une gliflozine avant une chirurgie programmée ?</div>
+    <div class="card-a">Arrêt <strong>3–5 jours avant</strong> · risque d'acidocétose euglycémique (glycémie parfois normale) · reprendre à la reprise alimentaire</div>
+  </div>
+
+  <!-- ── DYSLIPIDÉMIE ── -->
+  <div class="section-row" style="--clr:#6a1b9a">
+    <div class="sline"></div><span class="slabel" style="color:#6a1b9a">Dyslipidémie</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#6a1b9a">
+    <div class="card-head"><span class="patho">Dyslipi.</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Tahor = quelle DCI ? Quelle puissance ?</div>
+    <div class="card-a"><strong>Atorvastatine</strong> · statine haute intensité (réduction LDL 35–50%) · la plus prescrite en France — 35M boîtes/an</div>
+  </div>
+
+  <div class="card" style="--clr:#6a1b9a">
+    <div class="card-head"><span class="patho">Dyslipi.</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Quelle statine est CI avec le pamplemousse, et pourquoi ?</div>
+    <div class="card-a"><strong>Simvastatine</strong> (CYP3A4 inhibé → concentration ↑↑ → rhabdomyolyse) · atorvastatine : moindre · à redire à chaque dispensation</div>
+  </div>
+
+  <div class="card" style="--clr:#6a1b9a">
+    <div class="card-head"><span class="patho">Dyslipi.</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">CPK et statine : à quel seuil faut-il arrêter ?</div>
+    <div class="card-a">Arrêt si <strong>CPK &gt; 5× la normale</strong> · ou myalgies invalidantes même si CPK normales · réintroduire à distance avec autre statine</div>
+  </div>
+
+  <!-- ── DOULEUR ── -->
+  <div class="section-row" style="--clr:#7b1fa2">
+    <div class="sline"></div><span class="slabel" style="color:#7b1fa2">Douleur</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#7b1fa2">
+    <div class="card-head"><span class="patho">Douleur</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Dose max paracétamol adulte standard ? Et terrain fragile ?</div>
+    <div class="card-a"><strong>4 g/j</strong> (1 g/6h) adulte standard · <strong>3 g/j</strong> si âgé, IRC, alcool, poids &lt; 50 kg</div>
+  </div>
+
+  <div class="card" style="--clr:#7b1fa2">
+    <div class="card-head"><span class="patho">Douleur</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Bi-Profénid contient quoi ? Quel risque si associé au Doliprane ?</div>
+    <div class="card-a"><strong>Ibuprofène + paracétamol</strong> → si + Doliprane = double paracétamol = surdosage hépatique · vérifier la composition à chaque dispensation</div>
+  </div>
+
+  <div class="card" style="--clr:#7b1fa2">
+    <div class="card-head"><span class="patho">Douleur</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Fentanyl patch + canicule : quel risque ? Quelle conduite ?</div>
+    <div class="card-a">Chaleur → absorption <strong>× 3</strong> → surdosage opioïde potentiellement mortel · zone d'application couverte obligatoire · jamais bain chaud/sauna</div>
+  </div>
+
+  <!-- ── ASTHME/BPCO ── -->
+  <div class="section-row" style="--clr:#0277bd">
+    <div class="sline"></div><span class="slabel" style="color:#0277bd">Asthme / BPCO</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#0277bd">
+    <div class="card-head"><span class="patho">Asthme</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Ventoline = quelle DCI, quelle classe ? Traitement de fond ou de crise ?</div>
+    <div class="card-a"><strong>Salbutamol</strong> · β2 agoniste courte durée (SABA) · <strong>traitement de crise uniquement</strong> · jamais utilisé seul en fond</div>
+  </div>
+
+  <div class="card" style="--clr:#0277bd">
+    <div class="card-head"><span class="patho">Asthme</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Réflexe systématique après inhalation d'un corticoïde inhalé ?</div>
+    <div class="card-a"><strong>Rincer la bouche</strong> à l'eau (et cracher) → prévient la candidose oropharyngée · erreur très fréquente chez les patients</div>
+  </div>
+
+  <div class="card" style="--clr:#0277bd">
+    <div class="card-head"><span class="patho">Asthme</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Stratégie MART avec Symbicort : qu'est-ce que ça signifie ?</div>
+    <div class="card-a">Maintenance And Reliever Therapy : <strong>Symbicort/Foster = fond ET crise</strong> avec le même inhalateur · 1 bouffée de fond matin + 1 bouffée si symptômes</div>
+  </div>
+
+  <!-- ── DÉPRESSION ── -->
+  <div class="section-row" style="--clr:#283593">
+    <div class="sline"></div><span class="slabel" style="color:#283593">Dépression / Anxiété</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#283593">
+    <div class="card-head"><span class="patho">Dépression</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Délai d'action des ISRS ? Pourquoi important à communiquer ?</div>
+    <div class="card-a"><strong>2–4 semaines</strong> · 1ère cause d'arrêt prématuré · "ça ne marche pas" à 1 semaine est normal · réassurer systématiquement</div>
+  </div>
+
+  <div class="card" style="--clr:#283593">
+    <div class="card-head"><span class="patho">Dépression</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Chocs électriques après arrêt brutal d'antidépresseur : que se passe-t-il ?</div>
+    <div class="card-a"><strong>Syndrome de discontinuation</strong> (paroxétine/Deroxat ++) · pas une "addiction" · reprendre et sevrer progressivement sur 4–8 semaines</div>
+  </div>
+
+  <div class="card" style="--clr:#283593">
+    <div class="card-head"><span class="patho">Dépression</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Millepertuis + contraceptif oral : quel risque exact ?</div>
+    <div class="card-a">Inducteur <strong>CYP3A4</strong> → ↓ efficacité contraceptif → risque grossesse · aussi : AVK, ISRS, antiépileptiques, cyclosporine · CI absolue</div>
+  </div>
+
+  <!-- ── HYPOTHYROÏDIE ── -->
+  <div class="section-row" style="--clr:#004d40">
+    <div class="sline"></div><span class="slabel" style="color:#004d40">Hypothyroïdie</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#004d40">
+    <div class="card-head"><span class="patho">Hypo.</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Règle d'or de prise du Lévothyrox ?</div>
+    <div class="card-a"><strong>À jeun, 30 min avant</strong> le petit-déjeuner · eau froide uniquement · espacer Ca/Fer/IPP de <strong>≥ 4h</strong> · 1ère cause de déséquilibre TSH</div>
+  </div>
+
+  <div class="card" style="--clr:#004d40">
+    <div class="card-head"><span class="patho">Hypo.</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Que signifie une TSH élevée ? Et une TSH effondrée ?</div>
+    <div class="card-a">TSH <strong>élevée = hypothyroïdie</strong> (glande insuffisante, hypophyse surcompense) · TSH effondrée = hyperthyroïdie ou surdosage Lévothyrox</div>
+  </div>
+
+  <div class="card" style="--clr:#004d40">
+    <div class="card-head"><span class="patho">Hypo.</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Patient intolérant à Lévothyrox nouvelle formule : quelles alternatives ?</div>
+    <div class="card-a"><strong>L-Thyroxine Serb · Thyrofix · Tcaps</strong> · sur prescription uniquement · jamais substituer seul · contrôle TSH à 6–8 sem après changement</div>
+  </div>
+
+  <!-- ── RGO/IPP ── -->
+  <div class="section-row" style="--clr:#bf360c">
+    <div class="sline"></div><span class="slabel" style="color:#bf360c">RGO / IPP</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#bf360c">
+    <div class="card-head"><span class="patho">RGO/IPP</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">À quelle heure prendre un IPP et pourquoi ?</div>
+    <div class="card-a"><strong>Matin, 30 min avant le repas</strong> · pompes H+/K+ activées par l'alimentation · efficacité réduite si prise le soir ou à jeun sans repas</div>
+  </div>
+
+  <div class="card" style="--clr:#bf360c">
+    <div class="card-head"><span class="patho">RGO/IPP</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">IPP + clopidogrel (Plavix) : quelle interaction ? Quelle solution ?</div>
+    <div class="card-a">Oméprazole/ésoméprazole <strong>↓ efficacité Plavix</strong> (CYP2C19) → risque cardiovasculaire · préférer <strong>pantoprazole ou rabéprazole</strong></div>
+  </div>
+
+  <div class="card" style="--clr:#bf360c">
+    <div class="card-head"><span class="patho">RGO/IPP</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Effets indésirables des IPP au long cours (> 1 an) ?</div>
+    <div class="card-a">↓ absorption <strong>Ca/Mg/B12</strong> → fractures, déficit magnésium, déficit B12 · infections GI (C. difficile) · réévaluation HAS recommandée systématiquement</div>
+  </div>
+
+  <!-- ── ANTICOAGULATION ── -->
+  <div class="section-row" style="--clr:#880e4f">
+    <div class="sline"></div><span class="slabel" style="color:#880e4f">Anticoagulation</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#880e4f">
+    <div class="card-head"><span class="patho">Anticoag.</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">INR cible pour une FA standard ? Pour une valve mécanique ?</div>
+    <div class="card-a">FA standard = <strong>2–3</strong> · Valve mécanique = <strong>2,5–3,5</strong> · INR &gt; 5 = médecin urgent ce jour</div>
+  </div>
+
+  <div class="card" style="--clr:#880e4f">
+    <div class="card-head"><span class="patho">Anticoag.</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Apixaban (Eliquis) dose réduite : quels 2 critères sur 3 déclenchent la réduction ?</div>
+    <div class="card-a">Âge <strong>≥ 80 ans</strong> · poids <strong>≤ 60 kg</strong> · créatinine <strong>≥ 133 µmol/L</strong> → si ≥ 2 critères : 2,5 mg × 2/j au lieu de 5 mg × 2/j</div>
+  </div>
+
+  <div class="card" style="--clr:#880e4f">
+    <div class="card-head"><span class="patho">Anticoag.</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Antidote du dabigatran (Pradaxa) ? Et des anti-Xa (apixaban, rivaroxaban) ?</div>
+    <div class="card-a"><strong>Dabigatran</strong> → Idarucizumab (Praxbind) · <strong>Anti-Xa</strong> → Andexanet alfa (Ondexxya, usage hospitalier) · hémorragie = urgences</div>
+  </div>
+
+  <!-- ── IC ── -->
+  <div class="section-row" style="--clr:#b71c1c">
+    <div class="sline"></div><span class="slabel" style="color:#b71c1c">Insuffisance cardiaque</span><div class="sline"></div>
+  </div>
+
+  <div class="card" style="--clr:#b71c1c">
+    <div class="card-head"><span class="patho">IC</span><span class="diff d-easy">●○○</span></div>
+    <div class="card-q">Prise de poids + 2 kg en 3 jours chez un patient IC → que faire ?</div>
+    <div class="card-a"><strong>Décompensation</strong> → contacter cardiologue en urgence · adapter furosémide si plan d'action préétabli · ne pas attendre</div>
+  </div>
+
+  <div class="card" style="--clr:#b71c1c">
+    <div class="card-head"><span class="patho">IC</span><span class="diff d-med">●●○</span></div>
+    <div class="card-q">Sel de régime (NoSalt = KCl) + IEC + spironolactone : quel danger ?</div>
+    <div class="card-a"><strong>Hyperkaliémie sévère</strong> · K+ cumulé de 3 sources → risque arythmie mortelle · à demander à chaque dispensation IC + ARM</div>
+  </div>
+
+  <div class="card" style="--clr:#b71c1c">
+    <div class="card-head"><span class="patho">IC</span><span class="diff d-hard">●●●</span></div>
+    <div class="card-q">Forxiga/Jardiance 10 mg en IC : faut-il un diabète associé pour l'indication ?</div>
+    <div class="card-a"><strong>NON</strong> · Gliflozines indiquées en IC à FE réduite même sans DT2 depuis <strong>2021</strong> · nouveauté majeure à connaître</div>
+  </div>
+
+</div><!-- /quiz-grid -->
+
+<div class="footer">
+  <span>Quiz Révision Officine · 30 questions · 10 pathologies chroniques · Pratique comptoir 2026</span>
+  <span class="brand">SANTÉVEILLE · api-pharma</span>
+  <span>●○○ Facile · ●●○ Moyen · ●●● Difficile</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Acné — Fiche Officine</title>
+<style>
+  :root { --c1: #e65100; --c2: #f57c00; --c3: #ffb74d; --cl: #fff3e0; --cm: #ffe0b2; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #bf360c 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #bf360c; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c1); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c1); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c1); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: #bf360c; display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c1); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c1); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: #bf360c; }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: #bf360c; }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #bf360c, var(--c1)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #ffebee; border-radius: 7px; padding: 3mm; border-left: 3px solid #b71c1c; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #b71c1c; }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: #bf360c; font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c1); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: #bf360c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><h1>Acné</h1><div class="subtitle">Fiche officine · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">80%</span><span class="lbl">Ados touchés</span></div>
+    <div class="stat-pill"><span class="val">25%</span><span class="lbl">Adultes (femmes)</span></div>
+    <div class="stat-pill"><span class="val">Isotrétinoïne</span><span class="lbl">Tératogène absolu</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Rétinaldéhyde/adapalène = 1ère ligne topique</span>
+  <span class="tag">Peroxyde de benzoyle = OTC référence</span>
+  <span class="tag">Isotrétinoïne = carnet + contraception + bilan</span>
+  <span class="tag">Doxycycline = photosensibilisation</span>
+  <span class="tag">Aggravation transitoire J15 = normal</span>
+  <span class="tag">Nettoyant doux + hydratant non comédogène</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🧬 Androgènes (puberté) → stimulation glandes sébacées</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">🔴 Hyperséborrhée + hyperkératinisation folliculaire → bouchon (comédon)</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">🦠 Cutibacterium acnes prolifère dans le milieu anaérobie</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">💥 Inflammation → papules, pustules, nodules, kystes</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Comédons</div><div class="d">Rétentionnel (points noirs/blancs)</div></div>
+        <div class="target-box"><div class="t">Papulo-pustules</div><div class="d">Inflammatoire superficiel</div></div>
+        <div class="target-box"><div class="t">Nodules/Kystes</div><div class="d">Inflammatoire profond</div></div>
+        <div class="target-box"><div class="t">Cicatrices</div><div class="d">Atrophiques, hypertrophiques</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Sévérité (GEA)</div>
+    <div style="background:#f4f6f8;border-radius:7px;padding:3mm;margin-bottom:3mm;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5mm;">
+        <div style="background:white;border-radius:5px;padding:2mm;border-top:2.5px solid #8bc34a;"><div style="font-size:7pt;font-weight:800;color:#558b2f;">Légère (GEA 1–2)</div><div style="font-size:5.5pt;color:#37474f;">Comédons + quelques papules · Topique seul</div></div>
+        <div style="background:white;border-radius:5px;padding:2mm;border-top:2.5px solid #ff9800;"><div style="font-size:7pt;font-weight:800;color:#e65100;">Modérée (GEA 3)</div><div style="font-size:5.5pt;color:#37474f;">Papulo-pustules nombreuses · Topique + ATB oral</div></div>
+        <div style="background:white;border-radius:5px;padding:2mm;border-top:2.5px solid #f44336;"><div style="font-size:7pt;font-weight:800;color:#c62828;">Sévère (GEA 4)</div><div style="font-size:5.5pt;color:#37474f;">Nodules, kystes · Isotrétinoïne</div></div>
+        <div style="background:white;border-radius:5px;padding:2mm;border-top:2.5px solid #b71c1c;"><div style="font-size:7pt;font-weight:800;color:#b71c1c;">Très sévère (GEA 5)</div><div style="font-size:5.5pt;color:#37474f;">Acné conglobata · Isotrétinoïne forte dose</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Isotrétinoïne — Obligations</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #b71c1c;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ TÉRATOGÈNE ABSOLU — Malformations 25–30%</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">📋 Femme : contraception efficace 1 mois AVANT, pendant, 1 mois APRÈS</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">🩸 β-hCG négatif mensuel OBLIGATOIRE (ordonnance &lt;7 jours)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">📊 Bilan : transaminases + cholestérol + TG avant puis /mois</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">🧠 Risque dépression/suicide → surveillance humeur · Carnet de suivi</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:var(--cl);"><div class="name" style="color:#bf360c;">Rétinoïdes Topiques — Fond</div><div class="badge" style="background:#bf360c;color:white;">Base du traitement</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Adapalène 0,1%<span class="princeps">Différine · Génériques</span><span class="vol-data">📦 3M tubes · 5,80€ · 17M€/an</span></div>
+          <div class="drug-dose">1 application/soir sur peau sèche · Pea-size (noisette) · Éviter contour yeux/lèvres</div>
+          <div class="drug-watch">Irritation J15–J30 (rougeur, desquamation) = NORMAL, prévenir patient · Photosensibilisation → crème solaire · Effet visible à 6–8 sem · CI grossesse</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Trétinoïne 0,025–0,05%<span class="princeps">Effederm · Locacid · Retacnyl</span><span class="vol-data">📦 2M tubes · 4,50€</span></div>
+          <div class="drug-dose">Le soir · Plus irritant qu'adapalène → tolérance moindre · Débuter 1j/2 si peau sensible</div>
+          <div class="drug-watch">Plus irritant · Photosensibilisation +++ · CI grossesse absolue · Adapalène préféré en 1ère intention (mieux toléré)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e8f5e9;"><div class="name" style="color:#1b5e20;">Peroxyde de Benzoyle — OTC Référence</div><div class="badge" style="background:#2e7d32;color:white;">OTC</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Peroxyde de benzoyle 2,5–5–10%<span class="princeps">Cutacnyl · Pannogel · Eclaran</span><span class="vol-data">📦 4M tubes · 3,80€ · 15M€/an</span></div>
+          <div class="drug-dose">1–2×/j · Débuter 2,5% (tolérance) → 5% · 10% = dos/torse · Sur lésions · Mains lavées après</div>
+          <div class="drug-watch">DÉCOLORE tissus (draps, serviettes, vêtements) → prévenir +++ · Irritation dose-dépendante · Pas de résistance bactérienne (avantage vs ATB topique) · OK grossesse</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e3f2fd;"><div class="name" style="color:#0d47a1;">Associations Topiques Fixes</div><div class="badge" style="background:#1565c0;color:white;">Combo</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Adapalène + Peroxyde benzoyle<span class="princeps">Epiduo gel</span><span class="vol-data">📦 1,5M tubes · 12€ · 18M€/an</span></div>
+          <div class="drug-dose">1×/soir · Combinaison synergique · Rétinoïde + antibactérien · GEA 2–3</div>
+          <div class="drug-watch">Double irritation potentielle → commencer 1j/2 · Hydratant non comédogène matin obligatoire · Photosensibilisation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e8eaf6;"><div class="name" style="color:#1a237e;">Antibiotiques Oraux — Acné modérée</div><div class="badge" style="background:#283593;color:white;">3 mois max</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Doxycycline 100 mg<span class="princeps">Doxy · Tolexine · Génériques</span><span class="vol-data">📦 4M boîtes · 3,20€ · 13M€/an</span></div>
+          <div class="drug-dose">100 mg/j pendant le repas (pas couché → œsophagite) · 3 mois max (résistance) · Toujours associé rétinoïde topique</div>
+          <div class="drug-watch">Photosensibilisation +++ (crème solaire SPF50 obligatoire, pas de plage/UV) · Œsophagite si prise couchée · CI enfant &lt;8 ans · CI grossesse (2ème moitié) · Dysbactériose vaginale</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#ffebee;"><div class="name" style="color:#b71c1c;">Isotrétinoïne PO — Acné sévère</div><div class="badge" style="background:#b71c1c;color:white;">Dermatologue</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Isotrétinoïne 0,5–1 mg/kg/j<span class="princeps">Curacné · Procuta · Contracné</span><span class="vol-data">📦 1,5M boîtes · 12€ · 18M€/an</span></div>
+          <div class="drug-dose">0,5 mg/kg/j → augmenter progressivement · Dose cumulée 120–150 mg/kg · 6–9 mois · Avec repas gras (absorption ↑)</div>
+          <div class="drug-watch">TÉRATOGÈNE (CI absolue grossesse, β-hCG mensuel) · Sécheresse cutanéo-muqueuse universelle (lèvres, yeux, nez → baume, larmes) · Hypertriglycéridémie · Dépression/idées suicidaires (surveiller) · Myalgies · Hépatite rare</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fce4ec;"><div class="name" style="color:#880e4f;">Acné Femme Adulte — Options hormonales</div><div class="badge" style="background:#ad1457;color:white;">Hormonal</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Pilule EP anti-androgénique<span class="princeps">Diane 35 (cyprotérone) · Jasminelle (drospirénone)</span><span class="vol-data">📦 Diane 35 = acné seule (pas contraception 1ère)</span></div>
+          <div class="drug-dose">Diane 35 : acné modérée-sévère si topiques insuffisants · Jasminelle : acné + contraception</div>
+          <div class="drug-watch">Diane 35 = risque VTE supérieur aux EP classiques → 2ème intention · Spironolactone 75–150 mg hors AMM (acné femme adulte hormono-dépendante)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie SFD 2023</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Légère</div><div class="content">Adapalène ± POB topique</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Modérée</div><div class="content">Epiduo + Doxycycline 3 mois</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Sévère / Échec</div><div class="content">Isotrétinoïne PO</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Femme adulte</div><div class="content">EP anti-androgénique ± spironolactone</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Isotrétinoïne : vérifier β-hCG &lt;7j sur l'ordonnance · Contraception · Carnet · BHC + lipides</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Doxycycline : NE PAS s'allonger après la prise (œsophagite) · Crème solaire SPF50 OBLIGATOIRE</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Conseil cosmétique : nettoyant doux sans savon + hydratant non comédogène · Pas de gommage · Pas de manipulation des lésions</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#b71c1c;">Interactions & Alertes</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Isotrétinoïne + Tétracyclines</div><div class="inter-effect">Hypertension intracrânienne → CI absolue (pseudotumor cerebri)</div></div>
+      <div class="inter-item"><div class="inter-drug">Isotrétinoïne + Vitamine A</div><div class="inter-effect">Hypervitaminose A → toxicité hépatique, cutanée → arrêter compléments</div></div>
+      <div class="inter-item"><div class="inter-drug">Doxycycline + Rétinoïdes oraux</div><div class="inter-effect">CI formelle (HTIC) · Si topique seul = OK</div></div>
+      <div class="inter-item"><div class="inter-drug">Doxycycline + Antiacides (Ca, Fe, Al, Mg)</div><div class="inter-effect">Chélation → ↓ absorption → espacer ≥ 2h</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"La crème aggrave mon acné depuis 2 semaines"</div><div class="speech-hide">Purge/flare-up J15–J30 sous rétinoïde = NORMAL · Les micro-comédons remontent à la surface · S'améliore après 6–8 sem</div><div class="speech-resp">Normal les 1ères semaines → persévérer · Effet visible à 6–8 semaines · Hydratant matin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Curacné me dessèche les lèvres terriblement"</div><div class="speech-hide">Sécheresse = effet pharmacologique attendu (↓ sébum) · 100% des patients · Baume lèvres, larmes artificielles, crème visage quotidienne</div><div class="speech-resp">Baume lèvres gras type Cicalfalt/Cicaplast · Larmes artificielles · Crème visage matin et soir</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je suis sous Curacné et je veux aller à la plage"</div><div class="speech-hide">Isotrétinoïne = photosensibilisant majeur · Coup de soleil grave + hyperpigmentation cicatricielle</div><div class="speech-resp">SPF50 toutes les 2h · Chapeau · Éviter exposition 12–16h · Pas d'UV/solarium</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Le Cutacnyl a décoloré mes draps"</div><div class="speech-hide">Peroxyde de benzoyle = agent oxydant → décolore irréversiblement tissus blancs/colorés · Effet attendu, pas un défaut</div><div class="speech-resp">Effet connu → serviettes/draps blancs ou anciens · Laisser sécher avant contact tissu</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Acné · Isotrétinoïne · Adapalène · POB · Doxycycline · SFD 2023 · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pratique comptoir · 80/20</span>
+</div>
+</body>
+</html>

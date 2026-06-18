@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Anticoagulation AVK & NACO — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #880e4f; --c2: #ad1457; --c3: #e91e63;
+    --cl: #fce4ec; --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --blue: #0d47a1; --blue-l: #e8f0fb;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #4a148c 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 11pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #4a148c; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  .inr-table { background: var(--grey-l); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .inr-row { display: grid; grid-template-columns: 14mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: center; }
+  .inr-row:last-child { border-bottom: none; }
+  .inr-val { font-size: 8pt; font-weight: 800; border-radius: 4px; padding: 0.8mm 1.5mm; text-align: center; color: white; }
+  .inr-label { font-size: 5.5pt; color: var(--grey); }
+  .inr-action { font-size: 5.5pt; font-weight: 600; }
+
+  .vit-k { background: var(--blue-l); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--blue); }
+  .vit-k .title { font-size: 6pt; font-weight: 700; color: var(--blue); margin-bottom: 1.5mm; }
+  .vit-k p { font-size: 6pt; color: var(--grey); }
+
+  .signes-card { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .signes-card .title { font-size: 6pt; font-weight: 700; color: var(--red); margin-bottom: 1.5mm; }
+  .signes-card li { font-size: 6pt; color: #7f0000; list-style: none; padding-left: 2mm; position: relative; margin-bottom: 0.5mm; }
+  .signes-card li::before { content: '🩸'; position: absolute; left: -0.5mm; font-size: 5.5pt; }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 28mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: var(--grey); }
+  .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+
+  .cls-avk .drug-class-header { background: var(--cl); }
+  .cls-avk .drug-class-header .name { color: var(--c1); }
+  .cls-avk .drug-class-header .badge { background: var(--c1); color: white; }
+  .cls-naco .drug-class-header { background: var(--blue-l); }
+  .cls-naco .drug-class-header .name { color: var(--blue); }
+  .cls-naco .drug-class-header .badge { background: var(--blue); color: white; }
+
+  .naco-renal { background: var(--grey-l); border-radius: 7px; padding: 3mm; margin-top: 2.5mm; }
+  .naco-renal .title { font-size: 5.5pt; font-weight: 700; color: var(--grey); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; }
+  .naco-renal table { width: 100%; border-collapse: collapse; }
+  .naco-renal th { background: var(--blue-l); font-size: 5.5pt; font-weight: 700; color: var(--blue); padding: 1.5mm 2mm; text-align: center; }
+  .naco-renal td { font-size: 5.5pt; color: var(--grey); padding: 1.2mm 2mm; border-bottom: 1px solid var(--border); text-align: center; }
+  .naco-renal tr:last-child td { border-bottom: none; }
+  .ci { color: var(--red) !important; font-weight: 700; }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #4a148c, var(--c1)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--red); }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: #4a148c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>Anticoagulation — AVK & NACO</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">1M</span><span class="lbl">FA anticoagulés</span></div>
+    <div class="stat-pill"><span class="val">2–3</span><span class="lbl">INR cible FA</span></div>
+    <div class="stat-pill"><span class="val">⛔</span><span class="lbl">AINS absolument interdit</span></div>
+  </div>
+</div>
+<div class="tag-bar">
+  <span class="tag">Carnet anticoagulant à chaque dispensation</span><span class="tag">AINS = interdit</span>
+  <span class="tag">Rivaroxaban avec repas obligatoire</span><span class="tag">Oubli NACO règle 50%</span>
+  <span class="tag">Valves mécaniques = AVK uniquement</span><span class="tag">Antibiotiques → INR 3–4j après</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">INR — Valeurs clés (AVK)</div>
+    <div class="inr-table">
+      <div class="inr-row"><div class="inr-val" style="background:#9e9e9e;">&lt;2</div><div class="inr-label">Sous-thérapeutique · Risque embolique ↑</div><div class="inr-action" style="color:var(--amber);">→ Médecin</div></div>
+      <div class="inr-row"><div class="inr-val" style="background:#4caf50;">2–3</div><div class="inr-label">Zone thérapeutique standard (FA, MTEV)</div><div class="inr-action" style="color:var(--green);">✅ OK</div></div>
+      <div class="inr-row"><div class="inr-val" style="background:#8bc34a;">2,5–3,5</div><div class="inr-label">Valves mécaniques cardiaques</div><div class="inr-action" style="color:var(--green);">✅ OK</div></div>
+      <div class="inr-row"><div class="inr-val" style="background:#ff9800;">3–4</div><div class="inr-label">Supra-thérapeutique · Risque hémorragique ↑</div><div class="inr-action" style="color:var(--amber);">→ Surveillance</div></div>
+      <div class="inr-row"><div class="inr-val" style="background:#f44336;">&gt;4</div><div class="inr-label">Dangereux · Risque hémorragique élevé</div><div class="inr-action" style="color:var(--red);">→ Médecin urgent</div></div>
+      <div class="inr-row"><div class="inr-val" style="background:#b71c1c;">&gt;5</div><div class="inr-label">Hémorragie imminente</div><div class="inr-action" style="color:var(--red);">→ URGENCES</div></div>
+    </div>
+
+    <div class="section-label">Vitamine K — La vraie règle</div>
+    <div class="vit-k">
+      <div class="title">Ne pas supprimer → STABILISER</div>
+      <p>Choux, épinards, brocoli, persil → consommation <b>régulière et stable</b> (pas d'excès ponctuels)<br><br><b>"Ne changez pas brutalement votre alimentation"</b> → manger régulièrement = meilleur équilibre INR</p>
+    </div>
+
+    <div class="section-label">Signes hémorragiques → Urgences</div>
+    <div class="signes-card">
+      <div class="title">À enseigner à chaque dispensation</div>
+      <li>Urines rouges (hématurie)</li>
+      <li>Selles noires (méléna)</li>
+      <li>Hématomes spontanés importants</li>
+      <li>Saignement gencives/nez prolongé</li>
+      <li>Douleur abdominale soudaine</li>
+      <li>Déficit neurologique brutal (AVC)</li>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    <div class="drug-class cls-avk">
+      <div class="drug-class-header"><div class="name">AVK — Anti-Vitamine K</div><div class="badge">Suivi INR obligatoire</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Fluindione (Préviscan)<span class="princeps">Préviscan</span><span class="vol-data">📦 5M boîtes · 3,20€ · 16M€/an</span></div>
+          <div class="drug-dose">t½ 31h · 80% des prescriptions françaises · 1 cp/j heure fixe</div>
+          <div class="drug-watch">INR cible 2–3 · Marge thérapeutique étroite · ANSM 2018 : préférer warfarine pour nouveaux patients (risque immuno-allergique fluindione) · Comprimé rose quadrisécable</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Warfarine (Coumadine)<span class="princeps">Coumadine · Générique</span><span class="vol-data">📦 3M boîtes · 2,80€ · 8M€/an</span></div>
+          <div class="drug-dose">t½ 35–45h · INR 2–3 (FA/MTEV) ou 2,5–3,5 (valves méca)</div>
+          <div class="drug-watch">Valves mécaniques = AVK uniquement (CI NACO) · Générique dispo</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Acénocoumarol (Sintrom, Minisintrom)<span class="princeps">Sintrom · Minisintrom</span><span class="vol-data">📦 1M boîtes · 3,10€ · 3M€/an</span></div>
+          <div class="drug-dose">t½ court (8–11h) · Comprimé quadrisécable (Minisintrom 1 mg)</div>
+          <div class="drug-watch">Titration plus difficile · INR fréquents en initiation</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-naco">
+      <div class="drug-class-header"><div class="name">NACO / AOD — Anticoagulants Oraux Directs</div><div class="badge">Sans INR routinier</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Dabigatran (Pradaxa) Anti-IIa<span class="princeps">Pradaxa</span><span class="vol-data">📦 2M boîtes · 28€ · 56M€/an</span></div>
+          <div class="drug-dose">FA : 150 mg × 2/j · 110 mg ×2/j si > 75 ans ou IRC modérée</div>
+          <div class="drug-watch">Antidote spécifique : Idarucizumab (Praxbind) IV · DFG &lt;30 = CI · Dyspepsie fréquente (prendre pendant repas) · Gélule à avaler entière (ne PAS ouvrir → biodispo ↑ 75%)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Rivaroxaban (Xarelto) Anti-Xa<span class="princeps">Xarelto</span><span class="vol-data">📦 6M boîtes · 32€ · 192M€/an</span></div>
+          <div class="drug-dose">FA : <b>20 mg × 1/j avec le repas</b> · TVP curatif : 15 mg × 2/j 3 sem</div>
+          <div class="drug-watch">Prise avec repas OBLIGATOIRE (↑ absorption +39% → sans repas = sous-dosé → risque embolique) · Saignements GI plus fréquents que apixaban · Antidote : Andexanet alfa</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Apixaban (Eliquis) Anti-Xa<span class="princeps">Eliquis</span><span class="vol-data">📦 8M boîtes · 30€ · 240M€/an</span></div>
+          <div class="drug-dose">FA : 5 mg × 2/j · 2,5 mg × 2/j si ≥ 2 critères (≥80 ans / ≤60 kg / créat ≥133)</div>
+          <div class="drug-watch">Meilleur profil saignement GI des AOD · Dose réduite si ≥2/3 critères (stricts, ne pas réduire sans) · Antidote : Andexanet alfa · Pas de contrainte repas</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Edoxaban (Lixiana) Anti-Xa<span class="princeps">Lixiana</span><span class="vol-data">📦 1M boîtes · 35€ · 35M€/an</span></div>
+          <div class="drug-dose">60 mg × 1/j · 30 mg si IRC, poids ≤ 60 kg ou P-gp inhibiteur</div>
+          <div class="drug-watch">Réduction dose obligatoire selon DFG</div>
+        </div>
+      </div>
+    </div>
+    <div class="naco-renal">
+      <div class="title">Adaptation NACO selon DFG (mL/min)</div>
+      <table>
+        <tr><th>DFG</th><th>Dabigatran</th><th>Rivaroxaban</th><th>Apixaban</th></tr>
+        <tr><td>&gt;50</td><td>Standard</td><td>Standard</td><td>Standard</td></tr>
+        <tr><td>30–50</td><td>110 mg ×2</td><td>Standard</td><td>Standard</td></tr>
+        <tr><td>15–30</td><td class="ci">CI</td><td>Réduit</td><td>2,5 mg ×2</td></tr>
+        <tr><td>&lt;15</td><td class="ci">CI</td><td class="ci">CI</td><td class="ci">CI</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Oubli de dose</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">AVK — oubli</div><div class="content">&lt;8h → prendre · &gt;8h → sauter · JAMAIS doubler</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">NACO ×2/j — oubli</div><div class="content">&lt;6h → prendre · &gt;6h → sauter la dose</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">NACO ×1/j — oubli</div><div class="content">&lt;12h → prendre · &gt;12h → sauter</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Chirurgie / Dentiste</div><div class="content">Coordonner médecin + chirurgien 10j avant</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Carnet anticoagulant → vérifier INR récent et dose actuelle à chaque dispensation AVK</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Automédication AINS = INTERDITE sous anticoagulant → toujours paracétamol</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Antibiotiques chez patient sous AVK → contrôle INR dans 3–4 jours</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--red);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">AINS + Anticoagulants</div><div class="inter-effect">Hémorragie digestive majeure → CI absolue en automédication</div></div>
+      <div class="inter-item"><div class="inter-drug">AVK + Antibiotiques (quinolones, métro, cotrimox)</div><div class="inter-effect">↑ INR → hémorragie → contrôle INR à 3–4 jours</div></div>
+      <div class="inter-item"><div class="inter-drug">NACO + Millepertuis / Rifampicine</div><div class="inter-effect">Inducteur P-gp → ↓ NACO → ↓ protection anticoagulante</div></div>
+      <div class="inter-item"><div class="inter-drug">NACO + Clarithromycine / Kétoconazole</div><div class="inter-effect">↑ NACO → hémorragie → réduire dose si possible</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Mon INR est à 4,5"</div><div class="speech-hide">Supra-thérapeutique élevé · risque hémorragique · causes : ATB, AINS, excès Vit K, alcool · médecin urgent</div><div class="speech-resp">Supra-thérapeutique → adapter dose + médecin si &gt;5</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris de l'ibuprofène pour mon dos"</div><div class="speech-hide">AINS + anticoagulant = saignement digestif × 5-10 · CI absolue · souvent patient non informé</div><div class="speech-resp">AINS + anticoagulant → risque hémorragique → évaluer urgence</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai oublié hier soir mon Xarelto"</div><div class="speech-hide">Règle des 50% de la fenêtre temporelle · ne jamais doubler · noter dans le DP</div><div class="speech-resp">Règle 50% → prendre si &lt;12h (dose ×1/j) · sinon sauter</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai une extraction dentaire la semaine prochaine"</div><div class="speech-hide">NACO = maintien souvent recommandé · AVK = pont HBPM si INR > 3 · coordination médecin+dentiste</div><div class="speech-resp">Coordination médecin + dentiste → souvent maintien NACO</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer-strip">
+  <span>Anticoagulation · AVK · INR · NACO · FA · MTEV · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 2 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

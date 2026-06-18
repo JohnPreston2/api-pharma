@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Soins Post-Opératoires & Cicatrisation — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #00695c; --c2: #00897b; --c3: #4db6ac;
+    --cl: #e0f2f1; --cm: #b2dfdb;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+    --red: #b71c1c; --red-l: #ffebee;
+    --purple: #6a1b9a; --purple-l: #f3e5f5;
+    --blue: #0d47a1; --blue-l: #e3f2fd;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+
+  .header { background: linear-gradient(135deg, #004d40 0%, #00695c 55%, #00897b 85%, #4db6ac 100%); padding: 8mm 8mm 6mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 18pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1.1; }
+  .header .subtitle { font-size: 7.5pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 3.5mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 2.5mm 3.5mm; text-align: center; }
+  .stat-pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+
+  .tag-bar { background: #004d40; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; align-items: center; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  /* PHASES DE CICATRISATION */
+  .phases-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; padding: 3mm 8mm 0; }
+  .phase-card { border-radius: 6px; padding: 2.5mm 3mm; border-top: 3px solid var(--ph-clr); background: var(--ph-bg); }
+  .phase-card .ph-num { font-size: 5pt; font-weight: 700; color: var(--ph-clr); text-transform: uppercase; letter-spacing: 0.5px; }
+  .phase-card .ph-name { font-size: 7pt; font-weight: 800; color: var(--ph-clr); margin-top: 0.5mm; }
+  .phase-card .ph-dur { font-size: 5pt; color: #546e7a; margin-top: 0.5mm; }
+  .phase-card .ph-desc { font-size: 5.5pt; color: #37474f; margin-top: 1mm; line-height: 1.3; }
+
+  /* BODY GRID */
+  .body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; padding: 3mm 8mm 0; }
+
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  /* INDIC CARDS */
+  .indic-block { margin-bottom: 2.5mm; border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .indic-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .indic-header .iname { font-size: 6.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; }
+  .indic-header .ibadge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; }
+  .indic-body { background: white; padding: 2mm 3mm; }
+
+  .prod-row { display: flex; gap: 2mm; padding: 1.5mm 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .prod-row:last-child { border-bottom: none; }
+  .prod-brand { font-weight: 800; font-size: 6.5pt; color: var(--c1); min-width: 32mm; }
+  .prod-brand .prod-nom { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; }
+  .prod-usage { font-size: 6pt; color: #37474f; flex: 1; }
+  .prod-tip { font-size: 5.5pt; color: var(--amber); font-weight: 600; }
+  .prod-tip::before { content: '⚠ '; }
+
+  /* COLOR THEMES FOR INDIC BLOCKS */
+  .ci-chir .indic-header { background: #e0f2f1; }
+  .ci-chir .indic-header .iname { color: #004d40; }
+  .ci-chir .indic-header .ibadge { background: #004d40; color: white; }
+
+  .ci-derm .indic-header { background: #f3e5f5; }
+  .ci-derm .indic-header .iname { color: #6a1b9a; }
+  .ci-derm .indic-header .ibadge { background: #6a1b9a; color: white; }
+
+  .ci-radio .indic-header { background: #fff3e0; }
+  .ci-radio .indic-header .iname { color: #e65100; }
+  .ci-radio .indic-header .ibadge { background: #e65100; color: white; }
+
+  .ci-ophta .indic-header { background: #e3f2fd; }
+  .ci-ophta .indic-header .iname { color: #0d47a1; }
+  .ci-ophta .indic-header .ibadge { background: #0d47a1; color: white; }
+
+  .ci-solaire .indic-header { background: #fff8e1; }
+  .ci-solaire .indic-header .iname { color: #f57f17; }
+  .ci-solaire .indic-header .ibadge { background: #f9a825; color: white; }
+
+  .ci-antisep .indic-header { background: #ffebee; }
+  .ci-antisep .indic-header .iname { color: #b71c1c; }
+  .ci-antisep .indic-header .ibadge { background: #c62828; color: white; }
+
+  /* STRATEGY BAR */
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #004d40, #00897b); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 4.8pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 5.8pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+
+  /* FOOTER GRID */
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 4mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+
+  .inter-card { background: var(--amber-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--amber); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--amber); }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+
+  .footer-strip { background: #004d40; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Soins Post-Opératoires & Cicatrisation</h1>
+    <div class="subtitle">Fiche officine · Dermocosmétique · Conseil au comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">4</span><span class="lbl">Phases cicatris.</span></div>
+    <div class="stat-pill"><span class="val">SPF50+</span><span class="lbl">Cicatrice récente</span></div>
+    <div class="stat-pill"><span class="val">21j</span><span class="lbl">Ré-épithélisation</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Cicalfate+ · Cicaplast B5 · Cicavit+</span>
+  <span class="tag">Cicatrice fraîche = jamais antiseptique coloré</span>
+  <span class="tag">SPF50+ obligatoire sur cicatrice &lt; 1 an</span>
+  <span class="tag">Radiodermatite = Dexeryl ou Ialuset</span>
+  <span class="tag">Post-laser = riche + SPF dès J3</span>
+  <span class="tag">Jamais masser avant J21</span>
+</div>
+
+<!-- PHASES DE CICATRISATION -->
+<div class="phases-bar">
+  <div class="phase-card" style="--ph-clr:#c62828;--ph-bg:#ffebee;">
+    <div class="ph-num">Phase 1</div>
+    <div class="ph-name">Hémostatique</div>
+    <div class="ph-dur">J0 → J2</div>
+    <div class="ph-desc">Coagulation · Vasoconstriction · Formation caillot fibrine · Prostaglandines</div>
+  </div>
+  <div class="phase-card" style="--ph-clr:#e65100;--ph-bg:#fff3e0;">
+    <div class="ph-num">Phase 2</div>
+    <div class="ph-name">Inflammatoire</div>
+    <div class="ph-dur">J2 → J5</div>
+    <div class="ph-desc">Rougeur · Chaleur · Œdème · Macrophages nettoient la plaie · Normal !</div>
+  </div>
+  <div class="phase-card" style="--ph-clr:#00695c;--ph-bg:#e0f2f1;">
+    <div class="ph-num">Phase 3</div>
+    <div class="ph-name">Prolifération</div>
+    <div class="ph-dur">J5 → J21</div>
+    <div class="ph-desc">Fibroblastes · Collagène · Ré-épithélisation · Angiogenèse (cicatrice rouge)</div>
+  </div>
+  <div class="phase-card" style="--ph-clr:#0d47a1;--ph-bg:#e3f2fd;">
+    <div class="ph-num">Phase 4</div>
+    <div class="ph-name">Remodelage</div>
+    <div class="ph-dur">J21 → 2 ans</div>
+    <div class="ph-desc">Maturation collagène · Pâlissement · Assouplissement · Massage possible dès J21</div>
+  </div>
+</div>
+
+<!-- BODY GRID : 2 colonnes de produits -->
+<div class="body-grid">
+
+  <!-- COLONNE GAUCHE -->
+  <div>
+    <div class="section-label" style="margin-top:3mm;">Chirurgie & Plaies</div>
+
+    <div class="indic-block ci-chir">
+      <div class="indic-header">
+        <div class="iname">🔪 Post-Chirurgie — Cicatrisation Cutanée</div>
+        <div class="ibadge">Fils/agrafes retirés</div>
+      </div>
+      <div class="indic-body">
+        <div class="prod-row">
+          <div class="prod-brand">Cicalfate+<span class="prod-nom">Avène — crème/spray</span></div>
+          <div class="prod-usage">Antiseptique doux + zinc · Favorise ré-épithélisation · 2-3x/j</div>
+          <div class="prod-tip">Dès J0 après nettoyage · Pas sur plaie ouverte</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Cicaplast Baume B5<span class="prod-nom">La Roche-Posay</span></div>
+          <div class="prod-usage">Panthénol + Madecassoside · Réparateur · Peaux sensibles</div>
+          <div class="prod-tip">À partir J3-J5 · Couche épaisse · Occlusif la nuit</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Cicavit+ Crème<span class="prod-nom">SVR</span></div>
+          <div class="prod-usage">Madecassoside + Panthénol + VitC · Réduit rougeur et relief</div>
+          <div class="prod-tip">2-3x/j · Film protecteur · Existe aussi en gel (peau grasse)</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Epitheliale AH<span class="prod-nom">A-Derma</span></div>
+          <div class="prod-usage">Acide hyaluronique + avoine rhéalba · Régénérant · Très toléré</div>
+          <div class="prod-tip">Post-chirurgie visage · Texture légère · Parfum free</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="indic-block ci-derm">
+      <div class="indic-header">
+        <div class="iname">✨ Post-Laser / Peeling / Dermabrasion</div>
+        <div class="ibadge">Actes dermatologiques</div>
+      </div>
+      <div class="indic-body">
+        <div class="prod-row">
+          <div class="prod-brand">Cicaplast B5+ sérum<span class="prod-nom">La Roche-Posay</span></div>
+          <div class="prod-usage">Post-laser · Post-peeling · Érythème · Apaise J1 dès autorisation</div>
+          <div class="prod-tip">Appliquer dès J1 sur peau nettoyée · Couche fine x3/j</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Cicavit+ Gel<span class="prod-nom">SVR</span></div>
+          <div class="prod-usage">Texture gel fraîche · Post-injection (botox, filler) · Post-peeling</div>
+          <div class="prod-tip">Peau grasse · Évite l'effet occlusif · Idéal visage</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Toleriane Sensitive<span class="prod-nom">La Roche-Posay</span></div>
+          <div class="prod-usage">Post-procédure esthétique · Barrière cutanée · Sans parfum</div>
+          <div class="prod-tip">Phase de remodelage · Hydratation quotidienne fond</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="indic-block ci-antisep">
+      <div class="indic-header">
+        <div class="iname">🧴 Nettoyage & Antisepsie Plaie</div>
+        <div class="ibadge">Avant d'appliquer</div>
+      </div>
+      <div class="indic-body">
+        <div class="prod-row">
+          <div class="prod-brand">Chlorhexidine 0,05%<span class="prod-nom">Cooper / Génériques</span></div>
+          <div class="prod-usage">Antiseptique référence · Solution aqueuse · Rincer après</div>
+          <div class="prod-tip">Jamais alcoolique sur plaie ouverte · Solution aqueuse uniquement</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Biseptine<span class="prod-nom">Chlorhexidine + benzalkonium</span></div>
+          <div class="prod-usage">Nettoyage plaie cutanée · Avant pansement cicatrisant</div>
+          <div class="prod-tip">Jamais avec bétadine (précipité · inactivation mutuelle)</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Sérum physiologique<span class="prod-nom">Cooper · Aguettant · Génériques</span></div>
+          <div class="prod-usage">Nettoyage doux · Irrigation · 1er geste avant tout</div>
+          <div class="prod-tip">Rinçage abondant = meilleure prévention infection</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLONNE DROITE -->
+  <div>
+    <div class="section-label" style="margin-top:3mm;">Situations Spéciales</div>
+
+    <div class="indic-block ci-radio">
+      <div class="indic-header">
+        <div class="iname">☢ Post-Radiothérapie — Radiodermatite</div>
+        <div class="ibadge">Onco · Urgence soin</div>
+      </div>
+      <div class="indic-body">
+        <div class="prod-row">
+          <div class="prod-brand">Dexeryl crème<span class="prod-nom">Pierre Fabre</span></div>
+          <div class="prod-usage">Glycérol + Paraffine + Eau · Émollient intense · Radiodermatite grade I-II</div>
+          <div class="prod-tip">Appliquer EN DEHORS des séances de radio · Pas dans les 4h avant</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Ialuset crème<span class="prod-nom">Hyaluronic acid 0,2%</span></div>
+          <div class="prod-usage">Acide hyaluronique · Cicatrisation humide · Plaies chroniques radio</div>
+          <div class="prod-tip">Remboursé sur prescription · Plaies ouvertes grade III</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Trolamine (Biafine)<span class="prod-nom">Trolamine émulsion</span></div>
+          <div class="prod-usage">Émulsion radio-protectrice · Standard de soins en radiothérapie</div>
+          <div class="prod-tip">Appliquer 3x/j EN DEHORS des séances · Jamais avant séance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="indic-block ci-ophta">
+      <div class="indic-header">
+        <div class="iname">👁 Post-Chirurgie Ophtalmique</div>
+        <div class="ibadge">Cataracte · Glaucome</div>
+      </div>
+      <div class="indic-body">
+        <div class="prod-row">
+          <div class="prod-brand">Collyre lubrifiant<span class="prod-nom">Théalose · Artelac · Refresh</span></div>
+          <div class="prod-usage">Post-cataracte · Sécheresse oculaire · Confort quotidien</div>
+          <div class="prod-tip">Hyaluronate Na + trehalose · Sans conservateur si usage fréquent</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Soins paupières<span class="prod-nom">Blephasol · Cliradex</span></div>
+          <div class="prod-usage">Nettoyage bords cils · Prévention blépharite · Post-ophtalmo</div>
+          <div class="prod-tip">Surtout si tamsulosine → IFIS · Hygiène palpébrale renforcée</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="indic-block ci-solaire">
+      <div class="indic-header">
+        <div class="iname">☀ Protection Solaire — Cicatrice &lt; 1 an</div>
+        <div class="ibadge">Obligatoire !</div>
+      </div>
+      <div class="indic-body">
+        <div class="prod-row">
+          <div class="prod-brand">Cicaplast SPF50<span class="prod-nom">La Roche-Posay</span></div>
+          <div class="prod-usage">Réparateur + SPF50 · 2 en 1 · Idéal post-op visage</div>
+          <div class="prod-tip">UV → hyperpigmentation définitive cicatrice · SPF50+ toute l'année</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Anthelios XL SPF50+<span class="prod-nom">La Roche-Posay</span></div>
+          <div class="prod-usage">Protection maximale UV · Corps + visage · Résistant eau</div>
+          <div class="prod-tip">Renouveler toutes les 2h · Même en ville · Jusqu'à 1 an post-op</div>
+        </div>
+        <div class="prod-row">
+          <div class="prod-brand">Dermalogix SPF50+<span class="prod-nom">SVR Sun Secure</span></div>
+          <div class="prod-usage">Peaux sensibles post-actes · Sans parfum · Texture légère</div>
+          <div class="prod-tip">Dès J7-J10 sur cicatrice fermée · Application matin obligatoire</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MASSAGE CICATRICIEL -->
+    <div style="background:#e0f2f1;border-radius:7px;padding:3mm;border-left:3px solid #00695c;margin-top:2mm;">
+      <div style="font-size:6pt;font-weight:800;color:#004d40;text-transform:uppercase;margin-bottom:1.5mm;">💆 Massage Cicatriciel — Dès J21</div>
+      <div style="font-size:6pt;color:#00695c;margin-bottom:1mm;"><strong>Huile rosier muscat · Huile d'argan · Bio-Oil</strong> → assouplissement tissu cicatriciel</div>
+      <div style="font-size:6pt;color:#00695c;margin-bottom:1mm;"><strong>Technique :</strong> mouvements circulaires fermes · 2 min/j · Pendant la phase de remodelage (J21 → 2 ans)</div>
+      <div style="font-size:5.5pt;color:#37474f;">Plaquettes de silicone (Mepiform · Kelo-cote) si cicatrice hypertrophique ou chéloïde</div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Protocole post-op</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">J0–J2</div><div class="content">Sérum physio + chlorhexidine aqueuse</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">J3–J10</div><div class="content">Crème cicatrisante 3x/j (Cicalfate · Cicaplast)</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">J10–J21</div><div class="content">Crème + SPF50+ dès fermeture cutanée</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">J21 → 1 an</div><div class="content">Massage + SPF50+ toute l'année</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 À RETENIR 2024–2026</span>
+  <span class="n-text"><strong>Madecassoside</strong> (centella asiatica) = actif cicatrisant validé cliniquement · <strong>Cicaplast B5+</strong> reformulé 2023 avec niacinamide · <strong>Bio-Oil Huile sèche</strong> 2024 · Cicatrices chéloïdes : <strong>Kenalog SC</strong> = gold standard médical · Plaquettes silicone remboursées dans certains protocoles</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">SPF50+ sur toute cicatrice &lt; 1 an → pigmentation UV irréversible · Proposer systématiquement</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Radiodermatite : crème JAMAIS dans les 4h avant la séance de radio · Appliquer après</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Massage cicatriciel : JAMAIS avant J21 (risque rupture cicatrice) · Huile + mouvement circulaire ferme</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">À Éviter ⛔</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Bétadine sur plaie chronique</div><div class="inter-effect">Cytotoxique pour fibroblastes → retarde la cicatrisation · Réserver aux plaies aiguës infectées</div></div>
+      <div class="inter-item"><div class="inter-drug">Alcool / éther sur plaie ouverte</div><div class="inter-effect">Nécrose cellulaire · Douleur · Interdit sur plaie non infectée</div></div>
+      <div class="inter-item"><div class="inter-drug">Biscuit + Biseptine (mélange)</div><div class="inter-effect">Inactivation mutuelle des 2 antiseptiques · Toujours utiliser séparément</div></div>
+      <div class="inter-item"><div class="inter-drug">AINS oraux en phase inflammatoire</div><div class="inter-effect">↓ réaction inflammatoire utile → retard de cicatrisation · Paracétamol préférable</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Ma cicatrice est rouge, c'est infecté ?"</div><div class="speech-hide">Phase inflammatoire normale J2-J5 · Rougeur + chaleur = guérison active · Infection = pus + fièvre + odeur</div><div class="speech-resp">Normal jusqu'à J5 · Infection = pus/fièvre → médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je mets de la bétadine tous les jours sur ma cicatrice"</div><div class="speech-hide">Bétadine cytotoxique pour fibroblastes → ralentit la cicatrisation si usage prolongé · Chlorhexidine aqueuse préférable</div><div class="speech-resp">Switcher chlorhexidine aqueuse · Puis crème cicatrisante</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai une cicatrice qui a gonflé en boule"</div><div class="speech-hide">Chéloïde ou cicatrice hypertrophique · Terrain génétique · Nécessite traitement médical (Kenalog, silicone)</div><div class="speech-resp">Plaquettes silicone + SPF50+ · Si boule dure → dermatologue</div></div>
+      <div class="patient-item"><div class="speech-bubble">"La radio m'a brûlé la peau"</div><div class="speech-hide">Radiodermatite = inflammation cutanée due aux rayonnements · Grade I (rougeur) à IV (nécrose) · Soins spécifiques</div><div class="speech-resp">Dexeryl ou Biafine EN DEHORS des séances · Signaler équipe onco</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Cicatrisation · Cicalfate · Cicaplast · Cicavit · Radiodermatite · SPF50+ post-op · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Dermocosmétique · Conseil comptoir · Pratique officinale</span>
+</div>
+</body>
+</html>

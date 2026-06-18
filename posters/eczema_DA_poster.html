@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Eczéma & Dermatite Atopique — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #bf360c; --c2: #e64a19; --c3: #ff7043;
+    --cl: #fbe9e7; --cm: #ffccbc;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .diag-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .diag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-bottom: 1.5mm; }
+  .diag-item { background: white; border-radius: 5px; padding: 2mm 2.5mm; border-top: 2.5px solid var(--c2); }
+  .diag-item .val { font-size: 8.5pt; font-weight: 800; color: var(--c2); line-height: 1; }
+  .diag-item .lbl { font-size: 5.5pt; color: #37474f; margin-top: 0.5mm; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 32mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Eczéma & Dermatite Atopique</h1>
+    <div class="subtitle">Fiche officine · Pathologie 16 · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">20%</span><span class="lbl">Enfants touchés</span></div><div class="stat-pill"><span class="val">Th2</span><span class="lbl">Réponse immunitaire</span></div><div class="stat-pill"><span class="val">Dupilumab</span><span class="lbl">Révolution 2017+</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Émollients = base quotidienne</span><span class="tag">Dermocorticoïdes = crise</span><span class="tag">Tacrolimus = préféré visage/plis (épargne corticoïdes)</span><span class="tag">Dupilumab = DA modérée-sévère</span><span class="tag">JAK inhibiteurs per os = formes sévères</span><span class="tag">Règle des doigts (FTU)</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🧬 Mutation gène Filaggrine → défaut barrière cutanée</div><div class="cascade-arrow">↓</div><div class="cascade-step">🦠 Pénétration allergènes/microbes → activation Th2</div><div class="cascade-arrow">↓</div><div class="cascade-step">💥 IL-4, IL-13, IL-31 → inflammation + prurit intense</div><div class="cascade-arrow">↓</div><div class="cascade-step">🔄 Grattage → excoriation → surinfection → cercle vicieux</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Prurit</div><div class="d">IL-31, histamine</div></div><div class="target-box"><div class="t">Xérose</div><div class="d">Barrière rompue</div></div><div class="target-box"><div class="t">Lichenification</div><div class="d">Grattage chronique</div></div><div class="target-box"><div class="t">Surinfection</div><div class="d">Staph aureus 90%</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Diagnostic & Bilan</div>
+    <div class="diag-card">
+      <div class="diag-row">
+        <div class="diag-item"><div class="val">SCORAD</div><div class="lbl">Score sévérité 0-103</div></div><div class="diag-item"><div class="val">IGA</div><div class="lbl">Index 0-4</div></div><div class="diag-item"><div class="val">EASI</div><div class="lbl">Score étendue</div></div><div class="diag-item"><div class="val">IgE totales</div><div class="lbl">Souvent élevées</div></div>
+      </div>
+      <div style="background:var(--cl);border-radius:5px;padding:2mm;border-left:3px solid var(--c2);font-size:6pt;color:var(--c1);font-weight:600;">📋 Critères Hanifin & Rajka · Culture cutanée si surinfection · Bilan allergo si formes sévères · Pas de bilan systématique</div>
+    </div>
+
+    <div class="section-label">CI / Précautions ⛔</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #c62828;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Dermocorticoïdes forts visage → atrophie + télangiectasies → utiliser classe I-II seulement</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Tacrolimus / pimécrolimus : CI < 2 ans · Phototoxicité → protection solaire pendant traitement</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ JAK inhibiteurs : bilan pré-traitement (TB latente, NFS, bilan hépatique, sérologies) · CI infections actives</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    
+    <div class="drug-class cls-emol">
+      <div class="drug-class-header" style="background:#fff3e0;">
+        <div class="name" style="color:#e65100;">Émollients — Traitement de Fond Quotidien</div>
+        <div class="badge" style="background:#bf360c;color:white;">Base indispensable</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Dexpanthénol · Urée · Glycérol · Paraffine<span class="princeps">Dexeryl · Atoderm · A-Derma Exomega · Lipikar</span><span class="vol-data">📦 18M boîtes · 8-15€ · 200M€/an</span></div>
+          <div class="drug-dose">2x/j sur peau propre · Appliquer après bain/douche tiède</div>
+          <div class="drug-watch">Jamais sur peau infectée (favorise macération) · Parfums CI</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-dc">
+      <div class="drug-class-header" style="background:#fbe9e7;">
+        <div class="name" style="color:#bf360c;">Dermocorticoïdes — Poussées</div>
+        <div class="badge" style="background:#e64a19;color:white;">Traitement poussée</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Hydrocortisone 1% · Désonide<span class="princeps">Hydracort · Locapred · Tridésonit</span><span class="vol-data">📦 6M tubes · 4,50€ · 27M€/an</span></div>
+          <div class="drug-dose">Classe I-II (faible) · Visage, plis · Nourrissons</div>
+          <div class="drug-watch">Classe adaptée à la zone et l'âge · Règle du doigt FTU</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Bétaméthasone · Mométasone<span class="princeps">Diprosone · Elocom · Betneval</span><span class="vol-data">📦 8M tubes · 5,80€ · 46M€/an</span></div>
+          <div class="drug-dose">Classe III (forte) · Corps adulte · 2 semaines max</div>
+          <div class="drug-watch">Atrophie cutanée si usage prolongé · Rebond si arrêt brutal</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Clobétasol propionate 0,05%<span class="princeps">Dermoval · Clarelux mousse</span><span class="vol-data">📦 2M tubes · 6,20€ · 12M€/an</span></div>
+          <div class="drug-dose">Classe IV (très forte) · Formes sévères résistantes</div>
+          <div class="drug-watch">Usage court · Maximum 50g/sem · Jamais visage · Risque Cushingien</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-ic">
+      <div class="drug-class-header" style="background:#e8f5e9;">
+        <div class="name" style="color:#1b5e20;">Inhibiteurs Calcineurine Topiques</div>
+        <div class="badge" style="background:#2e7d32;color:white;">Hors corticoïdes</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tacrolimus 0,03% / 0,1% · Pimécrolimus<span class="princeps">Protopic · Elidel</span><span class="vol-data">📦 2M tubes · 22€ · 44M€/an</span></div>
+          <div class="drug-dose">Tacrolimus 0,1% adulte · 0,03% enfant > 2 ans</div>
+          <div class="drug-watch">Brûlure initiale 1ère semaine · Phototoxicité → protection solaire · Pas longue durée sans pause</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-dupil">
+      <div class="drug-class-header" style="background:#f3e5f5;">
+        <div class="name" style="color:#4a148c;">Dupilumab — Biothérapie Anti-IL-4/IL-13</div>
+        <div class="badge" style="background:#6a1b9a;color:white;">Modérée-Sévère</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Dupilumab<span class="princeps">Dupixent 300 mg/2 mL stylo</span><span class="vol-data">📦 remboursé 2017 adulte, 2022 enfant · 800-1200€/2 sem</span></div>
+          <div class="drug-dose">600 mg SC dose initiale puis 300 mg/2 sem</div>
+          <div class="drug-watch">Conjonctivite (20%) · Réaction injection site · Très efficace</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-jak">
+      <div class="drug-class-header" style="background:#e8eaf6;">
+        <div class="name" style="color:#1a237e;">Inhibiteurs JAK Oraux — Formes Sévères</div>
+        <div class="badge" style="background:#283593;color:white;">Nouveau 2021+</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Baricitinib · Abrocitinib · Upadacitinib<span class="princeps">Olumiant 2-4 mg · Cibinqo 100-200 mg · Rinvoq 15-30 mg</span><span class="vol-data">📦 AMM 2021-2022 · 800-1500€/mois</span></div>
+          <div class="drug-dose">Baricitinib 4 mg/j · Abrocitinib 200 mg/j · Upadacitinib 30 mg/j</div>
+          <div class="drug-watch">Infections sévères · MACE · DVT · Bilan pré-traitement obligatoire · Herpes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie HAS 2022</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Base</div><div class="content">Émollient quotidien</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Poussée légère</div><div class="content">DC classe I-II</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Poussée modérée</div><div class="content">DC classe III + émollient</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Sévère</div><div class="content">Dupilumab ou JAK-i</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 NOUVEAUTÉS 2020–2026</span>
+  <span class="n-text"><strong>Abrocitinib (Cibinqo)</strong> AMM 2022 · <strong>Upadacitinib (Rinvoq)</strong> AMM DA sévère 2022 · Dupilumab remboursé enfant ≥ 6 ans 2022 · Tralokinumab (Adtralza) anti-IL-13 AMM 2021 · Crisaborole (inhibiteur PDE4 topique) AMM EU 2020 enfant</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">FTU (Fingertip Unit) : 1 FTU = ~0,5g · Corps adulte = 30-40 FTU pour une application · Prescrire assez</div></div><div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Règle du pouce pour sévérité : SCORAD > 25 = modéré · > 50 = sévère → indication biothérapie</div></div><div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Poussée + suintement/croûtes jaunes/odeur → suspicion surinfection Staphylococcus aureus → dermato urgent</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Tacrolimus + CYP3A4 inhibiteurs (azolés)</div><div class="inter-effect">↑ Concentration tacrolimus systémique (faible mais réel si grande surface)</div></div><div class="inter-item"><div class="inter-drug">JAK-i + immunosuppresseurs</div><div class="inter-effect">Risque infectieux majeur → ne pas combiner corticoïdes systémiques</div></div><div class="inter-item"><div class="inter-drug">JAK-i + vaccins vivants</div><div class="inter-effect">CI vaccins vivants atténués sous JAK inhibiteurs · Mettre à jour avant</div></div><div class="inter-item"><div class="inter-drug">Dupilumab + vaccins</div><div class="inter-effect">Vaccins non vivants OK · Vaccins vivants : attendre évaluation bénéfice/risque</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"La crème cortisone je préfère éviter ça pour mon bébé"</div><div class="speech-hide">Dermocorticoïdes = traitement de référence des poussées · Classe adaptée = efficace et sûr · Peur corticostéroïdes = corticostérophobie très fréquente = 1ère cause d'échec</div><div class="speech-resp">DC classe I (hydrocortisone 1%) sur visage nourrisson = très sûr · Appliquer correctement les 5-7 premiers jours</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je mets la crème tous les jours mais ça revient toujours"</div><div class="speech-hide">DA = maladie chronique récidivante · AUCUN traitement ne guérit · Émollient quotidien = réduction des poussées · Grattage = entretient inflammation</div><div class="speech-resp">Émollient 2x/j entre les poussées · DC dès début poussée · Éviter allergènes déclenchants</div></div>
+      <div class="patient-item"><div class="speech-bubble">"On m'a proposé Dupixent pour ma fille de 10 ans"</div><div class="speech-hide">Dupilumab remboursé DA modérée-sévère ≥ 6 ans depuis 2022 · Anti-IL-4/IL-13 = révolution thérapeutique · Conjonctivite chez 20% = EI fréquent</div><div class="speech-resp">Traitement efficace · Injection SC/2 semaines · Conjonctivite → collyres · Résultat visible en 4-8 semaines</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai mis Protopic et j'ai eu des brûlures"</div><div class="speech-hide">Brûlure, prurit initiale avec tacrolimus = normale les 7-10 premiers jours · Disparaît spontanément · Arrêt = dommage</div><div class="speech-resp">Normal les 1ères semaines · Persévérer · Si persiste > 2 semaines → reconsulter · Ne pas exposer au soleil</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Eczéma · DA · Dermocorticoïdes · Dupilumab · JAK-inhibiteurs · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pathologie 16 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

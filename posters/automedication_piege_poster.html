@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>10 Pièges Automédication — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #e65100; --c2: #f57c00; --c3: #ffb74d;
+    --cl: #fff3e0; --cm: #ffe0b2;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #bf360c 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 18pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #bf360c; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .traps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; padding: 5mm 8mm 3mm; }
+
+  .trap-card { border-radius: 7px; overflow: hidden; border: 1px solid #e0e0e0; }
+  .trap-header { padding: 2mm 3mm; display: flex; align-items: center; gap: 2mm; }
+  .trap-header .num { font-size: 10pt; font-weight: 900; color: white; background: var(--c1); width: 6mm; height: 6mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .trap-header .title { font-size: 6.5pt; font-weight: 800; flex: 1; }
+  .trap-body { background: white; padding: 2.5mm 3mm; }
+  .trap-situation { font-size: 6pt; font-weight: 600; color: var(--c1); margin-bottom: 1mm; font-style: italic; }
+  .trap-situation::before { content: '🗣 '; }
+  .trap-danger { font-size: 6pt; color: #b71c1c; font-weight: 600; margin-bottom: 1mm; }
+  .trap-danger::before { content: '⚠ '; }
+  .trap-action { font-size: 5.5pt; color: #1b5e20; font-weight: 600; background: #e8f5e9; border-radius: 4px; padding: 1mm 2mm; }
+  .trap-action::before { content: '✅ '; }
+
+  .t-orange .trap-header { background: var(--cl); }
+  .t-orange .trap-header .title { color: var(--c1); }
+  .t-red .trap-header { background: #ffebee; }
+  .t-red .trap-header .title { color: #b71c1c; }
+  .t-purple .trap-header { background: #f3e5f5; }
+  .t-purple .trap-header .title { color: #4a148c; }
+  .t-blue .trap-header { background: #e8eaf6; }
+  .t-blue .trap-header .title { color: #1a237e; }
+  .t-teal .trap-header { background: #e0f2f1; }
+  .t-teal .trap-header .title { color: #004d40; }
+
+  .footer-box { padding: 3mm 8mm 5mm; }
+  .checklist { background: #f4f6f8; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .checklist-title { font-size: 6pt; font-weight: 700; color: var(--c1); text-transform: uppercase; margin-bottom: 2mm; }
+  .checklist-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2mm; }
+  .check-item { font-size: 5.5pt; color: #37474f; background: white; border-radius: 4px; padding: 1.5mm 2mm; border-left: 2.5px solid var(--c1); }
+  .check-item b { color: var(--c1); display: block; margin-bottom: 0.5mm; }
+
+  .footer-strip { background: #bf360c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>10 Pièges Automédication</h1>
+    <div class="subtitle">Erreurs OTC les plus fréquentes · Fiche comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">80%</span><span class="lbl">Français s'automédiquent</span></div>
+    <div class="stat-pill"><span class="val">20K</span><span class="lbl">Hospitalisations/an iatrogènes OTC</span></div>
+    <div class="stat-pill"><span class="val">AINS</span><span class="lbl">1er coupable</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Ibuprofène = pas anodin</span>
+  <span class="tag">Pseudoéphédrine = AVC</span>
+  <span class="tag">Double paracétamol caché</span>
+  <span class="tag">Millepertuis + pilule = grossesse</span>
+  <span class="tag">Laxatifs stimulants = dépendance</span>
+  <span class="tag">Charbon = chélation médicaments</span>
+</div>
+
+<div class="traps-grid">
+
+  <!-- 1 -->
+  <div class="trap-card t-red">
+    <div class="trap-header"><div class="num">1</div><div class="title">Ibuprofène chez l'hypertendu</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"J'ai mal au dos, je voudrais Advil"</div>
+      <div class="trap-danger">AINS ↓ effet antihypertenseur · IRA si IEC/ARA2/diurétique (triplette) · Rétention Na+ → décompensation IC</div>
+      <div class="trap-action">Vérifier HTA/IC/IRC dans l'historique · Proposer paracétamol · Si AINS indispensable : max 3–5 jours + IPP si &gt;65 ans</div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="trap-card t-red">
+    <div class="trap-header"><div class="num">2</div><div class="title">Pseudoéphédrine (Actifed, Dolirhume)</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"J'ai le nez bouché, donnez-moi quelque chose"</div>
+      <div class="trap-danger">Vasoconstricteur → HTA aiguë · AVC · IDM · Arythmie · CI : HTA, glaucome, IMAO, hyperthyroïdie, grossesse</div>
+      <div class="trap-action">TOUJOURS demander TA et ATCD CV · Max 5 jours · Préférer lavage nasal NaCl + corticoïde nasal si allergie</div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="trap-card t-orange">
+    <div class="trap-header"><div class="num">3</div><div class="title">Double paracétamol caché</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"J'ai pris Doliprane + Ixprim pour la douleur"</div>
+      <div class="trap-danger">Ixprim = tramadol + 325 mg paracétamol · Codoliprane = codéine + 400 mg paracétamol · Lamaline idem · Surdosage hépatique → hépatite fulminante</div>
+      <div class="trap-action">Lister TOUS les médicaments contenant du paracétamol · Max 4 g/j (3 g si terrain fragile) · Alerter sur les associations</div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="trap-card t-purple">
+    <div class="trap-header"><div class="num">4</div><div class="title">Millepertuis + Pilule contraceptive</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"Je prends du millepertuis pour le moral, c'est naturel"</div>
+      <div class="trap-danger">Inducteur CYP3A4 puissant → ↓ concentration pilule EP → grossesse non désirée · Aussi ↓ AVK, ciclosporine, NACO, ISRS</div>
+      <div class="trap-action">Toujours demander "phytothérapie ?" · Naturel ≠ inoffensif · Arrêt millepertuis → effet résiduel 2 semaines</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="trap-card t-red">
+    <div class="trap-header"><div class="num">5</div><div class="title">AINS en grossesse (≥ 24 SA)</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"J'ai mal à la tête, l'ibuprofène c'est mieux que rien"</div>
+      <div class="trap-danger">AINS dès 24 SA → fermeture prématurée canal artériel · IRA fœtale · Oligoamnios · Mort fœtale rapportée · ANSM 2019 : CI formelle</div>
+      <div class="trap-action">Paracétamol = seul antalgique sûr toute la grossesse · AINS CI dès le 6ème mois · Ibuprofène topique = aussi CI</div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="trap-card t-orange">
+    <div class="trap-header"><div class="num">6</div><div class="title">Laxatifs stimulants au long cours</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"Je prends du Dulcolax tous les jours depuis 2 ans"</div>
+      <div class="trap-danger">Bisacodyl/séné au long cours → mélanose colique · Hypokaliémie · Dépendance (colon atonique) · Pas de constipation "guérie"</div>
+      <div class="trap-action">Stimulants = usage ponctuel max 8–10j · Fond = macrogol (Forlax) ou lactulose · RHD : fibres + eau + activité physique</div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="trap-card t-blue">
+    <div class="trap-header"><div class="num">7</div><div class="title">Charbon actif + médicaments</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"Je prends du charbon pour les ballonnements"</div>
+      <div class="trap-danger">Charbon adsorbe TOUS les médicaments pris en même temps → ↓ absorption pilule, lévothyroxine, AVK, antibiotiques, etc.</div>
+      <div class="trap-action">Espacer ≥ 2h de TOUT médicament · Alerter systématiquement · Alternative : siméticone (Météospasmyl) sans chélation</div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="trap-card t-teal">
+    <div class="trap-header"><div class="num">8</div><div class="title">Décongestionnant nasal &gt; 5 jours</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"J'utilise Aturgyl depuis 3 semaines pour mon nez"</div>
+      <div class="trap-danger">Oxymétazoline/xylométazoline &gt;5j → rhinite rebond (rhinite médicamenteuse) · Muqueuse inflammée chroniquement · Cercle vicieux</div>
+      <div class="trap-action">Max 5 jours · Sevrage : corticoïdes nasaux 2–4 sem · Prévenir dès la 1ère dispensation</div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="trap-card t-purple">
+    <div class="trap-header"><div class="num">9</div><div class="title">IPP OTC au long cours</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"Je prends Oméprazole 20 mg depuis 3 ans, ça me va"</div>
+      <div class="trap-danger">IPP &gt;8 sem sans réévaluation → ↓ Mg, Ca, B12 · Fractures ostéoporotiques · Infections C. difficile · Néphrite interstitielle</div>
+      <div class="trap-action">OTC = max 14 jours sans avis médecin · Au-delà → réévaluation indication · Sevrage progressif (rebond acide)</div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="trap-card t-orange">
+    <div class="trap-header"><div class="num">10</div><div class="title">Mélatonine OTC + médicaments</div></div>
+    <div class="trap-body">
+      <div class="trap-situation">"Je prends de la mélatonine 5 mg tous les soirs pour dormir"</div>
+      <div class="trap-danger">Mélatonine OTC doses élevées (5–10 mg) → somnolence résiduelle · Potentialisation BZD/opioïdes · Fluvoxamine ↑ mélatonine (CYP1A2)</div>
+      <div class="trap-action">Circadin 2 mg LP (AMM) ≠ compléments 5–10 mg · Préférer dose basse ≤ 2 mg · Vérifier co-médication sédative</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-box">
+  <div class="checklist">
+    <div class="checklist-title">Checklist avant dispensation OTC — 4 questions systématiques</div>
+    <div class="checklist-grid">
+      <div class="check-item"><b>1. Pour qui ?</b>Âge · Grossesse · Allaitement · Enfant (&lt;15 ans AINS, &lt;12 ans codéine)</div>
+      <div class="check-item"><b>2. Quels traitements ?</b>Anticoagulants · Antihypertenseurs · Antidépresseurs · Pilule · Lévothyroxine</div>
+      <div class="check-item"><b>3. Quelles maladies ?</b>HTA · IRC · IC · Ulcère · Asthme · Diabète · Glaucome</div>
+      <div class="check-item"><b>4. Depuis combien de temps ?</b>AINS &gt;5j · Pseudoéphédrine &gt;5j · Laxatifs stimulants &gt;10j · IPP &gt;14j</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Automédication · OTC · AINS · Pseudoéphédrine · Paracétamol · Millepertuis · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Fiche transversale · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

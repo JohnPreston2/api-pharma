@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Vaccinations en Officine — SantéVeille Officine</title>
+<style>
+  :root{
+    --c1:#4a148c;--c2:#6a1b9a;--c3:#7b1fa2;--cl:#e1bee7;--cm:#f3e5f5;
+    --gr:#1b5e20;--bl:#0d47a1;--or:#e65100;--re:#b71c1c;--te:#006064;
+  }
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+
+  .hdr{background:linear-gradient(135deg,#4a148c,#6a1b9a 45%,#7b1fa2 80%,#ab47bc);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+
+  .nouv-banner{background:linear-gradient(90deg,#1b5e20,#2e7d32);color:white;
+    border-radius:5px;padding:6px 12px;margin-bottom:5px;font-size:8px;}
+  .nouv-banner strong{font-size:9px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.gr{background:var(--gr);} .ch.bl{background:var(--bl);}
+  .ch.or{background:var(--or);} .ch.re{background:var(--re);}
+  .ch.te{background:var(--te);} .ch.dark{background:#212121;}
+  .cb{padding:5px 7px;background:white;}
+
+  /* VACCINE TABLE */
+  .vax-table{width:100%;border-collapse:collapse;font-size:7px;}
+  .vax-table th{background:var(--c2);color:white;padding:3px 5px;text-align:left;}
+  .vax-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);vertical-align:top;}
+  .vax-table tr:nth-child(even) td{background:var(--cm);}
+  .vax-table tr:last-child td{border-bottom:none;}
+  .vax-table td:first-child{font-weight:700;color:var(--c1);}
+  .tag-new{background:#e8f5e9;color:#1b5e20;font-weight:700;font-size:6px;
+    border-radius:2px;padding:0 3px;white-space:nowrap;}
+  .tag-2024{background:#e3f2fd;color:#0d47a1;font-weight:700;font-size:6px;
+    border-radius:2px;padding:0 3px;white-space:nowrap;}
+
+  /* PROTOCOLE STEPS */
+  .step{display:flex;align-items:flex-start;gap:5px;padding:2.5px 0;
+    border-bottom:1px dotted #ddd;}
+  .step:last-of-type{border-bottom:none;}
+  .step-n{background:var(--c1);color:white;border-radius:50%;min-width:14px;height:14px;
+    display:flex;align-items:center;justify-content:center;font-size:7px;
+    font-weight:700;flex-shrink:0;margin-top:1px;}
+  .step-t{font-size:7.5px;color:#1a1a1a;flex:1;}
+  .step-t strong{color:var(--c1);}
+
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .alert-red{background:#ffebee;border-left:3px solid #e53935;padding:3px 6px;
+    margin-top:4px;font-size:7px;color:#b71c1c;}
+
+  /* ANAPHYLAXIE PROTOCOLE */
+  .ana-box{background:#ffebee;border:2px solid #e53935;border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .ana-box h3{font-size:9px;font-weight:700;color:#b71c1c;margin-bottom:3px;}
+  .ana-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ai{background:white;border-radius:3px;padding:3px 5px;
+    border-left:3px solid #e53935;font-size:7px;}
+  .ai strong{color:#b71c1c;display:block;font-size:7.5px;}
+
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+
+  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;}
+  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
+    border-left:3px solid var(--c3);font-size:7px;}
+  .sq{font-style:italic;color:#333;}
+  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
+    margin:2px 0;border-radius:0 3px 3px 0;color:#b71c1c;}
+  .sr{color:var(--c1);font-weight:600;margin-top:2px;}
+
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div>
+    <h1>💉 Vaccinations en Officine — Protocoles &amp; Référentiel</h1>
+    <div class="sub">Vaccines autorisés · Protocole avant/pendant/après · CI · Anaphylaxie · Mon Espace Santé</div>
+  </div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+
+<div class="nouv-banner">
+  🆕 <strong>Depuis 2022–2024 : les pharmaciens sont autorisés à vacciner contre 13 vaccins.</strong> Extension progressive : grippe (2019) → COVID → HPV, hépatite B, méningocoque, ROR, coqueluche, zona, pneumocoque, fièvre jaune. Formation obligatoire (DPC).
+</div>
+
+<!-- LISTE DES VACCINS AUTORISÉS EN OFFICINE -->
+<div class="card" style="margin-bottom:5px;">
+  <div class="ch">💉 LISTE DES VACCINS AUTORISÉS EN OFFICINE (France 2024–2026)</div>
+  <div class="cb">
+    <table class="vax-table">
+      <tr><th>Vaccin</th><th>Population cible</th><th>Schéma</th><th>Remarques</th></tr>
+      <tr>
+        <td>Grippe saisonnière</td>
+        <td>Tous ≥ 11 ans · Priorité : ≥ 65 ans · FDR</td>
+        <td>1 dose/an · Oct–Nov</td>
+        <td>⭐ Le plus pratiqué en officine · Bon de prise en charge CPAM</td>
+      </tr>
+      <tr>
+        <td>COVID-19</td>
+        <td>Recommandé ≥ 60 ans · Immunodéprimés · Femmes enceintes</td>
+        <td>Rappel annuel automne</td>
+        <td>Vaccin ARNm ou sous-unitaire selon disponibilité</td>
+      </tr>
+      <tr>
+        <td>Hépatite B <span class="tag-new">Nouveau</span></td>
+        <td>Adultes non immunisés · Professions de santé · Voyageurs</td>
+        <td>M0-M1-M6 (ou schéma accéléré)</td>
+        <td>Vérifier sérologie anti-HBs avant si doute</td>
+      </tr>
+      <tr>
+        <td>HPV <span class="tag-new">Nouveau</span></td>
+        <td>11–19 ans (rattrapage jusqu'à 26 ans) · HSH jusqu'à 26 ans</td>
+        <td>2 doses (si &lt; 15 ans) · 3 doses sinon</td>
+        <td>Gardasil 9 · Remboursé · <span class="tag-2024">Dès 11 ans en officine 2024</span></td>
+      </tr>
+      <tr>
+        <td>Méningocoque ACWY / B <span class="tag-new">Nouveau</span></td>
+        <td>Nourrissons (B) · Adolescents (C) · Voyageurs · Aspléniques</td>
+        <td>Selon schéma vaccinal</td>
+        <td>Nimenrix · Bexsero/Trumenba (MenB)</td>
+      </tr>
+      <tr>
+        <td>Pneumocoque <span class="tag-new">Nouveau</span></td>
+        <td>≥ 65 ans · Immunodép · BPCO · Asthme sévère · Cardiopathie</td>
+        <td>Prevenar 20 (1 dose adulte) OU Prevenar 13 + Pneumo23</td>
+        <td>Remboursé si indication · Vérifier statut vaccinal</td>
+      </tr>
+      <tr>
+        <td>Zona (Shingrix) <span class="tag-new">Nouveau</span></td>
+        <td>≥ 65 ans · ≥ 50 ans si immunodéprimé</td>
+        <td>2 doses à M0 et M2-M6</td>
+        <td>Vaccin sous-unitaire · Non remboursé · ~250€ les 2 doses</td>
+      </tr>
+      <tr>
+        <td>Coqueluche (dTcaP) <span class="tag-new">Nouveau</span></td>
+        <td>Rappels adultes · Femmes enceintes T2-T3 · Entourage nourrisson</td>
+        <td>Rappel tous 10 ans (dT) · dTcaP si coqueluche</td>
+        <td>Boostrix · Repevax · Stratégie cocooning</td>
+      </tr>
+      <tr>
+        <td>ROR (rougeole) <span class="tag-new">Nouveau</span></td>
+        <td>Adultes nés après 1980 avec &lt; 2 doses</td>
+        <td>1 ou 2 doses selon statut</td>
+        <td>CI grossesse · Vérifier immunité post-vaccin si doute</td>
+      </tr>
+      <tr>
+        <td>Fièvre jaune <span class="tag-2024">Centres autorisés</span></td>
+        <td>Voyageurs zones endémiques</td>
+        <td>1 dose unique (à vie)</td>
+        <td>Uniquement centres de vaccination internationaux habilités</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="grid2">
+
+  <!-- PROTOCOLE VACCINATION -->
+  <div class="card">
+    <div class="ch gr">📋 PROTOCOLE VACCINATION EN OFFICINE</div>
+    <div class="cb">
+      <div style="font-weight:700;color:#1b5e20;font-size:8px;margin-bottom:3px;">AVANT L'INJECTION</div>
+      <div class="step"><div class="step-n">1</div><div class="step-t">Vérifier l'<strong>ordonnance ou protocole</strong> selon le vaccin (certains sans ordo, autres avec)</div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-t"><strong>Interrogatoire CI</strong> : allergie œuf (grippe), allergie vaccin précédent, grossesse, immunodépression, fièvre aiguë</div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-t">Vérifier le <strong>statut vaccinal</strong> (carnet ou Mon Espace Santé) · Pas de sur-vaccination</div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-t">Informer sur les <strong>effets indésirables</strong> attendus (douleur site, fièvre 24–48h, asthénie) et la conduite à tenir</div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-t"><strong>Sortir le kit anaphylaxie</strong> et vérifier qu'il est à portée avant l'injection</div></div>
+      <div style="font-weight:700;color:#1b5e20;font-size:8px;margin:5px 0 3px;">PENDANT ET APRÈS</div>
+      <div class="step"><div class="step-n">6</div><div class="step-t">Injection <strong>IM deltoïde</strong> (ou SC si vaccin spécifique) · Aspiration NON recommandée (OMS 2016)</div></div>
+      <div class="step"><div class="step-n">7</div><div class="step-t"><strong>Surveillance 15–30 minutes</strong> obligatoire après injection · Patient reste en salle d'attente</div></div>
+      <div class="step"><div class="step-n">8</div><div class="step-t">Tracer dans <strong>Mon Espace Santé</strong> / Dossier Pharmaceutique · Délivrer la preuve de vaccination</div></div>
+      <div class="step"><div class="step-n">9</div><div class="step-t">Déclarer tout effet indésirable grave sur <strong>Déclaré.sante.fr</strong> (pharmacovigilance)</div></div>
+    </div>
+  </div>
+
+  <!-- CI + PRÉCAUTIONS -->
+  <div class="card">
+    <div class="ch re">🚫 CI &amp; PRÉCAUTIONS AVANT VACCINATION</div>
+    <div class="cb">
+      <div style="font-weight:700;color:#b71c1c;font-size:8px;margin-bottom:3px;">CI ABSOLUES (reporter ou orienter)</div>
+      <div style="font-size:7px;color:#333;line-height:1.7;margin-bottom:4px;">
+        ⛔ <strong>Allergie sévère</strong> à un composant du vaccin ou réaction anaphylactique lors d'une injection antérieure<br>
+        ⛔ <strong>Fièvre aiguë</strong> &gt; 38,5°C le jour de la vaccination (reporter)<br>
+        ⛔ <strong>Grossesse</strong> : CI vaccins vivants atténués (ROR, varicelle, fièvre jaune)<br>
+        ⛔ <strong>Immunodépression sévère</strong> : vaccins vivants CI absolue (ROR, varicelle)<br>
+        ⛔ <strong>Allergie grave aux œufs</strong> : grippe (certains vaccins)
+      </div>
+      <div style="font-weight:700;color:#e65100;font-size:8px;margin-bottom:3px;">PRÉCAUTIONS (évaluer bénéfice/risque)</div>
+      <div style="font-size:7px;color:#333;line-height:1.7;margin-bottom:4px;">
+        ⚠ Anticoagulants : injection SC possible ou pression prolongée site · Aiguille fine<br>
+        ⚠ Immunodépression modérée : vaccins inactivés OK · Vivants sur avis spécialiste<br>
+        ⚠ Grossesse T2-T3 : grippe, coqueluche, COVID recommandés et sûrs<br>
+        ⚠ Corticoïdes &gt; 10 mg/j predni équiv. : réduire la réponse immunitaire
+      </div>
+      <div style="font-weight:700;color:#0d47a1;font-size:8px;margin-bottom:3px;">🧰 KIT URGENCE ANAPHYLAXIE OBLIGATOIRE</div>
+      <div style="font-size:7px;color:#333;line-height:1.7;">
+        ✅ Adrénaline 1 mg/mL + seringues IM<br>
+        ✅ Antihistaminique injectable (Polaramine)<br>
+        ✅ Corticoïde injectable (Hydrocortancyl)<br>
+        ✅ Oxygène · DEA accessible<br>
+        ✅ Vérification mensuelle du kit obligatoire
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ANAPHYLAXIE POST-VACCINATION -->
+<div class="ana-box">
+  <h3>⚡ ANAPHYLAXIE POST-VACCINATION — Protocole d'Urgence (dans les 30 minutes)</h3>
+  <div class="ana-grid">
+    <div class="ai">
+      <strong>Signes reconnaître (1–15 min post-injection)</strong>
+      Urticaire · Gonflement face/gorge · Dyspnée sifflante · Hypotension · Tachycardie · Perte de conscience
+    </div>
+    <div class="ai">
+      <strong>Action immédiate</strong>
+      1. Appeler 15 · 2. Allonger jambes surélevées (sauf dyspnée → demi-assis) · 3. Adrénaline 0,3–0,5 mg IM cuisse · 4. Répéter si pas de réponse à 5 min · 5. Surveiller
+    </div>
+    <div class="ai">
+      <strong>Ne pas donner seul</strong>
+      Antihistaminique SEUL insuffisant. Corticoïde seul insuffisant. Adrénaline = traitement de 1ère ligne OBLIGATOIRE. Hospitalisation systématique même si amélioration (rebond à 4–8h).
+    </div>
+  </div>
+</div>
+
+<!-- RÉFLEXES + MON ESPACE SANTÉ -->
+<div class="rfx">
+  <h3>⚡ Réflexes Officine — Vaccinations</h3>
+  <div class="rfxg">
+    <div class="ri">
+      <strong>📱 Mon Espace Santé — Traçabilité</strong>
+      Systématiquement renseigner le Dossier Pharmaceutique (DP) après chaque vaccin. Mon Espace Santé = carnet vaccinal numérique accessible médecin + pharmacien. Permet éviter sur-vaccination.
+    </div>
+    <div class="ri">
+      <strong>⏱ Surveillance 30 min obligatoire</strong>
+      Patient ne part jamais dans les 15–30 min post-injection. Anaphylaxie = survient dans les 15 min dans 90% des cas. Avoir une chaise/espace d'attente dédié.
+    </div>
+    <div class="ri">
+      <strong>🎓 Formation DPC obligatoire</strong>
+      Formation gestes d'urgence requise avant de vacciner. DPC (Développement Professionnel Continu) disponible en ligne ou présentiel. Vérifier que toute l'équipe qui vaccine est formée.
+    </div>
+  </div>
+</div>
+
+<!-- PATIENT SPEECH -->
+<div class="pbar">
+  <h3>💬 Ce que dit le patient — Vaccinations officine</h3>
+  <div class="pgrid">
+    <div class="sb">
+      <div class="sq">💬 "Je peux me faire vacciner contre la grippe directement ici ?"</div>
+      <div class="sh">↳ Ce que ça cache : ne savait pas que pharmacien vaccine · veut éviter médecin</div>
+      <div class="sr">→ Oui, sans ordonnance si ≥ 11 ans. Vérifier statut vaccinal + CI rapides. Bon de prise en charge CPAM si à risque. Injection + traçage DP.</div>
+    </div>
+    <div class="sb">
+      <div class="sq">💬 "J'ai jamais été vacciné contre l'hépatite B, c'est grave ?"</div>
+      <div class="sh">↳ Ce que ça cache : possible exposition à risque · parfois professionnel de santé non vacciné</div>
+      <div class="sr">→ Sérologie conseillée avant (anti-HBs, Ag HBs, Ac HBc). Si susceptible → Engerix B ou HBVAXPRO · 3 doses. Vaccination possible en officine. Orienter si hépatite B active.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  SantéVeille Officine · Vaccinations en Officine · Formation DPC obligatoire · Déclaration EI : déclaré.sante.fr · Mon Espace Santé : monespacesante.fr · 2026
+</div>
+
+</body>
+</html>

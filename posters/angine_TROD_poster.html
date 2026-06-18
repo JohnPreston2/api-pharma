@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Angine & TROD Pharma — Fiche Officine</title>
+<style>
+  :root { --c1: #c62828; --c2: #e53935; --c3: #ef9a9a; --cl: #ffebee; --cm: #ffcdd2; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #b71c1c 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #b71c1c; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c1); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c1); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c1); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: #b71c1c; display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c1); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .trod-box { background: #e8f5e9; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border: 2px solid #1b5e20; }
+  .trod-title { font-size: 7pt; font-weight: 800; color: #1b5e20; margin-bottom: 2mm; text-transform: uppercase; }
+  .trod-step { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 1.5mm; }
+  .trod-step:last-child { margin-bottom: 0; }
+  .trod-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 5mm; height: 5mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .trod-text { font-size: 6pt; color: #37474f; font-weight: 500; }
+  .trod-text b { color: #1b5e20; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; margin-bottom: 3mm; }
+  .result-box { border-radius: 7px; padding: 3mm; text-align: center; }
+  .result-pos { background: #ffebee; border: 2px solid #c62828; }
+  .result-neg { background: #e8f5e9; border: 2px solid #1b5e20; }
+  .result-box .icon { font-size: 14pt; }
+  .result-box .label { font-size: 7pt; font-weight: 800; margin-top: 1mm; }
+  .result-pos .label { color: #c62828; }
+  .result-neg .label { color: #1b5e20; }
+  .result-box .action { font-size: 5.5pt; color: #37474f; margin-top: 1mm; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #b71c1c, var(--c1)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c1); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: #b71c1c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><h1>Angine & TROD Pharma</h1><div class="subtitle">Fiche officine · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">9M</span><span class="lbl">Angines/an en FR</span></div>
+    <div class="stat-pill"><span class="val">80%</span><span class="lbl">Virales (pas d'ATB)</span></div>
+    <div class="stat-pill"><span class="val">TROD</span><span class="lbl">Pharmacie depuis 2020</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">80% angines = virales = PAS d'antibiotique</span>
+  <span class="tag">TROD en pharmacie rémunéré 6€ (avenant 18)</span>
+  <span class="tag">SGA+ → amoxicilline 6j (adulte)</span>
+  <span class="tag">Allergie péni → azithromycine ou C3G</span>
+  <span class="tag">Score McIsaac ≥ 2 → TROD</span>
+  <span class="tag">RAA quasi disparu mais toujours possible</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Étiologies</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🦠 Virale 80% : rhinovirus, adénovirus, EBV (MNI), grippe</div>
+        <div class="cascade-step">🔴 Bactérienne 20% : Streptocoque du groupe A (SGA) = seul justifiant ATB</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">⚠ SGA non traité → RAA (rhumatisme articulaire aigu) · GNA (glomérulonéphrite) · Phlegmon péri-amygdalien</div>
+      </div>
+    </div>
+
+    <div class="section-label">TROD — Protocole pharmacie</div>
+    <div class="trod-box">
+      <div class="trod-title">Test Rapide d'Orientation Diagnostique</div>
+      <div class="trod-step"><div class="trod-num">1</div><div class="trod-text"><b>Score McIsaac ≥ 2</b> → TROD indiqué (fièvre &gt;38°C, exsudats, ADP cervicales, absence toux, 3–14 ans)</div></div>
+      <div class="trod-step"><div class="trod-num">2</div><div class="trod-text"><b>Prélèvement</b> : écouvillon amygdales (frotter fermement les 2 côtés 5 sec) · Gants + masque</div></div>
+      <div class="trod-step"><div class="trod-num">3</div><div class="trod-text"><b>Lecture</b> : 5 minutes · 2 bandes = positif SGA · 1 bande contrôle seule = négatif</div></div>
+      <div class="trod-step"><div class="trod-num">4</div><div class="trod-text"><b>Traçabilité</b> : enregistrer dans le DP · Rémunération 6€ (avenant 18, 2024)</div></div>
+      <div class="trod-step"><div class="trod-num">5</div><div class="trod-text"><b>Sensibilité 95%</b> · Spécificité 98% · Résultat fiable si technique correcte</div></div>
+    </div>
+
+    <div class="section-label">Résultat TROD → Conduite</div>
+    <div class="result-grid">
+      <div class="result-box result-pos">
+        <div class="icon">🔴</div>
+        <div class="label">TROD POSITIF (SGA)</div>
+        <div class="action">→ Ordonnance de dispensation conditionnelle<br>→ Amoxicilline 1g × 2/j × 6j (adulte)<br>→ Ou orienter médecin si pas d'ordonnance</div>
+      </div>
+      <div class="result-box result-neg">
+        <div class="icon">🟢</div>
+        <div class="label">TROD NÉGATIF (viral)</div>
+        <div class="action">→ PAS d'antibiotique<br>→ Traitement symptomatique<br>→ Paracétamol + pastilles + hydratation<br>→ Consulter si &gt;3j ou aggravation</div>
+      </div>
+    </div>
+
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #b71c1c;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Drapeaux rouges → Médecin urgent</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:0.5mm;">• Trismus (difficulté ouverture bouche) → phlegmon</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:0.5mm;">• Dyspnée · Voix étouffée → épiglottite</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:0.5mm;">• AEG + fausse membrane grisâtre → MNI ou diphtérie</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">• Enfant &lt;3 ans · Immunodéprimé · RAA antérieur</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Traitement — SGA confirmé (TROD+)</div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:var(--cl);"><div class="name" style="color:var(--c1);">Amoxicilline — 1ère ligne SGA</div><div class="badge" style="background:var(--c1);color:white;">6 jours</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Amoxicilline 1g<span class="princeps">Clamoxyl · Génériques</span><span class="vol-data">📦 45M boîtes · 2,80€ · 126M€/an</span></div>
+          <div class="drug-dose">Adulte : 1g × 2/j pendant 6 jours · Enfant : 50 mg/kg/j en 2 prises × 6j · Pendant ou hors repas</div>
+          <div class="drug-watch">Diarrhée fréquente (probiotiques conseillés) · Éruption + MNI = éruption maculo-papuleuse (≠ allergie) · Vérifier allergie vraie pénicilline</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#f3e5f5;"><div class="name" style="color:#4a148c;">Allergie Pénicilline — Alternatives</div><div class="badge" style="background:#6a1b9a;color:white;">Vérifier allergie vraie</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Céfuroxime (C2G)<span class="princeps">Zinnat · Génériques</span><span class="vol-data">📦 si allergie non anaphylactique</span></div>
+          <div class="drug-dose">250 mg × 2/j × 4j · Si allergie retardée pénicilline (pas anaphylaxie) → C2G/C3G = OK dans 95% des cas</div>
+          <div class="drug-watch">Réaction croisée péni/cépha &lt;2% · Si anaphylaxie péni → CI toutes bêtalactamines</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Azithromycine<span class="princeps">Zithromax · Génériques</span><span class="vol-data">📦 5M boîtes · 6,20€</span></div>
+          <div class="drug-dose">Adulte : 500 mg/j × 3j · Enfant : 20 mg/kg/j × 3j · Prise unique/j</div>
+          <div class="drug-watch">Résistance SGA croissante (15–20% en FR) → SPILF recommande C2G/C3G d'abord si possible · Allongement QT · Interactions CYP3A4</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Clarithromycine<span class="princeps">Zéclar · Génériques</span><span class="vol-data">📦 3M boîtes · 5,80€</span></div>
+          <div class="drug-dose">250 mg × 2/j × 5j · Pendant repas (tolérance GI)</div>
+          <div class="drug-watch">Interactions +++ (CYP3A4) : statines, colchicine, AVK · Goût métallique · Résistance SGA idem macrolides</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e8f5e9;"><div class="name" style="color:#1b5e20;">Traitement Symptomatique — TROD− ou attente</div><div class="badge" style="background:#2e7d32;color:white;">OTC</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Paracétamol 1g<span class="princeps">Doliprane · Efferalgan</span><span class="vol-data">📦 180M boîtes/an</span></div>
+          <div class="drug-dose">1g / 6h · Max 4g/j · Antalgique + antipyrétique · 1er choix</div>
+          <div class="drug-watch">Vérifier double paracétamol · 3g/j si terrain fragile</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Collutoires / Pastilles<span class="princeps">Strepsils · Drill · Lysopaïne · Hexaspray</span><span class="vol-data">📦 15M boîtes OTC</span></div>
+          <div class="drug-dose">Pastilles : 4–6/j · Collutoires : 3–4 pulv/j · Effet local antalgique + antiseptique léger</div>
+          <div class="drug-watch">Anesthésiants locaux (lidocaïne) : attention fausse route enfant &lt;6 ans · Hexamidine CI &lt;6 ans · Miel/citron = aussi efficace</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Anti-inflammatoire ORL<span class="princeps">Ibuprofène 200–400 mg</span><span class="vol-data">📦 OTC 5j max</span></div>
+          <div class="drug-dose">Ibuprofène 200–400 mg × 3/j · 3–5j max · Alternative si paracétamol insuffisant</div>
+          <div class="drug-watch">AINS suspectés d'aggraver les phlegmons péri-amygdaliens (données controversées ANSM) · Éviter si infection sévère · Paracétamol en 1er</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#e8eaf6;border-radius:7px;padding:3mm;border-left:3px solid #1a237e;margin-top:1mm;">
+      <div style="font-size:6pt;font-weight:700;color:#1a237e;text-transform:uppercase;margin-bottom:1.5mm;">Score McIsaac (critères modifiés de Centor)</div>
+      <div style="font-size:6pt;color:#37474f;line-height:1.5;">
+        +1 pt : Fièvre &gt;38°C · +1 pt : Absence toux · +1 pt : ADP cervicales antérieures sensibles<br>
+        +1 pt : Exsudats amygdaliens · +1 pt : Âge 3–14 ans · −1 pt : Âge ≥ 45 ans<br>
+        <b>≥ 2 pts → TROD recommandé</b> · ≤ 1 pt → viral probable, pas de TROD nécessaire
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Arbre décisionnel</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">McIsaac ≤ 1</div><div class="content">Viral → symptomatique seul</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">McIsaac ≥ 2</div><div class="content">TROD en pharmacie</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">TROD −</div><div class="content">Pas d'ATB · Symptomatique</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">TROD +</div><div class="content">Amoxicilline 6j</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">TROD systématique si mal de gorge + fièvre + pas de toux → évite 80% d'ATB inutiles</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Éruption sous amoxicilline + MNI = PAS une allergie (réaction immunologique MNI) → ne pas étiqueter "allergique pénicilline"</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">TROD négatif → rassurer · Paracétamol + pastilles + hydratation · Reconsulter si &gt;3j ou aggravation</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions & Alertes ATB</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Amoxicilline + Allopurinol</div><div class="inter-effect">↑ Risque éruption cutanée allergique · Informer patient</div></div>
+      <div class="inter-item"><div class="inter-drug">Amoxicilline + Méthotrexate</div><div class="inter-effect">↑ Toxicité MTX (compétition tubulaire) · Surveiller NFS</div></div>
+      <div class="inter-item"><div class="inter-drug">Azithromycine + Statines (simva)</div><div class="inter-effect">CYP3A4 → ↑ statine → myopathie · Moindre risque vs clarithromycine</div></div>
+      <div class="inter-item"><div class="inter-drug">Macrolides + AVK</div><div class="inter-effect">↑ INR → contrôle INR J3–J5 · Clarithromycine &gt; azithromycine en risque</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"J'ai mal à la gorge, il me faut des antibiotiques"</div><div class="speech-hide">80% angines = virales · ATB inutiles et nocifs (résistance) · TROD = seul moyen de trancher</div><div class="speech-resp">TROD gratuit en pharmacie → si négatif = viral, pas d'ATB · Paracétamol + pastilles</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon fils a des plaques blanches sur les amygdales"</div><div class="speech-hide">Exsudats amygdaliens = signe de McIsaac (+1) mais PAS pathognomonique de SGA · Aussi MNI, adénovirus</div><div class="speech-resp">TROD indiqué (score McIsaac probablement ≥ 2) → résultat en 5 minutes</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je suis allergique à la pénicilline"</div><div class="speech-hide">90% des "allergies pénicilline" sont fausses (éruption virale ou MNI) · Vraie allergie IgE-médiée = rare · Bilan allergologique recommandé</div><div class="speech-resp">Allergie documentée ? Anaphylaxie ou éruption ? Si doute → médecin pour bilan · C2G souvent safe</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Le médecin m'a donné une ordonnance conditionnelle"</div><div class="speech-hide">Ordonnance conditionnelle = dispensation ATB SI TROD+ en pharmacie · Avenant 18 · Le pharmacien fait le TROD et décide</div><div class="speech-resp">TROD en pharmacie → si positif : je délivre l'amoxicilline · Si négatif : traitement symptomatique seul</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Angine · TROD · SGA · Amoxicilline · McIsaac · SPILF 2024 · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pratique comptoir · 80/20</span>
+</div>
+</body>
+</html>

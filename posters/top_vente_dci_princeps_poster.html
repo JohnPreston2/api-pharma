@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Top Vente — DCI ↔ Princeps</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #0d47a1; --c2: #1565c0; --c3: #42a5f5;
+    --cl: #e3f2fd; --cm: #bbdefb;
+    --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --purple: #4a148c; --purple-l: #f3e5f5;
+    --teal: #004d40; --teal-l: #e0f2f1;
+    --pink: #880e4f; --pink-l: #fce4ec;
+    --indigo: #1a237e; --indigo-l: #e8eaf6;
+    --brown: #3e2723; --brown-l: #efebe9;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+    --cyan: #006064; --cyan-l: #e0f7fa;
+    --lime: #33691e; --lime-l: #f1f8e9;
+    --deep-orange: #bf360c; --deep-orange-l: #fbe9e7;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; margin: 0 auto; background: #fff; font-size: 6.5pt; color: #1a1a2e; line-height: 1.25; }
+
+  .page { width: 210mm; min-height: 297mm; position: relative; overflow: hidden; }
+  .page-break { page-break-after: always; break-after: page; }
+
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 5mm 6mm 4mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 50mm; height: 50mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 17pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 6pt; color: rgba(255,255,255,0.75); margin-top: 1mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 2.5mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; }
+  .stat-pill .val { font-size: 10pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 4.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.5mm; }
+
+  .header-p2 { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 3mm 6mm; display: flex; justify-content: space-between; align-items: center; }
+  .header-p2 h2 { font-size: 11pt; font-weight: 800; color: #fff; }
+  .header-p2 .page-num { font-size: 7pt; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+  .tag-bar { background: var(--c1); padding: 1.2mm 6mm; display: flex; gap: 2mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 4.8pt; padding: 0.5mm 1.8mm; border-radius: 20px; font-weight: 500; }
+
+  .main { padding: 2mm 6mm 1mm; display: grid; grid-template-columns: 1fr 1fr; column-gap: 3.5mm; row-gap: 1.5mm; }
+
+  .class-block { border-radius: 4px; overflow: hidden; border: 1px solid var(--border); break-inside: avoid; }
+  .class-header { padding: 1.2mm 2mm; display: flex; align-items: center; justify-content: space-between; }
+  .class-header .name { font-size: 5.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; }
+  .class-header .count { font-size: 4.5pt; font-weight: 700; padding: 0.3mm 1.2mm; border-radius: 20px; }
+  .class-body { background: white; padding: 0.8mm 2mm 1mm; }
+
+  .med-row { display: grid; grid-template-columns: 30mm 26mm 1fr; gap: 0.8mm; padding: 0.7mm 0; border-bottom: 1px solid #f0f0f0; align-items: center; }
+  .med-row:last-child { border-bottom: none; }
+  .med-dci { font-weight: 700; font-size: 6pt; text-transform: uppercase; }
+  .med-princeps { font-style: italic; font-size: 5.8pt; color: #546e7a; font-weight: 600; }
+  .med-info { font-size: 5pt; color: var(--grey); }
+  .med-vol { font-weight: 700; color: rgba(0,0,0,0.32); }
+  .med-extra { font-size: 5pt; color: #78909c; font-style: italic; }
+
+  .cl-douleur .class-header { background: #f3e5f5; }
+  .cl-douleur .class-header .name { color: #4a148c; }
+  .cl-douleur .class-header .count { background: #4a148c; color: white; }
+  .cl-douleur .med-dci { color: #4a148c; }
+
+  .cl-gastro .class-header { background: #fff3e0; }
+  .cl-gastro .class-header .name { color: #e65100; }
+  .cl-gastro .class-header .count { background: #e65100; color: white; }
+  .cl-gastro .med-dci { color: #e65100; }
+
+  .cl-psy .class-header { background: #e8eaf6; }
+  .cl-psy .class-header .name { color: #1a237e; }
+  .cl-psy .class-header .count { background: #1a237e; color: white; }
+  .cl-psy .med-dci { color: #1a237e; }
+
+  .cl-cardio .class-header { background: #ffebee; }
+  .cl-cardio .class-header .name { color: #b71c1c; }
+  .cl-cardio .class-header .count { background: #b71c1c; color: white; }
+  .cl-cardio .med-dci { color: #b71c1c; }
+
+  .cl-allergie .class-header { background: #e8f5e9; }
+  .cl-allergie .class-header .name { color: #1b5e20; }
+  .cl-allergie .class-header .count { background: #1b5e20; color: white; }
+  .cl-allergie .med-dci { color: #1b5e20; }
+
+  .cl-dermato .class-header { background: #fce4ec; }
+  .cl-dermato .class-header .name { color: #880e4f; }
+  .cl-dermato .class-header .count { background: #880e4f; color: white; }
+  .cl-dermato .med-dci { color: #880e4f; }
+
+  .cl-infectio .class-header { background: #e0f2f1; }
+  .cl-infectio .class-header .name { color: #004d40; }
+  .cl-infectio .class-header .count { background: #004d40; color: white; }
+  .cl-infectio .med-dci { color: #004d40; }
+
+  .cl-cortico .class-header { background: #fbe9e7; }
+  .cl-cortico .class-header .name { color: #bf360c; }
+  .cl-cortico .class-header .count { background: #bf360c; color: white; }
+  .cl-cortico .med-dci { color: #bf360c; }
+
+  .cl-vitamine .class-header { background: #f1f8e9; }
+  .cl-vitamine .class-header .name { color: #33691e; }
+  .cl-vitamine .class-header .count { background: #33691e; color: white; }
+  .cl-vitamine .med-dci { color: #33691e; }
+
+  .cl-diabete .class-header { background: #e0f7fa; }
+  .cl-diabete .class-header .name { color: #006064; }
+  .cl-diabete .class-header .count { background: #006064; color: white; }
+  .cl-diabete .med-dci { color: #006064; }
+
+  .cl-divers .class-header { background: #efebe9; }
+  .cl-divers .class-header .name { color: #3e2723; }
+  .cl-divers .class-header .count { background: #3e2723; color: white; }
+  .cl-divers .med-dci { color: #3e2723; }
+
+  .cl-pneumo .class-header { background: #e3f2fd; }
+  .cl-pneumo .class-header .name { color: #0d47a1; }
+  .cl-pneumo .class-header .count { background: #0d47a1; color: white; }
+  .cl-pneumo .med-dci { color: #0d47a1; }
+
+  .cl-endocrino .class-header { background: #fff8e1; }
+  .cl-endocrino .class-header .name { color: #f57f17; }
+  .cl-endocrino .class-header .count { background: #f57f17; color: white; }
+  .cl-endocrino .med-dci { color: #f57f17; }
+
+  .cl-rhumato .class-header { background: #eceff1; }
+  .cl-rhumato .class-header .name { color: #455a64; }
+  .cl-rhumato .class-header .count { background: #455a64; color: white; }
+  .cl-rhumato .med-dci { color: #455a64; }
+
+  .tip-bar { background: linear-gradient(90deg, #0d47a1, #1565c0, #42a5f5); border-radius: 4px; padding: 1.5mm 3mm; display: flex; align-items: center; gap: 2mm; margin: 1.5mm 6mm 0; }
+  .tip-icon { font-size: 8pt; flex-shrink: 0; }
+  .tip-text { color: white; font-size: 5pt; font-weight: 500; line-height: 1.25; }
+  .tip-text strong { font-weight: 800; }
+
+  .footer-strip { background: var(--c1); padding: 1.2mm 6mm; display: flex; justify-content: space-between; align-items: center; margin-top: 1mm; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 4pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 4.5pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page page-break">
+
+<div class="header">
+  <div><h1>Top Vente — DCI / Princeps</h1><div class="subtitle">Reference officine · 80+ DCI · 14 classes therapeutiques · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">80+</span><span class="lbl">DCI</span></div>
+    <div class="stat-pill"><span class="val">14</span><span class="lbl">Classes</span></div>
+    <div class="stat-pill"><span class="val">P.1/2</span><span class="lbl">Pages</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Prescription = DCI (colonne gauche, gras)</span>
+  <span class="tag">Rangement = Princeps (colonne italique)</span>
+  <span class="tag">Vol = boites officine Jan-Mai 2026</span>
+  <span class="tag">* = DCI ajoutee (pas dans top vente mais essentielle)</span>
+</div>
+
+<div class="main">
+
+  <!-- COL 1 PAGE 1 -->
+  <div style="display:flex;flex-direction:column;gap:1.5mm;">
+
+  <!-- DOULEUR / ANTALGIQUES -->
+  <div class="class-block cl-douleur">
+    <div class="class-header"><span class="name">Douleur / Antalgiques / AINS</span><span class="count">14</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Paracetamol</span><span class="med-princeps">DOLIPRANE</span><span class="med-info">500mg/1g · cp/gel · <span class="med-vol">1 001 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Paracetamol</span><span class="med-princeps">DAFALGAN</span><span class="med-info">500mg/1g · cp/gel · <span class="med-vol">123 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Paracetamol</span><span class="med-princeps">EFFERALGANMED</span><span class="med-info">500mg/1g · cp/eff · <span class="med-vol">96 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Paracetamol + Cafeine</span><span class="med-princeps">CLARADOL CAFEINE</span><span class="med-info">500/50mg cp · <span class="med-vol">37 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Paracetamol + Opium</span><span class="med-princeps">IZALGI</span><span class="med-info">500/25mg gel · palier 2 · <span class="med-vol">89 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Paracetamol + Codeine *</span><span class="med-princeps">CODOLIPRANE</span><span class="med-info">500/30mg cp · palier 2 · ordo securisee</span></div>
+      <div class="med-row"><span class="med-dci">Tramadol *</span><span class="med-princeps">TOPALGIC</span><span class="med-info">50/100mg · palier 2 · ordo securisee</span></div>
+      <div class="med-row"><span class="med-dci">Nefopam</span><span class="med-princeps">ACUPAN</span><span class="med-info">30mg cp · central non opiace · <span class="med-vol">32 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Ibuprofene</span><span class="med-princeps">ADVIL / NUROFEN</span><span class="med-info">200/400mg cp · <span class="med-vol">63 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Ketoprofene LP</span><span class="med-princeps">PROFENID LP</span><span class="med-info">100mg cp LP · <span class="med-vol">30 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Diclofenac</span><span class="med-princeps">FLECTOR</span><span class="med-info">1% gel 100g · topique · <span class="med-vol">52 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Pregabaline *</span><span class="med-princeps">LYRICA</span><span class="med-info">75/150/300mg · neuropathique · ordo sec.</span></div>
+      <div class="med-row"><span class="med-dci">Gabapentine *</span><span class="med-princeps">NEURONTIN</span><span class="med-info">300/400mg gel · neuropathique</span></div>
+      <div class="med-row"><span class="med-dci">Duloxetine *</span><span class="med-princeps">CYMBALTA</span><span class="med-info">30/60mg · IRSNA · douleur neuro + depression</span></div>
+    </div>
+  </div>
+
+  <!-- GASTRO-ENTEROLOGIE -->
+  <div class="class-block cl-gastro">
+    <div class="class-header"><span class="name">Gastro-Enterologie</span><span class="count">13</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Omeprazole</span><span class="med-princeps">MOPRAL</span><span class="med-info">20mg gel · IPP · <span class="med-vol">65 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Esomeprazole</span><span class="med-princeps">INEXIUM</span><span class="med-info">20/40mg gel · IPP · <span class="med-vol">66 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Pantoprazole</span><span class="med-princeps">EUPANTOL / INIPOMP</span><span class="med-info">20mg cp · IPP · <span class="med-vol">36 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Lansoprazole *</span><span class="med-princeps">OGAST / LANZOR</span><span class="med-info">15/30mg gel · IPP</span></div>
+      <div class="med-row"><span class="med-dci">Phloroglucinol</span><span class="med-princeps">SPASFON</span><span class="med-info">80mg cp/lyoc · antispasmod. · <span class="med-vol">134 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Alverine + Simeticone</span><span class="med-princeps">METEOSPASMYL</span><span class="med-info">caps · ballonnements · <span class="med-vol">37 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Alginate + Bicarbonate</span><span class="med-princeps">GAVISCON</span><span class="med-info">sachets · RGO · <span class="med-vol">45 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Domperidone *</span><span class="med-princeps">MOTILIUM</span><span class="med-info">10mg cp · antiemetique · QT!</span></div>
+      <div class="med-row"><span class="med-dci">Metoclopramide *</span><span class="med-princeps">PRIMPERAN</span><span class="med-info">10mg cp · antiemetique · 5j max</span></div>
+      <div class="med-row"><span class="med-dci">Metopimazine</span><span class="med-princeps">VOGALENE</span><span class="med-info">7,5mg cp oro · antiemetique · <span class="med-vol">19 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Racecadotril</span><span class="med-princeps">TIORFAN</span><span class="med-info">100mg gel · antidiarrheique · <span class="med-vol">21 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Loperamide *</span><span class="med-princeps">IMODIUM</span><span class="med-info">2mg gel · ralentisseur transit</span></div>
+      <div class="med-row"><span class="med-dci">Macrogol 4000</span><span class="med-princeps">FORLAX</span><span class="med-info">10g sachet · laxatif osmot. · <span class="med-vol">29 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Lactulose</span><span class="med-princeps">DUPHALAC</span><span class="med-info">10g/15ml sachet · laxatif · <span class="med-vol">18 btes</span></span></div>
+    </div>
+  </div>
+
+  <!-- PSYCHIATRIE / NEUROLOGIE -->
+  <div class="class-block cl-psy">
+    <div class="class-header"><span class="name">Psychiatrie / Neurologie</span><span class="count">14</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Sertraline</span><span class="med-princeps">ZOLOFT</span><span class="med-info">25/50mg gel · ISRS · <span class="med-vol">137 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Fluoxetine</span><span class="med-princeps">PROZAC</span><span class="med-info">20mg gel · ISRS · <span class="med-vol">68 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Paroxetine</span><span class="med-princeps">DEROXAT</span><span class="med-info">20mg cp · ISRS · <span class="med-vol">60 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Escitalopram *</span><span class="med-princeps">SEROPLEX</span><span class="med-info">5/10/20mg cp · ISRS · 1er choix HAS</span></div>
+      <div class="med-row"><span class="med-dci">Venlafaxine LP</span><span class="med-princeps">EFFEXOR LP</span><span class="med-info">75mg gel LP · IRSNA · <span class="med-vol">19 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Mirtazapine *</span><span class="med-princeps">NORSET</span><span class="med-info">15/30mg cp · NaSSA · sedatif</span></div>
+      <div class="med-row"><span class="med-dci">Alprazolam</span><span class="med-princeps">XANAX</span><span class="med-info">0,25/0,50mg · BZD anxio · <span class="med-vol">76 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Oxazepam</span><span class="med-princeps">SERESTA</span><span class="med-info">10/50mg cp · BZD anxio · <span class="med-vol">64 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Prazepam</span><span class="med-princeps">LYSANXIA</span><span class="med-info">10mg cp · BZD anxio · <span class="med-vol">23 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Hydroxyzine *</span><span class="med-princeps">ATARAX</span><span class="med-info">25mg cp · anxio non BZD · antiH1</span></div>
+      <div class="med-row"><span class="med-dci">Zopiclone</span><span class="med-princeps">IMOVANE</span><span class="med-info">7,5mg cp · hypnotique · <span class="med-vol">46 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Lormetazepam</span><span class="med-princeps">NOCTAMIDE</span><span class="med-info">1/2mg cp · hypnotique · <span class="med-vol">54 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Lamotrigine</span><span class="med-princeps">LAMICTAL</span><span class="med-info">50mg cp disp · antiepileptique · <span class="med-vol">18 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Levetiracetam *</span><span class="med-princeps">KEPPRA</span><span class="med-info">250/500/1000mg · antiepileptique</span></div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- COL 2 PAGE 1 -->
+  <div style="display:flex;flex-direction:column;gap:1.5mm;">
+
+  <!-- CARDIOVASCULAIRE -->
+  <div class="class-block cl-cardio">
+    <div class="class-header"><span class="name">Cardiovasculaire / Anticoag</span><span class="count">14</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Bisoprolol</span><span class="med-princeps">CARDENSIEL</span><span class="med-info">1,25/2,5mg · betabloquant · <span class="med-vol">34 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Atorvastatine</span><span class="med-princeps">TAHOR</span><span class="med-info">10/40mg cp · statine · <span class="med-vol">44 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Rosuvastatine *</span><span class="med-princeps">CRESTOR</span><span class="med-info">5/10/20mg cp · statine</span></div>
+      <div class="med-row"><span class="med-dci">Ramipril *</span><span class="med-princeps">TRIATEC</span><span class="med-info">1,25-10mg cp · IEC</span></div>
+      <div class="med-row"><span class="med-dci">Perindopril *</span><span class="med-princeps">COVERSYL</span><span class="med-info">2,5/5/10mg cp · IEC</span></div>
+      <div class="med-row"><span class="med-dci">Irbesartan</span><span class="med-princeps">APROVEL</span><span class="med-info">150/300mg cp · ARA II · <span class="med-vol">18 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Valsartan *</span><span class="med-princeps">TAREG</span><span class="med-info">40/80/160mg cp · ARA II</span></div>
+      <div class="med-row"><span class="med-dci">Amlodipine *</span><span class="med-princeps">AMLOR</span><span class="med-info">5/10mg gel · ICa · HTA</span></div>
+      <div class="med-row"><span class="med-dci">Furosemide</span><span class="med-princeps">LASILIX</span><span class="med-info">20/40mg cp · diuretique anse · <span class="med-vol">23 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Amiodarone</span><span class="med-princeps">CORDARONE</span><span class="med-info">200mg cp · antiarythm. · <span class="med-vol">21 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Apixaban</span><span class="med-princeps">ELIQUIS</span><span class="med-info">2,5/5mg cp · AOD · <span class="med-vol">20 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Rivaroxaban *</span><span class="med-princeps">XARELTO</span><span class="med-info">10/15/20mg cp · AOD</span></div>
+      <div class="med-row"><span class="med-dci">Clopidogrel *</span><span class="med-princeps">PLAVIX</span><span class="med-info">75mg cp · antiagreg. plaquettaire</span></div>
+      <div class="med-row"><span class="med-dci">Ac. acetylsalicylique</span><span class="med-princeps">KARDEGIC / ASP. PROTECT</span><span class="med-info">75/100mg · antiagreg. · <span class="med-vol">72 btes</span></span></div>
+    </div>
+  </div>
+
+  <!-- ALLERGIE / ORL -->
+  <div class="class-block cl-allergie">
+    <div class="class-header"><span class="name">Allergie / ORL / Toux</span><span class="count">10</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Desloratadine</span><span class="med-princeps">AERIUS</span><span class="med-info">5mg cp · AH2G · <span class="med-vol">68 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Cetirizine</span><span class="med-princeps">ZYRTEC</span><span class="med-info">10mg cp · AH2G · <span class="med-vol">26 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Bilastine</span><span class="med-princeps">INORIAL</span><span class="med-info">20mg cp · AH2G · <span class="med-vol">29 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Levocetirizine *</span><span class="med-princeps">XYZALL</span><span class="med-info">5mg cp · AH2G · enantiomere actif</span></div>
+      <div class="med-row"><span class="med-dci">Mometasone nasal</span><span class="med-princeps">NASONEX</span><span class="med-info">50mcg/dose pulv · cortico nasal · <span class="med-vol">64 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Azelastine + Fluticasone</span><span class="med-princeps">DYMISTA</span><span class="med-info">pulv nasal · AH + cortico · <span class="med-vol">25 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Tixocortol</span><span class="med-princeps">PIVALONE</span><span class="med-info">susp nasale 10ml · <span class="med-vol">27 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Oxomemazine</span><span class="med-princeps">TOPLEXIL</span><span class="med-info">0,33mg/ml sp s/s · antitussif · <span class="med-vol">22 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Helicidine</span><span class="med-princeps">HELICIDINE</span><span class="med-info">10% sp s/s 250ml · antitussif · <span class="med-vol">43 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Dextromethorphane *</span><span class="med-princeps">TUSSIDANE</span><span class="med-info">1,5mg/ml sp · antitussif · OTC</span></div>
+    </div>
+  </div>
+
+  <!-- ANTI-INFECTIEUX -->
+  <div class="class-block cl-infectio">
+    <div class="class-header"><span class="name">Anti-Infectieux</span><span class="count">9</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Amoxicilline</span><span class="med-princeps">CLAMOXYL</span><span class="med-info">500mg/1g · cp/susp · <span class="med-vol">129 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Amox. + Ac. clavulanique *</span><span class="med-princeps">AUGMENTIN</span><span class="med-info">500/62,5mg · 1g/125mg · cp/susp</span></div>
+      <div class="med-row"><span class="med-dci">Azithromycine *</span><span class="med-princeps">ZITHROMAX</span><span class="med-info">250mg cp · macrolide · 3j</span></div>
+      <div class="med-row"><span class="med-dci">Pristinamycine *</span><span class="med-princeps">PYOSTACINE</span><span class="med-info">500mg cp · synergistine</span></div>
+      <div class="med-row"><span class="med-dci">Fosfomycine</span><span class="med-princeps">MONURIL</span><span class="med-info">3g sachet · cystite dose unique · <span class="med-vol">26 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Amphotericine B</span><span class="med-princeps">FUNGIZONE</span><span class="med-info">10% susp buv 40ml · antifong. · <span class="med-vol">29 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Fluconazole *</span><span class="med-princeps">TRIFLUCAN</span><span class="med-info">50/150mg gel · antifongique syst.</span></div>
+      <div class="med-row"><span class="med-dci">Ciclopirox olamine</span><span class="med-princeps">SEBIPROX</span><span class="med-info">1,5% shamp 100ml · DS · <span class="med-vol">19 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Oseltamivir *</span><span class="med-princeps">TAMIFLU</span><span class="med-info">75mg gel · antigrippal · 48h</span></div>
+    </div>
+  </div>
+
+  <!-- DERMATO -->
+  <div class="class-block cl-dermato">
+    <div class="class-header"><span class="name">Dermatologie</span><span class="count">7</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Clobetasol</span><span class="med-princeps">DERMOVAL</span><span class="med-info">500mcg/g cr · DC tres fort · <span class="med-vol">50 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Betamethasone 0,05%</span><span class="med-princeps">DIPROSONE</span><span class="med-info">creme 30g · DC fort · <span class="med-vol">26 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Econazole</span><span class="med-princeps">PEVARYL</span><span class="med-info">1% creme 30g · antifongique · <span class="med-vol">28 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Lidocaine + Prilocaine</span><span class="med-princeps">EMLA</span><span class="med-info">5% pansement · anesth. local · <span class="med-vol">84 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Acide fusidique *</span><span class="med-princeps">FUCIDINE</span><span class="med-info">2% creme/pom · antibio local</span></div>
+      <div class="med-row"><span class="med-dci">Mupirocine *</span><span class="med-princeps">MUPIDERM</span><span class="med-info">2% pom · antibio local · SARM</span></div>
+      <div class="med-row"><span class="med-dci">Adapalene *</span><span class="med-princeps">DIFFERINE</span><span class="med-info">0,1% gel/creme · acne · retinoide</span></div>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+<div class="tip-bar">
+  <span class="tip-icon">💡</span>
+  <span class="tip-text"><strong>Lecture :</strong> DCI (gras, gauche) = ce qui est sur l'ordonnance. Princeps (italique) = nom sur le rayon. * = DCI de base ajoutee (hors top vente mais frequente au comptoir).</span>
+</div>
+
+<div class="footer-strip">
+  <span class="brand">API Pharma — Fiche Officine</span>
+  <span>Page 1/2 · Douleur · Gastro · Psy · Cardio · Allergie · Infectio · Dermato</span>
+  <span>Ctrl+P → A4 portrait</span>
+</div>
+
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+
+<div class="header-p2">
+  <h2>Top Vente — DCI / Princeps (suite)</h2>
+  <span class="page-num">Page 2/2</span>
+</div>
+
+<div class="main">
+
+  <!-- COL 1 PAGE 2 -->
+  <div style="display:flex;flex-direction:column;gap:1.5mm;">
+
+  <!-- PNEUMOLOGIE -->
+  <div class="class-block cl-pneumo">
+    <div class="class-header"><span class="name">Pneumologie</span><span class="count">6</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Salbutamol</span><span class="med-princeps">VENTOLINE</span><span class="med-info">100mcg/dose inhal · B2CA · <span class="med-vol">32 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Terbutaline *</span><span class="med-princeps">BRICANYL</span><span class="med-info">500mcg/dose turbuh. · B2CA</span></div>
+      <div class="med-row"><span class="med-dci">Budesonide + Formoterol *</span><span class="med-princeps">SYMBICORT</span><span class="med-info">200/6 ou 400/12 turbuh. · CSI+LABA</span></div>
+      <div class="med-row"><span class="med-dci">Fluticasone + Salmeterol *</span><span class="med-princeps">SERETIDE</span><span class="med-info">100/250/500 diskus · CSI+LABA</span></div>
+      <div class="med-row"><span class="med-dci">Montelukast *</span><span class="med-princeps">SINGULAIR</span><span class="med-info">10mg cp · antileucotrienes</span></div>
+      <div class="med-row"><span class="med-dci">Tiotropium *</span><span class="med-princeps">SPIRIVA</span><span class="med-info">18mcg caps inhal · LAMA · BPCO</span></div>
+    </div>
+  </div>
+
+  <!-- ENDOCRINOLOGIE -->
+  <div class="class-block cl-endocrino">
+    <div class="class-header"><span class="name">Endocrinologie / Thyroide</span><span class="count">3</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Levothyroxine *</span><span class="med-princeps">LEVOTHYROX</span><span class="med-info">25-200mcg cp · hypothyroidie · a jeun</span></div>
+      <div class="med-row"><span class="med-dci">Levothyroxine sol. *</span><span class="med-princeps">TCAPS / L-THYROXIN</span><span class="med-info">sol buv · alternative si intol. cp</span></div>
+      <div class="med-row"><span class="med-dci">Carbimazole *</span><span class="med-princeps">NEO-MERCAZOLE</span><span class="med-info">5/20mg cp · hyperthyroidie · ATS</span></div>
+    </div>
+  </div>
+
+  <!-- DIABETE -->
+  <div class="class-block cl-diabete">
+    <div class="class-header"><span class="name">Diabete</span><span class="count">8</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Metformine</span><span class="med-princeps">GLUCOPHAGE</span><span class="med-info">500/850/1000mg cp · biguanide · <span class="med-vol">18 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Dapagliflozine</span><span class="med-princeps">FORXIGA</span><span class="med-info">10mg cp · iSGLT2 · <span class="med-vol">25 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Dapagliflozine + Metf.</span><span class="med-princeps">XIGDUO</span><span class="med-info">5/1000mg cp · combo · <span class="med-vol">21 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Empagliflozine *</span><span class="med-princeps">JARDIANCE</span><span class="med-info">10/25mg cp · iSGLT2 · IC aussi</span></div>
+      <div class="med-row"><span class="med-dci">Semaglutide *</span><span class="med-princeps">OZEMPIC</span><span class="med-info">0,25/0,5/1mg stylo SC · aGLP-1</span></div>
+      <div class="med-row"><span class="med-dci">Sitagliptine *</span><span class="med-princeps">JANUVIA / XELEVIA</span><span class="med-info">100mg cp · iDPP-4 · gliptine</span></div>
+      <div class="med-row"><span class="med-dci">Gliclazide *</span><span class="med-princeps">DIAMICRON</span><span class="med-info">30/60mg LM · sulfamide hypogly.</span></div>
+      <div class="med-row"><span class="med-dci">Insuline glargine *</span><span class="med-princeps">LANTUS / TOUJEO</span><span class="med-info">stylo SC · insuline basale lente</span></div>
+    </div>
+  </div>
+
+  <!-- CORTICOIDES SYSTEMIQUES -->
+  <div class="class-block cl-cortico">
+    <div class="class-header"><span class="name">Corticoides Systemiques</span><span class="count">3</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Prednisolone</span><span class="med-princeps">SOLUPRED</span><span class="med-info">5/20mg cp/oro · <span class="med-vol">54 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Prednisone</span><span class="med-princeps">CORTANCYL</span><span class="med-info">1/5/20mg cp · <span class="med-vol">24 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Methylprednisolone *</span><span class="med-princeps">MEDROL</span><span class="med-info">4/16mg cp · corticoide</span></div>
+    </div>
+  </div>
+
+  <!-- RHUMATOLOGIE / GOUTTE -->
+  <div class="class-block cl-rhumato">
+    <div class="class-header"><span class="name">Rhumatologie / Goutte</span><span class="count">4</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Allopurinol *</span><span class="med-princeps">ZYLORIC</span><span class="med-info">100/200/300mg cp · hypo-uricemiant</span></div>
+      <div class="med-row"><span class="med-dci">Colchicine *</span><span class="med-princeps">COLCHICINE</span><span class="med-info">1mg cp · goutte aigue · marge etroite!</span></div>
+      <div class="med-row"><span class="med-dci">Methotrexate *</span><span class="med-princeps">NOVATREX</span><span class="med-info">2,5mg cp · immunosup. · 1x/semaine!</span></div>
+      <div class="med-row"><span class="med-dci">Ac. ursodesoxycholique</span><span class="med-princeps">DELURSAN</span><span class="med-info">250mg cp · hepato/biliaire · <span class="med-vol">25 btes</span></span></div>
+    </div>
+  </div>
+
+  <!-- VITAMINES / SUPPLEMENTS -->
+  <div class="class-block cl-vitamine">
+    <div class="class-header"><span class="name">Vitamines / Supplements</span><span class="count">5</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Cholecalciferol (Vit D3)</span><span class="med-princeps">UVEDOSE</span><span class="med-info">50 000/100 000UI · <span class="med-vol">234 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Cyanocobalamine (B12)</span><span class="med-princeps">GERDA</span><span class="med-info">1 000mcg/4ml amp · <span class="med-vol">42 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Acide folique (B9) *</span><span class="med-princeps">SPECIAFOLDINE</span><span class="med-info">0,4/5mg cp · grossesse / MTX</span></div>
+      <div class="med-row"><span class="med-dci">Fer (sulfate ferreux) *</span><span class="med-princeps">TARDYFERON</span><span class="med-info">80mg cp · anemie ferriprive</span></div>
+      <div class="med-row"><span class="med-dci">Potassium (KCl) *</span><span class="med-princeps">DIFFU-K</span><span class="med-info">600mg gel · hypokalemie · diuretiques</span></div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- COL 2 PAGE 2 -->
+  <div style="display:flex;flex-direction:column;gap:1.5mm;">
+
+  <!-- UROLOGIE -->
+  <div class="class-block cl-divers">
+    <div class="class-header"><span class="name">Urologie / Prostate</span><span class="count">4</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Alfuzosine LP</span><span class="med-princeps">XATRAL LP</span><span class="med-info">10mg cp · alpha-bloq · <span class="med-vol">21 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Tamsulosine *</span><span class="med-princeps">OMIX / JOSIR</span><span class="med-info">0,4mg LP · alpha-bloq HBP</span></div>
+      <div class="med-row"><span class="med-dci">Dutasteride *</span><span class="med-princeps">AVODART</span><span class="med-info">0,5mg caps · I5AR · HBP</span></div>
+      <div class="med-row"><span class="med-dci">Solifenacine *</span><span class="med-princeps">VESICARE</span><span class="med-info">5/10mg cp · HAV · anticholinergique</span></div>
+    </div>
+  </div>
+
+  <!-- OPHTALMOLOGIE -->
+  <div class="class-block cl-divers">
+    <div class="class-header"><span class="name">Ophtalmologie</span><span class="count">5</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Latanoprost</span><span class="med-princeps">XALATAN</span><span class="med-info">50mcg/ml col · PG · glaucome · <span class="med-vol">26 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Timolol *</span><span class="med-princeps">TIMOPTOL</span><span class="med-info">0,25/0,5% col · betabloq ophtalmo</span></div>
+      <div class="med-row"><span class="med-dci">Indometacine</span><span class="med-princeps">INDOCOLLYRE</span><span class="med-info">0,1% col · AINS ophtalmo · <span class="med-vol">34 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">NaCl / Dacudoses</span><span class="med-princeps">DACUDOSES</span><span class="med-info">sol lav ophtalmo unidose · <span class="med-vol">29 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Cromoglicate *</span><span class="med-princeps">OPTICRON</span><span class="med-info">2% col · antiallergique ophtalmo</span></div>
+    </div>
+  </div>
+
+  <!-- ANTISEPTIQUES -->
+  <div class="class-block cl-infectio">
+    <div class="class-header"><span class="name">Antiseptiques / Topiques</span><span class="count">3</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Chlorhexidine + Chlorobut.</span><span class="med-princeps">Antiseptique BGR/ARW</span><span class="med-info">90/100ml · local · <span class="med-vol">101 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Povidone iodee</span><span class="med-princeps">BETADINE SCRUB</span><span class="med-info">4% 125ml · moussant · <span class="med-vol">30 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Bicarb. sodium 1,4% *</span><span class="med-princeps">COOPER</span><span class="med-info">250ml · lavage · <span class="med-vol">25 btes</span></span></div>
+    </div>
+  </div>
+
+  <!-- ADDICTOLOGIE -->
+  <div class="class-block cl-divers">
+    <div class="class-header"><span class="name">Addictologie</span><span class="count">3</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Buprenorphine</span><span class="med-princeps">SUBUTEX</span><span class="med-info">2/8mg cp sublingual · TSO · <span class="med-vol">36 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Bupren. + Naloxone *</span><span class="med-princeps">SUBOXONE</span><span class="med-info">2/0,5 · 8/2mg sublingual · TSO</span></div>
+      <div class="med-row"><span class="med-dci">Methadone *</span><span class="med-princeps">METHADONE AP-HP</span><span class="med-info">sirop/gel · TSO · cadre strict</span></div>
+    </div>
+  </div>
+
+  <!-- VACCINS -->
+  <div class="class-block cl-divers">
+    <div class="class-header"><span class="name">Vaccins courants</span><span class="count">6</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Vaccin meningocoque B</span><span class="med-princeps">BEXSERO</span><span class="med-info">ser IM 0,5ml · <span class="med-vol">20 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Vaccin dTcaP</span><span class="med-princeps">REPEVAX</span><span class="med-info">ser 0,5ml · rappel adulte · <span class="med-vol">18 btes</span></span></div>
+      <div class="med-row"><span class="med-dci">Vaccin grippe *</span><span class="med-princeps">VAXIGRIP TETRA</span><span class="med-info">ser IM · saisonnier · officine</span></div>
+      <div class="med-row"><span class="med-dci">Vaccin pneumocoque *</span><span class="med-princeps">PREVENAR 20</span><span class="med-info">ser IM · >65 ans / FR</span></div>
+      <div class="med-row"><span class="med-dci">Vaccin zona *</span><span class="med-princeps">SHINGRIX</span><span class="med-info">ser IM · >65 ans · 2 doses</span></div>
+      <div class="med-row"><span class="med-dci">Vaccin HPV *</span><span class="med-princeps">GARDASIL 9</span><span class="med-info">ser IM · 11-19 ans · officine</span></div>
+    </div>
+  </div>
+
+  <!-- CONTRACEPTION -->
+  <div class="class-block cl-dermato">
+    <div class="class-header"><span class="name">Contraception / Gyneco</span><span class="count">4</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Levonorgestrel + EE *</span><span class="med-princeps">LEELOO / OPTILOVA</span><span class="med-info">20mcg EE · 2G · EP remboursee</span></div>
+      <div class="med-row"><span class="med-dci">Desogestrel *</span><span class="med-princeps">CERAZETTE</span><span class="med-info">75mcg cp · micropilule · CI estro.</span></div>
+      <div class="med-row"><span class="med-dci">Levonorgestrel CU *</span><span class="med-princeps">NORLEVO</span><span class="med-info">1,5mg cp · contraception urgence</span></div>
+      <div class="med-row"><span class="med-dci">Estradiol + Progesterone *</span><span class="med-princeps">OESTRODOSE + UTROGESTAN</span><span class="med-info">gel + caps · THS menopause</span></div>
+    </div>
+  </div>
+
+  <!-- DIVERS INDISPENSABLES -->
+  <div class="class-block cl-divers">
+    <div class="class-header"><span class="name">Divers indispensables</span><span class="count">5</span></div>
+    <div class="class-body">
+      <div class="med-row"><span class="med-dci">Ondansetron *</span><span class="med-princeps">ZOPHREN</span><span class="med-info">4/8mg cp/lyoc · antiemetique 5HT3</span></div>
+      <div class="med-row"><span class="med-dci">Baclofene *</span><span class="med-princeps">LIORESAL</span><span class="med-info">10mg cp · myorelaxant central</span></div>
+      <div class="med-row"><span class="med-dci">Thiocolchicoside *</span><span class="med-princeps">MIOREL</span><span class="med-info">4mg cp · myorelaxant · 7j max</span></div>
+      <div class="med-row"><span class="med-dci">Trimebutine *</span><span class="med-princeps">DEBRIDAT</span><span class="med-info">100/200mg cp · regulateur transit</span></div>
+      <div class="med-row"><span class="med-dci">Diosmine *</span><span class="med-princeps">DAFLON</span><span class="med-info">500/1000mg cp · veinotonique</span></div>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+<div class="tip-bar">
+  <span class="tip-icon">⚠</span>
+  <span class="tip-text"><strong>Rappel :</strong> Tramadol, pregabaline, codeine = ordonnance securisee depuis 2020-2021. Methotrexate = 1x/SEMAINE (jamais quotidien!). Levothyrox = a jeun 30min avant petit-dej. IPP = avant le repas. Statines = le soir (sauf atorva/rosuva).</span>
+</div>
+
+<div class="footer-strip">
+  <span class="brand">API Pharma — Fiche Officine</span>
+  <span>Page 2/2 · Pneumo · Endocrino · Diabete · Cortico · Rhumato · Uro · Ophtalmo · Vaccins · Gyneco</span>
+  <span>Ctrl+P → A4 portrait · Couleurs activees</span>
+</div>
+
+</div>
+
+</body>
+</html>

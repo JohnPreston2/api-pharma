@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>RGO · Ulcère · IPP — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #e65100; --c2: #f4511e; --c3: #ff7043;
+    --cl: #fbe9e7; --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --blue: #0d47a1; --blue-l: #e8f0fb;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #bf360c 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #bf360c; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c1); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c1); border-radius: 50%; flex-shrink: 0; }
+
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c1); }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; }
+  .comp-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid; }
+  .comp-box .t { font-size: 6pt; font-weight: 700; margin-bottom: 1mm; }
+  .comp-box li { font-size: 5.5pt; list-style: none; padding-left: 1.5mm; position: relative; margin-bottom: 0.5mm; }
+  .comp-box li::before { content: '·'; position: absolute; left: 0; }
+
+  .duree-table { background: var(--grey-l); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .duree-row { display: grid; grid-template-columns: 28mm 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); }
+  .duree-row:last-child { border-bottom: none; }
+  .duree-row .ind { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .duree-row .dur { font-size: 6pt; color: var(--grey); }
+
+  .misuse-box { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .misuse-box .title { font-size: 6pt; font-weight: 700; color: var(--red); margin-bottom: 1.5mm; }
+  .misuse-box li { font-size: 6pt; color: #7f0000; list-style: none; padding-left: 2mm; position: relative; margin-bottom: 0.8mm; }
+  .misuse-box li::before { content: '⚠'; position: absolute; left: 0; font-size: 5.5pt; }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 28mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: var(--grey); }
+  .drug-watch { font-size: 6pt; color: var(--blue); font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+
+  .cls-ipp .drug-class-header { background: var(--cl); }
+  .cls-ipp .drug-class-header .name { color: var(--c1); }
+  .cls-ipp .drug-class-header .badge { background: var(--c1); color: white; }
+  .cls-algo .drug-class-header { background: var(--green-l); }
+  .cls-algo .drug-class-header .name { color: var(--green); }
+  .cls-algo .drug-class-header .badge { background: var(--green); color: white; }
+  .cls-hp .drug-class-header { background: var(--blue-l); }
+  .cls-hp .drug-class-header .name { color: var(--blue); }
+  .cls-hp .drug-class-header .badge { background: var(--blue); color: white; }
+
+  .hp-protocol { background: var(--blue-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--blue); margin-top: 2.5mm; }
+  .hp-protocol .title { font-size: 6pt; font-weight: 700; color: var(--blue); margin-bottom: 1.5mm; }
+  .hp-line { font-size: 6pt; color: var(--grey); margin-bottom: 1mm; }
+  .hp-line b { color: var(--blue); }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #bf360c, var(--c1)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--red); }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: #bf360c; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>RGO · Ulcère · IPP</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">15%</span><span class="lbl">Adultes RGO</span></div>
+    <div class="stat-pill"><span class="val">Top 5</span><span class="lbl">IPP dispensés</span></div>
+    <div class="stat-pill"><span class="val">90%</span><span class="lbl">Ulcère duo = H. pylori</span></div>
+  </div>
+</div>
+<div class="tag-bar">
+  <span class="tag">IPP 30 min avant repas</span><span class="tag">IPP + clopidogrel → pantoprazole</span>
+  <span class="tag">Ranitidine RETIRÉE 2020</span><span class="tag">Réévaluation IPP >8 semaines</span>
+  <span class="tag">H. pylori trithérapie 7–14j</span><span class="tag">Antiacides espacer 2h</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="compare">
+        <div class="comp-box" style="border-color:var(--c1);">
+          <div class="t" style="color:var(--c1);">🔥 RGO</div>
+          <ul>
+            <li>Défaut sphincter œsoph. inf.</li>
+            <li>Remontée acide → muqueuse</li>
+            <li>Pyrosis · Régurgitations</li>
+            <li>Aggravé couché / repas</li>
+          </ul>
+        </div>
+        <div class="comp-box" style="border-color:var(--red);">
+          <div class="t" style="color:var(--red);">🦠 Ulcère</div>
+          <ul>
+            <li>H. pylori (70–90%)</li>
+            <li>AINS (10–20%)</li>
+            <li>Épigastralgie rythmée</li>
+            <li>Biopsies = cancer ?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Durées IPP selon indication</div>
+    <div class="duree-table">
+      <div class="duree-row"><div class="ind">RGO non compliqué</div><div class="dur">4–8 semaines → réévaluation</div></div>
+      <div class="duree-row"><div class="ind">Œsophagite sévère</div><div class="dur">8 semaines puis entretien</div></div>
+      <div class="duree-row"><div class="ind">Ulcère duodénal</div><div class="dur">4 semaines</div></div>
+      <div class="duree-row"><div class="ind">Ulcère gastrique</div><div class="dur">8 semaines</div></div>
+      <div class="duree-row"><div class="ind">Protection AINS</div><div class="dur">Durée du traitement AINS</div></div>
+      <div class="duree-row"><div class="ind">H. pylori</div><div class="dur">7–14 jours (trithérapie)</div></div>
+    </div>
+
+    <div class="section-label">EI Long Terme IPP ⚠</div>
+    <div class="misuse-box">
+      <div class="title">Effets indésirables >3 mois</div>
+      <li>Carence en magnésium (>3 mois)</li>
+      <li>Carence en vitamine B12 (>1 an)</li>
+      <li>Ostéoporose / fractures (>1 an)</li>
+      <li>Infections digestives (Clostridium)</li>
+      <li>Néphrite interstitielle (rare)</li>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    <div class="drug-class cls-ipp">
+      <div class="drug-class-header"><div class="name">IPP — Inhibiteurs Pompe à Protons</div><div class="badge">30 min avant repas</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Oméprazole (Mopral)<span class="princeps">Mopral · Générique</span><span class="vol-data">📦 50M boîtes · 2,10€ · 105M€/an</span></div>
+          <div class="drug-dose">20–40 mg/j · 1er générique · Standard</div>
+          <div class="drug-watch">CYP2C19 → CI avec clopidogrel · Hypomagnésémie &gt;3 mois (crampes, fatigue → doser Mg) · ↓ absorption B12/Ca long terme · Diarrhée/constipation</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Ésoméprazole (Inexium)<span class="princeps">Inexium · Générique</span><span class="vol-data">📦 10M boîtes · 3,80€ · 38M€/an</span></div>
+          <div class="drug-dose">20–40 mg/j · Énantiomère actif oméprazole</div>
+          <div class="drug-watch">Idem oméprazole CI clopidogrel</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Pantoprazole (Inipomp)<span class="princeps">Eupantol · Inipomp · Générique</span><span class="vol-data">📦 20M boîtes · 2,50€ · 50M€/an</span></div>
+          <div class="drug-dose">20–40 mg/j · Moins d'interactions CYP2C19</div>
+          <div class="drug-watch">✅ PRÉFÉRÉ si clopidogrel (moindre inhibition CYP2C19) · Même EI long terme que les autres IPP · Prise 30 min avant repas (rappeler systématiquement)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Lansoprazole (Ogast)<span class="princeps">Ogast · Lanzor · Générique</span><span class="vol-data">📦 8M boîtes · 2,80€ · 22M€/an</span></div>
+          <div class="drug-dose">15–30 mg/j · Gélule à granules</div>
+          <div class="drug-watch">Ne pas écraser les granules</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Rabéprazole (Pariet)<span class="princeps">Pariet · Générique</span><span class="vol-data">📦 4M boîtes · 4,20€ · 17M€/an</span></div>
+          <div class="drug-dose">10–20 mg/j</div>
+          <div class="drug-watch">Peu d'interactions</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-algo">
+      <div class="drug-class-header"><div class="name">Antiacides & Alginates</div><div class="badge">Symptomatique OTC</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Gaviscon (alginate + bicarbonate)</div>
+          <div class="drug-dose">RGO · Après repas et coucher · Raft mécanique</div>
+          <div class="drug-watch">Espacer ≥ 2h de tout médicament (chélation)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Maalox · Rennie · Phosphalugel</div>
+          <div class="drug-dose">Acidité ponctuelle · Diarrhée + acidité (Phosphalugel)</div>
+          <div class="drug-watch">Constipation (Al) ou diarrhée (Mg) selon composition</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-hp">
+      <div class="drug-class-header"><div class="name">H. pylori — Trithérapie</div><div class="badge">7–14 jours</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">IPP double dose</div>
+          <div class="drug-dose">Ex. oméprazole 20 mg × 2/j ou pantoprazole 40 mg × 2/j</div>
+          <div class="drug-watch">Pendant toute la durée de la trithérapie</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Amoxicilline 1g × 2/j</div>
+          <div class="drug-dose">7–14 jours · Avec les repas</div>
+          <div class="drug-watch">Allergie pénicilline → métronidazole à la place</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Clarithromycine 500 mg × 2/j</div>
+          <div class="drug-dose">7–14 jours · Avec les repas</div>
+          <div class="drug-watch">EI digestifs fréquents → ne pas arrêter · Goût métallique</div>
+        </div>
+      </div>
+    </div>
+    <div class="hp-protocol">
+      <div class="title">📋 Contrôle éradication H. pylori</div>
+      <div class="hp-line">→ Test respiratoire à l'urée (UBT)</div>
+      <div class="hp-line">→ <b>≥ 4 semaines après arrêt de l'IPP</b> (résultats faussés sinon)</div>
+      <div class="hp-line">→ Ou antigènes fécaux H. pylori</div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">RGO — Stratégie</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">1er choix</div><div class="content">RHD + Antiacides / Gaviscon</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">RGO persistant</div><div class="content">IPP 4–8 semaines</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">>8 semaines</div><div class="content">Réévaluation + endoscopie</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">H. pylori +</div><div class="content">Trithérapie 7–14j</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">IPP = 30 min avant repas → règle la + oubliée, à redire à chaque dispensation</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">IPP + clopidogrel → toujours pantoprazole (moins d'interaction CYP2C19)</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">IPP > 8 semaines → relancer le médecin, questionner l'indication, EI long terme</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--red);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">IPP + Clopidogrel</div><div class="inter-effect">Oméprazole/Ésoméprazole ↓ efficacité → préférer pantoprazole</div></div>
+      <div class="inter-item"><div class="inter-drug">IPP + Méthotrexate</div><div class="inter-effect">↑ toxicité MTX → surveiller</div></div>
+      <div class="inter-item"><div class="inter-drug">IPP + Lévothyroxine</div><div class="inter-effect">↓ absorption T4 → espacer ≥ 4 heures</div></div>
+      <div class="inter-item"><div class="inter-drug">Antiacides + Quinolones / Tétracyclines</div><div class="inter-effect">Chélation → ↓ absorption antibiotique → espacer ≥ 2h</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Je prends mon IPP le soir"</div><div class="speech-hide">Pompes H+/K+ inactives la nuit (pas de repas) → IPP le soir = sous-optimal · matin 30 min avant</div><div class="speech-resp">Erreur → matin 30 min avant repas (pompes activées par alimentation)</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends des IPP depuis 5 ans"</div><div class="speech-hide">EI long terme : ↓ absorption Ca/Mg/B12 → fractures · déficit magnésium · infections GI (C. difficile)</div><div class="speech-resp">Réévaluation nécessaire → EI long terme → médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon antibio pour l'estomac me dérange"</div><div class="speech-hide">Trithérapie H. pylori = 3 médicaments simultanément · EI GI attendus · compliance = éradication</div><div class="speech-resp">Trithérapie H. pylori → fréquent, ne pas arrêter → compliance +++</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je voudrais de la Ranitidine"</div><div class="speech-hide">Retirée du marché mondial en 2020 (NDMA = carcinogène) → famotidine ou IPP à la place</div><div class="speech-resp">Retirée du marché en 2020 (NDMA) → proposer famotidine ou IPP</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer-strip">
+  <span>RGO · Ulcère · IPP · H. pylori · Antiacides · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 2 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

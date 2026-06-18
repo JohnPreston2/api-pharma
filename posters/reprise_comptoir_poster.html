@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Guide Reprise Comptoir — Officine Été 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #1a237e; --c2: #283593; --c3: #5c6bc0;
+    --cl: #e8eaf6;
+    --grn: #1b5e20; --grn2: #2e7d32; --grn-l: #e8f5e9;
+    --red: #b71c1c; --red-l: #ffebee;
+    --amber: #e65100; --amber2: #f57c00; --amber-l: #fff3e0;
+    --teal: #004d40; --teal2: #00695c; --teal-l: #e0f2f1;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+    --ink: #1a1a2e;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 6.8pt; color: var(--ink); line-height: 1.32; }
+
+  /* ── HEADER ── */
+  .header { background: linear-gradient(135deg, #1a237e 0%, #283593 55%, #5c6bc0 100%); padding: 7mm 8mm 5mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -12mm; top: -12mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 18pt; font-weight: 900; color: #fff; line-height: 1.05; }
+  .header h1 em { font-size: 9pt; font-weight: 400; font-style: normal; color: rgba(255,255,255,0.65); display: block; margin-top: 1.5mm; letter-spacing: 1px; text-transform: uppercase; }
+  .header-pills { display: flex; gap: 3mm; }
+  .pill { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); border-radius: 7px; padding: 2.5mm 3.5mm; text-align: center; }
+  .pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 4.8pt; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 0.7mm; display: block; }
+
+  /* ── TAG BAR ── */
+  .tag-bar { background: var(--c1); padding: 1.8mm 8mm; display: flex; gap: 2mm; flex-wrap: wrap; align-items: center; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5pt; padding: 0.7mm 2mm; border-radius: 20px; font-weight: 600; white-space: nowrap; }
+
+  /* ── NOUVEAUTÉS STRIP ── */
+  .nouveau-strip { background: var(--amber-l); border-bottom: 2px solid var(--amber2); padding: 2mm 8mm; display: flex; align-items: flex-start; gap: 3mm; }
+  .n-title { font-size: 5.5pt; font-weight: 800; color: var(--amber); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: block; margin-bottom: 0.5mm; }
+  .n-body { font-size: 5.5pt; color: #4e2800; line-height: 1.4; }
+  .n-body strong { font-weight: 700; color: #bf360c; }
+
+  /* ── MAIN GRID ── */
+  .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+  /* ── LEFT COLUMN : situations désarçonnantes ── */
+  .left-col { padding: 3mm 3mm 2mm 8mm; border-right: 1.5px solid var(--border); }
+  .col-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .col-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  .sit { margin-bottom: 2.5mm; background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .sit-head { background: var(--cl); padding: 1.5mm 2.5mm; display: flex; align-items: center; gap: 2mm; }
+  .sit-num { background: var(--c2); color: #fff; font-size: 5.5pt; font-weight: 800; width: 4.5mm; height: 4.5mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .sit-patient { font-size: 6pt; font-style: italic; color: var(--c1); font-weight: 600; flex: 1; line-height: 1.2; }
+  .sit-body { padding: 1.8mm 2.5mm; display: flex; flex-direction: column; gap: 1.2mm; }
+  .sit-row { display: flex; gap: 1.5mm; align-items: flex-start; }
+  .sbadge { font-size: 4.5pt; font-weight: 800; padding: 0.6mm 1.2mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; line-height: 1.1; }
+  .sb-hide { background: #fce4ec; color: #880e4f; }
+  .sb-rep  { background: var(--grn-l); color: var(--grn2); }
+  .sb-warn { background: var(--red-l); color: var(--red); }
+  .sb-tip  { background: var(--teal-l); color: var(--teal2); }
+  .sb-new  { background: #ede7f6; color: #4a148c; }
+  .stext { font-size: 5.5pt; color: var(--grey); line-height: 1.3; }
+  .stext strong { color: var(--ink); font-weight: 700; }
+
+  /* ── RIGHT COLUMN ── */
+  .right-col { padding: 3mm 8mm 2mm 3mm; display: flex; flex-direction: column; gap: 3mm; }
+
+  .block { border-radius: 7px; padding: 2.5mm; }
+  .block-title { font-size: 5.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; display: flex; align-items: center; gap: 1.5mm; }
+  .block-title::before { content: ''; width: 2mm; height: 2mm; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+  .b-nouveau { background: #ede7f6; border-left: 3px solid #7b1fa2; }
+  .b-nouveau .block-title { color: #6a1b9a; }
+  .b-nouveau .block-title::before { background: #7b1fa2; }
+
+  .b-reflex { background: var(--teal-l); border-left: 3px solid var(--teal2); }
+  .b-reflex .block-title { color: var(--teal); }
+
+  .b-inter { background: var(--red-l); border-left: 3px solid var(--red); }
+  .b-inter .block-title { color: var(--red); }
+
+  .b-phrases { background: var(--grn-l); border-left: 3px solid var(--grn2); }
+  .b-phrases .block-title { color: var(--grn); }
+
+  .b-item { font-size: 5.5pt; color: var(--grey); padding: 0.9mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.3; display: flex; align-items: flex-start; gap: 1.5mm; }
+  .b-item:last-child { border-bottom: none; }
+  .b-item strong { color: var(--ink); font-weight: 700; }
+  .b-dot { width: 1.5mm; height: 1.5mm; border-radius: 50%; background: currentColor; flex-shrink: 0; margin-top: 1mm; }
+
+  .phrase-item { font-size: 5.5pt; padding: 1mm 1.5mm; border-radius: 4px; margin-bottom: 1mm; line-height: 1.3; }
+  .phrase-item:last-child { margin-bottom: 0; }
+  .phrase-q { background: var(--cl); color: var(--c1); font-style: italic; font-weight: 600; }
+  .phrase-r { background: var(--grn-l); color: var(--grn); font-weight: 500; }
+  .phrase-r::before { content: '→ '; font-weight: 800; }
+
+  /* ── FOOTER GRID ── */
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; padding: 0 8mm 3mm; }
+  .fc { border-radius: 7px; padding: 2.5mm; }
+  .fc-title { font-size: 5.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; display: flex; align-items: center; gap: 1.5mm; }
+  .fc-title::before { content: ''; width: 2mm; height: 2mm; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .fc-urgences { background: var(--red-l); border-left: 3px solid var(--red); }
+  .fc-urgences .fc-title { color: var(--red); }
+  .fc-inter-ete { background: var(--amber-l); border-left: 3px solid var(--amber2); }
+  .fc-inter-ete .fc-title { color: var(--amber); }
+  .fc-droit { background: var(--cl); border-left: 3px solid var(--c2); }
+  .fc-droit .fc-title { color: var(--c2); }
+  .fc-item { font-size: 5.5pt; color: var(--grey); padding: 0.9mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.3; }
+  .fc-item:last-child { border-bottom: none; }
+  .fc-item strong { color: var(--ink); font-weight: 700; }
+
+  /* ── FOOTER STRIP ── */
+  .footer-strip { background: var(--c1); padding: 1.8mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 4.8pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.85); font-weight: 700; font-size: 5.5pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="header">
+  <div>
+    <h1>Mon Guide Reprise Comptoir
+      <em>5 ans d'absence · Situations qui peuvent désarçonner · Été 2026</em>
+    </h1>
+  </div>
+  <div class="header-pills">
+    <div class="pill"><span class="val">8</span><span class="lbl">Situations</span></div>
+    <div class="pill"><span class="val">5 ans</span><span class="lbl">Absences</span></div>
+    <div class="pill"><span class="val">✓</span><span class="lbl">Tout revient</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Ce que dit le patient → ce que ça cache</span>
+  <span class="tag">Nouveautés 2019–2026</span>
+  <span class="tag">Réflexes immuables</span>
+  <span class="tag">Interactions critiques été</span>
+  <span class="tag">Phrases pour gagner du temps</span>
+  <span class="tag">Urgences à reconnaître</span>
+</div>
+
+<!-- ═══════════════ NOUVEAUTÉS STRIP ═══════════════ -->
+<div class="nouveau-strip">
+  <div style="font-size:9pt;flex-shrink:0;line-height:1.2;">🆕</div>
+  <div>
+    <span class="n-title">Ce qui a vraiment changé depuis 5 ans — à connaître avant d'ouvrir le rideau</span>
+    <div class="n-body">
+      <strong>Ozempic/Wegovy (sémaglutide) :</strong> révolution DT2 + obésité, ruptures de stock chroniques, questions quotidiennes ·
+      <strong>Gliflozines (Forxiga, Jardiance) :</strong> nouvelles indications IC + rénale (pas seulement DT2) ·
+      <strong>Naloxone (Nalscue) sans ordonnance</strong> depuis 2021 ·
+      <strong>Lévothyrox nouvelle formule</strong> toujours contestée → alternatives : L-Thyroxine Serb, Tcaps ·
+      <strong>Biosimilaires insulines</strong> (Abasaglar = glargine biosimilaire, Semglee) ·
+      <strong>Ruptures de stock</strong> devenues structurelles → réflexe : chercher l'alternative d'emblée
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN GRID ═══════════════ -->
+<div class="main-grid">
+
+  <!-- ─── LEFT : Situations désarçonnantes ─── -->
+  <div class="left-col">
+    <div class="col-label">Situations qui peuvent surprendre — ce que cache chaque phrase</div>
+
+    <!-- 1 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">1</div>
+        <div class="sit-patient">"Vous avez l'Ozempic ? Mon médecin m'a dit de venir voir."</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Rupture de stock chronique + souvent usage off-label minceur sans ordonnance DT2</span></div>
+        <div class="sit-row"><span class="sbadge sb-rep">RÉPONSE</span><span class="stext">Vérifier l'indication sur l'ordo (DT2 ou obésité → Wegovy) · Proposer alternative Trulicity/Victoza si rupture · <strong>Jamais sans ordonnance</strong></span></div>
+        <div class="sit-row"><span class="sbadge sb-tip">ASTUCE</span><span class="stext">Si rupture → contacter le médecin pour substitution → noter dans le dossier patient</span></div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">2</div>
+        <div class="sit-patient">"Je veux pas le générique, donnez-moi le vrai médicament."</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Méfiance légitime ou expérience négative (ex : Lévothyrox 2017) · Ne pas s'énerver</span></div>
+        <div class="sit-row"><span class="sbadge sb-rep">RÉPONSE</span><span class="stext"><strong>Droit au refus existe</strong> mais explique le DA + différence bioéquivalence · Si médecin a mentionné NS (Non Substituable) → respecter</span></div>
+        <div class="sit-row"><span class="sbadge sb-warn">EXCEPTION</span><span class="stext"><strong>Lévothyrox, antiépileptiques, immunosuppresseurs, anticoagulants</strong> → marge étroite → prudence substitution</span></div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">3</div>
+        <div class="sit-patient">"Je prends des plantes / du millepertuis pour le moral."</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Inducteur enzymatique CYP3A4 majeur → ↓ efficacité de nombreux traitements</span></div>
+        <div class="sit-row"><span class="sbadge sb-warn">⚠ CI</span><span class="stext"><strong>Anticoagulants (AVK, NACO) · Contraceptifs oraux · Antiépileptiques · Digoxine · Antirétroviraux · Cyclosporine</strong> → efficacité effondrée</span></div>
+        <div class="sit-row"><span class="sbadge sb-rep">RÉPONSE</span><span class="stext">Stopper le millepertuis et orienter médecin si traitement associé. Informer que "naturel ≠ inoffensif"</span></div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">4</div>
+        <div class="sit-patient">"J'ai arrêté mon Eliquis / Xarelto, ça coûte cher en vacances."</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Arrêt brutal anticoagulant = risque AVC/embolie immédiat, surtout si FA</span></div>
+        <div class="sit-row"><span class="sbadge sb-warn">⚠ URGENT</span><span class="stext"><strong>Ne jamais valider un arrêt non prescrit</strong> · Appeler le médecin devant le patient si nécessaire</span></div>
+        <div class="sit-row"><span class="sbadge sb-rep">RÉPONSE</span><span class="stext">Réexpliquer le risque · Proposer ordonnance de renouvellement via médecin · Remboursement à l'étranger = formulaire S1/E112</span></div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">5</div>
+        <div class="sit-patient">"Je suis enceinte / j'allaite, je peux prendre quelque chose pour…"</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Situation à haut risque — ne rien donner de tête</span></div>
+        <div class="sit-row"><span class="sbadge sb-tip">RÉFLEXE</span><span class="stext"><strong>Toujours consulter le CRAT</strong> (Centre de Référence Tératogènes) : crat.aphp.fr ou app · Paracétamol = seule antalgique validée grossesse</span></div>
+        <div class="sit-row"><span class="sbadge sb-warn">⚠ JAMAIS</span><span class="stext">AINS (surtout T3) · Ibuprofène · Aspirine dose anti-inflam · Codéine allait. · Triptans grossesse</span></div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">6</div>
+        <div class="sit-patient">"J'ai une allergie à la pénicilline — mon médecin a prescrit Augmentin."</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Cross-allergie péni / céphalosporines : risque faible (~1–2%) mais réel · Augmentin = amoxicilline-clavulanate = pénicilline</span></div>
+        <div class="sit-row"><span class="sbadge sb-warn">⚠ STOP</span><span class="stext"><strong>Ne pas délivrer sans appeler le médecin</strong> pour confirmer l'allergie (vraie allergie vs intolérance ?) et envisager macrolide/quinolone si besoin</span></div>
+        <div class="sit-row"><span class="sbadge sb-rep">RÉPONSE</span><span class="stext">Documenter l'allergie dans le dossier · Rappeler au patient d'informer tous ses médecins</span></div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">7</div>
+        <div class="sit-patient">"Ma mère de 85 ans prend déjà 8 médicaments, le médecin a rajouté…"</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Polymédication = terrain à haut risque · Interaction, accumulation, trouble cognitif</span></div>
+        <div class="sit-row"><span class="sbadge sb-tip">RÉFLEXE</span><span class="stext">Ouvrir le <strong>dossier patient partagé (DPP/Mon Espace Santé)</strong> · Vérifier interactions · Identifier médicaments à risque (BZD, anticholinergiques, opioïdes)</span></div>
+        <div class="sit-row"><span class="sbadge sb-rep">RÉPONSE</span><span class="stext">Si doute → appeler médecin prescripteur · Proposer bilan de médication si > 5 médicaments</span></div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="sit">
+      <div class="sit-head">
+        <div class="sit-num">8</div>
+        <div class="sit-patient">"J'ai appliqué du Profenid gel et j'ai pris le soleil — j'ai des plaques."</div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-row"><span class="sbadge sb-hide">CACHE</span><span class="stext">Photo-allergie / photodermatose médicamenteuse — <strong>kétoprofène gel = CI absolue exposition UV</strong></span></div>
+        <div class="sit-row"><span class="sbadge sb-warn">⚠ MÉDECIN</span><span class="stext">Si plaques, vésicules, brûlures → dermatologie · Signalement pharmacovigilance</span></div>
+        <div class="sit-row"><span class="sbadge sb-tip">PRÉVENTION</span><span class="stext"><strong>À dire à CHAQUE dispensation de kétoprofène gel :</strong> "Évitez tout soleil sur la zone, même par vêtement fin, pendant le traitement et 2 semaines après"</span></div>
+      </div>
+    </div>
+
+  </div><!-- /left-col -->
+
+  <!-- ─── RIGHT COLUMN ─── -->
+  <div class="right-col">
+
+    <!-- Réflexes immuables -->
+    <div class="block b-reflex">
+      <div class="block-title">🔁 Réflexes qui ne changent jamais</div>
+      <div class="b-item" style="color:var(--teal);"><span class="b-dot" style="background:var(--teal2);"></span><span><strong>Dossier pharmaceutique (DP)</strong> → ouvrir systématiquement · identifie les doublons, interactions, automédication cachée</span></div>
+      <div class="b-item" style="color:var(--teal);"><span class="b-dot" style="background:var(--teal2);"></span><span><strong>IEC/ARA2 + AINS</strong> = CI fonctionnelle rénale (IRA) → alerter à chaque dispensation</span></div>
+      <div class="b-item" style="color:var(--teal);"><span class="b-dot" style="background:var(--teal2);"></span><span><strong>Anticoagulants + AINS</strong> = risque hémorragique majeur → alternative paracétamol</span></div>
+      <div class="b-item" style="color:var(--teal);"><span class="b-dot" style="background:var(--teal2);"></span><span><strong>Lévothyroxine</strong> → à jeun 30 min avant, espacer Ca/Fer/IPP de 4h</span></div>
+      <div class="b-item" style="color:var(--teal);"><span class="b-dot" style="background:var(--teal2);"></span><span><strong>Métronidazole (Flagyl) + alcool</strong> = effet antabuse → prévenir avant de délivrer</span></div>
+      <div class="b-item" style="color:var(--teal);"><span class="b-dot" style="background:var(--teal2);"></span><span><strong>Antibiotique</strong> → demander TOUJOURS : allergie ? grossesse ? contraception orale (rifampicine → ↓ efficacité)</span></div>
+    </div>
+
+    <!-- Ce qui a changé – détail -->
+    <div class="block b-nouveau">
+      <div class="block-title">🆕 Nouveautés critiques (2020–2026)</div>
+      <div class="b-item" style="color:#4a148c;"><span class="b-dot" style="background:#7b1fa2;"></span><span><strong>Gliflozines (Forxiga, Jardiance)</strong> → désormais prescrites pour IC et IRC sans DT2 — ne pas s'étonner</span></div>
+      <div class="b-item" style="color:#4a148c;"><span class="b-dot" style="background:#7b1fa2;"></span><span><strong>Entresto (sacubitril/valsartan)</strong> → 1ère ligne IC FEr · Remplace IEC dans cette indication</span></div>
+      <div class="b-item" style="color:#4a148c;"><span class="b-dot" style="background:#7b1fa2;"></span><span><strong>Nalscue (naloxone)</strong> → nasal, disponible sans ordonnance depuis 2021 pour entourage usagers opioïdes</span></div>
+      <div class="b-item" style="color:#4a148c;"><span class="b-dot" style="background:#7b1fa2;"></span><span><strong>Biosimilaires insulines</strong> (Abasaglar, Semglee = glargine) → légitimes, bioéquivalents · Rassurer patients</span></div>
+      <div class="b-item" style="color:#4a148c;"><span class="b-dot" style="background:#7b1fa2;"></span><span><strong>Ruptures de stock structurelles</strong> → réflexe : chercher alternative dès la dispensation, noter dans le DP</span></div>
+      <div class="b-item" style="color:#4a148c;"><span class="b-dot" style="background:#7b1fa2;"></span><span><strong>Bilan de médication</strong> → acte rémunéré depuis 2020 pour patients ≥ 65 ans / ≥ 5 médic. · Proposer activement</span></div>
+    </div>
+
+    <!-- Phrases qui sauvent -->
+    <div class="block b-phrases">
+      <div class="block-title">💬 Phrases pour ne jamais être pris de court</div>
+      <div class="phrase-item phrase-q">"Je ne connais pas ce médicament de tête..."</div>
+      <div class="phrase-item phrase-r">"Je vérifie dans notre base pour vous donner une réponse précise — c'est plus sûr pour vous"</div>
+      <div class="phrase-item phrase-q">"Vous aviez l'habitude de me donner X sans ordonnance..."</div>
+      <div class="phrase-item phrase-r">"La réglementation a évolué — permettez-moi de vérifier ce qu'on peut faire ensemble"</div>
+      <div class="phrase-item phrase-q">"C'est urgent, mon médecin est parti en vacances..."</div>
+      <div class="phrase-item phrase-r">"Je vous aide à trouver une solution — médecin de garde ou téléconsultation, et je prépare ce dont vous aurez besoin"</div>
+      <div class="phrase-item phrase-q">Silence gêné face à une question complexe…</div>
+      <div class="phrase-item phrase-r">"Bonne question — je préfère m'assurer de la réponse plutôt que de vous dire quelque chose d'approximatif"</div>
+    </div>
+
+  </div><!-- /right-col -->
+</div><!-- /main-grid -->
+
+<!-- ═══════════════ FOOTER GRID ═══════════════ -->
+<div class="footer-grid">
+
+  <!-- Urgences à reconnaître -->
+  <div class="fc fc-urgences">
+    <div class="fc-title">🚨 Urgences — toujours appeler le 15</div>
+    <div class="fc-item"><strong>Choc anaphylactique :</strong> urticaire + dyspnée + malaise → 15 immédiat · Adrénaline si disponible</div>
+    <div class="fc-item"><strong>Coup de chaleur :</strong> T° &gt; 40°C + confusion + peau sèche sans sueur → 15</div>
+    <div class="fc-item"><strong>Crise convulsive</strong> inhabituelle ou prolongée → 15</div>
+    <div class="fc-item"><strong>Déficit neurologique brutal</strong> (AVC) : FAST — Face/Arm/Speech/Time → 15</div>
+    <div class="fc-item"><strong>Douleur thoracique</strong> + irradiation bras gauche → 15</div>
+    <div class="fc-item" style="font-size:5pt;color:#b71c1c;margin-top:0.5mm;">Numéros : <strong>15</strong> SAMU · <strong>18</strong> Pompiers · <strong>112</strong> Européen · <strong>3114</strong> Crise suicidaire</div>
+  </div>
+
+  <!-- Interactions été critiques -->
+  <div class="fc fc-inter-ete">
+    <div class="fc-title">⚡ Interactions critiques été à retenir</div>
+    <div class="fc-item"><strong>Kétoprofène gel + UV</strong> → Photo-allergie sévère · CI absolue exposition soleil</div>
+    <div class="fc-item"><strong>AVK/NACO + AINS</strong> (ibuprofène, aspirine) → ↑ risque hémorragique majeur</div>
+    <div class="fc-item"><strong>IEC/ARA2 + AINS + déshydratation</strong> → IRA (triple whammy) ++ en été</div>
+    <div class="fc-item"><strong>Sulfamides/insuline + chaleur</strong> → hypoglycémie augmentée (absorption ↑)</div>
+    <div class="fc-item"><strong>Millepertuis + contraceptif oral</strong> → grossesse non désirée</div>
+    <div class="fc-item"><strong>Doxycycline (Vibramycine) + soleil</strong> → photosensi → SPF50+ obligatoire</div>
+  </div>
+
+  <!-- Il est OK de... -->
+  <div class="fc fc-droit">
+    <div class="fc-title">✅ Il est normal et professionnel de...</div>
+    <div class="fc-item"><strong>Dire "je vérifie"</strong> → le patient préfère une réponse juste à une réponse rapide</div>
+    <div class="fc-item"><strong>Appeler le médecin</strong> devant le patient → ça rassure et ça montre ton sérieux</div>
+    <div class="fc-item"><strong>Ne pas reconnaître un médicament récent</strong> → le secteur évolue vite, consulter la base</div>
+    <div class="fc-item"><strong>Refuser de délivrer</strong> si doute de sécurité → c'est ton rôle et ta responsabilité</div>
+    <div class="fc-item"><strong>Proposer de rappeler</strong> après vérification → mieux qu'une réponse approximative</div>
+    <div class="fc-item" style="font-size:5pt;color:var(--c2);margin-top:0.5mm;font-style:italic;">Les automatismes reviennent en quelques semaines — les fondamentaux sont là</div>
+  </div>
+
+</div>
+
+<div class="footer-strip">
+  <span>Reprise officine · Été 2026 · Guide personnel · Pour ne pas être désarçonné au comptoir</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE — MON REPÈRE</span>
+  <span>api-pharma · Pratique · Confiance</span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Goutte & Hyperuricémie — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #4e342e; --c2: #6d4c41; --c3: #a1887f;
+    --cl: #efebe9; --cm: #d7ccc8;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .diag-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .diag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-bottom: 1.5mm; }
+  .diag-item { background: white; border-radius: 5px; padding: 2mm 2.5mm; border-top: 2.5px solid var(--c2); }
+  .diag-item .val { font-size: 8.5pt; font-weight: 800; color: var(--c2); line-height: 1; }
+  .diag-item .lbl { font-size: 5.5pt; color: #37474f; margin-top: 0.5mm; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 32mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Goutte & Hyperuricémie</h1>
+    <div class="subtitle">Fiche officine · Pathologie 20 · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">5%</span><span class="lbl">Adultes français</span></div><div class="stat-pill"><span class="val">Uricémie</span><span class="lbl">Cible < 360 µmol/L</span></div><div class="stat-pill"><span class="val">Allopurinol</span><span class="lbl">1ère ligne absolu</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Allopurinol = 1ère ligne hypo-uricémiant</span><span class="tag">Fébuxostat = prudence CV</span><span class="tag">Colchicine = crise en 1ère ligne</span><span class="tag">Pas d'AINS si IRC</span><span class="tag">Uratie à jeun pour diagnostic</span><span class="tag">Alcool et viande rouge = déclencheurs</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🧬 Hyperuricémie → saturation plasma → cristaux urate mono-sodique (MSU)</div><div class="cascade-arrow">↓</div><div class="cascade-step">🦴 Dépôt cristaux dans articulations, bourses, tendons (tophus)</div><div class="cascade-arrow">↓</div><div class="cascade-step">💥 Macrophages → phagocytose MSU → NLRP3 inflammasome → IL-1β</div><div class="cascade-arrow">↓</div><div class="cascade-step">🔥 Inflammation intense, brutale, nocturne → classique gros orteil (métatarso-phalangienne)</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Métatarso-phalang.</div><div class="d">Hallux (grosse orteil)</div></div><div class="target-box"><div class="t">Cheville/genou</div><div class="d">Crises sévères</div></div><div class="target-box"><div class="t">Tophus</div><div class="d">Dépôts chroniques</div></div><div class="target-box"><div class="t">Rein</div><div class="d">Lithiases urates</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Diagnostic & Bilan</div>
+    <div class="diag-card">
+      <div class="diag-row">
+        <div class="diag-item"><div class="val">Uricémie</div><div class="lbl">> 420 µmol/L = risque</div></div><div class="diag-item"><div class="val">Ponction art.</div><div class="lbl">Cristaux MSU confirmés</div></div><div class="diag-item"><div class="val">CRP/VS</div><div class="lbl">Inflammation crise</div></div><div class="diag-item"><div class="val">Créatinine</div><div class="lbl">Ajustement doses</div></div>
+      </div>
+      <div style="background:var(--cl);border-radius:5px;padding:2mm;border-left:3px solid var(--c2);font-size:6pt;color:var(--c1);font-weight:600;">📋 Uricémie à distance de la crise (faussement basse pendant) · Créatinine · Ponction si doute diagnostic · Imagerie si tophus</div>
+    </div>
+
+    <div class="section-label">CI / Précautions ⛔</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #c62828;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Allopurinol JAMAIS pendant une crise aiguë → prolonge et aggrave la crise (mobilisation cristaux)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ Fébuxostat CI si ATCD IDM ou AVC récent → allopurinol reste 1ère ligne · Rester prudent CV</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ Colchicine + CYP3A4 inhibiteurs (cyclosporine, clarithromycine, vérapamil) → toxicité majeure</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    
+    <div class="drug-class cls-crise">
+      <div class="drug-class-header" style="background:#fbe9e7;">
+        <div class="name" style="color:#bf360c;">Traitement de la Crise — Dès les Premiers Signes</div>
+        <div class="badge" style="background:#e64a19;color:white;">Urgence J0</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Colchicine<span class="princeps">Colchicine Opocalcium 1 mg · Colchimax</span><span class="vol-data">📦 2M boîtes · 3,80€ · 8M€/an</span></div>
+          <div class="drug-dose">1 mg dès la crise · puis 0,5 mg 1h après · Max 2 mg/24h (ANSM)</div>
+          <div class="drug-watch">Diarrhée dose-dépendante · CI IRC sévère (DFG < 30) · Interaction puissante CYP3A4</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">AINS (ibuprofène, indométacine, naproxène)<span class="princeps">Advil 400 mg · Indocid · Apranax</span><span class="vol-data">📦 AINS crise goutte large usage</span></div>
+          <div class="drug-dose">Ibuprofène 400-600 mg x3/j · Naproxène 500 mg x2/j · 5-7j</div>
+          <div class="drug-watch">CI IRC, ulcère, insuffisance cardiaque, anticoagulants · Prendre avec repas</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Corticoïdes si CI aux 2 autres<span class="princeps">Cortancyl 20-30 mg · Methylprednisolone IV</span><span class="vol-data">📦 Prednisone 20-40 mg/j PO · 5 jours</span></div>
+          <div class="drug-dose">Prednisone 20-30 mg/j décroissant sur 5-7j</div>
+          <div class="drug-watch">Rebond à l'arrêt · CI diabète décompensé, infection locale</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-allo">
+      <div class="drug-class-header" style="background:#efebe9;">
+        <div class="name" style="color:#4e342e;">Allopurinol — Hypo-uricémiant 1ère Ligne</div>
+        <div class="badge" style="background:#6d4c41;color:white;">Standard</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Allopurinol<span class="princeps">Zyloric 100-300 mg · Génériques</span><span class="vol-data">📦 4M boîtes · 4,20€ · 17M€/an</span></div>
+          <div class="drug-dose">Débuter 100 mg/j · Titrer selon uricémie · Max 900 mg/j</div>
+          <div class="drug-watch">JAMAIS pendant crise (déclenche/prolonge) · Démarrer 3-6 sem après crise · SJS rare (tester HLA-B*58:01 Asie)</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-febuxo">
+      <div class="drug-class-header" style="background:#e8eaf6;">
+        <div class="name" style="color:#1a237e;">Fébuxostat — 2ème Ligne ou Intolérance Allopurinol</div>
+        <div class="badge" style="background:#283593;color:white;">Prudence CV</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Fébuxostat<span class="princeps">Adenuric 80-120 mg</span><span class="vol-data">📦 1M boîtes · 28€ · 28M€/an</span></div>
+          <div class="drug-dose">80 mg/j · si non contrôlé 120 mg/j</div>
+          <div class="drug-watch">CI si ATCD IDM/AVC récent · Surmortalité CV dans essai CARES → réservé en 2ème ligne</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-colchi-prev">
+      <div class="drug-class-header" style="background:#e0f2f1;">
+        <div class="name" style="color:#004d40;">Colchicine — Prophylaxie des Crises sous Hypo-uricémiant</div>
+        <div class="badge" style="background:#00695c;color:white;">Prévention 6 mois</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Colchicine 0,5 mg<span class="princeps">Colchicine 0,5 mg · Colchimax</span><span class="vol-data">📦 prescription préventive 6 mois</span></div>
+          <div class="drug-dose">0,5 mg/j (ou x2/j) pendant démarrage allopurinol · 6 mois</div>
+          <div class="drug-watch">Évite les crises de mobilisation des cristaux lors de la baisse d'uricémie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie ACR 2020</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Crise</div><div class="content">Colchicine ou AINS dès J0</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Intercrises</div><div class="content">Allopurinol 3-6 sem après</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Prévention crises</div><div class="content">Colchicine 6 mois avec allo</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Résistance</div><div class="content">Fébuxostat 80-120 mg</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 NOUVEAUTÉS 2020–2026</span>
+  <span class="n-text"><strong>Fébuxostat (Adenuric)</strong> : lettre EMA 2019 confirme restriction usage (2ème ligne uniquement) après surmortalité CV étude CARES · <strong>Recommandations ACR 2020</strong> : allopurinol cible uricémie < 360 µmol/L · Prévention systématique 3-6 mois au démarrage · Canakinumab (anti-IL-1β) disponible formes réfractaires</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Crise goutte : colchicine 1 mg dès l'apparition + 0,5 mg 1h après · Ne jamais débuter/modifier allopurinol pendant la crise</div></div><div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Régime : limiter alcool (surtout bière), abats, charcuterie, viande rouge, fructose · Hydratation +++</div></div><div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Allopurinol = traitement à VIE si ≥ 2 crises/an · Titration lente (100 mg/mois) selon uricémie et DFG</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Allopurinol + azathioprine/mercaptopurine</div><div class="inter-effect">↑ Toxicité azathioprine × 4 (même voie catabolisme) → CI ou réduire dose azathioprine de 75%</div></div><div class="inter-item"><div class="inter-drug">Colchicine + clarithromycine/vérapamil/cyclosporine</div><div class="inter-effect">Toxicité colchicine majeure (myopathie, neuropathie) → éviter association</div></div><div class="inter-item"><div class="inter-drug">AINS + diurétiques thiazidiques</div><div class="inter-effect">Diurétiques augmentent uricémie → interaction pharmacodynamique · Surveiller</div></div><div class="inter-item"><div class="inter-drug">Allopurinol + ampicilline/amoxicilline</div><div class="inter-effect">↑ Risque éruptions cutanées allergiques · Alternative ATB si possible</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"J'ai eu une crise de goutte, je dois prendre mon Zyloric ?"</div><div class="speech-hide">JAMAIS allopurinol pendant une crise aiguë → mobilise les cristaux = aggrave et prolonge la crise · Attendre 3-6 semaines après résolution</div><div class="speech-resp">Non → colchicine ou AINS pour cette crise · Reprendre/démarrer allopurinol quand la crise est totalement résolue</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon médecin m'a prescrit colchicine 0,5 mg tous les jours alors que je n'ai pas de crise"</div><div class="speech-hide">Colchicine prophylactique pendant les 6 premiers mois de traitement hypo-uricémiant = standard · Évite les crises de mobilisation des cristaux lors de la baisse d'uricémie</div><div class="speech-resp">Normal et recommandé · Prévient les crises déclenchées par la baisse rapide d'uricémie · 6 mois minimum</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris Adenuric mais mon médecin dit que c'est dangereux pour le cœur"</div><div class="speech-hide">Étude CARES 2019 → surmortalité CV sous fébuxostat vs allopurinol chez patients ATCD CV → restriction EMA · CI si ATCD IDM/AVC récent</div><div class="speech-resp">Si ATCD CV → allopurinol préféré · Fébuxostat réservé intolérance allopurinol sans ATCD CV · Signaler cardiologue</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je mange très peu de viande mais j'ai quand même de la goutte"</div><div class="speech-hide">Goutte = cause principale rénale (sous-excrétion rénale urates, 90% des cas) + génétique · Alimentation = facteur aggravant, pas seul causal</div><div class="speech-resp">Régime aide mais ne suffit pas seul · Traitement médicamenteux nécessaire si ≥ 2 crises/an · Hydratation 2L/j</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Goutte · Allopurinol · Fébuxostat · Colchicine · Cristaux MSU · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pathologie 20 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

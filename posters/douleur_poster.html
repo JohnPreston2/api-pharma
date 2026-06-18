@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Douleur — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #4a148c; --c2: #7b1fa2; --c3: #ab47bc;
+    --cl: #f3e5f5; --cm: #e1bee7;
+    --red: #b71c1c; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  .paliers { display: flex; flex-direction: column; gap: 2mm; margin-bottom: 3mm; }
+  .palier { border-radius: 6px; padding: 2.5mm 3mm; }
+  .palier-title { font-size: 7pt; font-weight: 800; }
+  .palier-sub { font-size: 6pt; opacity: 0.85; margin-top: 0.5mm; }
+  .p1 { background: var(--green-l); border-left: 3px solid var(--green); }
+  .p1 .palier-title { color: var(--green); }
+  .p2 { background: var(--amber-l); border-left: 3px solid var(--amber); }
+  .p2 .palier-title { color: var(--amber); }
+  .p3 { background: var(--red-l); border-left: 3px solid var(--red); }
+  .p3 .palier-title { color: var(--red); }
+  .pn { background: var(--cl); border-left: 3px solid var(--c2); }
+  .pn .palier-title { color: var(--c2); }
+
+  .para-box { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); margin-bottom: 3mm; }
+  .para-box .title { font-size: 6pt; font-weight: 700; color: var(--green); margin-bottom: 1.5mm; }
+  .para-box .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; }
+  .para-item { background: white; border-radius: 5px; padding: 2mm; text-align: center; }
+  .para-item .v { font-size: 8.5pt; font-weight: 800; color: var(--green); }
+  .para-item .l { font-size: 5.5pt; color: var(--grey); }
+  .warning-ains { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .warning-ains .title { font-size: 6pt; font-weight: 700; color: var(--red); margin-bottom: 1.5mm; }
+  .warning-ains li { font-size: 6pt; color: #7f0000; list-style: none; padding-left: 2mm; position: relative; margin-bottom: 1mm; }
+  .warning-ains li::before { content: '⛔'; position: absolute; left: -1mm; font-size: 5.5pt; }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 28mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: var(--grey); }
+  .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+
+  .cls-p1 .drug-class-header { background: var(--green-l); }
+  .cls-p1 .drug-class-header .name { color: var(--green); }
+  .cls-p1 .drug-class-header .badge { background: var(--green); color: white; }
+  .cls-ains .drug-class-header { background: #e8f5e9; }
+  .cls-ains .drug-class-header .name { color: #2e7d32; }
+  .cls-ains .drug-class-header .badge { background: #2e7d32; color: white; }
+  .cls-p2 .drug-class-header { background: var(--amber-l); }
+  .cls-p2 .drug-class-header .name { color: var(--amber); }
+  .cls-p2 .drug-class-header .badge { background: var(--amber); color: white; }
+  .cls-p3 .drug-class-header { background: var(--red-l); }
+  .cls-p3 .drug-class-header .name { color: var(--red); }
+  .cls-p3 .drug-class-header .badge { background: var(--red); color: white; }
+  .cls-pn .drug-class-header { background: var(--cl); }
+  .cls-pn .drug-class-header .name { color: var(--c1); }
+  .cls-pn .drug-class-header .badge { background: var(--c1); color: white; }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--green), var(--amber), var(--red)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.85); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.8); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.7); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--red-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--red); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--red); }
+  .inter-effect { font-size: 5.5pt; color: #7f0000; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><h1>Douleur — Paliers OMS</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">1ère</span><span class="lbl">Cause consultation MG</span></div>
+    <div class="stat-pill"><span class="val">4g/j</span><span class="lbl">Max paracétamol</span></div>
+    <div class="stat-pill"><span class="val">3g/j</span><span class="lbl">Max terrain fragile</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Paracétamol = 1er réflexe</span><span class="tag">AINS CI insuffisant rénal/cardiaque</span>
+  <span class="tag">Triplette mortelle AINS+IEC+diurétique</span><span class="tag">Laxatif dès J1 si opioïde</span>
+  <span class="tag">Tramadol + ISRS = sérotonine</span><span class="tag">Neuropathique ≠ paliers OMS</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Les 3 Paliers OMS</div>
+    <div class="paliers">
+      <div class="palier p1"><div class="palier-title">PALIER 1 — EVA 1–4</div><div class="palier-sub">Paracétamol · AINS · Aspirine</div></div>
+      <div class="palier p2"><div class="palier-title">PALIER 2 — EVA 4–6</div><div class="palier-sub">Tramadol · Codéine (+ paracétamol)</div></div>
+      <div class="palier p3"><div class="palier-title">PALIER 3 — EVA 7–10</div><div class="palier-sub">Morphine · Oxycodone · Fentanyl · Hydromorphone</div></div>
+      <div class="palier pn"><div class="palier-title">NEUROPATHIQUE — Hors paliers</div><div class="palier-sub">Prégabaline · Gabapentine · Duloxétine · Amitriptyline · Lidocaïne patch</div></div>
+    </div>
+
+    <div class="section-label">Paracétamol — Règle des doses</div>
+    <div class="para-box">
+      <div class="title">Doses quotidiennes maximales</div>
+      <div class="row">
+        <div class="para-item"><div class="v">4 g/j</div><div class="l">Adulte standard</div></div>
+        <div class="para-item"><div class="v">3 g/j</div><div class="l">Âgé · &lt;50kg · Alcool · IRC · IHC</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">CI AINS — À vérifier TOUJOURS</div>
+    <div class="warning-ains">
+      <div class="title">Contre-indications absolues AINS</div>
+      <li>Ulcère gastrique actif</li>
+      <li>IRC sévère (DFG &lt; 30)</li>
+      <li>Insuffisance cardiaque décompensée</li>
+      <li>Grossesse ≥ 6 mois (fœtotoxique)</li>
+      <li>Anticoagulants (risque hémorragique majeur)</li>
+      <li>Allergie aspirine / AINS connue</li>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+
+    <div class="drug-class cls-p1">
+      <div class="drug-class-header"><div class="name">Palier 1 — Paracétamol</div><div class="badge">1er réflexe</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Paracétamol (Doliprane, Efferalgan, Dafalgan)<span class="princeps">Doliprane · Efferalgan · Dafalgan · Générique</span><span class="vol-data">📦 180M boîtes · 1,85€ · 333M€/an</span></div>
+          <div class="drug-dose">1g / 6h · Délai 30–60 min · Multiple formes (cp, sachet, sirop, IV)</div>
+          <div class="drug-watch">Vérifier paracétamol "caché" (Ixprim, Codoliprane, Lamaline, Antarène Codéiné) · Hépatotoxicité si surdose</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class cls-ains">
+      <div class="drug-class-header"><div class="name">Palier 1 — AINS</div><div class="badge">Douleur inflammatoire</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Ibuprofène<span class="princeps">Advil · Brufen · Générique</span><span class="vol-data">📦 45M boîtes · 2,20€ · 99M€/an</span></div>
+          <div class="drug-dose">200–400 mg × 3/j avec repas · Max 1200 mg/j (OTC)</div>
+          <div class="drug-watch">Avec repas · CI listées · &lt; 5j automédication</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Kétoprofène · Naproxène · Diclofénac<span class="princeps">Profenid · Apranax · Voltarène · Générique</span><span class="vol-data">📦 12M boîtes · 3,10€ · 37M€/an</span></div>
+          <div class="drug-dose">Selon molécule et forme (oral/topique/patch)</div>
+          <div class="drug-watch">Kétoprofène : photosensibilisation +++ · Naproxène : meilleur profil CV</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class cls-p2">
+      <div class="drug-class-header"><div class="name">Palier 2 — Opioïdes Faibles</div><div class="badge">EVA 4–6</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Tramadol (Topalgic, Contramal)<span class="princeps">Topalgic · Contramal · Générique</span><span class="vol-data">📦 10M boîtes · 4,50€ · 45M€/an</span></div>
+          <div class="drug-dose">50–100 mg × 3–4/j · LP : 100–300 mg × 1–2/j · Max 400 mg/j</div>
+          <div class="drug-watch">ISRS → sd sérotoninergique · IMAO = CI · Seuil épileptogène ↓ · Vertiges</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Codéine (Efferalgan codéiné, Codoliprane)<span class="princeps">Efferalgan Codéiné · Codoliprane · Générique</span><span class="vol-data">📦 8M boîtes · 4,20€ · 34M€/an</span></div>
+          <div class="drug-dose">30–60 mg / prise · Toujours associée paracétamol</div>
+          <div class="drug-watch">CI &lt; 12 ans · CI allaitantes · CYP2D6 métaboliseurs ultra-rapides</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class cls-p3">
+      <div class="drug-class-header"><div class="name">Palier 3 — Opioïdes Forts</div><div class="badge">⚠ Laxatif dès J1</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Morphine LP (Skénan, Moscontin)<span class="princeps">Skénan · Moscontin</span><span class="vol-data">📦 1,5M boîtes · 18€ · 27M€/an</span></div>
+          <div class="drug-dose">Fond : 2 prises/j · LI (Actiskenan) pour interdoses</div>
+          <div class="drug-watch">Constipation SYSTÉMATIQUE → Macrogol/lactulose dès J1 · Nausées · Sédation</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Fentanyl patch (Durogésic)<span class="princeps">Durogésic</span><span class="vol-data">📦 0,5M boîtes · 48€ · 24M€/an</span></div>
+          <div class="drug-dose">Changement toutes 72h · Débutant avec dose faible</div>
+          <div class="drug-watch">T° application ≤ 30°C (fièvre → ↑ absorption) · Collecte patch usagé</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Oxycodone (Oxycontin LP) · Hydromorphone (Sophidone)<span class="princeps">Oxycontin LP · Sophidone</span><span class="vol-data">📦 0,8M boîtes · 55€ · 44M€/an</span></div>
+          <div class="drug-dose">Rotation opioïde si morphine mal tolérée</div>
+          <div class="drug-watch">Mêmes EI morphine · Ordonnance sécurisée</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class cls-pn">
+      <div class="drug-class-header"><div class="name">Douleur Neuropathique</div><div class="badge">Brûlures · Chocs électriques</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Prégabaline (Lyrica) · Gabapentine<span class="princeps">Lyrica · Neurontin · Générique</span><span class="vol-data">📦 4M boîtes · 18€ · 72M€/an</span></div>
+          <div class="drug-dose">Prégabaline 75–300 mg × 2/j · Titration progressive</div>
+          <div class="drug-watch">Sédation · Vertiges · Dépendance possible (prégabaline)</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Duloxétine (Cymbalta) · Amitriptyline<span class="princeps">Cymbalta · Laroxyl · Générique</span><span class="vol-data">📦 3M boîtes · 12€ · 36M€/an</span></div>
+          <div class="drug-dose">Duloxétine 60–120 mg/j · Amitriptyline 10–75 mg au coucher</div>
+          <div class="drug-watch">Nausées (duloxétine) · Somnolence + anticholinergiques (amitriptyline)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Échelle OMS</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Palier 1 · EVA 1–4</div><div class="content">Paracétamol ± AINS</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Palier 2 · EVA 4–6</div><div class="content">Tramadol ou Codéine</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Palier 3 · EVA 7–10</div><div class="content">Morphine + Laxatif J1</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Neuropathique</div><div class="content">Prégabaline / Duloxétine</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Vérifier le paracétamol "caché" → Ixprim, Codoliprane, Lamaline, DolipraneCaps — additionner les doses totales</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">AINS en automédication → âge + rein + cœur + anticoagulants + grossesse TOUJOURS</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Opioïdes → laxatif prescrit en même temps ? Macrogol systématique dès J1</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--red);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">AINS + Anticoagulants</div><div class="inter-effect">Hémorragie digestive → CI / IPP + surveillance INR</div></div>
+      <div class="inter-item"><div class="inter-drug">AINS + IEC/ARA2 + Diurétique</div><div class="inter-effect">Triplette mortelle → IRA aiguë → bannir AINS</div></div>
+      <div class="inter-item"><div class="inter-drug">Tramadol + ISRS / Triptans</div><div class="inter-effect">Syndrome sérotoninergique → alerter, préférer paracétamol</div></div>
+      <div class="inter-item"><div class="inter-drug">Opioïdes + BZD / Alcool</div><div class="inter-effect">Dépression respiratoire → éducation renforcée</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"C'est des brûlures / des chocs électriques"</div><div class="speech-hide">Douleur neuropathique (diabète, zona, canal lombaire) · paliers OMS classiques inefficaces seuls</div><div class="speech-resp">Neuropathique → paliers OMS insuffisants → signaler médecin</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon patch fentanyl chauffe au soleil"</div><div class="speech-hide">Chaleur → absorption × 3 → surdosage opioïde potentiellement mortel → zone couverte obligatoire</div><div class="speech-resp">T° ↑ = absorption ↑ = risque surdosage → zone couverte</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris doliprane avec mon Bi-Profénid"</div><div class="speech-hide">Bi-Profénid = kétoprofène SEUL (pas de paracétamol dedans) → mais vérifier si le patient prend déjà du paracétamol en parallèle</div><div class="speech-resp">Double paracétamol possible → vérifier doses totales</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté la morphine d'un coup"</div><div class="speech-hide">Sevrage opioïde brutal = nausées/crampes/agitation/diarrhée → réel, pas dramatisé · progressif obligatoire</div><div class="speech-resp">Sevrage → réexpliquer arrêt progressif obligatoire</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Douleur · Paliers OMS · Paracétamol · AINS · Opioïdes · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 1 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

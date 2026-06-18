@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contraception — Fiche Officine</title>
+<style>
+  :root {
+    --c1: #880e4f; --c2: #c2185b; --c3: #f06292;
+    --cl: #fce4ec; --cm: #f8bbd0;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; letter-spacing: -0.5px; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .targets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 2mm; }
+  .target-box { background: white; border-radius: 5px; padding: 2mm; border-top: 2.5px solid var(--c2); }
+  .target-box .t { font-size: 6pt; font-weight: 700; color: var(--c1); }
+  .target-box .d { font-size: 5.5pt; color: #37474f; }
+  .diag-card { background: #f4f6f8; border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .diag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-bottom: 1.5mm; }
+  .diag-item { background: white; border-radius: 5px; padding: 2mm 2.5mm; border-top: 2.5px solid var(--c2); }
+  .diag-item .val { font-size: 8.5pt; font-weight: 800; color: var(--c2); line-height: 1; }
+  .diag-item .lbl { font-size: 5.5pt; color: #37474f; margin-top: 0.5mm; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 32mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; letter-spacing: 0.5px; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>Contraception</h1>
+    <div class="subtitle">Fiche officine · Pathologie 13 · Pratique comptoir · 2026</div>
+  </div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">96%</span><span class="lbl">Femmes utilisent contraception</span></div><div class="stat-pill"><span class="val">CU</span><span class="lbl">72h ou 5j (DIU)</span></div><div class="stat-pill"><span class="val">99.7%</span><span class="lbl">Efficacité pilule idéale</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Oubli pilule < 12h = prendre</span><span class="tag">Oubli > 12h = préservatif</span><span class="tag">Pilule progestative = fenêtre 3h</span><span class="tag">DIU cuivre = urgence 5j</span><span class="tag">EllaOne > Norlevo si > 72h</span><span class="tag">ATCD thrombose → progestative seule</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🔵 Œstrogènes → inhibition FSH → blocage folliculogenèse</div><div class="cascade-arrow">↓</div><div class="cascade-step">🟡 Progestatifs → inhibition LH → blocage ovulation</div><div class="cascade-arrow">↓</div><div class="cascade-step">🔒 Progestatifs → glaire cervicale épaissie → imperméable spermatozoïdes</div><div class="cascade-arrow">↓</div><div class="cascade-step">🏠 Atrophie endomètre → implantation impossible (DIU, micropilule)</div>
+      </div>
+      <div class="targets-grid">
+        <div class="target-box"><div class="t">Ovulation</div><div class="d">Inhibée par E+P</div></div><div class="target-box"><div class="t">Glaire</div><div class="d">Imperméable (P)</div></div><div class="target-box"><div class="t">Endomètre</div><div class="d">Atrophié (P)</div></div><div class="target-box"><div class="t">Trompes</div><div class="d">Motilité réduite (P)</div></div>
+      </div>
+    </div>
+
+    <div class="section-label">Diagnostic & Bilan</div>
+    <div class="diag-card">
+      <div class="diag-row">
+        <div class="diag-item"><div class="val">Indice Pearl</div><div class="lbl">Échecs/100 femmes/an</div></div><div class="diag-item"><div class="val">< 1</div><div class="lbl">Pilule bien prise</div></div><div class="diag-item"><div class="val">0.1</div><div class="lbl">DIU, implant</div></div><div class="diag-item"><div class="val">CU Délai</div><div class="lbl">72h LNG / 120h DIU</div></div>
+      </div>
+      <div style="background:var(--cl);border-radius:5px;padding:2mm;border-left:3px solid var(--c2);font-size:6pt;color:var(--c1);font-weight:600;">📋 TA avant prescription · Bilan lipidique si FdR · Frottis col à jour · Pas d'exam gynéco obligatoire pour délivrance CU</div>
+    </div>
+
+    <div class="section-label">CI / Précautions ⛔</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #c62828;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ EP CI absolues : ATCD TVP/EP, thrombophilie, migraine avec aura, HTA sévère, tabac > 35 ans, cancer sein/endomètre</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1.5mm;">⛔ EllaOne CI avec pilule progestative (compétition récepteur) → utiliser LNG ou DIU cuivre</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ Pilule + inducteurs enzymatiques (rifampicine, antiépileptiques) → efficacité réduite → préservatif + DIU</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+    
+    <div class="drug-class cls-eop" style="">
+      <div class="drug-class-header" style="background:#fce4ec;">
+        <div class="name" style="color:#880e4f;">Pilules Œstroprogestatives — EP</div>
+        <div class="badge" style="background:#ad1457;color:white;">1ère prescrite</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">EE + Lévonorgestrel · EE + Norgestimate<span class="princeps">Trinordiol · Triafemi · Adepal · Nordette</span><span class="vol-data">📦 20M boîtes · 3,80€ · 76M€/an</span></div>
+          <div class="drug-dose">Monophasique ou triphasique · 21j/7j ou 24j/4j</div>
+          <div class="drug-watch">Thrombose VTE · Migraine avec aura CI · Tabac > 35 ans CI</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">EE + Drospirénone · EE + Gestodène<span class="princeps">Jasminelle · Minulet · Désobel</span><span class="vol-data">📦 9M boîtes · 5,20€ · 47M€/an</span></div>
+          <div class="drug-dose">EE 20-30 mcg + progestatif 3G</div>
+          <div class="drug-watch">Risque VTE légèrement > 1G/2G · Possible si tolérance meilleure</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-prog" style="">
+      <div class="drug-class-header" style="background:#f3e5f5;">
+        <div class="name" style="color:#4a148c;">Pilules Progestatives Seules — Microprogestatives</div>
+        <div class="badge" style="background:#6a1b9a;color:white;">ATCD CV / Allaitante</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Désogestrel 75 mcg<span class="princeps">Cerazette · Desogrel · Génériques</span><span class="vol-data">📦 11M boîtes · 4,10€ · 45M€/an</span></div>
+          <div class="drug-dose">1 cp/j en continu · Fenêtre 12h</div>
+          <div class="drug-watch">Spottings fréquents · Acné · Pas d'effet VTE</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Lévonorgestrel 30 mcg<span class="princeps">Microval</span><span class="vol-data">📦 2M boîtes · 3,60€ · 7M€/an</span></div>
+          <div class="drug-dose">1 cp/j en continu · Fenêtre 3h stricte</div>
+          <div class="drug-watch">Fenêtre de prise 3h → plus contraignant</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-diu" style="">
+      <div class="drug-class-header" style="background:#e8eaf6;">
+        <div class="name" style="color:#1a237e;">DIU — Dispositif Intra-Utérin</div>
+        <div class="badge" style="background:#283593;color:white;">LT / Urgence</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Lévonorgestrel 52 mg (DIU hormonal)<span class="princeps">Mirena · Kyleena · Jaydess</span><span class="vol-data">📦 250K insertions/an · 120-180€</span></div>
+          <div class="drug-dose">Mirena 5 ans · Kyleena 5 ans (moins progestatif)</div>
+          <div class="drug-watch">Expulsion 5% · Douleurs insertion · Aménorrhée fréquente</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">DIU Cuivre (non hormonal)<span class="princeps">Nova-T · Gynefix · UT380</span><span class="vol-data">📦 180K insertions/an · 30-45€</span></div>
+          <div class="drug-dose">5-10 ans selon modèle · Contraception urgence 5j</div>
+          <div class="drug-watch">Dysménorrhée · Métrorragies · CI utérus malformé</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-urgence" style="">
+      <div class="drug-class-header" style="background:#fff3e0;">
+        <div class="name" style="color:#e65100;">Contraception d'Urgence</div>
+        <div class="badge" style="background:#bf360c;color:white;">Sans ordonnance</div>
+      </div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Lévonorgestrel 1,5 mg<span class="princeps">Norlevo · NorLevo Generics · Vikela</span><span class="vol-data">📦 1,8M boîtes/an · 7,50€ · 14M€/an</span></div>
+          <div class="drug-dose">1 cp dès que possible · Efficacité décroit avec délai</div>
+          <div class="drug-watch">Efficace 72h · Moins efficace > 72h · Gratuit mineurs</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Ulipristal acétate 30 mg<span class="princeps">EllaOne</span><span class="vol-data">📦 400K boîtes/an · 24€ · 10M€/an</span></div>
+          <div class="drug-dose">1 cp jusqu'à 120h (5j) · Supérieur LNG si > 72h</div>
+          <div class="drug-watch">CI si progestative en cours · Reprendre contraception après</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie contraceptive</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Jeune sans FdR</div><div class="content">EP ou progestative</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">ATCD CV/Allait.</div><div class="content">Microprogestative/DIU</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">LT / Nullipare OK</div><div class="content">DIU LNG ou cuivre</div></div><div class="strat-arrow">›</div><div class="strat-step"><div class="num">Urgence</div><div class="content">LNG 72h ou EllaOne 120h</div></div>
+  </div>
+</div>
+
+<div class="nouveaute-bar">
+  <span class="n-badge">🆕 NOUVEAUTÉS 2020–2026</span>
+  <span class="n-text"><strong>Contraception d'urgence</strong> sans ordonnance ni avance de frais pour mineures depuis 2023 · <strong>Pilule remboursée</strong> jusqu'à 26 ans depuis 2022 · DIU remboursé sans prescription chez les pharmaciens (projet pilote) · <strong>Consultations contraception 100%</strong> jeunes jusqu'à 26 ans</span>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Oubli pilule : < 12h → prendre immédiatement · > 12h → prendre + préservatif 7j · > 12h + rapport → CU</div></div><div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">EllaOne supérieur à Norlevo entre 72h et 120h · Toujours demander heure du rapport non protégé</div></div><div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">DIU cuivre = CU la plus efficace (> 99%) jusqu'à 5j après rapport · Et reste en place pour contraception LT</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Inducteurs enzymatiques (rifampicine, phénytoïne)</div><div class="inter-effect">↓ efficacité contraception hormonale → préservatif + avis médecin</div></div><div class="inter-item"><div class="inter-drug">EllaOne + progestatif</div><div class="inter-effect">Antagonisme récepteur progestérone → CU inefficace → préférer DIU cuivre ou LNG</div></div><div class="inter-item"><div class="inter-drug">Contraceptifs EP + AINS</div><div class="inter-effect">↑ risque thrombose modéré · Paracétamol préférable</div></div><div class="inter-item"><div class="inter-drug">Antibiotiques (rifampicine)</div><div class="inter-effect">Seule rifampicine réduit vraiment l'efficacité · Autres ATB : pas de CI formelle</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"J'ai oublié ma pilule hier soir"</div><div class="speech-hide">Fenêtre tolérance EP = 12h · Microprogestative = 3h (LNG) ou 12h (désogestrel) · Après = risque grossesse réel</div><div class="speech-resp">Heure oubli ? Moins de 12h → prendre tout de suite · Plus de 12h → prendre + préservatif + évaluer CU si rapport</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai eu un rapport hier soir sans protection"</div><div class="speech-hide">CU doit être prise dès que possible · Efficacité : 95% si <24h, 85% si 24-48h, 58% si 48-72h pour LNG</div><div class="speech-resp">LNG si ≤ 72h · EllaOne si 72-120h · DIU cuivre si ≤ 120h et veut contraception LT</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je prends Topiramate pour la migraine, ma pilule marche-t-elle ?"</div><div class="speech-hide">Topiramate = inducteur enzymatique modéré → réduit efficacité pilule hormonale → grossesses non désirées documentées</div><div class="speech-resp">Signaler médecin · Envisager DIU non hormonal ou préservatif systématique</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Je suis sous Cerazette et j'ai pris EllaOne"</div><div class="speech-hide">EllaOne = modulateur récepteur progestérone → compétition avec microprogestative = CU inefficace dans ce contexte</div><div class="speech-resp">Arrêt immédiat Cerazette et/ou proposer DIU cuivre · Avis médecin</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Contraception · EP · Progestative · DIU · CU · Lévonorgestrel · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pathologie 13 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

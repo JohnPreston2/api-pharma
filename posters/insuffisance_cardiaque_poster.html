@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Insuffisance Cardiaque — Fiche Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #b71c1c; --c2: #c62828; --c3: #ef5350;
+    --cl: #ffebee; --red: #7f0000; --red-l: #ffebee;
+    --green: #1b5e20; --green-l: #e8f5e9;
+    --blue: #0d47a1; --blue-l: #e8f0fb;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, #880e4f 0%, var(--c1) 50%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; overflow: hidden; position: relative; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 11pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: #880e4f; padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+
+  .nyha { display: flex; flex-direction: column; gap: 1.5mm; margin-bottom: 3mm; }
+  .nyha-item { border-radius: 5px; padding: 2mm 2.5mm; display: grid; grid-template-columns: 10mm 1fr; gap: 2mm; align-items: center; }
+  .nyha-num { font-size: 9pt; font-weight: 900; text-align: center; border-radius: 50%; width: 7mm; height: 7mm; display: flex; align-items: center; justify-content: center; color: white; }
+  .nyha-desc { font-size: 6pt; }
+  .nyha-desc .title { font-weight: 700; }
+  .n1 { background: #e8f5e9; }
+  .n1 .nyha-num { background: #4caf50; }
+  .n1 .nyha-desc .title { color: #1b5e20; }
+  .n2 { background: #fff9c4; }
+  .n2 .nyha-num { background: #f9a825; }
+  .n2 .nyha-desc .title { color: #e65100; }
+  .n3 { background: var(--amber-l); }
+  .n3 .nyha-num { background: var(--amber); }
+  .n3 .nyha-desc .title { color: var(--amber); }
+  .n4 { background: var(--cl); }
+  .n4 .nyha-num { background: var(--c2); }
+  .n4 .nyha-desc .title { color: var(--c1); }
+
+  .pesee-box { background: linear-gradient(135deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; }
+  .pesee-box .title { font-size: 7pt; font-weight: 800; color: white; margin-bottom: 1.5mm; }
+  .pesee-rule { background: rgba(255,255,255,0.15); border-radius: 5px; padding: 2mm; margin-bottom: 1mm; font-size: 6pt; color: white; font-weight: 600; }
+
+  .avoid-list { background: var(--cl); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--c2); }
+  .avoid-list .title { font-size: 6pt; font-weight: 700; color: var(--c1); margin-bottom: 1.5mm; }
+  .avoid-list li { font-size: 6pt; color: var(--red); list-style: none; padding-left: 2mm; position: relative; margin-bottom: 0.5mm; font-weight: 600; }
+  .avoid-list li::before { content: '⛔'; position: absolute; left: -0.5mm; font-size: 5.5pt; }
+
+  .drugs-col { display: flex; flex-direction: column; gap: 2mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: var(--grey); }
+  .drug-watch { font-size: 6pt; color: var(--amber); font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; letter-spacing: 0.2px; }
+
+  .cls-iec .drug-class-header { background: var(--blue-l); }
+  .cls-iec .drug-class-header .name { color: var(--blue); }
+  .cls-iec .drug-class-header .badge { background: var(--blue); color: white; }
+  .cls-bb .drug-class-header { background: #fce4ec; }
+  .cls-bb .drug-class-header .name { color: #880e4f; }
+  .cls-bb .drug-class-header .badge { background: #880e4f; color: white; }
+  .cls-arm .drug-class-header { background: #f3e5f5; }
+  .cls-arm .drug-class-header .name { color: #4a148c; }
+  .cls-arm .drug-class-header .badge { background: #4a148c; color: white; }
+  .cls-sglt2 .drug-class-header { background: var(--green-l); }
+  .cls-sglt2 .drug-class-header .name { color: var(--green); }
+  .cls-sglt2 .drug-class-header .badge { background: var(--green); color: white; }
+  .cls-diur .drug-class-header { background: var(--amber-l); }
+  .cls-diur .drug-class-header .name { color: var(--amber); }
+  .cls-diur .drug-class-header .badge { background: var(--amber); color: white; }
+
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, #880e4f, var(--c1)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: var(--green-l); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--green); }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: var(--green); color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .reflex-text { font-size: 6pt; color: var(--green); font-weight: 500; }
+  .inter-card { background: var(--cl); border-radius: 7px; padding: 3mm; border-left: 3px solid var(--c2); }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(183,28,28,0.1); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: var(--c1); }
+  .inter-effect { font-size: 5.5pt; color: var(--red); margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid var(--border); }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: var(--grey); padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .footer-strip { background: #880e4f; padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .nouveaute-bar { background: #ede7f6; border: 1px solid #ce93d8; border-radius: 6px; padding: 1.8mm 3mm; margin: 2mm 8mm 0; display: flex; align-items: flex-start; gap: 2mm; }
+  .n-badge { background: #7b1fa2; color: white; font-size: 4.8pt; font-weight: 800; padding: 0.5mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 0.3mm; letter-spacing: 0.2px; }
+  .n-text { font-size: 5.5pt; color: #4a148c; line-height: 1.35; }
+  .n-text strong { font-weight: 700; color: #6a1b9a; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>Insuffisance Cardiaque</h1><div class="subtitle">Fiche officine · 6ème année · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">1,5M</span><span class="lbl">Français</span></div>
+    <div class="stat-pill"><span class="val">50%</span><span class="lbl">Mortalité à 5 ans</span></div>
+    <div class="stat-pill"><span class="val">+2kg</span><span class="lbl">48h = urgence</span></div>
+  </div>
+</div>
+<div class="tag-bar">
+  <span class="tag">Pesée quotidienne +2kg/48h = médecin urgent</span>
+  <span class="tag">AINS absolument interdit</span><span class="tag">β-bloquant jamais arrêté brutalement</span>
+  <span class="tag">Sel de régime = KCl = danger si IEC+ARM</span><span class="tag">4 piliers = mortalité prouvée</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Classification NYHA</div>
+    <div class="nyha">
+      <div class="nyha-item n1"><div class="nyha-num">I</div><div class="nyha-desc"><div class="title">Asymptomatique</div><div>"Je me sens bien, mais j'ai une mauvaise fonction cardiaque"</div></div></div>
+      <div class="nyha-item n2"><div class="nyha-num">II</div><div class="nyha-desc"><div class="title">Dyspnée efforts importants</div><div>"Je m'essouffle dans les escaliers"</div></div></div>
+      <div class="nyha-item n3"><div class="nyha-num">III</div><div class="nyha-desc"><div class="title">Dyspnée efforts modérés</div><div>"Je m'essouffle en marchant à plat"</div></div></div>
+      <div class="nyha-item n4"><div class="nyha-num">IV</div><div class="nyha-desc"><div class="title">Dyspnée au repos</div><div>"Je m'essouffle assis dans mon fauteuil"</div></div></div>
+    </div>
+
+    <div class="section-label">Surveillance Quotidienne Patient</div>
+    <div class="pesee-box">
+      <div class="title">⚖️ La pesée — Alerte précoce n°1</div>
+      <div class="pesee-rule">📅 Chaque matin · À jeun · Après les urines</div>
+      <div class="pesee-rule">🚨 + 2 kg en 48h → Appel médecin IMMÉDIAT</div>
+      <div class="pesee-rule">💧 Surveiller urines quotidiennes (~1,5L/j)</div>
+    </div>
+
+    <div class="section-label">Médicaments à Éviter ⛔</div>
+    <div class="avoid-list">
+      <div class="title">CI ou utilisation très prudente en IC</div>
+      <li>AINS (ibuprofène, kétoprofène) → rétention Na+</li>
+      <li>Vérapamil, Diltiazem → inotrope négatif</li>
+      <li>Glitazones (pioglitazone) → rétention hydrique</li>
+      <li>Sel de régime (KCl) si IEC + ARM → hyperK+</li>
+      <li>Corticoïdes (long terme) → rétention Na+</li>
+      <li>Alcool → cardiomyopathie</li>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">4 Piliers — ICFEr (FEVG &lt;40%) — Mortalité prouvée</div>
+    <div class="drug-class cls-iec">
+      <div class="drug-class-header"><div class="name">IEC ou ARNI</div><div class="badge">Pilier 1</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Ramipril · Énalapril · Périndopril (IEC)<span class="princeps">Triatec · Renitec · Coversyl · Générique</span><span class="vol-data">📦 25M boîtes · 2,80€ · 70M€/an</span></div>
+          <div class="drug-dose">Débuter bas · Augmenter progressivement · Ramipril 1,25 → 10 mg/j</div>
+          <div class="drug-watch">Kaliémie + créatinine · Toux → switcher ARNI</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Sacubitril/Valsartan (Entresto)<span class="princeps">Entresto</span><span class="vol-data">📦 0,8M boîtes · 130€ · 104M€/an</span></div>
+          <div class="drug-dose">ARNI = remplace IEC si symptômes persistants · 24/26 → 49/51 → 97/103 mg × 2/j</div>
+          <div class="drug-watch">Pas de générique · Ne pas combiner avec IEC</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-bb">
+      <div class="drug-class-header"><div class="name">β-Bloquants de l'IC</div><div class="badge">Pilier 2 — jamais brutal</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Bisoprolol · Carvédilol · Métoprolol succinate<span class="princeps">Cardensiel · Kredex · Lopressor · Générique</span><span class="vol-data">📦 22M boîtes · 3,40€ · 75M€/an</span></div>
+          <div class="drug-dose">Bisoprolol 1,25 → 10 mg/j · Titration LENTE sur semaines</div>
+          <div class="drug-watch">Jamais arrêt brutal · Débuter à distance d'une décompensation · FC cible 55–65/min</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-arm">
+      <div class="drug-class-header"><div class="name">ARM — Antagonistes Aldostérone</div><div class="badge">Pilier 3 — K+ +++</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Spironolactone (Aldactone)<span class="princeps">Aldactone · Générique</span><span class="vol-data">📦 5M boîtes · 4,50€ · 23M€/an</span></div>
+          <div class="drug-dose">25–50 mg/j · Gynécomastie possible (homme)</div>
+          <div class="drug-watch">Hyperkaliémie +++ · IEC + ARM = surveiller K+ et créatinine</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Éplérénone (Inspra)<span class="princeps">Inspra</span><span class="vol-data">📦 1M boîtes · 18€ · 18M€/an</span></div>
+          <div class="drug-dose">25–50 mg/j · Pas de gynécomastie</div>
+          <div class="drug-watch">Idem spironolactone pour kaliémie</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-sglt2">
+      <div class="drug-class-header"><div class="name">Gliflozines (iSGLT2)</div><div class="badge">Pilier 4 — diabétiques ET non diabétiques</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Dapagliflozine (Forxiga 10 mg) · Empagliflozine (Jardiance 10 mg)<span class="princeps">Forxiga · Jardiance</span><span class="vol-data">📦 1,5M boîtes · 55€ · 83M€/an</span></div>
+          <div class="drug-dose">10 mg × 1/j · Bénéfice IC indépendant du diabète</div>
+          <div class="drug-watch">Mycoses génitales · Déshydratation · DFG &lt;15 = CI</div>
+        </div>
+      </div>
+    </div>
+    <div class="drug-class cls-diur">
+      <div class="drug-class-header"><div class="name">Diurétiques de l'Anse</div><div class="badge">Symptômes surcharge</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Furosémide (Lasilix)<span class="princeps">Lasilix · Générique</span><span class="vol-data">📦 8M boîtes · 1,80€ · 14M€/an</span></div>
+          <div class="drug-dose">20–160 mg/j · Titré selon symptômes et poids</div>
+          <div class="drug-watch">Kaliémie · Natrémie · Créatinine · Poids quotidien</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Bumétanide (Burinex)<span class="princeps">Burinex · Générique</span><span class="vol-data">📦 1M boîtes · 3,20€ · 3M€/an</span></div>
+          <div class="drug-dose">0,5–5 mg/j · Équivalence : 1 mg bumétanide = 40 mg furosémide</div>
+          <div class="drug-watch">Idem furosémide</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">ICFEr — 4 Piliers</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Pilier 1</div><div class="content">IEC (ou ARNI Entresto)</div></div>
+    <div class="strat-arrow">+</div>
+    <div class="strat-step"><div class="num">Pilier 2</div><div class="content">β-bloquant (bisoprolol)</div></div>
+    <div class="strat-arrow">+</div>
+    <div class="strat-step"><div class="num">Pilier 3</div><div class="content">ARM (spironolactone)</div></div>
+    <div class="strat-arrow">+</div>
+    <div class="strat-step"><div class="num">Pilier 4</div><div class="content">Gliflozine (dapagliflozine)</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:var(--green);">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Pesée quotidienne → vérifier que le patient a une balance et note son poids chaque matin</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">AINS en automédication = INTERDIT → redire à chaque renouvellement, proposer paracétamol</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">β-bloquant jamais arrêté brutalement → même si patient se sent mieux ou pense que "ça fait baisser le cœur"</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:var(--c1);">Interactions Majeures</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">AINS</div><div class="inter-effect">Rétention Na+ → décompensation + IRA avec IEC → absolument éviter</div></div>
+      <div class="inter-item"><div class="inter-drug">IEC + ARM + K+ (sel de régime)</div><div class="inter-effect">Hyperkaliémie sévère → arythmie → surveiller K+ et créatinine</div></div>
+      <div class="inter-item"><div class="inter-drug">β-bloquant + Vérapamil/Diltiazem</div><div class="inter-effect">Bradycardie sévère, BAV → CI absolue</div></div>
+      <div class="inter-item"><div class="inter-drug">Furosémide + Digoxine sans K+</div><div class="inter-effect">Hypokaliémie → toxicité digitalique → BAV, arythmie</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris 3 kg depuis 3 jours"</div><div class="speech-hide">Rétention hydrique = décompensation cardiaque imminente · plan d'action préétabli → médecin urgent</div><div class="speech-resp">Décompensation → médecin en urgence</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai arrêté le bisoprolol, ça fait baisser mon cœur"</div><div class="speech-hide">Arrêt brutal β-bloquant = rebond adrénergique → décompensation + arythmie · le ralentissement est VOULU</div><div class="speech-resp">Réexpliquer : le ralentissement est VOULU et bénéfique</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'utilise du sel de régime (NoSalt)"</div><div class="speech-hide">KCl = substitut au NaCl → hyperkaliémie MAJEURE si IEC/ARA2 + ARM → dangereux, souvent ignoré</div><div class="speech-resp">Sel de régime = KCl → hyperkaliémie si IEC + ARM !</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai pris du Nurofen pour mon dos"</div><div class="speech-hide">AINS = CI absolue en IC · rétention Na/eau → aggravation · risque décompensation aiguë</div><div class="speech-resp">AINS → risque décompensation → alerter, évaluer</div></div>
+    </div>
+  </div>
+</div>
+<div class="footer-strip">
+  <span>IC · NYHA · IEC · β-bloquant · ARM · Gliflozine · Diurétiques · BDPM 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Tier 2 · 80/20 · Pratique comptoir</span>
+</div>
+</body>
+</html>

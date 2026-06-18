@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Constipation — Fiche Officine</title>
+<style>
+  :root { --c1: #33691e; --c2: #558b2f; --c3: #8bc34a; --cl: #f1f8e9; --cm: #dcedc8; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.35; }
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 60%, var(--c3) 100%); padding: 9mm 8mm 7mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -15mm; top: -15mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.05); }
+  .header h1 { font-size: 22pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .subtitle { font-size: 8pt; color: rgba(255,255,255,0.75); margin-top: 1.5mm; letter-spacing: 1.5px; text-transform: uppercase; }
+  .header-stats { display: flex; gap: 4mm; }
+  .stat-pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 6px; padding: 3mm 4mm; text-align: center; }
+  .stat-pill .val { font-size: 13pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .stat-pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1mm; }
+  .tag-bar { background: var(--c1); padding: 2mm 8mm; display: flex; gap: 3mm; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); font-size: 5.5pt; padding: 0.8mm 2.5mm; border-radius: 20px; font-weight: 500; }
+  .body-grid { display: grid; grid-template-columns: 55mm 1fr; gap: 0; padding: 5mm 8mm 4mm; column-gap: 5mm; }
+  .section-label { font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c2); margin-bottom: 2mm; display: flex; align-items: center; gap: 1.5mm; }
+  .section-label::before { content: ''; display: inline-block; width: 2.5mm; height: 2.5mm; background: var(--c2); border-radius: 50%; flex-shrink: 0; }
+  .physio-card { background: var(--cl); border-radius: 7px; padding: 3mm; margin-bottom: 3mm; border-left: 3px solid var(--c2); }
+  .cascade { display: flex; flex-direction: column; gap: 1.2mm; }
+  .cascade-step { background: white; border-radius: 5px; padding: 1.8mm 2.5mm; font-size: 6.5pt; font-weight: 500; color: var(--c1); display: flex; align-items: center; gap: 2mm; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .cascade-arrow { text-align: center; color: var(--c2); font-size: 8pt; font-weight: 700; line-height: 1; }
+  .drugs-col { display: flex; flex-direction: column; gap: 2.5mm; }
+  .drug-class { border-radius: 7px; overflow: hidden; border: 1px solid #cfd8dc; }
+  .drug-class-header { padding: 2mm 3mm; display: flex; align-items: center; justify-content: space-between; }
+  .drug-class-header .name { font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+  .drug-class-header .badge { font-size: 5pt; font-weight: 700; padding: 0.5mm 2mm; border-radius: 20px; text-transform: uppercase; }
+  .drug-class-body { background: white; padding: 2mm 3mm; }
+  .drug-row { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 1.5mm; padding: 1.2mm 0; border-bottom: 1px solid #cfd8dc; align-items: start; }
+  .drug-row:last-child { border-bottom: none; }
+  .drug-dci { font-weight: 700; font-size: 6.5pt; color: var(--c1); }
+  .drug-dose { font-size: 6pt; color: #37474f; }
+  .drug-watch { font-size: 6pt; color: #e65100; font-weight: 600; }
+  .drug-watch::before { content: '⚠ '; }
+  .drug-dci .princeps { display: block; font-style: italic; font-size: 5.5pt; color: #546e7a; font-weight: 400; margin-top: 0.3mm; }
+  .drug-dci .vol-data { display: block; font-size: 5pt; font-weight: 700; color: rgba(0,0,0,0.38); margin-top: 0.2mm; }
+  .strategy-bar { margin: 3mm 8mm 0; background: linear-gradient(90deg, var(--c1), var(--c2)); border-radius: 7px; padding: 3mm 4mm; display: flex; align-items: center; gap: 3mm; }
+  .strategy-bar .label { color: rgba(255,255,255,0.65); font-size: 5.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .strategy-steps { display: flex; align-items: center; gap: 1.5mm; flex: 1; }
+  .strat-step { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; padding: 1.5mm 2.5mm; text-align: center; flex: 1; }
+  .strat-step .num { font-size: 5pt; color: rgba(255,255,255,0.6); text-transform: uppercase; }
+  .strat-step .content { font-size: 6pt; font-weight: 700; color: white; margin-top: 0.5mm; }
+  .strat-arrow { color: rgba(255,255,255,0.5); font-size: 9pt; font-weight: 700; }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; padding: 3mm 8mm 5mm; }
+  .reflexes-card { background: #e8f5e9; border-radius: 7px; padding: 3mm; border-left: 3px solid #1b5e20; }
+  .reflex-item { display: flex; gap: 2mm; align-items: flex-start; margin-bottom: 2mm; }
+  .reflex-item:last-child { margin-bottom: 0; }
+  .reflex-num { background: #1b5e20; color: white; font-size: 6pt; font-weight: 800; width: 4mm; height: 4mm; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.3mm; }
+  .reflex-text { font-size: 6pt; color: #1b5e20; font-weight: 500; }
+  .inter-card { background: #fff3e0; border-radius: 7px; padding: 3mm; border-left: 3px solid #e65100; }
+  .inter-item { padding: 1.5mm 0; border-bottom: 1px solid rgba(230,81,0,0.15); }
+  .inter-item:last-child { border-bottom: none; }
+  .inter-drug { font-size: 6.5pt; font-weight: 700; color: #e65100; }
+  .inter-effect { font-size: 5.5pt; color: #bf360c; margin-top: 0.3mm; }
+  .patient-card { background: #fafafa; border-radius: 7px; padding: 3mm; border: 1px solid #cfd8dc; }
+  .patient-item { margin-bottom: 2mm; }
+  .patient-item:last-child { margin-bottom: 0; }
+  .speech-bubble { background: var(--cl); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6pt; color: var(--c1); font-style: italic; font-weight: 500; }
+  .speech-resp { font-size: 5.5pt; color: #37474f; padding: 1mm 2mm 0; font-weight: 500; }
+  .speech-resp::before { content: '→ '; color: var(--c2); font-weight: 700; }
+  .speech-hide { font-size: 5pt; color: #7f0000; background: #ffebee; border-radius: 3px; padding: 0.5mm 2mm; margin-top: 0.3mm; font-weight: 500; line-height: 1.3; }
+  .speech-hide::before { content: '↳ '; font-weight: 800; color: #b71c1c; }
+  .footer-strip { background: var(--c1); padding: 2mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.5); font-size: 5pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.8); font-weight: 700; font-size: 5.5pt; }
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div><h1>Constipation</h1><div class="subtitle">Fiche officine · Pratique comptoir · 2026</div></div>
+  <div class="header-stats">
+    <div class="stat-pill"><span class="val">20%</span><span class="lbl">Adultes touchés</span></div>
+    <div class="stat-pill"><span class="val">2:1</span><span class="lbl">Femmes/Hommes</span></div>
+    <div class="stat-pill"><span class="val">OTC</span><span class="lbl">1ère demande comptoir</span></div>
+  </div>
+</div>
+
+<div class="tag-bar">
+  <span class="tag">Osmotiques = 1ère ligne (macrogol, lactulose)</span>
+  <span class="tag">Stimulants = ponctuel max 8–10j</span>
+  <span class="tag">Séné/bisacodyl = dépendance si chronique</span>
+  <span class="tag">Opioïdes = laxatif dès J1 systématique</span>
+  <span class="tag">Fibres + eau + activité physique = base</span>
+  <span class="tag">Rectorragie = médecin urgent</span>
+</div>
+
+<div class="body-grid">
+  <div>
+    <div class="section-label">Physiopathologie</div>
+    <div class="physio-card">
+      <div class="cascade">
+        <div class="cascade-step">🔄 Transit normal = 3 selles/j à 3/semaine (critères Rome IV)</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">🐌 Constipation = &lt;3 selles/sem ET/OU selles dures, effort, évacuation incomplète</div>
+        <div class="cascade-arrow">↓</div>
+        <div class="cascade-step">⚙️ De transit : côlon paresseux (médicaments, hypothyroïdie, sédentarité)</div>
+        <div class="cascade-step">🚪 D'évacuation (terminale) : dyssynergie, rectocèle, fécalome</div>
+      </div>
+    </div>
+
+    <div class="section-label">Médicaments constipants — Rechercher</div>
+    <div style="background:#fff3e0;border-radius:7px;padding:3mm;border-left:3px solid #e65100;margin-bottom:3mm;">
+      <div style="font-size:6pt;font-weight:700;color:#e65100;text-transform:uppercase;margin-bottom:1.5mm;">Iatrogénie = 1ère cause à éliminer</div>
+      <div style="font-size:6pt;color:#37474f;line-height:1.5;">
+        <b>Opioïdes</b> (morphine, codéine, tramadol) → laxatif DÈS J1<br>
+        <b>Anticholinergiques</b> (oxybutynine, amitriptyline, hydroxyzine)<br>
+        <b>Fer oral</b> (Tardyféron, Fero-Grad) → fractionner, prendre avec jus orange<br>
+        <b>Vérapamil</b> (Isoptine) → ICa non-DHP très constipant<br>
+        <b>Antiacides Al</b> (Maalox, Phosphalugel) → préférer Mg<br>
+        <b>IRS/ISRS</b> (paroxétine) · <b>Antiparkinsoniens</b> · <b>Diurétiques</b>
+      </div>
+    </div>
+
+    <div class="section-label">Drapeaux rouges → Médecin</div>
+    <div style="background:#ffebee;border-radius:7px;padding:3mm;border-left:3px solid #b71c1c;">
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Rectorragies · Sang dans les selles</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Alternance diarrhée/constipation récente &gt;50 ans (cancer colorectal)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Perte de poids inexpliquée</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;margin-bottom:1mm;">⛔ Constipation brutale + vomissements (occlusion)</div>
+      <div style="font-size:6pt;color:#b71c1c;font-weight:600;">⛔ Constipation récente sans cause évidente &gt;50 ans</div>
+    </div>
+
+    <div class="section-label" style="margin-top:3mm;">Conseil RHD — Base indispensable</div>
+    <div style="background:var(--cl);border-radius:7px;padding:3mm;border-left:3px solid var(--c2);">
+      <div style="font-size:6pt;color:var(--c1);font-weight:600;margin-bottom:1mm;">💧 Eau ≥ 1,5 L/j (Hépar riche en Mg = léger effet laxatif)</div>
+      <div style="font-size:6pt;color:var(--c1);font-weight:600;margin-bottom:1mm;">🥦 Fibres 25–30 g/j (légumes, fruits, céréales complètes, pruneaux)</div>
+      <div style="font-size:6pt;color:var(--c1);font-weight:600;margin-bottom:1mm;">🏃 Activité physique 30 min/j (stimule péristaltisme)</div>
+      <div style="font-size:6pt;color:var(--c1);font-weight:600;">🚽 Respecter le réflexe gastro-colique (aller aux toilettes après repas)</div>
+    </div>
+  </div>
+
+  <div class="drugs-col">
+    <div class="section-label">Classes thérapeutiques</div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:var(--cl);"><div class="name" style="color:var(--c1);">Osmotiques — 1ère ligne chronique</div><div class="badge" style="background:var(--c1);color:white;">Référence</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Macrogol (PEG)<span class="princeps">Forlax · Transipeg · Movicol</span><span class="vol-data">📦 15M boîtes · 3,50€ · 53M€/an</span></div>
+          <div class="drug-dose">1–2 sachets/j dans 250 mL eau · Effet en 24–48h · Usage prolongé OK · Movicol = PEG + électrolytes (fécalome)</div>
+          <div class="drug-watch">Pas d'accoutumance · Pas de perte électrolytes · Ballonnements transitoires · Bien diluer (goût sinon) · OK grossesse · OK enfant dès 6 mois</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Lactulose<span class="princeps">Duphalac · Génériques</span><span class="vol-data">📦 8M boîtes · 2,80€ · 22M€/an</span></div>
+          <div class="drug-dose">15–30 mL/j (1–2 cuillères) · Effet en 24–48h · Goût sucré</div>
+          <div class="drug-watch">Flatulences +++ les 1ers jours (fermentation) → prévenir · OK grossesse · Diabétique : faible impact glycémique</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#fff8e1;"><div class="name" style="color:#f57f17;">Laxatifs de Lest — Fibres thérapeutiques</div><div class="badge" style="background:#f9a825;color:white;">Fond</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Ispaghul · Psyllium · Sterculia<span class="princeps">Spagulax · Transilane · Normacol</span><span class="vol-data">📦 5M boîtes · 4,20€ · 21M€/an</span></div>
+          <div class="drug-dose">1–3 sachets/j · AVEC grand verre d'eau (≥ 200 mL) · Effet en 2–3 jours · Prise à distance des médicaments (2h)</div>
+          <div class="drug-watch">JAMAIS sans eau suffisante (risque occlusion !) · Ballonnements initiaux · ↑ progressivement les doses · Espacer 2h de tout médicament (chélation) · CI sténose digestive</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#ffebee;"><div class="name" style="color:#b71c1c;">Stimulants — Usage PONCTUEL uniquement</div><div class="badge" style="background:#b71c1c;color:white;">Max 8–10 jours</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Bisacodyl<span class="princeps">Dulcolax cp/suppo · Contalax</span><span class="vol-data">📦 8M boîtes · 3,80€ · 30M€/an</span></div>
+          <div class="drug-dose">5–10 mg/j PO le soir (effet le matin) · Suppo : effet 20–60 min · Max 8–10 jours</div>
+          <div class="drug-watch">Douleurs abdominales (coliques) · Dépendance si usage chronique (colon atonique) · Hypokaliémie · CI grossesse (stimule contractions) · CP à enrobage gastro-résistant : ne PAS croquer</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Séné · Bourdaine<span class="princeps">Sénokot · Modane · Tisanes laxatives</span><span class="vol-data">📦 3M boîtes · 4,50€</span></div>
+          <div class="drug-dose">Séné : 1–2 cp le soir · Effet 8–12h · Tisanes = même mécanisme</div>
+          <div class="drug-watch">Anthranoides → mélanose colique si usage prolongé (bénin mais signe d'abus) · Coloration urines brun-rouge = NORMAL · Patients croient que "plante = sans risque" → éduquer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#e0f2f1;"><div class="name" style="color:#004d40;">Laxatifs Rectaux — Évacuation rapide</div><div class="badge" style="background:#00695c;color:white;">Effet 15–60 min</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Glycérine (suppositoires)<span class="princeps">Suppositoires Glycérine · Bébégel</span><span class="vol-data">📦 6M boîtes · 2,50€</span></div>
+          <div class="drug-dose">1 suppo à garder 15–30 min · Effet osmotique local + lubrifiant · OK nourrisson, grossesse</div>
+          <div class="drug-watch">Très bien toléré · Pas d'absorption systémique · 1er choix nourrisson/femme enceinte · Irritation anale si usage fréquent</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Microlax (sorbitol + laurylsulfoacétate)<span class="princeps">Microlax micro-lavement</span><span class="vol-data">📦 4M boîtes · 5,80€</span></div>
+          <div class="drug-dose">1 micro-lavement · Effet 5–20 min · Usage ponctuel · Fécalome si échec PO</div>
+          <div class="drug-watch">Très rapide · OK grossesse · Pas d'usage répété (irritation rectale) · Lubrifier canule</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drug-class">
+      <div class="drug-class-header" style="background:#f3e5f5;"><div class="name" style="color:#4a148c;">Constipation sous Opioïdes</div><div class="badge" style="background:#6a1b9a;color:white;">Systématique J1</div></div>
+      <div class="drug-class-body">
+        <div class="drug-row">
+          <div class="drug-dci">Macrogol systématique dès J1<span class="princeps">Forlax · Movicol</span></div>
+          <div class="drug-dose">1–2 sachets/j DÈS l'initiation de l'opioïde · Ne JAMAIS attendre la constipation</div>
+          <div class="drug-watch">100% des patients sous opioïdes sont constipés · Pas de tolérance (persiste) · Si échec macrogol → ajouter bisacodyl ponctuel</div>
+        </div>
+        <div class="drug-row">
+          <div class="drug-dci">Naloxégol (si échec laxatifs)<span class="princeps">Moventig 25 mg</span><span class="vol-data">📦 Rx · 85€/mois</span></div>
+          <div class="drug-dose">25 mg/j PO · Antagoniste opioïde périphérique (intestin) sans reverser l'analgésie</div>
+          <div class="drug-watch">Rx uniquement · Diarrhée, douleur abdo · CI occlusion · Ne pas écraser · Espacer des opioïdes forts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strategy-bar">
+  <div class="label">Stratégie comptoir</div>
+  <div class="strategy-steps">
+    <div class="strat-step"><div class="num">Base</div><div class="content">RHD : fibres + eau + exercice</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">1ère ligne</div><div class="content">Macrogol (Forlax) quotidien</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Ponctuel</div><div class="content">Bisacodyl max 8–10j</div></div>
+    <div class="strat-arrow">›</div>
+    <div class="strat-step"><div class="num">Sous opioïde</div><div class="content">Macrogol J1 systématique</div></div>
+  </div>
+</div>
+
+<div class="footer-grid">
+  <div>
+    <div class="section-label" style="color:#1b5e20;">3 Réflexes Officine</div>
+    <div class="reflexes-card">
+      <div class="reflex-item"><div class="reflex-num">1</div><div class="reflex-text">Opioïde prescrit sans laxatif ? → Proposer macrogol systématiquement · 100% constipation garantie</div></div>
+      <div class="reflex-item"><div class="reflex-num">2</div><div class="reflex-text">Dulcolax/séné &gt;10j → alerter sur dépendance · Switcher macrogol · "Les plantes laxatives aussi rendent dépendant"</div></div>
+      <div class="reflex-item"><div class="reflex-num">3</div><div class="reflex-text">Constipation récente &gt;50 ans + alternance + perte poids → drapeau rouge cancer colorectal → médecin</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label" style="color:#e65100;">Interactions & Alertes</div>
+    <div class="inter-card">
+      <div class="inter-item"><div class="inter-drug">Laxatifs stimulants + Diurétiques</div><div class="inter-effect">Hypokaliémie additive → risque arythmie · Surveiller K+</div></div>
+      <div class="inter-item"><div class="inter-drug">Laxatifs stimulants + Digoxine</div><div class="inter-effect">Hypokaliémie → toxicité digoxine → arythmie · CI prolongée</div></div>
+      <div class="inter-item"><div class="inter-drug">Fibres/lest + TOUS médicaments</div><div class="inter-effect">Chélation → ↓ absorption · Espacer ≥ 2h systématiquement</div></div>
+      <div class="inter-item"><div class="inter-drug">Huile de paraffine + Vitamines liposolubles</div><div class="inter-effect">↓ absorption ADEK · Pneumopathie lipidique si fausse route (sujet âgé = CI relative)</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">Ce que dit le patient 🗣</div>
+    <div class="patient-card">
+      <div class="patient-item"><div class="speech-bubble">"Je prends du Dulcolax tous les jours"</div><div class="speech-hide">Usage chronique stimulants → colon atonique + hypokaliémie · Sevrage = constipation rebond temporaire</div><div class="speech-resp">Dépendance → switcher macrogol progressivement · RHD · Sevrage bisacodyl sur 2–4 semaines</div></div>
+      <div class="patient-item"><div class="speech-bubble">"J'ai commencé la morphine et je suis bloqué"</div><div class="speech-hide">Constipation opioïde = 100% · Pas de tolérance (ne s'améliore jamais) · Laxatif dès J1 obligatoire</div><div class="speech-resp">Macrogol 2 sachets/j · Si insuffisant : ajouter bisacodyl ponctuel · Naloxégol si échec (Rx)</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Les tisanes laxatives c'est naturel, c'est sans risque"</div><div class="speech-hide">Séné, bourdaine, cascara = anthranoides = laxatifs stimulants = mêmes risques que bisacodyl · "Naturel ≠ inoffensif"</div><div class="speech-resp">Même mécanisme que Dulcolax → usage ponctuel uniquement · Macrogol pour le fond</div></div>
+      <div class="patient-item"><div class="speech-bubble">"Mon bébé est constipé, que faire ?"</div><div class="speech-hide">Nourrisson &lt;6 mois : rythme variable est normal · &gt;6 mois : eau + fibres alimentaires d'abord · Suppositoire glycérine si besoin ponctuel</div><div class="speech-resp">Glycérine en suppo si besoin · Jamais de stimulants · Eau entre les repas · Si persistant → pédiatre</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-strip">
+  <span>Constipation · Macrogol · Bisacodyl · Opioïdes · Laxatifs · Rome IV · 2026</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Pratique comptoir · 80/20</span>
+</div>
+</body>
+</html>

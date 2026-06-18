@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Interactions Fréquentes au Comptoir — SantéVeille Officine</title>
+<style>
+  :root{--c1:#880e4f;--c2:#ad1457;--c3:#c2185b;--cl:#f8bbd0;--cm:#fce4ec;
+    --gr:#1b5e20;--bl:#0d47a1;--or:#e65100;--re:#b71c1c;--am:#f57f17;}
+  @page{size:A4 portrait;margin:7mm;}
+  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
+    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+  .hdr{background:linear-gradient(135deg,#880e4f,#ad1457 45%,#c2185b 80%,#e91e63);
+    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
+    display:flex;justify-content:space-between;align-items:center;}
+  .hdr h1{font-size:15px;font-weight:700;}
+  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
+  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+  .sev-strip{display:flex;gap:3px;margin-bottom:5px;}
+  .sev{flex:1;border-radius:3px;padding:4px 6px;color:white;text-align:center;
+    font-weight:700;font-size:7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
+  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
+  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
+    display:flex;align-items:center;gap:4px;background:var(--c1);}
+  .ch.re{background:#b71c1c;} .ch.or{background:#e65100;}
+  .ch.bl{background:#0d47a1;} .ch.gr{background:#1b5e20;}
+  .ch.dark{background:#37474f;}
+  .cb{padding:5px 7px;background:white;}
+  .inter{display:grid;grid-template-columns:auto 1fr auto;gap:4px;
+    align-items:center;padding:3px 0;border-bottom:1px solid #f8bbd0;font-size:7.5px;}
+  .inter:last-of-type{border-bottom:none;}
+  .drugs{font-weight:700;color:var(--c1);font-size:8px;}
+  .effect{color:#333;font-size:7px;}
+  .severity{font-size:6.5px;border-radius:3px;padding:1px 5px;
+    white-space:nowrap;font-weight:700;}
+  .sev-danger{background:#b71c1c;color:white;}
+  .sev-high{background:#e65100;color:white;}
+  .sev-mod{background:#f57f17;color:white;}
+  .sev-low{background:#ffd54f;color:#333;}
+  .meca{font-size:6.5px;color:#666;font-style:italic;display:block;
+    padding-left:4px;border-left:2px solid var(--cl);margin:1px 0 2px 2px;}
+  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
+    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
+  .warn strong{color:#bf360c;}
+  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
+    margin-top:3px;font-size:7px;color:var(--c1);}
+  .alim-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:5px;}
+  .alim-box{background:white;border:1.5px solid var(--cl);border-radius:4px;
+    padding:4px 6px;font-size:7px;}
+  .alim-box h4{font-size:8px;font-weight:700;color:var(--c1);margin-bottom:3px;}
+  .alim-item{padding:1px 0;border-bottom:1px dotted #f8bbd0;font-size:7px;}
+  .alim-item:last-child{border-bottom:none;}
+  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
+    padding:5px 8px;margin-bottom:5px;}
+  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
+    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
+  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
+    border-left:3px solid var(--c2);}
+  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
+  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
+    padding-top:3px;border-top:1px solid #ddd;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div><h1>⚡ Interactions Majeures au Comptoir — Top 15 Quotidien</h1>
+    <div class="sub">Classées par sévérité · Mécanisme · Conduite à tenir · Aliments/Plantes</div></div>
+  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
+</div>
+<div class="sev-strip">
+  <div class="sev" style="background:#b71c1c;">🔴 DANGER — CI quasi-absolue ou risque vital</div>
+  <div class="sev" style="background:#e65100;">🟠 ÉLEVÉ — Surveillance renforcée / ajustement dose</div>
+  <div class="sev" style="background:#f57f17;">🟡 MODÉRÉ — Espacer les prises / surveiller</div>
+  <div class="sev" style="background:#37474f;">⚫ À CONNAÎTRE — Fréquent, impact clinique variable</div>
+</div>
+<div class="grid2">
+  <!-- DANGER -->
+  <div class="card">
+    <div class="ch re">🔴 INTERACTIONS DANGEREUSES — Risque vital</div>
+    <div class="cb">
+      <div class="inter">
+        <span class="drugs">BZD + Opioïdes</span>
+        <span class="effect">Dépression respiratoire additive → mort<br><span class="meca">Black Box FDA 2016 · Très fréquent (tramadol + Xanax)</span></span>
+        <span class="severity sev-danger">DANGER</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">ISRS + Tramadol / Triptans / IMAOs</span>
+        <span class="effect">Syndrome sérotoninergique (agitation, hyperthermie, clonus)<br><span class="meca">CI absolue IMAO. Tramadol+ISRS → surveiller signes</span></span>
+        <span class="severity sev-danger">DANGER</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">AVK + AINS</span>
+        <span class="effect">↑ risque hémorragique (digestif ++) par ↑ INR + lésion muqueuse<br><span class="meca">CI quasi-absolue. Si indispensable → paracétamol</span></span>
+        <span class="severity sev-danger">DANGER</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Méthotrexate + AINS / Aspirine</span>
+        <span class="effect">↑ toxicité MTX (hématologique, rénale, digestive)<br><span class="meca">↓ élimination rénale MTX · CI en traitement rhumatismal</span></span>
+        <span class="severity sev-danger">DANGER</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Antipsychotiques + Médicaments QT (macrolides, fluoroquinolones, antiH2)</span>
+        <span class="effect">Allongement QT → Torsades de pointes → mort subite<br><span class="meca">Surtout rispéridone, halopéridol, tiapride + azithromycine</span></span>
+        <span class="severity sev-danger">DANGER</span>
+      </div>
+      <div class="warn">⚠ Devant une ordonnance opioïde + BZD : alerter systématiquement le prescripteur. Dispensation possible mais traçabilité et conseil obligatoires.</div>
+    </div>
+  </div>
+  <!-- ÉLEVÉ -->
+  <div class="card">
+    <div class="ch or">🟠 INTERACTIONS ÉLEVÉES — Surveillance renforcée</div>
+    <div class="cb">
+      <div class="inter">
+        <span class="drugs">Triplet : IEC + AINS + Diurétique</span>
+        <span class="effect">IRA (insuffisance rénale aiguë) · surtout PA déshydratée<br><span class="meca">↓ perfusion rénale synergique · très fréquent en été</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Potassium + IEC/Sartan + AINS</span>
+        <span class="effect">Hyperkaliémie grave (risque arrêt cardiaque)<br><span class="meca">IEC = ↓ aldostérone → ↑ K+ · AINS réduit excrétion rénale K+</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Lithium + AINS / Diurétiques thiazidiques</span>
+        <span class="effect">↑ lithiémie → toxicité (tremblements, confusion, IRA)<br><span class="meca">↓ élimination rénale lithium · Surveillance lithiémie obligatoire</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Digoxine + Hypokaliémiants</span>
+        <span class="effect">Toxicité digitale (nausées, bradycardie, troubles visuels)<br><span class="meca">↓ K+ → ↑ sensibilité digoxine · Thiazidiques, amphotéricine B</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Contraceptifs oraux + Inducteurs enzymatiques</span>
+        <span class="effect">↓ efficacité contraceptive → grossesse non désirée<br><span class="meca">Rifampicine, carbamazépine, phénytoïne, millepertuis</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="tip">💡 Triplet IEC+AINS+Diurétique : rappeler systématiquement d'arrêter l'AINS dès forte chaleur ou gastro (déshydratation → risque IRA ×5).</div>
+    </div>
+  </div>
+  <!-- PHARMACOCINÉTIQUES -->
+  <div class="card">
+    <div class="ch bl">🟡 INTERACTIONS PHARMACOCINÉTIQUES — Fréquentes</div>
+    <div class="cb">
+      <div class="inter">
+        <span class="drugs">Statines (simva/atorva) + Pamplemousse</span>
+        <span class="effect">↑ Cmax statines × 2–10 → myopathie, rhabdomyolyse<br><span class="meca">Inhibition CYP3A4 intestinal · Durable 24h après 1 verre</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Lévothyrox + Calcium / Fer / IPP / Antiacides</span>
+        <span class="effect">↓ absorption lévothyrox → hypothyroïdie non contrôlée<br><span class="meca">Chélation · Séparer de 2h minimum (4h pour fer)</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Clopidogrel + Oméprazole</span>
+        <span class="effect">↓ efficacité antiaggrégant → risque thrombose coronaire<br><span class="meca">Oméprazole inhibe CYP2C19 (activation clopidogrel). Préférer pantoprazole</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Fluoroquinolones + Antiacides / Fer / Calcium</span>
+        <span class="effect">↓ absorption antibiotique 50–90% → échec thérapeutique<br><span class="meca">Chélation divalents. Séparer de 2h avant ou 4h après l'ATB</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">AVK + Antibiotiques (macrolides, métronidazole, FQ)</span>
+        <span class="effect">↑ INR → risque hémorragique<br><span class="meca">Inhibition CYP2C9 + modification flore intestinale (↓ vit K)</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Metformine + Contraste iodé</span>
+        <span class="effect">Acidose lactique (rare mais grave)<br><span class="meca">Arrêter metformine 48h avant et reprendre 48h après si fonction rénale stable</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+    </div>
+  </div>
+  <!-- À CONNAÎTRE + GROSSESSE -->
+  <div class="card">
+    <div class="ch dark">⚫ À CONNAÎTRE — Comptoir Quotidien</div>
+    <div class="cb">
+      <div class="inter">
+        <span class="drugs">AINS + Grossesse T3</span>
+        <span class="effect">Fermeture prématurée canal artériel → CI absolue après 24 SA<br><span class="meca">Ibuprofène, naproxène, diclofénac. Seul paracétamol autorisé.</span></span>
+        <span class="severity sev-danger">DANGER</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Aspirine faible dose + AINS classiques</span>
+        <span class="effect">↑ risque hémorragique · AINS annule cardioprotection aspirine<br><span class="meca">Compétition même site COX · ibuprofène pris avant aspirine = problème</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">IPP au long cours + Magnésium / B12 / Fer</span>
+        <span class="effect">↓ absorption → carences chroniques (hypoMg, anémie B12)<br><span class="meca">Acidité gastrique nécessaire à l'absorption. Supplémenter si &gt; 1 an d'IPP.</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Tramadol + Antidépresseurs ISRS/IRSN</span>
+        <span class="effect">Abaissement seuil épileptique + risque sérotoninergique<br><span class="meca">Tramadol → inhibition recapture sérotonine. Très fréquent + sous-estimé.</span></span>
+        <span class="severity sev-high">ÉLEVÉ</span>
+      </div>
+      <div class="inter">
+        <span class="drugs">Statin + Fibrates (fénofibrate)</span>
+        <span class="effect">↑ risque myopathie / rhabdomyolyse<br><span class="meca">Association déconseillée sauf gemfibrozil (CI absolue avec statines)</span></span>
+        <span class="severity sev-mod">MODÉRÉ</span>
+      </div>
+      <div class="warn">⚠ <strong>Vérifier systématiquement</strong> si ordonnance contient : AVK · MTX · lithium · BZD + opioïdes · ISRS + tramadol. Ces 5 associations = alertes automatiques.</div>
+    </div>
+  </div>
+</div>
+<!-- ALIMENTS + PLANTES -->
+<div class="alim-grid">
+  <div class="alim-box">
+    <h4>🍊 PAMPLEMOUSSE — Inhibiteur CYP3A4</h4>
+    <div class="alim-item"><strong>Statines :</strong> simvastatine ×10 · atorvastatine ×4 (rosuvastatine épargnée)</div>
+    <div class="alim-item"><strong>BZD :</strong> triazolam, midazolam (pas diazépam)</div>
+    <div class="alim-item"><strong>Immunosuppresseurs :</strong> ciclosporine, tacrolimus → toxicité</div>
+    <div class="alim-item"><strong>Amlodipine :</strong> ↑ hypotension. Buspirone : ↑ sédation</div>
+    <div class="alim-item" style="color:#b71c1c;font-weight:600;">⚠ 1 verre = 24h d'inhibition. Persiste 3j si consommation régulière.</div>
+  </div>
+  <div class="alim-box">
+    <h4>🌿 MILLEPERTUIS — Inducteur CYP3A4 + P-gp</h4>
+    <div class="alim-item"><strong>Pilule contraceptive :</strong> grossesse non désirée</div>
+    <div class="alim-item"><strong>AVK :</strong> ↓ INR → thrombose</div>
+    <div class="alim-item"><strong>Antiviraux VIH :</strong> ↓ efficacité → résistance</div>
+    <div class="alim-item"><strong>Ciclosporine, digoxine, triptans :</strong> ↓ taux plasmatique</div>
+    <div class="alim-item" style="color:#b71c1c;font-weight:600;">⚠ "Naturel ≠ sans risque" — toujours demander phytothérapie/compléments</div>
+  </div>
+  <div class="alim-box">
+    <h4>🍺 ALCOOL — Interactions multiples</h4>
+    <div class="alim-item"><strong>Métronidazole / Tinidazole :</strong> Effet antabuse (flush, tachycardie)</div>
+    <div class="alim-item"><strong>BZD + Opioïdes + Z-drugs :</strong> dépression SNC additive</div>
+    <div class="alim-item"><strong>Paracétamol &gt; 2g/j + alcool :</strong> hépatotoxicité (CYP2E1)</div>
+    <div class="alim-item"><strong>Insuline / sulfamides :</strong> hypoglycémie masquée</div>
+    <div class="alim-item"><strong>Anticoagulants :</strong> alcool aigu ↑ INR · chronique ↓ INR</div>
+  </div>
+</div>
+<div class="rfx">
+  <h3>⚡ 3 Réflexes Interactions — Au Comptoir</h3>
+  <div class="rfxg">
+    <div class="ri"><strong>🔴 BZD + Opioïde → Alerte systématique</strong>
+      Dès qu'une ordonnance contient BZD + tramadol/codéine/morphine/oxycodone : alerter, conseiller, tracer. Association possible mais risque réel. Insister sur conduite (pas d'alcool, surveiller somnolence).</div>
+    <div class="ri"><strong>🟡 Clopidogrel + IPP → Pantoprazole</strong>
+      Si patient sous Plavix + besoin d'IPP : Inexium/Oméprazole déconseillés (CYP2C19). Pantoprazole (Inipomp) ou ésoméprazole préférés. Signaler au prescripteur si changement nécessaire.</div>
+    <div class="ri"><strong>🌿 Toujours demander les compléments</strong>
+      Millepertuis, pamplemousse, ail fort, ginko : interactions réelles. Question systématique : "Prenez-vous des compléments alimentaires ou produits de phytothérapie ?" avant toute dispensation d'AVK, pilule, immunosuppresseur.</div>
+  </div>
+</div>
+<div class="footer">SantéVeille Officine · Interactions Majeures · Thériaque.org / Vidal.fr pour vérifications · 2026</div>
+</body></html>
