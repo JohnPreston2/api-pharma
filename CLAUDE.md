@@ -11,7 +11,7 @@ Pharmacien en reconversion vers l'IA. Il a repris le métier après **5 ans d'ab
 ## Contenu du dépôt
 - `fiches/` : 20 fiches Markdown de pathologies + `INDEX.md`.
 - `posters/` : posters HTML A4 imprimables (Ctrl+P, A4, couleurs activées). **L'inventaire est généré dans `posters/INDEX.md`** : ne pas recopier de compteurs ici.
-- `docs/` : `REVUE_CONTENU.md` (points à valider par le pharmacien), `veille_reglementaire_2026.md`.
+- `docs/` : `RECHERCHE_2026-10.md` (synthèse de la recherche sur les données, les LLM et le cadre juridique), `REVUE_CONTENU.md` (points à valider par le pharmacien), `veille_reglementaire_2026.md`.
 - `tools/posters.py` : contrôle de fraîcheur, index, métadonnées. `tools/legacy/` : scripts obsolètes, **ne pas exécuter**.
 - **Le code de l'application Flask décrite dans le README (app.py, RAG, clients API, index de 15 000 médicaments) n'est pas dans ce dépôt** : il est sur le poste de l'utilisateur. Ne pas supposer qu'il existe ici (le dépôt ne contient ni FastAPI, ni `rag/`, ni `data/`).
 
@@ -27,7 +27,7 @@ Pharmacien en reconversion vers l'IA. Il a repris le métier après **5 ans d'ab
 - Données open-medic : privilégier l'exactitude ; 2022-2024 dans l'index existant, 2025 publié (fichiers corrigés après le 10/07/2026).
 
 ## Prochaines étapes
-1. **Synthèse de la recherche poussée d'octobre 2026** (accès aux données du LGO, open data médicament et santé, épidémiologie et environnement, état de l'art LLM, cadre réglementaire IA et données de santé, outils existants, économie de l'officine) : à consigner dans `docs/` une fois recoupée.
+1. **Recherche poussée d'octobre 2026 faite** : synthèse dans `docs/RECHERCHE_2026-10.md` (verdict §1, feuille de route §9, trous à combler §10). Les recherches ont été partielles (quota de recherches web atteint) et aucun texte officiel n'a été relu : tout est à recouper.
 2. Importer le code de l'application dans le dépôt, puis audit technique.
 3. Définir comment les données de l'officine sortent du LGO (exports, API, partenaires) en restant dans le cadre juridique.
 4. Valider les posters P1 listés dans `docs/REVUE_CONTENU.md`.
