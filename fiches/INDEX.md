@@ -44,13 +44,9 @@
 
 ---
 
-## Posters spéciaux
+## Posters transversaux et saisonniers
 
-| Poster | Description |
-|--------|-------------|
-| [🖨 comptoir_ete_poster.html](../posters/comptoir_ete_poster.html) | Guide été · 9 situations saisonnières |
-| [🖨 reprise_comptoir_poster.html](../posters/reprise_comptoir_poster.html) | Reprise après 5 ans · 8 situations difficiles scriptées |
-| [🖨 quiz_revision_poster.html](../posters/quiz_revision_poster.html) | Quiz révision · 30 questions · 3 niveaux |
+Guide hiver, guide été, biosimilaires, GLP-1, vaccinations, interactions, pédiatrie, quiz de révision, etc. : voir l'inventaire généré [`../posters/INDEX.md`](../posters/INDEX.md) (avec la date de mise à jour et les sources de chaque poster).
 
 ---
 

@@ -1,110 +1,37 @@
 # api-pharma — Contexte de session
 
+## But du projet (formulé par l'utilisateur, octobre 2026)
+Constat de terrain : **les pharmaciens n'ont pas accès aux données de santé de leur propre officine**, car tout est géré par le LGO (logiciel de gestion d'officine). L'utilisateur travaille sur **Winpharma**. D'où l'idée : regarder ce qui est disponible côté **données et API publiques** pour se construire un **outil maison**, puis y brancher les données de l'officine.
+
+Le projet a été conçu en avril 2026. En octobre 2026 il veut le relancer : les LLM ont beaucoup progressé et les données de santé ont évolué ; il craint d'être passé à côté de sujets (voir « Prochaines étapes »).
+
 ## Qui est l'utilisateur
-Pharmacien qui a repris son officine après **5 ans d'absence**.
-Objectif : se remettre à niveau rapidement sur les pathologies chroniques les plus dispensées.
-Approche : 80/20 — 20 pathologies qui représentent ~85% des prescriptions chroniques.
+Pharmacien en reconversion vers l'IA. Il a repris le métier après **5 ans d'absence** : le kit de fiches et de posters sert aussi à se remettre à niveau sur les pathologies chroniques (stratégie 80/20). Il valide lui-même le contenu clinique.
 
----
+## Contenu du dépôt
+- `fiches/` : 20 fiches Markdown de pathologies + `INDEX.md`.
+- `posters/` : posters HTML A4 imprimables (Ctrl+P, A4, couleurs activées). **L'inventaire est généré dans `posters/INDEX.md`** : ne pas recopier de compteurs ici.
+- `docs/` : `REVUE_CONTENU.md` (points à valider par le pharmacien), `veille_reglementaire_2026.md`.
+- `tools/posters.py` : contrôle de fraîcheur, index, métadonnées. `tools/legacy/` : scripts obsolètes, **ne pas exécuter**.
+- **Le code de l'application Flask décrite dans le README (app.py, RAG, clients API, index de 15 000 médicaments) n'est pas dans ce dépôt** : il est sur le poste de l'utilisateur. Ne pas supposer qu'il existe ici (le dépôt ne contient ni FastAPI, ni `rag/`, ni `data/`).
 
-## Ce qui a été construit (branche `claude/pharma-api-analysis-NqHvg`)
+## Conventions
+- Langue : **français** pour tout le contenu médical et pharmaceutique.
+- Format posters : A4 portrait, `@media print { -webkit-print-color-adjust: exact; }`, noms de fichiers **ASCII** (pas d'accents).
+- **Traçabilité obligatoire** : chaque poster porte dans `<head>` `sv:volatilite` (haute 90 j, moyenne 180 j, basse 365 j), `sv:maj`, `sv:sources`, et `sv:valide` seulement après relecture par le pharmacien. Poser les balises avec `python3 tools/posters.py meta`.
+- Avant chaque commit touchant `posters/` ou `fiches/` : `python3 tools/posters.py check`, puis `python3 tools/posters.py index`.
+- Les HTML de `posters/` sont la source de vérité (les scripts de génération sont périmés : 7 posters sur 10 ont divergé après les audits manuels).
+- Ne jamais présenter un chiffre ou une règle réglementaire sans source et date. Une information issue d'une seule source ou contradictoire reçoit un encadré « À VÉRIF. » et une ligne dans `docs/REVUE_CONTENU.md`.
+- Les recherches web déléguées à des sous-agents sont des **pistes à recouper**, pas des faits : aucun texte du JO n'a été relu.
+- Le contrôle de rendu (nombre de pages A4, absence de débordement) se fait avec Chromium/Playwright ; il n'est pas versionné.
+- Données open-medic : privilégier l'exactitude ; 2022-2024 dans l'index existant, 2025 publié (fichiers corrigés après le 10/07/2026).
 
-### Fiches Markdown — `fiches/`
-**20 fiches** de référence (physiopatho · diagnostic · classes thérapeutiques · interactions · réflexes · vocabulaire patient) :
+## Prochaines étapes
+1. **Synthèse de la recherche poussée d'octobre 2026** (accès aux données du LGO, open data médicament et santé, épidémiologie et environnement, état de l'art LLM, cadre réglementaire IA et données de santé, outils existants, économie de l'officine) : à consigner dans `docs/` une fois recoupée.
+2. Importer le code de l'application dans le dépôt, puis audit technique.
+3. Définir comment les données de l'officine sortent du LGO (exports, API, partenaires) en restant dans le cadre juridique.
+4. Valider les posters P1 listés dans `docs/REVUE_CONTENU.md`.
 
-**Session 1 (fiches 01-10) :**
-- `01_HTA.md` · `02_diabete_type2.md` · `03_dyslipidémie.md` · `04_douleur_paliers_OMS.md`
-- `05_asthme_BPCO.md` · `06_depression_anxiete_insomnie.md` · `07_hypothyroidie.md`
-- `08_RGO_ulcere_IPP.md` · `09_anticoagulation_AVK_NACO.md` · `10_insuffisance_cardiaque.md`
-
-**Session 2 (fiches 11-20) :**
-- `11_osteoporose.md` · `12_allergie_rhinite.md` · `13_contraception.md` · `14_prostate_HBP.md`
-- `15_migraine.md` · `16_eczema_DA.md` · `17_polyarthrite_rhumato.md` · `18_addictologie.md`
-- `19_menopause.md` · `20_goutte.md`
-
-- `INDEX.md` (mis à jour avec toutes les 20 fiches + liens posters)
-
-Enrichissements inclus : **DCI + Princeps** (noms de marque) + **volumes open-medic 2023** (boîtes/prix/CA).
-
-### Posters HTML A4 — `posters/`
-Prêts à imprimer (`Ctrl+P → A4 · couleurs activées`). **36 fichiers** :
-
-| Fichier | Couleur | Contenu |
-|---|---|---|
-| `HTA_poster.html` | Crimson/rouge | HTA |
-| `diabete_type2_poster.html` | Bleu-teal | Diabète T2 |
-| `dyslipidémie_poster.html` | Violet-orange | Dyslipidémie |
-| `douleur_poster.html` | Violet | Douleur paliers OMS |
-| `asthme_BPCO_poster.html` | Bleu ciel | Asthme/BPCO |
-| `depression_anxiete_poster.html` | Indigo | Dépression/Anxiété/Insomnie |
-| `hypothyroidie_poster.html` | Teal | Hypothyroïdie |
-| `RGO_IPP_poster.html` | Orange brûlé | RGO/IPP |
-| `anticoagulation_poster.html` | Bordeaux | AVK/NACO |
-| `insuffisance_cardiaque_poster.html` | Rouge sombre | Insuffisance cardiaque |
-| `osteoporose_poster.html` | Bleu acier | Ostéoporose · Bisphosphonates · Dénosumab |
-| `allergie_rhinite_poster.html` | Vert forêt | Allergie · AH2G · Corticoïdes nasaux · ITA |
-| `contraception_poster.html` | Rose/framboise | Contraception · EP · CU · DIU |
-| `prostate_HBP_poster.html` | Bleu marine | HBP · α-bloquants · I5AR · Tadalafil |
-| `migraine_poster.html` | Violet profond | Migraine · Triptans · Anti-CGRP · Rimégépant |
-| `eczema_DA_poster.html` | Orange ambré | Eczéma/DA · DC · Dupilumab · JAK-i |
-| `polyarthrite_rhumato_poster.html` | Gris ardoise | PR · MTX · Anti-TNF · JAK-i |
-| `addictologie_poster.html` | Vert sombre | Tabac · Alcool · Opioïdes · BHD |
-| `menopause_poster.html` | Mauve/rose | Ménopause · THS · Estradiol · Utrogestan |
-| `goutte_poster.html` | Bordeaux chaud | Goutte · Allopurinol · Colchicine |
-| `comptoir_ete_poster.html` | Orange soleil | 9 situations été |
-| `reprise_comptoir_poster.html` | Indigo | Guide reprise après 5 ans |
-| `quiz_revision_poster.html` | Multi-couleurs | 30 questions · 3 niveaux · 10 pathologies |
-| `quiz_revision_poster_2.html` | Rose/pink | 30 questions · 3 niveaux · pathologies 11-20 |
-| `soins_postop_cicatrisation_poster.html` | Teal/vert | Soins post-op · 4 phases cicatrisation · crèmes |
-| `conseil_bienetre_poster.html` | Vert teal | Compléments alimentaires · Probiotiques · Oméga-3 · Nicorette |
-| `huiles_essentielles_poster.html` | Vert forêt | HE LCA · Safety banner · 6 indications · Dilution · HV |
-| `arko_phytotherapie_poster.html` | Teal sombre | 8 gammes Arko · ⚠️ Levure riz rouge CI statines · Griffonia/ISRS |
-| `hollis_femme_poster.html` | Rose/magenta | Lifecycle féminin · Grossesse · Fer bis. · Folates 5-MTHF · Vit D bébé |
-| `glp1_obesite_poster.html` | Bleu électrique | GLP-1/GIP 2026 · Ozempic/Wegovy/Mounjaro · Pénurie · SE · CI |
-| `urgences_comptoir_poster.html` | Rouge | 6 protocoles urgence · Adrénaline · AVC FAST · Nalscue · Glucagen |
-| `vaccinations_officine_poster.html` | Violet | 10 vaccins officine 2024-2026 · Protocol 9 étapes · CI · Anaphylaxie |
-| `interactions_frequentes_poster.html` | Magenta/rose | Top 15 interactions · DANGER/ÉLEVÉ/MODÉRÉ · Aliments/plantes |
-| `stupefiants_risques_poster.html` | Gris acier | Ordo sécurisées · BZD règles · Prégabaline stupéfiant 2021 · BHD |
-| `pediatrie_poster.html` | Orange | CI par âge · Doses poids · Otite/Rhino/Gastro · Vaccins 2024 |
-| `polypharmacie_PA_poster.html` | Gris bleu acier | Chutes · STOPP/START · Cascade médicamenteuse · BPM · Cockroft |
-
-**Chaque poster pathologie contient :**
-- DCI + Princeps + `📦 volume open-medic 2023`
-- Barre violette `🆕 Nouveauté` (ce qui a changé 2020–2026)
-- Section patient enrichie avec `↳ Ce que ça cache` (rouge) + réponse scriptée
-- Stratégie thérapeutique · Interactions · 3 réflexes officine
-
----
-
-## Stack technique du repo
-```
-api-pharma/
-├── app.py              # FastAPI — endpoints /query, /drugs, /interactions
-├── rag/                # ChromaDB + Ollama (Qwen 4B) — RAG pharmaceutique
-├── data/               # BDPM JSON + open-medic CSV
-├── fiches/             # 20 fiches Markdown pathologies + INDEX.md
-└── posters/            # 36 HTML A4 posters
-```
-
-**RAG non encore déployé** (données sur le PC de l'utilisateur, pas dans le repo).
-Prochaine étape possible : brancher le RAG sur les fiches/BDPM pour Q&A en langage naturel au comptoir.
-
----
-
-## Conventions de travail
-- Branche active : `claude/pharma-api-analysis-NqHvg`
-- Langue : **français** pour tout le contenu médical/pharmaceutique
-- Format posters : A4 portrait, `@media print { -webkit-print-color-adjust: exact; }`
-- Données open-medic : approximations publiques 2022-2023 (accuracy prioritaire)
-- Push systématique après chaque session de travail
-
----
-
-## Idées de suite (non démarrées)
-1. **RAG au comptoir** — brancher ChromaDB+Ollama sur les fiches pour Q&A naturel
-2. **Poster hiver** — équivalent du `comptoir_ete_poster.html` pour nov–jan (bronchiolite, grippe, gastro enfant)
-3. **Interactions checker** — UI simple pour entrer une liste de médicaments et voir les CI
-4. **Poster Tier 3 supplémentaires** — IRC, glaucome, épilepsie, arthrose
-5. **Situations difficiles au comptoir** — refus d'ordonnance, erreur médicamenteuse, patient agressif
-6. **Biosimilaires substituables** — liste en vigueur, règles de substitution
-7. **Mise à jour quiz** — intégrer pathologies 11-20 + sujets transverses dans le quiz révision
+## Idées déjà réalisées / restantes
+- Fait : poster hiver, règles de substitution des biosimilaires, refonte du poster GLP-1 (remboursement de juin 2026), correction TROD angine.
+- Restant : poster « situations difficiles au comptoir », poster Tier 3 supplémentaires (IRC, glaucome, arthrose), interactions checker (désormais fondé sur les RCP, le Thésaurus ANSM étant gelé), RAG au comptoir sur fiches et RCP.
