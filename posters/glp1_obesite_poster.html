@@ -2,416 +2,347 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="sv:sources" content="Vidal (prise en charge Wegovy/Mounjaro 15/06/2026) ; Caducée (généralistes écartés de la 1re prescription) ; Quotidien du Pharmacien (IMC de référence) ; La Revue du Praticien (prix Mounjaro) ; AFP/Sud Radio (prix Wegovy) ; HAS (réévaluation Wegovy, avis Ozempic) ; Service-public (prescription hors remboursement). Arrêtés JO non relus ; page 2 (efficacité, orlistat, chirurgie) conservée de la version précédente, non revérifiée.">
+<meta name="sv:maj" content="2026-10-20">
 <meta name="sv:volatilite" content="haute">
-<title>GLP-1 / Ozempic / Mounjaro — SantéVeille Officine</title>
+<title>GLP-1 et obésité — Wegovy, Mounjaro, Ozempic — Officine 2026</title>
 <style>
-  :root{
-    --c1:#01579b;--c2:#0277bd;--c3:#0288d1;--cl:#b3e5fc;--cm:#e1f5fe;
-    --or:#e65100;--re:#b71c1c;--gr:#1b5e20;--pu:#4a148c;--am:#f57f17;
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #01579b; --c2: #0277bd; --c3: #29b6f6; --cl: #e1f5fe;
+    --grn: #1b5e20; --grn2: #2e7d32; --grn-l: #e8f5e9;
+    --red: #b71c1c; --red-l: #ffebee;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --teal: #004d40; --teal2: #00695c; --teal-l: #e0f2f1;
+    --pur: #4a148c; --pur-l: #f3e5f5;
+    --pink: #880e4f; --pink-l: #fce4ec;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
   }
-  @page{size:A4 portrait;margin:7mm;}
-  @media print{-webkit-print-color-adjust:exact;print-color-adjust:exact;body{margin:0;}}
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Segoe UI',Arial,sans-serif;font-size:7.5px;color:#1a1a1a;
-    width:210mm;min-height:297mm;padding:6mm;background:var(--cm);}
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; margin: 0 auto; background: #fff; font-size: 7.9pt; color: #1a1a2e; line-height: 1.3; }
+  .page { width: 210mm; height: 296.5mm; overflow: hidden; display: flex; flex-direction: column; }
+  .page + .page { page-break-before: always; break-before: page; }
+  .grow { flex: 1; }
 
-  .hdr{background:linear-gradient(135deg,#01579b,#0277bd 45%,#0288d1 80%,#29b6f6);
-    color:white;padding:8px 14px;border-radius:7px;margin-bottom:5px;
-    display:flex;justify-content:space-between;align-items:center;}
-  .hdr h1{font-size:15px;font-weight:700;}
-  .hdr .sub{font-size:8px;opacity:.9;margin-top:2px;}
-  .hdr .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
-    border-radius:4px;padding:4px 10px;font-size:7.5px;text-align:center;}
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%); padding: 6mm 8mm 4.5mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -12mm; top: -12mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.07); }
+  .header h1 { font-size: 19pt; font-weight: 900; color: #fff; line-height: 1.05; }
+  .header .sub { font-size: 8.4pt; color: rgba(255,255,255,0.82); margin-top: 1.5mm; letter-spacing: 1px; text-transform: uppercase; }
+  .pills { display: flex; gap: 3mm; }
+  .pill { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 7px; padding: 2.3mm 3.3mm; text-align: center; }
+  .pill .val { font-size: 11pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 5.8pt; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 0.8mm; display: block; }
 
-  /* MÉCANISME STRIP */
-  .meca{display:flex;gap:0;margin-bottom:5px;border-radius:5px;overflow:hidden;}
-  .ms{flex:1;padding:5px 4px;text-align:center;font-size:6.5px;font-weight:700;
-    color:white;line-height:1.4;position:relative;}
-  .ms::after{content:'→';position:absolute;right:-5px;top:50%;transform:translateY(-50%);
-    font-size:10px;z-index:1;color:white;}
-  .ms:last-child::after{display:none;}
+  .alert-strip { background: var(--amber-l); border-bottom: 2px solid var(--amber); padding: 1.8mm 8mm; display: flex; gap: 3mm; align-items: flex-start; }
+  .alert-title { font-size: 6.6pt; font-weight: 800; color: var(--amber); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 0.4mm; }
+  .alert-body { font-size: 6.9pt; color: #5d2a00; line-height: 1.4; }
 
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:5px;}
-  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:5px;}
+  .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; padding: 2.5mm 8mm 2mm; }
+  .main-grid.two { grid-template-columns: 1fr 1fr; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; display: flex; flex-direction: column; }
+  .card.span2 { grid-column: span 2; }
+  .card.span3 { grid-column: span 3; }
+  .card-body.cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2mm 3mm; align-content: start; }
+  .card-head { padding: 1.8mm 2.5mm; display: flex; align-items: center; gap: 1.5mm; background: linear-gradient(90deg, var(--c1), var(--c3)); }
+  .card-icon { font-size: 10.5pt; line-height: 1; flex-shrink: 0; }
+  .card-title { font-size: 8.2pt; font-weight: 800; color: #fff; flex: 1; line-height: 1.1; }
+  .card-body { padding: 1.8mm 2.3mm; flex: 1; display: flex; flex-direction: column; gap: 1.2mm; }
+  .t-grn .card-head { background: linear-gradient(90deg, #1b5e20, #43a047); }
+  .t-red .card-head { background: linear-gradient(90deg, #b71c1c, #ef5350); }
+  .t-teal .card-head { background: linear-gradient(90deg, #004d40, #26a69a); }
+  .t-amb .card-head { background: linear-gradient(90deg, #e65100, #ffa726); }
+  .t-pur .card-head { background: linear-gradient(90deg, #4a148c, #8e24aa); }
+  .t-pink .card-head { background: linear-gradient(90deg, #880e4f, #e91e63); }
 
-  .card{border-radius:5px;border:1.5px solid var(--cl);overflow:hidden;}
-  .ch{color:white;padding:4px 8px;font-size:8.5px;font-weight:700;
-    display:flex;align-items:center;gap:4px;background:var(--c1);}
-  .ch.or{background:var(--or);} .ch.gr{background:var(--gr);}
-  .ch.re{background:var(--re);} .ch.pu{background:var(--pu);}
-  .ch.am{background:#bf360c;} .ch.teal{background:#006064;}
-  .cb{padding:5px 7px;background:white;}
+  .row { display: flex; gap: 1.4mm; align-items: flex-start; }
+  .badge { font-size: 5.5pt; font-weight: 800; padding: 0.7mm 1.4mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; line-height: 1.1; }
+  .b-do { background: var(--grn-l); color: var(--grn2); }
+  .b-no { background: var(--red-l); color: var(--red); }
+  .b-info { background: var(--cl); color: var(--c1); }
+  .b-tip { background: var(--teal-l); color: var(--teal2); }
+  .b-chk { background: var(--amber-l); color: var(--amber); }
+  .b-pur { background: var(--pur-l); color: var(--pur); }
+  .row-text { font-size: 6.6pt; color: var(--grey); line-height: 1.3; }
+  .row-text strong { color: #1a1a2e; font-weight: 700; }
+  .row-text em { font-style: normal; color: #78909c; font-size: 5.9pt; }
 
-  .drug-table{width:100%;border-collapse:collapse;font-size:7px;margin-top:2px;}
-  .drug-table th{background:var(--c2);color:white;padding:3px 5px;text-align:left;}
-  .drug-table td{padding:2.5px 5px;border-bottom:1px solid var(--cl);}
-  .drug-table tr:nth-child(even) td{background:var(--cm);}
-  .drug-table tr:last-child td{border-bottom:none;}
-  .drug-table td:first-child{font-weight:700;color:var(--c1);}
-  .drug-table .new{background:#e8f5e9;color:#2e7d32;font-weight:700;
-    font-size:6.5px;border-radius:2px;padding:0 3px;}
-  .drug-table .obese{background:#fce4ec;color:#880e4f;font-weight:700;
-    font-size:6.5px;border-radius:2px;padding:0 3px;}
+  table.t { width: 100%; border-collapse: collapse; font-size: 6.5pt; }
+  table.t th { background: var(--c2); color: #fff; text-align: left; padding: 0.9mm 1.3mm; font-weight: 700; }
+  table.t td { padding: 0.8mm 1.3mm; border-bottom: 1px solid #e3eaef; color: var(--grey); vertical-align: top; }
+  table.t td:first-child { font-weight: 700; color: var(--c1); }
+  table.t tr:nth-child(even) td { background: var(--grey-l); }
 
-  .prod{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:baseline;
-    padding:2px 0;border-bottom:1px dotted #ddd;font-size:7.5px;}
-  .prod:last-of-type{border-bottom:none;}
-  .pn{font-weight:700;color:var(--c1);}
-  .pi{color:#444;font-size:7px;}
-  .pt{font-size:6.5px;border-radius:3px;padding:1px 4px;white-space:nowrap;font-weight:600;}
-  .pt.gr{background:#e8f5e9;color:#2e7d32;}
-  .pt.or{background:#fff3e0;color:#e65100;}
-  .pt.re{background:#ffebee;color:#b71c1c;}
-  .pt.pu{background:#f3e5f5;color:#4a148c;}
-  .pt.bl{background:#e3f2fd;color:#0d47a1;}
+  .patient-bubble { background: var(--grey-l); border-radius: 4px; padding: 1.3mm 2mm; font-size: 6.6pt; color: var(--grey); font-style: italic; line-height: 1.3; }
+  .patient-bubble::before { content: '💬 '; font-style: normal; }
 
-  .sub-line{font-size:7px;color:#444;padding:1px 0 2px 7px;border-left:2px solid var(--cl);
-    margin:1px 0 2px 2px;font-style:italic;}
-  .warn{background:#fff3e0;border-left:3px solid #ff6f00;padding:3px 6px;
-    margin-top:4px;font-size:7px;border-radius:0 3px 3px 0;}
-  .warn strong{color:#bf360c;}
-  .tip{background:var(--cm);border-left:3px solid var(--c3);padding:3px 6px;
-    margin-top:3px;font-size:7px;color:var(--c1);}
-  .alert{background:#ffebee;border:2px solid #e53935;border-radius:4px;
-    padding:4px 7px;margin-top:4px;font-size:7px;}
-  .alert strong{color:#b71c1c;}
-  .nouv{background:linear-gradient(90deg,#4a148c,#6a1b9a);color:white;
-    padding:3px 8px;font-size:7px;border-radius:3px;margin-top:3px;}
-  .nouv strong{color:#ce93d8;}
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; padding: 0 8mm 2.5mm; }
+  .fc { border-radius: 7px; padding: 2.2mm 2.5mm; }
+  .fc-title { font-size: 6.8pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.2mm; }
+  .fc-item { font-size: 6.6pt; color: var(--grey); padding: 0.8mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.3; }
+  .fc-item:last-child { border-bottom: none; }
+  .fc-item strong { color: #1a1a2e; font-weight: 700; }
+  .fc-a { background: var(--cl); border-left: 3px solid var(--c2); } .fc-a .fc-title { color: var(--c1); }
+  .fc-b { background: var(--grn-l); border-left: 3px solid var(--grn2); } .fc-b .fc-title { color: var(--grn2); }
+  .fc-c { background: var(--red-l); border-left: 3px solid var(--red); } .fc-c .fc-title { color: var(--red); }
 
-  /* PÉNURIE BANNER */
-  .penurie{background:linear-gradient(135deg,#bf360c,#e65100);color:white;
-    border-radius:5px;padding:6px 10px;margin-bottom:5px;
-    display:flex;justify-content:space-between;align-items:center;gap:10px;}
-  .penurie h3{font-size:9px;font-weight:700;margin-bottom:2px;}
-  .penurie p{font-size:7px;opacity:.93;}
+  .sources { font-size: 5.5pt; color: #546e7a; line-height: 1.35; border-top: 1px solid var(--border); margin: 0 8mm; padding: 1.4mm 0 1.6mm; }
+  .sources strong { color: var(--grey); }
+  .footer-strip { background: var(--c1); padding: 1.7mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.6); font-size: 5.8pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 6.6pt; }
 
-  .rfx{background:var(--cm);border:1.5px solid var(--c3);border-radius:5px;
-    padding:5px 8px;margin-bottom:5px;}
-  .rfx h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:4px;
-    border-bottom:1.5px solid var(--c3);padding-bottom:2px;}
-  .rfxg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
-  .ri{background:white;border-radius:4px;padding:4px 6px;font-size:7px;
-    border-left:3px solid var(--c2);}
-  .ri strong{color:var(--c1);display:block;font-size:7.5px;margin-bottom:1px;}
-
-  .ibar{background:#fce4ec;border:1.5px solid #e91e63;border-radius:5px;
-    padding:5px 8px;margin-bottom:5px;}
-  .ibar h3{font-size:9px;font-weight:700;color:#880e4f;margin-bottom:3px;}
-  .igrid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
-  .ii{background:white;border-radius:3px;padding:3px 5px;
-    border-left:3px solid #e91e63;font-size:7px;}
-  .ii strong{color:#880e4f;display:block;font-size:7.5px;}
-
-  .pbar{background:white;border:1.5px solid var(--c3);border-radius:5px;
-    padding:5px 8px;}
-  .pbar h3{font-size:9px;font-weight:700;color:var(--c1);margin-bottom:3px;}
-  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
-  .sb{background:var(--cm);border-radius:4px;padding:4px 6px;
-    border-left:3px solid var(--c3);font-size:7px;}
-  .sq{font-style:italic;color:#333;}
-  .sh{background:#ffebee;border-left:3px solid #e53935;padding:2px 5px;
-    margin:2px 0;border-radius:0 3px 3px 0;color:#b71c1c;}
-  .sr{color:var(--c1);font-weight:600;margin-top:2px;}
-
-  .footer{text-align:center;font-size:6px;color:#888;margin-top:4px;
-    padding-top:3px;border-top:1px solid #ddd;}
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
 </style>
 </head>
 <body>
 
-<div class="hdr">
+<!-- ═══════════════════ PAGE 1 : GLP-1, REMBOURSEMENT, SÉCURITÉ ═══════════════════ -->
+<div class="page">
+
+<div class="header">
   <div>
-    <h1>💉 GLP-1 — Ozempic · Mounjaro · Wegovy · Rybelsus</h1>
-    <div class="sub">Agonistes GLP-1 &amp; GIP · Diabète Type 2 · Obésité · Cardioprotection · Pénurie · Conseils injection</div>
+    <h1>💉 GLP-1 &amp; obésité — Wegovy · Mounjaro · Ozempic</h1>
+    <div class="sub">Remboursement dans l'obésité depuis le 15/06/2026 · point au 20/10/2026</div>
   </div>
-  <div class="badge">SantéVeille<br>Officine 2026<br>🖨 A4</div>
-</div>
-
-<!-- MÉCANISME -->
-<div class="meca">
-  <div class="ms" style="background:#01579b;">🧬 GLP-1 naturel<br>libéré après repas</div>
-  <div class="ms" style="background:#0277bd;">📈 Stimule insuline<br>(glucose-dépendant)</div>
-  <div class="ms" style="background:#0288d1;">📉 Inhibe glucagon<br>et vidange gastrique</div>
-  <div class="ms" style="background:#039be5;">🧠 Action centrale :<br>satiété hypothalamique</div>
-  <div class="ms" style="background:#03a9f4;">⚖️ Perte de poids<br>10–22% du PC</div>
-  <div class="ms" style="background:#29b6f6; color:#01579b;">❤️ Cardioprotection<br>démontrée (LEADER)</div>
-</div>
-
-<!-- MOLÉCULES TABLEAU -->
-<div class="card" style="margin-bottom:5px;">
-  <div class="ch">💊 MOLÉCULES GLP-1 EN FRANCE 2026</div>
-  <div class="cb">
-    <table class="drug-table">
-      <tr><th>DCI</th><th>Spécialité</th><th>Indication AMM</th><th>Posologie</th><th>Particularité</th></tr>
-      <tr>
-        <td>Sémaglutide SC</td>
-        <td><strong>Ozempic</strong> 0,5 · 1 · 2 mg</td>
-        <td>DT2 + RCV établi</td>
-        <td>1×/sem · stylo</td>
-        <td>⭐ Cardioprotection SUSTAIN-6 · <span class="obese">Détourné obésité</span></td>
-      </tr>
-      <tr>
-        <td>Sémaglutide SC</td>
-        <td><strong>Wegovy</strong> 2,4 mg</td>
-        <td>Obésité IMC ≥ 30 (ou ≥ 27 + comorbidité)</td>
-        <td>1×/sem · titration 16 sem.</td>
-        <td><span class="obese">AMM obésité</span> · Remboursement partiel 2024</td>
-      </tr>
-      <tr>
-        <td>Sémaglutide oral</td>
-        <td><strong>Rybelsus</strong> 3 · 7 · 14 mg</td>
-        <td>DT2</td>
-        <td>1×/j à jeun · 30 min avant repas</td>
-        <td>Seul GLP-1 oral · Absorption faible (1–2%)</td>
-      </tr>
-      <tr>
-        <td>Tirzépatide</td>
-        <td><strong>Mounjaro</strong> 2,5→15 mg</td>
-        <td>DT2 · Obésité (AMM 2024)</td>
-        <td>1×/sem · titration mensuelle</td>
-        <td><span class="new">🆕 Dual GIP+GLP-1</span> · Supérieur séma. en perte poids (−22%)</td>
-      </tr>
-      <tr>
-        <td>Dulaglutide</td>
-        <td><strong>Trulicity</strong> 0,75 · 1,5 mg</td>
-        <td>DT2</td>
-        <td>1×/sem · stylo prérempli</td>
-        <td>Bonne tolérance · Pas besoin réfrigération > 14j</td>
-      </tr>
-      <tr>
-        <td>Liraglutide</td>
-        <td><strong>Victoza</strong> 1,2 · 1,8 mg</td>
-        <td>DT2</td>
-        <td>1×/j</td>
-        <td>Cardioprotection LEADER · Ancien gold standard</td>
-      </tr>
-      <tr>
-        <td>Liraglutide</td>
-        <td><strong>Saxenda</strong> 3 mg</td>
-        <td>Obésité</td>
-        <td>1×/j · titration 5 sem.</td>
-        <td><span class="obese">Obésité uniquement</span> · Non remboursé</td>
-      </tr>
-    </table>
+  <div class="pills">
+    <div class="pill"><span class="val">65 %</span><span class="lbl">remb. obésité<br>(100 % si ALD)</span></div>
+    <div class="pill"><span class="val">≥ 35 / ≥ 40</span><span class="lbl">IMC initial<br>(avec / sans comorb.)</span></div>
+    <div class="pill"><span class="val">15/06/26</span><span class="lbl">entrée en vigueur</span></div>
   </div>
 </div>
 
-<!-- PÉNURIE BANNER -->
-<div class="penurie">
+<div class="alert-strip">
+  <div style="font-size:9pt;line-height:1.2">⚠️</div>
   <div>
-    <h3>⚠️ PÉNURIE SÉMAGLUTIDE (OZEMPIC) — 2022 → 2026</h3>
-    <p>Cause : explosion de la demande pour usage minceur hors AMM diabète → rupture mondiale. Arrêté priorité France : réserver aux patients DT2 traités. Wegovy seul autorisé pour obésité.</p>
-  </div>
-  <div style="min-width:150px;background:rgba(255,255,255,.15);border-radius:4px;padding:5px 8px;font-size:7px;">
-    <strong>Refus légal de délivrer si :</strong><br>
-    • Ordonnance DT2 mais patient non diabétique connu<br>
-    • Prescription hors spécialiste (non remboursé Wegovy par généraliste)<br>
-    • Suspicion usage minceur sur Ozempic DT2
+    <span class="alert-title">Remboursement conditionnel : vérifier l'ordonnance ET le justificatif avant de dispenser en « obésité »</span>
+    <div class="alert-body">
+      <strong>Wegovy et Mounjaro</strong> sont remboursés dans l'obésité sous conditions strictes. La <strong>1ʳᵉ prescription</strong> est réservée à des médecins de centres spécialisés ; le <strong>généraliste ne peut pas initier</strong> mais peut <strong>renouveler</strong>. Hors critères, la prescription reste possible mais <strong>à la charge du patient</strong>. Les encadrés « À VÉRIF. » signalent des points non tranchés entre sources (textes JO non relus).
+    </div>
   </div>
 </div>
 
-<!-- MAIN GRID -->
-<div class="grid2">
+<div class="main-grid">
 
-  <!-- EFFETS SECONDAIRES + GESTION -->
-  <div class="card">
-    <div class="ch or">🤢 EFFETS SECONDAIRES &amp; GESTION</div>
-    <div class="cb">
-      <div class="prod">
-        <span class="pn">Nausées / Vomissements</span>
-        <span class="pi">50% des patients · 1ères semaines</span>
-        <span class="pt or">Très fréquent</span>
-      </div>
-      <div class="sub-line">Passent après 4–8 semaines avec la titration. Manger lentement, petits repas, éviter aliments gras.</div>
-      <div class="prod">
-        <span class="pn">Diarrhée / Constipation</span>
-        <span class="pi">Transit perturbé · Ralentissement vidange</span>
-        <span class="pt or">Fréquent</span>
-      </div>
-      <div class="sub-line">Hydratation ++. Transitoire. Constipation si dose augmentée rapidement.</div>
-      <div class="prod">
-        <span class="pn">Réactions injection</span>
-        <span class="pi">Érythème · Prurit · Nodule site</span>
-        <span class="pt bl">Site injection</span>
-      </div>
-      <div class="sub-line">Rotation obligatoire : abdomen / cuisse / bras. Attendre 2 cm du nombril.</div>
-      <div class="prod">
-        <span class="pn">Pancréatite aiguë</span>
-        <span class="pi">Rare mais grave · Douleur abdominale intense irradiant dos</span>
-        <span class="pt re">⚠ Arrêt + Urgences</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Masse thyroïdienne</span>
-        <span class="pi">Risque théorique cellules C (données animales)</span>
-        <span class="pt re">CI si ATCD</span>
-      </div>
-      <div class="warn">⚠ <strong>Attention "Ozempic face" :</strong> perte de poids rapide → visage creusé, ptose. Pas d'effet secondaire médicamenteux direct mais signaler au médecin si perte &gt; 10 kg/mois.</div>
-    </div>
-  </div>
-
-  <!-- CI + INTERACTIONS -->
-  <div class="card">
-    <div class="ch re">🚫 CONTRE-INDICATIONS &amp; INTERACTIONS</div>
-    <div class="cb">
-      <div style="font-weight:700;color:#b71c1c;font-size:8px;margin-bottom:4px;
-        border-bottom:1px solid #ffcdd2;padding-bottom:2px;">CI ABSOLUES</div>
-      <div class="prod">
-        <span class="pn">Cancer médullaire thyroïde</span>
-        <span class="pi">Personnel ou familial (NEM type 2)</span>
-        <span class="pt re">CI absolue</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Pancréatite chronique / ATCD</span>
-        <span class="pi">Risque aggravation</span>
-        <span class="pt re">CI absolue</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Grossesse / Allaitement</span>
-        <span class="pi">Tératogénique · Arrêter 2 mois avant conception</span>
-        <span class="pt re">CI absolue</span>
-      </div>
-      <div style="font-weight:700;color:#880e4f;font-size:8px;margin:5px 0 3px;
-        border-bottom:1px solid #f8bbd0;padding-bottom:2px;">⚡ INTERACTIONS IMPORTANTES</div>
-      <div class="prod">
-        <span class="pn">Insuline + GLP-1</span>
-        <span class="pi">Risque hypoglycémie → réduire dose insuline</span>
-        <span class="pt or">Ajuster dose</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Sulfamides + GLP-1</span>
-        <span class="pi">Hypoglycémie → réduire sulfamide 20–50%</span>
-        <span class="pt or">Ajuster dose</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Médicaments oraux à absorption critique</span>
-        <span class="pi">Vidange gastrique ralentie → ↓ Cmax contraceptifs · lévothyrox · AVK</span>
-        <span class="pt or">Prendre à distance</span>
-      </div>
-      <div class="tip">💡 Rybelsus oral : prendre à jeun 30 min avant tout médicament ou repas. Absorption très sensible aux aliments et autres médicaments.</div>
-    </div>
-  </div>
-
-  <!-- CONSEILS INJECTION -->
-  <div class="card">
-    <div class="ch teal">💉 CONSEILS INJECTION — STYLOS GLP-1</div>
-    <div class="cb">
-      <div style="font-weight:700;color:#006064;font-size:8px;margin-bottom:3px;">📦 CONSERVATION</div>
-      <div class="prod">
-        <span class="pn">Avant ouverture</span>
-        <span class="pi">Réfrigérateur 2–8°C · Protéger lumière</span>
-        <span class="pt bl">Frigo</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Après première utilisation</span>
-        <span class="pi">T° ambiante ≤ 30°C · Ozempic : 6 semaines · Mounjaro : 4 semaines</span>
-        <span class="pt gr">Hors frigo OK</span>
-      </div>
-      <div class="prod">
-        <span class="pn">Oubli de dose (hebdomadaire)</span>
-        <span class="pi">Délai restant &lt; 5 jours → injecter maintenant · &gt; 5 jours → attendre date suivante</span>
-        <span class="pt or">Règle 5 jours</span>
-      </div>
-      <div style="font-weight:700;color:#006064;font-size:8px;margin:5px 0 3px;">💊 TECHNIQUE D'INJECTION</div>
-      <div style="font-size:7px;color:#333;line-height:1.6;">
-        ✅ Sites rotation : abdomen · cuisse · bras (face externe)<br>
-        ✅ Abdomen : à &gt; 5 cm du nombril<br>
-        ✅ Changer de site chaque semaine (même jour OK)<br>
-        ✅ Pincer la peau si masse grasse faible<br>
-        ✅ Aiguille : 4 ou 5 mm (personnes minces : 4 mm)<br>
-        ✅ Laisser l'aiguille 6 secondes avant de retirer<br>
-        ✅ Ne jamais réutiliser une aiguille (risque lipodystrophie)
-      </div>
-    </div>
-  </div>
-
-  <!-- TIRZÉPATIDE / MOUNJARO FOCUS -->
-  <div class="card">
-    <div class="ch pu">🆕 TIRZÉPATIDE (MOUNJARO) — Double Agoniste GIP+GLP-1</div>
-    <div class="cb">
-      <div class="nouv" style="margin-bottom:5px;">🆕 <strong>Mécanisme unique :</strong> agoniste GIP (glucose-dependent insulinotropic polypeptide) + GLP-1 → synergie sur perte de poids et contrôle glycémique supérieure aux GLP-1 seuls.</div>
-      <table class="drug-table">
-        <tr><th>Dose</th><th>Titration</th><th>Tolérance</th></tr>
-        <tr><td>2,5 mg</td><td>Mois 1–2</td><td>Initiation · Évaluation tolérance</td></tr>
-        <tr><td>5 mg</td><td>Mois 3–4</td><td>Dose minimale efficace DT2</td></tr>
-        <tr><td>7,5 mg · 10 mg</td><td>Mois 5–8</td><td>Escalade si tolérance OK</td></tr>
-        <tr><td>12,5 mg · 15 mg</td><td>Mois 9–12</td><td>Dose maximale · Obésité</td></tr>
+  <!-- 1 MOLECULES -->
+  <div class="card span2">
+    <div class="card-head"><div class="card-icon">💊</div><div class="card-title">Agonistes GLP-1 / GIP : qui est quoi</div></div>
+    <div class="card-body">
+      <table class="t">
+        <tr><th>Spécialité</th><th>DCI</th><th>Indication</th><th>Rythme</th><th>Prise en charge (oct. 2026)</th></tr>
+        <tr><td>Ozempic</td><td>Sémaglutide SC</td><td>Diabète de type 2</td><td>1×/semaine</td><td>Remboursé dans le DT2 insuffisamment contrôlé. <strong>Obésité = hors AMM, non remboursé.</strong></td></tr>
+        <tr><td>Wegovy</td><td>Sémaglutide SC 2,4 mg</td><td>Obésité (AMM)</td><td>1×/semaine, titration</td><td><strong>65 % depuis le 15/06/2026</strong> sous conditions (voir encadré)</td></tr>
+        <tr><td>Mounjaro</td><td>Tirzépatide (GIP + GLP-1)</td><td>DT2 et obésité</td><td>1×/semaine, titration mensuelle</td><td>Remboursé dans le DT2 ; <strong>65 % dans l'obésité depuis le 15/06/2026</strong> sous conditions (2 dossiers distincts)</td></tr>
+        <tr><td>Saxenda</td><td>Liraglutide 3 mg</td><td>Obésité</td><td>1×/jour</td><td>Non remboursé <em>(sources divergentes : à vérifier)</em></td></tr>
+        <tr><td>Victoza · Trulicity · Rybelsus</td><td>Liraglutide · dulaglutide · sémaglutide oral</td><td>Diabète de type 2</td><td>1×/j · 1×/sem · 1×/j à jeun</td><td>Voir fiche « Diabète de type 2 »</td></tr>
       </table>
-      <div class="tip" style="margin-top:4px;">💡 Essai SURMOUNT-1 (obésité) : −22,5% du poids à 72 sem. vs −2,4% placebo. Essai SURPASS-2 : supérieur à sémaglutide 1 mg sur HbA1c et poids.</div>
-      <div class="warn">⚠ Même CI que GLP-1 classiques. Effets secondaires digestifs similaires mais titration plus lente recommandée (↑ tolérance).</div>
+      <div class="row"><span class="badge b-info">À SAVOIR</span><span class="row-text"><strong>Zepbound</strong> est le nom américain du tirzépatide : <strong>non commercialisé en France</strong> (Mounjaro est la marque européenne). Un même produit, <strong>deux AMM</strong> pour Mounjaro (DT2, obésité) : toujours vérifier l'indication portée sur l'ordonnance.</span></div>
+    </div>
+  </div>
+
+  <!-- 2 REMBOURSEMENT -->
+  <div class="card t-pur">
+    <div class="card-head"><div class="card-icon">🧾</div><div class="card-title">Wegovy / Mounjaro dans l'obésité : conditions</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-pur">IMC</span><span class="row-text"><strong>IMC initial ≥ 40</strong> sans comorbidité, ou <strong>≥ 35 avec comorbidité</strong> listée ; adulte ; <strong>échec de la prise en charge nutritionnelle</strong> (perte &lt; 5 % à 6 mois).</span></div>
+      <div class="row"><span class="badge b-pur">1ʳᵉ ORDO</span><span class="row-text">Centres spécialisés obésité (CSO), CHU, SMR, coordinateurs « obésité complexe », endocrinologues liés à un CSO. <strong>Pas le généraliste.</strong></span></div>
+      <div class="row"><span class="badge b-pur">RENOUV.</span><span class="row-text"><strong>Tout médecin</strong>, dont le médecin traitant.</span></div>
+      <div class="row"><span class="badge b-pur">SUIVI</span><span class="row-text">Réévaluation à <strong>6 mois</strong> ; arrêt envisagé si perte &lt; 5 % <em>(HAS, extrait)</em>.</span></div>
+      <div class="row"><span class="badge b-pur">PRIX</span><span class="row-text"><em>Prix publics, boîte mensuelle (presse) :</em> Wegovy <strong>146,91 €</strong> (0,25–1 mg) à <strong>195,10 €</strong> (2,4 mg) · Mounjaro <strong>176,10 €</strong> (2,5 mg) à <strong>433,80 €</strong> (12,5 et 15 mg).</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>Un formulaire justificatif (téléservice) rempli par le prescripteur serait exigé avec l'ordonnance : une seule source secondaire. Dates des arrêtés (23/05 ou 10/06), liste exacte des prescripteurs initiaux, validité de l'ordonnance et accord préalable : non tranchés.</em></span></div>
+    </div>
+  </div>
+
+  <!-- 3 EI -->
+  <div class="card t-amb">
+    <div class="card-head"><div class="card-icon">🤢</div><div class="card-title">Effets indésirables et conduite</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">NAUSÉES</span><span class="row-text">Très fréquentes au début et à chaque palier : <strong>manger lentement, petits repas, éviter les aliments gras</strong>. Ne pas arrêter seul ; palier plus lent à discuter avec le prescripteur.</span></div>
+      <div class="row"><span class="badge b-do">TRANSIT</span><span class="row-text">Diarrhée ou constipation : hydratation, fibres ; transitoire en général.</span></div>
+      <div class="row"><span class="badge b-no">URGENCE</span><span class="row-text"><strong>Douleur abdominale intense irradiant dans le dos</strong> = pancréatite possible → arrêt et urgences. <strong>Vomissements sévères</strong> persistants → contacter le prescripteur (déshydratation).</span></div>
+      <div class="row"><span class="badge b-tip">PEAU</span><span class="row-text">Rougeur ou nodule au point d'injection : <strong>rotation des sites</strong> (abdomen, cuisse, bras).</span></div>
+      <div class="row"><span class="badge b-chk">MUSCLE</span><span class="row-text">Perte de poids = aussi perte de masse maigre : <strong>activité physique et apports en protéines</strong> à encourager.</span></div>
+    </div>
+  </div>
+
+  <!-- 4 CI -->
+  <div class="card t-red">
+    <div class="card-head"><div class="card-icon">🚫</div><div class="card-title">Contre-indications</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-no">CI</span><span class="row-text"><strong>Cancer médullaire de la thyroïde</strong> personnel ou familial · <strong>NEM de type 2</strong>.</span></div>
+      <div class="row"><span class="badge b-no">CI</span><span class="row-text"><strong>Grossesse et allaitement</strong> : arrêt du sémaglutide au moins 2 mois avant une grossesse planifiée.</span></div>
+      <div class="row"><span class="badge b-chk">PRUDENCE</span><span class="row-text">Antécédent de <strong>pancréatite</strong> · <strong>gastroparésie</strong> / troubles digestifs sévères · rétinopathie diabétique (sémaglutide, si diabète).</span></div>
+    </div>
+  </div>
+
+  <!-- 5 INTERACTIONS -->
+  <div class="card t-teal">
+    <div class="card-head"><div class="card-icon">⚡</div><div class="card-title">Interactions à connaître</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-no">HYPOGLYCÉMIE</span><span class="row-text"><strong>Insuline ou sulfamide + GLP-1</strong> : risque accru ; la baisse de dose du sulfamide / de l'insuline est une <strong>décision médicale</strong>. Le GLP-1 seul n'induit pas d'hypoglycémie.</span></div>
+      <div class="row"><span class="badge b-chk">VIDANGE</span><span class="row-text">Ralentissement de la vidange gastrique : <strong>surveiller</strong> les médicaments à marge étroite pris par voie orale (lévothyroxine, AVK : INR).</span></div>
+      <div class="row"><span class="badge b-chk">PILULE</span><span class="row-text"><strong>Mounjaro + contraceptif oral</strong> : méthode complémentaire (barrière) pendant 4 semaines après l'instauration et chaque augmentation de dose <em>(RCP : à relire)</em>.</span></div>
+      <div class="row"><span class="badge b-tip">RYBELSUS</span><span class="row-text">Comprimé <strong>à jeun</strong>, avec un peu d'eau, <strong>30 min avant</strong> repas, boisson ou autre médicament.</span></div>
+    </div>
+  </div>
+
+  <!-- 6 CONSERVATION / INJECTION -->
+  <div class="card span3">
+    <div class="card-head"><div class="card-icon">🧊</div><div class="card-title">Conservation et injection</div></div>
+    <div class="card-body cols">
+      <div class="row"><span class="badge b-info">AVANT USAGE</span><span class="row-text"><strong>Réfrigérateur 2–8 °C</strong>, ne jamais congeler, à l'abri de la lumière.</span></div>
+      <div class="row"><span class="badge b-chk">HORS FRIGO</span><span class="row-text">Durées <strong>propres à chaque stylo</strong> (avant et après ouverture) : <strong>lire la notice / le RCP du produit délivré</strong> plutôt qu'une durée « générique ».</span></div>
+      <div class="row"><span class="badge b-do">OUBLI</span><span class="row-text"><strong>Sémaglutide</strong> : à injecter dans les <strong>5 jours</strong> suivant la dose oubliée, sinon sauter. <strong>Tirzépatide</strong> : dans les <strong>4 jours</strong> <em>(RCP : à relire)</em>.</span></div>
+      <div class="row"><span class="badge b-do">GESTE</span><span class="row-text">Même jour chaque semaine · rotation des sites · <strong>ne jamais réutiliser une aiguille</strong> · rester sur le stylo et la notice du produit délivré.</span></div>
+      <div class="row"><span class="badge b-no">JETER</span><span class="row-text">Stylo laissé en plein soleil / voiture chaude, gelé, ou solution modifiée (cristaux, couleur).</span></div>
     </div>
   </div>
 
 </div>
 
-<!-- RÉFLEXES -->
-<div class="rfx">
-  <h3>⚡ 3 Réflexes Officine — GLP-1 au Quotidien</h3>
-  <div class="rfxg">
-    <div class="ri">
-      <strong>🚫 Ozempic pénurie : vérifier indication</strong>
-      Si patient non connu diabétique demande Ozempic pour "maigrir" → refuser sans ordonnance DT2 valide. Orientation vers Wegovy si obésité + ordonnance spécialiste. Expliquer sans juger la différence d'AMM.
-    </div>
-    <div class="ri">
-      <strong>💊 Interactions oraux critiques</strong>
-      GLP-1 ralentit vidange gastrique → ↓ absorption oraux. Vérifier lévothyrox (prendre 30 min avant Rybelsus), contraceptifs oraux (efficacité réduite → contraception complémentaire), AVK (surveiller INR).
-    </div>
-    <div class="ri">
-      <strong>🤢 Gérer les nausées initiales</strong>
-      50% des patients ont des nausées au début → rassurer : transitoires (4–8 sem). Conseils : manger lentement · petits repas · éviter aliments gras/sucrés · injection le soir si nausées matinales. Ne pas arrêter le traitement.
-    </div>
+<div class="grow"></div>
+
+<div class="sources">
+  <strong>Sources (consultées le 20/10/2026 via la presse professionnelle et les relais officiels ; arrêtés du JO non relus) :</strong>
+  Vidal — prise en charge de Wegovy et Mounjaro à partir du 15/06/2026 · Caducée — généralistes écartés de la 1ʳᵉ prescription · Le Quotidien du Pharmacien — IMC de référence pour le remboursement · La Revue du Praticien — prix de Mounjaro · AFP / Sud Radio — prix de Wegovy · HAS — avis de réévaluation Wegovy ; avis Ozempic · Service-public.gouv.fr — prescription hors remboursement.
+</div>
+<div class="footer-strip">
+  <span>GLP-1 · Obésité · Remboursement 15/06/2026 · Officine — page 1/2</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Mise à jour 20/10/2026 · à valider par le pharmacien</span>
+</div>
+
+</div><!-- /page 1 -->
+
+<!-- ═══════════════════ PAGE 2 : OBÉSITÉ, REPÈRES COMPTOIR ═══════════════════ -->
+<div class="page">
+
+<div class="header">
+  <div>
+    <h1>⚖️ Obésité — repères comptoir</h1>
+    <div class="sub">IMC · stratégie · orlistat · chirurgie bariatrique · ce que dit le patient</div>
+  </div>
+  <div class="pills">
+    <div class="pill"><span class="val">≥ 30</span><span class="lbl">IMC = obésité</span></div>
+    <div class="pill"><span class="val">≥ 40 / ≥ 35</span><span class="lbl">chirurgie discutée<br>(sans / avec comorb.)</span></div>
   </div>
 </div>
 
-<!-- INTERACTIONS -->
-<div class="ibar">
-  <h3>⚡ Interactions GLP-1 à Surveiller</h3>
-  <div class="igrid">
-    <div class="ii">
-      <strong>Insuline + GLP-1</strong>
-      Hypoglycémie possible. Réduire dose insuline basale de 20% à l'initiation. Surveiller glycémies.
+<div class="main-grid">
+
+  <div class="card">
+    <div class="card-head"><div class="card-icon">📏</div><div class="card-title">Classification et risque</div></div>
+    <div class="card-body">
+      <table class="t">
+        <tr><th>IMC (kg/m²)</th><th>Catégorie</th></tr>
+        <tr><td>18,5 – 25</td><td>Normal</td></tr>
+        <tr><td>25 – 30</td><td>Surpoids</td></tr>
+        <tr><td>30 – 35</td><td>Obésité I</td></tr>
+        <tr><td>35 – 40</td><td>Obésité II</td></tr>
+        <tr><td>≥ 40</td><td>Obésité III (massive)</td></tr>
+      </table>
+      <div class="row"><span class="badge b-info">TOUR DE TAILLE</span><span class="row-text">Risque ↑ : ≥ 94 cm (homme), ≥ 80 cm (femme) · risque élevé : ≥ 102 cm (homme), ≥ 88 cm (femme).</span></div>
+      <div class="row"><span class="badge b-tip">COMORBIDITÉS</span><span class="row-text">HTA, dyslipidémie, insuffisance cardiaque, diabète de type 2, stéatose hépatique, apnée du sommeil, arthrose, dépression.</span></div>
     </div>
-    <div class="ii">
-      <strong>Sulfamides (glibenclamide)</strong>
-      Hypoglycémie. Réduire sulfamide. GLP-1 seul = pas d'hypoglycémie (glucose-dépendant).
+  </div>
+
+  <div class="card t-grn">
+    <div class="card-head"><div class="card-icon">🧭</div><div class="card-title">Parcours de soins (depuis juin 2026)</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">1</span><span class="row-text"><strong>Règles hygiéno-diététiques + activité physique</strong>, prise en charge nutritionnelle de base.</span></div>
+      <div class="row"><span class="badge b-do">2</span><span class="row-text">Échec (perte &lt; 5 % à 6 mois) <strong>et IMC ≥ 35 + comorbidité, ou ≥ 40</strong> → <strong>GLP-1 remboursé</strong> (1ʳᵉ prescription en centre spécialisé).</span></div>
+      <div class="row"><span class="badge b-do">3</span><span class="row-text">IMC ≥ 40, ou ≥ 35 avec comorbidité, et échec : <strong>chirurgie bariatrique à discuter</strong>.</span></div>
+      <div class="row"><span class="badge b-chk">AMM ≠ REMB.</span><span class="row-text"><em>L'AMM de Wegovy est plus large (IMC ≥ 30, ou ≥ 27 avec comorbidité) que les critères de remboursement ci-dessus.</em></span></div>
     </div>
-    <div class="ii">
-      <strong>Contraceptifs oraux + Rybelsus</strong>
-      Absorption réduite. Utiliser contraception complémentaire. Préférer Ozempic SC chez femme sous pilule.
+  </div>
+
+  <div class="card t-amb">
+    <div class="card-head"><div class="card-icon">🍽️</div><div class="card-title">Orlistat (Alli 60 mg OTC · Xenical 120 mg)</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">PRISE</span><span class="row-text">1 gélule <strong>pendant le repas</strong> contenant des graisses ; <strong>repas sans graisse = on saute la dose</strong>.</span></div>
+      <div class="row"><span class="badge b-no">ATTENTION</span><span class="row-text"><strong>Selles grasses, urgences fécales</strong> : effet attendu si repas gras, <strong>à annoncer</strong> au patient.</span></div>
+      <div class="row"><span class="badge b-chk">VITAMINES</span><span class="row-text">↓ absorption des vitamines liposolubles (A, D, E, K) → supplémentation à discuter.</span></div>
+      <div class="row"><span class="badge b-chk">INTERACTIONS</span><span class="row-text"><strong>Ciclosporine, lévothyroxine, AVK</strong> : espacer les prises, contrôler INR et TSH ; contraceptif oral : efficacité réduite en cas de diarrhée.</span></div>
     </div>
+  </div>
+
+  <div class="card t-teal span2">
+    <div class="card-head"><div class="card-icon">🏥</div><div class="card-title">Après chirurgie bariatrique : repères pour la dispensation</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-info">ACTES</span><span class="row-text">Sleeve gastrectomie, bypass gastrique, anneau (moins fréquent).</span></div>
+      <div class="row"><span class="badge b-chk">GALÉNIQUE</span><span class="row-text">Après bypass, <strong>les formes à libération prolongée et les gros comprimés sont à éviter</strong> (absorption modifiée) : <strong>vérifier chaque forme</strong>, préférer formes à libération immédiate ou liquides, et en parler au prescripteur.</span></div>
+      <div class="row"><span class="badge b-do">SUIVI</span><span class="row-text"><strong>Supplémentation à vie</strong> (vitamine B12, fer, calcium, vitamine D selon avis médical) · repas fractionnés · <strong>dumping syndrome</strong> après sucres rapides · suivi biologique régulier.</span></div>
+    </div>
+  </div>
+
+  <div class="card t-pink">
+    <div class="card-head"><div class="card-icon">📈</div><div class="card-title">Repères d'efficacité (essais)</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-pink" style="background:var(--pink-l);color:var(--pink)">SÉMAGLUTIDE</span><span class="row-text">≈ −15 % du poids en moyenne ; réduction des événements cardiovasculaires d'environ 20 % chez des obèses non diabétiques à risque (SELECT).</span></div>
+      <div class="row"><span class="badge b-pink" style="background:var(--pink-l);color:var(--pink)">TIRZÉPATIDE</span><span class="row-text">≈ −20 % du poids ; supérieur au sémaglutide 1 mg sur HbA1c et poids dans le DT2 (SURPASS-2).</span></div>
+      <div class="row"><span class="badge b-chk">ARRÊT</span><span class="row-text">Après l'arrêt, <strong>reprise fréquente d'une grande partie du poids</strong> : l'obésité est une maladie chronique.</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="main-grid two">
+
+  <div class="card">
+    <div class="card-head"><div class="card-icon">🗣</div><div class="card-title">Ce que dit le patient (1/2)</div></div>
+    <div class="card-body">
+      <div class="patient-bubble">Je voudrais Ozempic pour perdre du poids.</div>
+      <div class="row"><span class="badge b-tip">RÉPONSE</span><span class="row-text">Ozempic = AMM <strong>diabète de type 2</strong> ; Wegovy et Mounjaro ont l'AMM obésité. Remboursement seulement si les <strong>critères du 15/06/2026</strong> sont remplis et 1ʳᵉ prescription en centre spécialisé. Expliquer sans juger, <strong>orienter vers le médecin</strong>.</span></div>
+      <div class="patient-bubble">J'ai des nausées terribles depuis que j'ai commencé.</div>
+      <div class="row"><span class="badge b-tip">RÉPONSE</span><span class="row-text">Fréquent, surtout à l'augmentation de dose. <strong>Petits repas, lentement, peu de gras</strong>. Vomissements sévères ou douleur abdominale intense : prescripteur / urgences.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-icon">🗣</div><div class="card-title">Ce que dit le patient (2/2)</div></div>
+    <div class="card-body">
+      <div class="patient-bubble">Mounjaro, c'est mieux que Wegovy ?</div>
+      <div class="row"><span class="badge b-tip">RÉPONSE</span><span class="row-text">Le tirzépatide a montré une perte de poids plus importante dans les essais, mais <strong>le choix revient au médecin</strong> : ne pas substituer un produit à l'autre.</span></div>
+      <div class="patient-bubble">J'ai arrêté et j'ai tout repris.</div>
+      <div class="row"><span class="badge b-tip">RÉPONSE</span><span class="row-text">Une reprise de poids après arrêt est fréquente : traitement au long cours, <strong>alimentation et activité physique</strong> pour maintenir ; discuter la durée avec le médecin.</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-grid">
+  <div class="fc fc-a">
+    <div class="fc-title">⚡ Réflexe 1 — Indication et remboursement</div>
+    <div class="fc-item"><strong>Ozempic ≠ Wegovy</strong> : même molécule, AMM différente.</div>
+    <div class="fc-item">Obésité : <strong>critères d'IMC, 1ʳᵉ prescription en centre</strong>, justificatif.</div>
+    <div class="fc-item">Doute : appeler le prescripteur avant de délivrer.</div>
+  </div>
+  <div class="fc fc-b">
+    <div class="fc-title">⚡ Réflexe 2 — Sécurité</div>
+    <div class="fc-item">Insuline / sulfamide associés : <strong>signes d'hypoglycémie</strong> à expliquer.</div>
+    <div class="fc-item">Pilule + tirzépatide : <strong>méthode complémentaire</strong>.</div>
+    <div class="fc-item">Douleur abdominale intense dans le dos : <strong>urgences</strong>.</div>
+  </div>
+  <div class="fc fc-c">
+    <div class="fc-title">⚡ Réflexe 3 — Accompagnement</div>
+    <div class="fc-item"><strong>Titration lente</strong> = moins de nausées ; ne pas arrêter seul.</div>
+    <div class="fc-item">Protéines et activité physique pour préserver la masse maigre.</div>
+    <div class="fc-item">Après chirurgie : <strong>vérifier chaque forme galénique</strong>.</div>
   </div>
 </div>
 
-<!-- PATIENT SPEECH -->
-<div class="pbar">
-  <h3>💬 Ce que dit le patient — GLP-1</h3>
-  <div class="pgrid">
-    <div class="sb">
-      <div class="sq">💬 "Mon médecin m'a prescrit Ozempic mais c'est pour maigrir, pas pour le diabète"</div>
-      <div class="sh">↳ Ce que ça cache : prescription hors AMM très fréquente · pénurie · patient parfois non DT2</div>
-      <div class="sr">→ Vérifier l'ordonnance. Ozempic AMM = DT2 uniquement. Pour obésité sans DT2 : Wegovy (autre produit, même molécule). Expliquer sans juger, orienter le médecin si besoin.</div>
-    </div>
-    <div class="sb">
-      <div class="sq">💬 "J'ai des nausées terribles depuis Ozempic, j'arrête"</div>
-      <div class="sh">↳ Ce que ça cache : souvent titration trop rapide · repas trop copieux · dose augmentée trop vite</div>
-      <div class="sr">→ Ne pas arrêter. Nausées passent après 4–8 sem. Conseils diététiques (petits repas, lenteur). Injection le soir réduit nausées matinales. Si vomissements sévères → contacter prescripteur.</div>
-    </div>
-    <div class="sb">
-      <div class="sq">💬 "Mounjaro c'est mieux qu'Ozempic ?"</div>
-      <div class="sh">↳ Ce que ça cache : info vu sur les réseaux · souvent pression du patient pour basculer</div>
-      <div class="sr">→ Tirzépatide (Mounjaro) = double agoniste, supérieur sur la perte de poids (−22% vs −15%). Mais uniquement sur prescription et décision médicale. Ne pas substituer sans accord médecin.</div>
-    </div>
-    <div class="sb">
-      <div class="sq">💬 "Mon Ozempic était dans la voiture sous la chaleur, je peux quand même l'utiliser ?"</div>
-      <div class="sh">↳ Ce que ça cache : stylo non ouvert ou déjà utilisé ? température dépassée ?</div>
-      <div class="sr">→ Non ouvert : tolérance courte à T° ambiante (&lt; 30°C). Si chaleur excessive (&gt; 40°C, soleil direct) : jeter et renouveler. Après ouverture : max 6 sem. à ≤ 30°C. Fissures, cristaux, couleur changée = jeter.</div>
-    </div>
-  </div>
+<div class="grow"></div>
+
+<div class="sources">
+  <strong>À valider par le pharmacien avant affichage.</strong> Les critères d'IMC, de prescription et de prix proviennent de la page 1 (sources citées). Les repères d'efficacité et les contenus d'orlistat / chirurgie bariatrique sont des connaissances de référence conservées de la version précédente de ce poster, <strong>non revérifiées</strong> lors de cette mise à jour.
+</div>
+<div class="footer-strip">
+  <span>Obésité · Orlistat · Chirurgie bariatrique · Officine — page 2/2</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Mise à jour 20/10/2026 · api-pharma</span>
 </div>
 
-<div class="footer">
-  SantéVeille Officine · GLP-1 / Ozempic / Mounjaro · Données 2026 · Toujours vérifier AMM et ordonnance avant dispensation · 2026
-</div>
+</div><!-- /page 2 -->
 
 </body>
 </html>
