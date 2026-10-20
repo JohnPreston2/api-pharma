@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="sv:sources" content="Ordre des pharmaciens (revue n°29, déc. 2025) ; Vidal (groupes biosimilaires substituables, 2026) ; Quotidien du Pharmacien (dénosumab) ; ANSM (avis 20/12/2024 insulines ; liste de référence) ; OMEDIT IdF (tableau biosimilaires juin-juil. 2026 ; fiche LFSS 2026) ; Service-public (tiers payant contre biosimilaires) ; USPO (tableau d&#x27;équivalences 16/04/2026) ; Caducée (règles 2026). Textes JO non relus sur Légifrance.">
+<meta name="sv:maj" content="2026-10-20">
+<meta name="sv:volatilite" content="haute">
+<title>Biosimilaires — Substitution à l'officine 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #1a237e; --c2: #283593; --c3: #5c6bc0; --cl: #e8eaf6;
+    --grn: #1b5e20; --grn2: #2e7d32; --grn-l: #e8f5e9;
+    --red: #b71c1c; --red-l: #ffebee;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --teal: #004d40; --teal2: #00695c; --teal-l: #e0f2f1;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 7.5pt; color: #1a1a2e; line-height: 1.3; }
+
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 55%, var(--c3) 100%); padding: 7mm 8mm 5mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -12mm; top: -12mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.06); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .sub { font-size: 7.7pt; color: rgba(255,255,255,0.78); margin-top: 1.5mm; letter-spacing: 1px; text-transform: uppercase; }
+  .pills { display: flex; gap: 3mm; }
+  .pill { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 7px; padding: 2.5mm 3.5mm; text-align: center; }
+  .pill .val { font-size: 12pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 5.5pt; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 0.8mm; display: block; }
+
+  .alert-strip { background: var(--amber-l); border-bottom: 2px solid var(--amber); padding: 2mm 8mm; display: flex; gap: 3mm; align-items: flex-start; }
+  .alert-title { font-size: 6.1pt; font-weight: 800; color: var(--amber); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 0.5mm; }
+  .alert-body { font-size: 6.4pt; color: #5d2a00; line-height: 1.4; }
+
+  .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; padding: 3mm 8mm 2mm; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; display: flex; flex-direction: column; }
+  .card-head { padding: 2mm 2.5mm; display: flex; align-items: center; gap: 1.5mm; background: linear-gradient(90deg, var(--c1), var(--c3)); }
+  .card-icon { font-size: 11pt; line-height: 1; }
+  .card-title { font-size: 7.7pt; font-weight: 800; color: #fff; flex: 1; line-height: 1.1; }
+  .card-body { padding: 2mm 2.5mm; flex: 1; display: flex; flex-direction: column; gap: 1.4mm; }
+  .t-grn .card-head { background: linear-gradient(90deg, #1b5e20, #43a047); }
+  .t-red .card-head { background: linear-gradient(90deg, #b71c1c, #ef5350); }
+  .t-teal .card-head { background: linear-gradient(90deg, #004d40, #26a69a); }
+  .t-amb .card-head { background: linear-gradient(90deg, #e65100, #ffa726); }
+
+  .row { display: flex; gap: 1.5mm; align-items: flex-start; }
+  .badge { font-size: 5.3pt; font-weight: 800; padding: 0.8mm 1.5mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; line-height: 1.1; }
+  .b-ok { background: var(--grn-l); color: var(--grn2); }
+  .b-no { background: var(--red-l); color: var(--red); }
+  .b-tip { background: var(--teal-l); color: var(--teal2); }
+  .b-new { background: var(--cl); color: var(--c2); }
+  .b-chk { background: var(--amber-l); color: var(--amber); }
+  .row-text { font-size: 6.2pt; color: var(--grey); line-height: 1.3; }
+  .row-text strong { color: #1a1a2e; font-weight: 700; }
+  .row-text em { font-style: normal; color: #78909c; font-size: 5.5pt; }
+
+  .grp { display: grid; grid-template-columns: 17mm 1fr; gap: 1mm 1.5mm; font-size: 6.2pt; }
+  .grp .when { font-weight: 800; color: var(--c2); font-size: 5.7pt; padding-top: 0.2mm; }
+  .grp .what { color: var(--grey); }
+  .grp .what strong { color: #1a1a2e; }
+
+  .patient-bubble { background: var(--grey-l); border-radius: 4px; padding: 1.5mm 2mm; font-size: 6.2pt; color: var(--grey); font-style: italic; line-height: 1.3; }
+  .patient-bubble::before { content: '💬 '; font-style: normal; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5mm; padding: 0 8mm 3mm; }
+  .fc { border-radius: 7px; padding: 2.5mm; }
+  .fc-title { font-size: 6.4pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.5mm; }
+  .fc-item { font-size: 6.2pt; color: var(--grey); padding: 0.9mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.3; }
+  .fc-item:last-child { border-bottom: none; }
+  .fc-item strong { color: #1a1a2e; font-weight: 700; }
+  .fc-a { background: var(--grn-l); border-left: 3px solid var(--grn2); } .fc-a .fc-title { color: var(--grn2); }
+  .fc-b { background: var(--cl); border-left: 3px solid var(--c2); } .fc-b .fc-title { color: var(--c2); }
+  .fc-c { background: var(--red-l); border-left: 3px solid var(--red); } .fc-c .fc-title { color: var(--red); }
+
+  .sources { padding: 1.5mm 8mm 2mm; font-size: 5.3pt; color: #546e7a; line-height: 1.35; border-top: 1px solid var(--border); margin: 0 8mm; padding-left: 0; padding-right: 0; }
+  .sources strong { color: var(--grey); }
+  .footer-strip { background: var(--c1); padding: 1.8mm 8mm; display: flex; justify-content: space-between; align-items: center; margin-top: 1.5mm; }
+  .footer-strip span { color: rgba(255,255,255,0.55); font-size: 5.3pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.88); font-weight: 700; font-size: 6.1pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🧬 Biosimilaires — Substitution à l'officine</h1>
+    <div class="sub">Liste &amp; règles en vigueur · point au 20/10/2026 · à revérifier avant chaque substitution</div>
+  </div>
+  <div class="pills">
+    <div class="pill"><span class="val">13</span><span class="lbl">groupes substituables*</span></div>
+    <div class="pill"><span class="val">01/09/26</span><span class="lbl">tiers payant contre biosimilaire</span></div>
+  </div>
+</div>
+
+<div class="alert-strip">
+  <div style="font-size:9pt;line-height:1.2">⚠️</div>
+  <div>
+    <span class="alert-title">Liste évolutive — ne pas se fier à une affiche datée</span>
+    <div class="alert-body">
+      Texte de base : <strong>arrêté du 20/02/2025</strong>, annexe remplacée par l'<strong>arrêté du 10/04/2026</strong> (JO 14/04/2026, 11 groupes) ; le dénosumab s'y ajoute par un <strong>arrêté du 17/09/2026</strong> (JO 22/09/2026). *« 13 groupes » : chiffre de la presse professionnelle (Vidal, Quotidien du Pharmacien), non relu sur Légifrance.
+      La liste de référence ANSM est plus large que la liste ouverte à la substitution : <strong>seul l'arrêté fait foi</strong>.
+    </div>
+  </div>
+</div>
+
+<div class="main-grid">
+
+  <!-- 1. LISTE -->
+  <div class="card">
+    <div class="card-head"><div class="card-icon">📋</div><div class="card-title">Groupes substituables — par date d'ouverture</div></div>
+    <div class="card-body">
+      <div class="grp">
+        <div class="when">2022</div><div class="what"><strong>Filgrastim · Pégfilgrastim</strong> — neutropénies</div>
+        <div class="when">Oct. 2024</div><div class="what"><strong>Ranibizumab</strong> (réf. Lucentis) — intravitréen, ophtalmologie</div>
+        <div class="when">20/02/2025</div><div class="what"><strong>Tériparatide</strong> (ostéoporose) · <strong>Étanercept</strong> · <strong>Adalimumab</strong> (immunologie) · <strong>Énoxaparine</strong> (anticoagulation) · <strong>Follitropine alfa</strong> (fertilité) · <strong>Époétine</strong> (anémie)</div>
+        <div class="when">04/12/2025</div><div class="what"><strong>Aflibercept</strong> — intravitréen</div>
+        <div class="when">Avril 2026</div><div class="what"><strong>Ustékinumab</strong> (SC) — immunologie</div>
+        <div class="when">Sept. 2026</div><div class="what"><strong>Dénosumab</strong> 60 mg (Prolia) et 120 mg (Xgeva) <em>— source : presse, arrêté du 17/09/2026</em></div>
+      </div>
+      <div class="row"><span class="badge b-chk">À VÉRIFIER</span><span class="row-text">Les tableaux OMEDIT listaient le dénosumab dès juin–juillet 2026 comme « avis ANSM favorable, arrêté en attente » : <strong>ne substituer qu'une fois l'arrêté publié</strong>, vérifier la date d'effet.</span></div>
+    </div>
+  </div>
+
+  <!-- 2. RÈGLES -->
+  <div class="card t-grn">
+    <div class="card-head"><div class="card-icon">✅</div><div class="card-title">Règles à respecter à chaque substitution</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-ok">1</span><span class="row-text"><strong>Informer le patient</strong> de la substitution. Il peut la <strong>refuser</strong>.</span></div>
+      <div class="row"><span class="badge b-ok">2</span><span class="row-text"><strong>Mention « non substituable »</strong> du prescripteur ? → pas de substitution.</span></div>
+      <div class="row"><span class="badge b-ok">3</span><span class="row-text"><strong>Écrire sur l'ordonnance</strong> le nom de la spécialité réellement délivrée.</span></div>
+      <div class="row"><span class="badge b-ok">4</span><span class="row-text"><strong>Informer le prescripteur</strong> de la substitution.</span></div>
+      <div class="row"><span class="badge b-ok">5</span><span class="row-text"><strong>Enregistrer</strong> le nom et le <strong>n° de lot</strong> délivrés (traçabilité biomédicaments).</span></div>
+      <div class="row"><span class="badge b-ok">6</span><span class="row-text"><strong>Coût :</strong> pas de dépense supérieure à celle du biosimilaire le plus cher du groupe. Grand conditionnement si traitement ≥ 3 mois.</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>Initiation de traitement / patient stable sous référence : la règle exacte est à relire dans l'arrêté (sources secondaires seulement).</em></span></div>
+    </div>
+  </div>
+
+  <!-- 3. TIERS PAYANT -->
+  <div class="card t-teal">
+    <div class="card-head"><div class="card-icon">💳</div><div class="card-title">Tiers payant contre biosimilaire (depuis le 01/09/2026)</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-new">LFSS 2026</span><span class="row-text">Le mécanisme « tiers payant contre générique » est étendu aux <strong>biosimilaires et hybrides</strong>.</span></div>
+      <div class="row"><span class="badge b-ok">DISPENSE</span><span class="row-text"><strong>Dispense d'avance de frais</strong> si le patient accepte la substitution, ou si le prescripteur a justifié « non substituable ».</span></div>
+      <div class="row"><span class="badge b-no">REFUS</span><span class="row-text">Patient qui refuse : <strong>avance totale</strong> des frais ; remboursement calculé sur la base du <strong>produit le plus cher du groupe</strong> (OMEDIT, Service-public).</span></div>
+      <div class="row"><span class="badge b-tip">EXCEPTION</span><span class="row-text">Pas d'avance de frais non plus si le produit de référence est vendu à un prix ≤ celui du biosimilaire (Vidal).</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>Sources divergentes sur : (a) la base exacte de remboursement en cas de refus, (b) le formalisme de la mention NS (motivation expresse exigée ou non). Voir la circulaire CNAM / votre logiciel.</em></span></div>
+    </div>
+  </div>
+
+  <!-- 4. NON SUBSTITUABLES -->
+  <div class="card t-red">
+    <div class="card-head"><div class="card-icon">⛔</div><div class="card-title">Biosimilaires NON substituables par le pharmacien</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-no">INSULINES</span><span class="row-text"><strong>Aspart, glargine, lispro</strong> : avis ANSM défavorable du 20/12/2024 → un biosimilaire de l'insuline peut être <em>prescrit</em>, jamais substitué au comptoir.</span></div>
+      <div class="row"><span class="badge b-no">AUTRES</span><span class="row-text"><strong>Tocilizumab · Pertuzumab</strong> : sur la liste de référence ANSM mais absents de la liste de substitution.</span></div>
+      <div class="row"><span class="badge b-no">GOLIMUMAB</span><span class="row-text">Pas substituable pour le moment ; évaluation européenne attendue fin 2026 / début 2027.</span></div>
+      <div class="row"><span class="badge b-tip">HYBRIDES</span><span class="row-text">Autre registre (ANSM) : substitution <strong>au sein d'un groupe hybride inscrit</strong> seulement ; mention « non substituable (CIF) » en cas de contre-indication à un excipient.</span></div>
+    </div>
+  </div>
+
+  <!-- 5. POINTS PAR MOLECULE -->
+  <div class="card t-amb">
+    <div class="card-head"><div class="card-icon">🔎</div><div class="card-title">Points d'attention par molécule</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-chk">ADALIMUMAB</span><span class="row-text">Pas de substitution par un biosimilaire dont le <strong>volume d'injection</strong> est supérieur à celui prescrit.</span></div>
+      <div class="row"><span class="badge b-chk">USTÉKINUMAB</span><span class="row-text">Vérifier l'<strong>AMM de la spécialité délivrée</strong> : les indications varient d'un produit à l'autre ; assurer la continuité du traitement.</span></div>
+      <div class="row"><span class="badge b-chk">DÉNOSUMAB</span><span class="row-text">Dispositifs factices fournis par les laboratoires pour l'apprentissage de l'injection ; retour à la spécialité prescrite possible <em>(presse)</em>.</span></div>
+      <div class="row"><span class="badge b-tip">INTRAVITRÉEN</span><span class="row-text">Ranibizumab / aflibercept : dispensation, conservation au froid et suivi par l'ophtalmologue inchangés.</span></div>
+    </div>
+  </div>
+
+  <!-- 6. PATIENT -->
+  <div class="card">
+    <div class="card-head"><div class="card-icon">🗣</div><div class="card-title">Ce que dit le patient</div></div>
+    <div class="card-body">
+      <div class="patient-bubble">C'est pareil que mon Humira, ou c'est moins bien ?</div>
+      <div class="row"><span class="badge b-tip">RÉPONSE</span><span class="row-text">Un biosimilaire est autorisé après démonstration de <strong>l'absence de différence cliniquement significative</strong> avec le médicament de référence. Ce n'est pas un « générique » au sens strict (substance biologique).</span></div>
+      <div class="patient-bubble">Je préfère garder mon stylo habituel.</div>
+      <div class="row"><span class="badge b-ok">OK</span><span class="row-text">Le patient peut refuser. <strong>Depuis le 01/09/2026</strong> : prévenir qu'il devra alors avancer les frais (voir encadré tiers payant).</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-grid">
+  <div class="fc fc-a">
+    <div class="fc-title">⚡ Réflexe 1 — Avant de substituer</div>
+    <div class="fc-item"><strong>Le groupe est-il dans l'arrêté en vigueur ?</strong> (pas seulement dans la liste de référence ANSM)</div>
+    <div class="fc-item"><strong>« Non substituable » écrit ?</strong> Alors on délivre ce qui est prescrit.</div>
+    <div class="fc-item">Vérifier la <strong>forme</strong> (stylo, seringue, dosage, volume) et l'AMM du produit.</div>
+  </div>
+  <div class="fc fc-b">
+    <div class="fc-title">⚡ Réflexe 2 — Au moment de délivrer</div>
+    <div class="fc-item"><strong>Informer</strong> le patient, <strong>noter</strong> sur l'ordonnance, <strong>prévenir</strong> le prescripteur.</div>
+    <div class="fc-item"><strong>Lot</strong> enregistré (pharmacovigilance : nom de marque + lot).</div>
+    <div class="fc-item">Montrer le nouveau stylo / la technique d'injection.</div>
+  </div>
+  <div class="fc fc-c">
+    <div class="fc-title">⚡ Réflexe 3 — Ce qu'on ne fait pas</div>
+    <div class="fc-item"><strong>Jamais d'insuline substituée.</strong></div>
+    <div class="fc-item">Pas de substitution « de mémoire » : la liste évolue vite (11 groupes en avril 2026 ; 13 selon la presse fin septembre).</div>
+    <div class="fc-item">En cas de doute sur un groupe : appeler le prescripteur, ou <strong>délivrer la spécialité prescrite</strong>.</div>
+  </div>
+</div>
+
+<div class="sources">
+  <strong>Sources (consultées le 20/10/2026, via la presse professionnelle et les relais officiels ; textes non relus sur Légifrance) :</strong>
+  Ordre des pharmaciens — groupes biologiques similaires substituables et conditions de délivrance (revue n°29, déc. 2025) · Vidal — passage de 9 à 11 puis 13 groupes (2026) · Quotidien du Pharmacien — dénosumab · ANSM — avis du 20/12/2024 (insulines) et liste de référence des biosimilaires · OMEDIT Île-de-France — tableau biosimilaires (juin–juil. 2026) et fiche LFSS 2026 « Nouveautés 1er septembre » · Service-public.gouv.fr — tiers payant contre biosimilaires · USPO — tableau d'équivalences (16/04/2026) · Caducée — règles de substitution 2026.
+  <strong>À valider par le pharmacien avant affichage.</strong>
+</div>
+
+<div class="footer-strip">
+  <span>Biosimilaires · Substitution · LFSS 2026 · Tiers payant · Officine</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE</span>
+  <span>Mise à jour 20/10/2026 · api-pharma</span>
+</div>
+
+</body>
+</html>

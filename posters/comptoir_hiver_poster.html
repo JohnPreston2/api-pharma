@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="sv:sources" content="DGS-Urgent n°2026-10 (VRS) et n°2026-12 (grippe/Covid) ; Ordre des pharmaciens (campagne 2026-2027) ; ANSM (vaccins grippaux liste I 07/07/2026 ; erreurs médicamenteuses VRS 16/09/2026 ; plan hivernal 13/10/2026) ; ameli ; HAS (VRS adulte 2024, bronchiolite, rotavirus) ; Santé publique France (bulletin 08/10/2026) ; Vidal (campagne VRS 2026-2027) ; LFSS 2026 via FSPF. PDF officiels non relus en entier.">
+<meta name="sv:maj" content="2026-10-20">
+<meta name="sv:volatilite" content="haute">
+<title>Guide Comptoir Hiver 2026-2027 — Officine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --c1: #0d47a1; --c2: #1565c0; --c3: #42a5f5; --cl: #e3f2fd;
+    --grn: #1b5e20; --grn2: #2e7d32; --grn-l: #e8f5e9;
+    --red: #b71c1c; --red-l: #ffebee;
+    --amber: #e65100; --amber-l: #fff3e0;
+    --teal: #004d40; --teal2: #00695c; --teal-l: #e0f2f1;
+    --pur: #4a148c; --pur-l: #f3e5f5;
+    --grey: #37474f; --grey-l: #f4f6f8; --border: #cfd8dc;
+  }
+  @page { size: A4 portrait; margin: 0; }
+  body { font-family: 'Inter', Arial, sans-serif; width: 210mm; min-height: 297mm; margin: 0 auto; background: #fff; font-size: 6.9pt; color: #1a1a2e; line-height: 1.3; }
+
+  .header { background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 50%, var(--c3) 100%); padding: 6mm 8mm 4.5mm; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4mm; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -12mm; top: -12mm; width: 55mm; height: 55mm; border-radius: 50%; background: rgba(255,255,255,0.07); }
+  .header h1 { font-size: 20pt; font-weight: 900; color: #fff; line-height: 1; }
+  .header .sub { font-size: 7.4pt; color: rgba(255,255,255,0.8); margin-top: 1.5mm; letter-spacing: 1px; text-transform: uppercase; }
+  .pills { display: flex; gap: 3mm; }
+  .pill { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.28); border-radius: 7px; padding: 2.3mm 3.3mm; text-align: center; }
+  .pill .val { font-size: 11pt; font-weight: 800; color: #fff; display: block; line-height: 1; }
+  .pill .lbl { font-size: 5.0pt; color: rgba(255,255,255,0.78); text-transform: uppercase; letter-spacing: 0.4px; margin-top: 0.8mm; display: block; }
+
+  .alert-strip { background: var(--amber-l); border-bottom: 2px solid var(--amber); padding: 1.8mm 8mm; display: flex; gap: 3mm; align-items: flex-start; }
+  .alert-title { font-size: 5.8pt; font-weight: 800; color: var(--amber); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 0.4mm; }
+  .alert-body { font-size: 6.0pt; color: #5d2a00; line-height: 1.4; }
+
+  .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; padding: 2.5mm 8mm 2mm; }
+  .card { background: #fff; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; display: flex; flex-direction: column; }
+  .card-head { padding: 1.8mm 2.5mm; display: flex; align-items: center; gap: 1.5mm; background: linear-gradient(90deg, var(--c1), var(--c3)); }
+  .card-icon { font-size: 10.5pt; line-height: 1; flex-shrink: 0; }
+  .card-title { font-size: 7.1pt; font-weight: 800; color: #fff; flex: 1; line-height: 1.1; }
+  .card-body { padding: 1.8mm 2.3mm; flex: 1; display: flex; flex-direction: column; gap: 1.2mm; }
+  .t-grn .card-head { background: linear-gradient(90deg, #1b5e20, #43a047); }
+  .t-red .card-head { background: linear-gradient(90deg, #b71c1c, #ef5350); }
+  .t-teal .card-head { background: linear-gradient(90deg, #004d40, #26a69a); }
+  .t-amb .card-head { background: linear-gradient(90deg, #e65100, #ffa726); }
+  .t-pur .card-head { background: linear-gradient(90deg, #4a148c, #8e24aa); }
+  .t-ind .card-head { background: linear-gradient(90deg, #283593, #5c6bc0); }
+
+  .row { display: flex; gap: 1.4mm; align-items: flex-start; }
+  .badge { font-size: 4.8pt; font-weight: 800; padding: 0.7mm 1.4mm; border-radius: 3px; white-space: nowrap; flex-shrink: 0; line-height: 1.1; }
+  .b-do { background: var(--grn-l); color: var(--grn2); }
+  .b-no { background: var(--red-l); color: var(--red); }
+  .b-info { background: var(--cl); color: var(--c2); }
+  .b-tip { background: var(--teal-l); color: var(--teal2); }
+  .b-chk { background: var(--amber-l); color: var(--amber); }
+  .b-soon { background: var(--pur-l); color: var(--pur); }
+  .row-text { font-size: 5.8pt; color: var(--grey); line-height: 1.3; }
+  .row-text strong { color: #1a1a2e; font-weight: 700; }
+  .row-text em { font-style: normal; color: #78909c; font-size: 5.1pt; }
+
+  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; padding: 0 8mm 2.5mm; }
+  .fc { border-radius: 7px; padding: 2.2mm 2.5mm; }
+  .fc-title { font-size: 6.0pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1.2mm; }
+  .fc-item { font-size: 5.8pt; color: var(--grey); padding: 0.8mm 0; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.3; }
+  .fc-item:last-child { border-bottom: none; }
+  .fc-item strong { color: #1a1a2e; font-weight: 700; }
+  .fc-a { background: var(--cl); border-left: 3px solid var(--c2); } .fc-a .fc-title { color: var(--c2); }
+  .fc-b { background: var(--grn-l); border-left: 3px solid var(--grn2); } .fc-b .fc-title { color: var(--grn2); }
+  .fc-c { background: var(--amber-l); border-left: 3px solid var(--amber); } .fc-c .fc-title { color: var(--amber); }
+
+  .sources { font-size: 4.8pt; color: #546e7a; line-height: 1.35; border-top: 1px solid var(--border); margin: 0 8mm; padding: 1.4mm 0 1.6mm; }
+  .sources strong { color: var(--grey); }
+  .footer-strip { background: var(--c1); padding: 1.7mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .footer-strip span { color: rgba(255,255,255,0.55); font-size: 5.0pt; }
+  .footer-strip .brand { color: rgba(255,255,255,0.9); font-weight: 700; font-size: 5.8pt; }
+
+  @media print { body { width: 210mm; margin: 0; } * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>❄️ Comptoir Hiver 2026-2027</h1>
+    <div class="sub">Grippe · Covid · VRS · Bronchiolite · Gastro · Approvisionnement · point au 20/10/2026</div>
+  </div>
+  <div class="pills">
+    <div class="pill"><span class="val">14 sept.</span><span class="lbl">VRS nourrissons</span></div>
+    <div class="pill"><span class="val">13 oct.</span><span class="lbl">Grippe + Covid</span></div>
+    <div class="pill"><span class="val">31 janv.</span><span class="lbl">fin grippe/Covid</span></div>
+  </div>
+</div>
+
+<div class="alert-strip">
+  <div style="font-size:9pt;line-height:1.2">⚠️</div>
+  <div>
+    <span class="alert-title">Chiffres à recouper avec les DGS-Urgent avant affichage</span>
+    <div class="alert-body">
+      Sources : DGS-Urgent n°2026-10 (campagne VRS) et n°2026-12 (grippe/Covid), Ordre des pharmaciens, ameli, ANSM, HAS, Vidal. Les encadrés <strong>« À VÉRIF. »</strong> signalent une divergence entre sources ou une information issue d'un seul relais. Rien de ce poster ne remplace le RCP ni le texte réglementaire.
+    </div>
+  </div>
+</div>
+
+<div class="main-grid">
+
+  <!-- 1 GRIPPE -->
+  <div class="card">
+    <div class="card-head"><div class="card-icon">💉</div><div class="card-title">Grippe — campagne 13/10/2026 → 31/01/2027</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-info">NOUVEAU</span><span class="row-text">Depuis le <strong>10/07/2026</strong>, les vaccins grippaux sont <strong>sur liste I (prescription)</strong> : le pharmacien <strong>prescrit et administre dès 11 ans</strong> (formation requise). Moins de 11 ans : médecin ou sage-femme.</span></div>
+      <div class="row"><span class="badge b-do">VACCINS</span><span class="row-text"><strong>Flucelvax · Influvac · Vaxigrip · Efluelda</strong> (haute dose) <strong>· Fluad</strong> (adjuvanté). Efluelda et Fluad : <strong>65 ans et plus</strong> (préférés par la HAS à la dose standard).</span></div>
+      <div class="row"><span class="badge b-info">PRISE EN CHARGE</span><span class="row-text"><strong>100 %</strong> avec bon ameli pour les publics ciblés (65 ans et +, femmes enceintes, maladies chroniques, immunodéprimés, soignants). <strong>65 %</strong> pour les 2–17 ans sans comorbidité.</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>ANSM : « prescription obligatoire » ; DGS : liste I « sans conséquence pratique sur l'accès », bon de prise en charge inchangé. Prix des vaccins non retrouvé.</em></span></div>
+    </div>
+  </div>
+
+  <!-- 2 COVID -->
+  <div class="card t-ind">
+    <div class="card-head"><div class="card-icon">🦠</div><div class="card-title">Covid-19 — campagne conjointe avec la grippe</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">VACCIN</span><span class="row-text"><strong>Comirnaty XFG</strong> (fourni par l'État) : adulte dès 12 ans ; présentation pédiatrique de 6 mois à 11 ans.</span></div>
+      <div class="row"><span class="badge b-do">CO-ADMIN</span><span class="row-text"><strong>Grippe + Covid le même jour</strong>, dans deux bras différents, sans intervalle minimal.</span></div>
+      <div class="row"><span class="badge b-info">PUBLICS</span><span class="row-text">Personnes à haut risque, professionnels de santé, entourage de personnes fragiles <em>(liste détaillée de l'annexe 2026 : à consulter)</em>.</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>Pharmacien : prescription et administration « dès 5 ans » selon ameli, alors que la présentation pédiatrique commence à 6 mois : confirmer la limite pour les moins de 12 ans.</em></span></div>
+    </div>
+  </div>
+
+  <!-- 3 VRS ADULTE -->
+  <div class="card t-pur">
+    <div class="card-head"><div class="card-icon">🫁</div><div class="card-title">VRS — adultes et femme enceinte</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-info">HAS 2024</span><span class="row-text"><strong>75 ans et plus</strong>, et <strong>65 ans et plus avec une maladie respiratoire ou cardiaque chronique</strong> (dont BPCO, insuffisance cardiaque) : dose unique (Arexvy, Abrysvo ; mRESVIA cité par Santé publique France).</span></div>
+      <div class="row"><span class="badge b-do">CO-ADMIN</span><span class="row-text">Possible avec le vaccin grippal (Santé publique France, 08/10/2026).</span></div>
+      <div class="row"><span class="badge b-info">GROSSESSE</span><span class="row-text"><strong>Abrysvo</strong> entre <strong>32 et 36 SA</strong> pour protéger le nouveau-né <em>(à confirmer sur le RCP)</em>.</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>Le calendrier vaccinal 2026 n'indique pas de prise en charge chez les 75 ans et plus alors qu'un avis HAS est favorable à Arexvy : vérifier le remboursement avant de dire « remboursé ».</em></span></div>
+    </div>
+  </div>
+
+  <!-- 4 VRS NOURRISSON -->
+  <div class="card t-teal">
+    <div class="card-head"><div class="card-icon">👶</div><div class="card-title">VRS — nourrissons : 14/09/2026 → 28/02/2027</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">POUR TOUS</span><span class="row-text"><strong>Beyfortus</strong> (nirsévimab) ou <strong>Enflonsia</strong> (clesrovimab) pour <strong>tout nourrisson en 1ʳᵉ saison VRS</strong>, avec ou sans facteur de risque. <strong>Synagis</strong> : prématurés / haut risque, en établissement.</span></div>
+      <div class="row"><span class="badge b-info">DOSES</span><span class="row-text"><strong>Beyfortus 100 mg</strong> si ≥ 5 kg, <strong>50 mg</strong> si &lt; 5 kg · <strong>Enflonsia 105 mg</strong> dose unique · IM cuisse.</span></div>
+      <div class="row"><span class="badge b-no">ATTENTION</span><span class="row-text">L'ANSM (16/09/2026) signale des <strong>erreurs médicamenteuses persistantes</strong> Abrysvo / Beyfortus : relire produit, dose et patient (nourrisson ≠ femme enceinte) à chaque délivrance.</span></div>
+      <div class="row"><span class="badge b-chk">À VÉRIF.</span><span class="row-text"><em>Début de campagne : 14/09 (DGS) ; contesté par le CNP de pédiatrie ; 01/09 dans une publication. Remboursement 65 % (dès 31/08/2026) : une seule source. Cotation et conservation en officine : non retrouvées.</em></span></div>
+    </div>
+  </div>
+
+  <!-- 5 BRONCHIOLITE -->
+  <div class="card t-grn">
+    <div class="card-head"><div class="card-icon">🍼</div><div class="card-title">Bronchiolite du nourrisson — conseils comptoir</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">FAIRE</span><span class="row-text"><strong>Lavage de nez au sérum physiologique</strong>, avant les repas et au besoin · <strong>repas fractionnés</strong> sans réduire les apports · allaitement maintenu · pas de tabagisme autour du bébé.</span></div>
+      <div class="row"><span class="badge b-do">FIÈVRE</span><span class="row-text">Paracétamol si fièvre &gt; 38 °C ; une <strong>consultation médicale</strong> reste indispensable.</span></div>
+      <div class="row"><span class="badge b-no">NE PAS VENDRE</span><span class="row-text">Pas de <strong>sirop antitussif, fluidifiant, bronchodilatateur</strong>, ni d'antibiotique systématique ; pas de kinésithérapie respiratoire de routine (HAS). Huiles essentielles : <strong>à éviter</strong> <em>(déconseillées avant 3 ans selon l'étiquetage ANSES)</em>.</span></div>
+      <div class="row"><span class="badge b-no">RECONSULTER</span><span class="row-text">Bébé qui <strong>boit moins</strong> sur plusieurs repas, refuse sein/biberon, <strong>respire plus vite</strong> ou <strong>creuse le thorax</strong> → médecin. <strong>Bleuissement autour de la bouche → 15.</strong></span></div>
+    </div>
+  </div>
+
+  <!-- 6 GASTRO -->
+  <div class="card t-amb">
+    <div class="card-head"><div class="card-icon">🤢</div><div class="card-title">Gastro-entérite de l'enfant</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">RÉHYDRATER</span><span class="row-text"><strong>SRO en priorité</strong>, petites quantités, souvent <em>(ex. ~10 mL toutes les 30 min, SFP)</em> · lait habituel / allaitement maintenus · pas de régime restrictif.</span></div>
+      <div class="row"><span class="badge b-no">CONSULTER</span><span class="row-text"><strong>Moins de 2 ans : dès 3 selles liquides</strong> en quelques heures · soif, bouche sèche, urines rares, yeux creusés, somnolence · <strong>vomissements verdâtres = urgence</strong> · plus de 2 ans : diarrhée &gt; 2 jours ou qui s'aggrave.</span></div>
+      <div class="row"><span class="badge b-no">ÉVITER</span><span class="row-text">Antiémétiques à domicile · <strong>diosmectite (Smecta) avant 2 ans</strong> : à éviter selon une position ANSM <em>(ancienne ; RCP actuel à relire, le poster Pédiatrie dit « OK nourrisson »)</em>.</span></div>
+      <div class="row"><span class="badge b-info">RECO</span><span class="row-text">Probiotiques (<em>S. boulardii</em>, LGG) : recommandés (ESPGHAN) · racécadotril et diosmectite : recommandation faible · <strong>vaccin rotavirus</strong> : recommandé par la HAS chez le nourrisson de 6 semaines à 6 mois.</span></div>
+    </div>
+  </div>
+
+  <!-- 7 TROD -->
+  <div class="card t-red">
+    <div class="card-head"><div class="card-icon">🧪</div><div class="card-title">Angine : antibiotiques après TROD (rappel)</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-do">LISTE</span><span class="row-text"><strong>Adulte :</strong> amoxicilline, céfpodoxime, céfuroxime, clarithromycine. <strong>Enfant :</strong> amoxicilline, céfpodoxime, clarithromycine.</span></div>
+      <div class="row"><span class="badge b-no">RETIRÉES</span><span class="row-text"><strong>Azithromycine et josamycine</strong> ne sont plus délivrables après TROD (arrêté du 11/12/2024).</span></div>
+      <div class="row"><span class="badge b-info">ÂGES</span><span class="row-text">Sans ordonnance dès <strong>10 ans</strong> · ordonnance conditionnelle « si TROD positif » dès <strong>3 ans</strong> · McIsaac ≥ 2 · TROD négatif : <strong>aucun antibiotique</strong>.</span></div>
+      <div class="row"><span class="badge b-tip">VOIR</span><span class="row-text">Détail et critères d'exclusion : poster <strong>Angine &amp; TROD</strong>.</span></div>
+    </div>
+  </div>
+
+  <!-- 8 APPRO -->
+  <div class="card">
+    <div class="card-head"><div class="card-icon">📦</div><div class="card-title">Approvisionnement hiver — plan ANSM 2026-27</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-info">PLAN</span><span class="row-text">Activé le <strong>13/10/2026</strong> : <strong>14 molécules sentinelles</strong> (dont amoxicilline, azithromycine, paracétamol) · niveau 1 sur 2 · approvisionnement jugé <strong>favorable</strong>.</span></div>
+      <div class="row"><span class="badge b-chk">VIGILANCE</span><span class="row-text"><strong>Paracétamol suspension 2,4 %</strong> : stocks bas après le rappel de 27 lots de février 2026.</span></div>
+      <div class="row"><span class="badge b-tip">SUIVI</span><span class="row-text">Consulter chaque semaine la disponibilité des médicaments en ville (ANSM / Vidal) ; anticiper les commandes pédiatriques avant le pic.</span></div>
+    </div>
+  </div>
+
+  <!-- 9 REGLEMENTAIRE -->
+  <div class="card t-ind">
+    <div class="card-head"><div class="card-icon">📜</div><div class="card-title">Ce qui change pour l'équipe</div></div>
+    <div class="card-body">
+      <div class="row"><span class="badge b-soon">À VENIR</span><span class="row-text"><strong>Obligation vaccinale antigrippale</strong> des pharmaciens et de leurs équipes (LFSS 2026, art. 55) : cadre réglementaire attendu fin du 1ᵉʳ trimestre 2027 ; 2026-27 serait la 1ʳᵉ année.</span></div>
+      <div class="row"><span class="badge b-soon">À VENIR</span><span class="row-text"><strong>Mission « situations cliniques »</strong> (plaies simples, brûlures, conjonctivite, piqûre de tique) : application prévisionnelle fin 2026, modalités et cotation non publiées.</span></div>
+      <div class="row"><span class="badge b-info">EN VIGUEUR</span><span class="row-text"><strong>Tiers payant contre biosimilaire</strong> depuis le 01/09/2026 (voir poster Biosimilaires).</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-grid">
+  <div class="fc fc-a">
+    <div class="fc-title">📅 Calendrier</div>
+    <div class="fc-item"><strong>VRS nourrissons :</strong> 14/09/2026 → 28/02/2027 (métropole)</div>
+    <div class="fc-item"><strong>Grippe + Covid :</strong> 13/10/2026 → 31/01/2027</div>
+    <div class="fc-item"><strong>Plan hivernal ANSM :</strong> activé le 13/10/2026</div>
+  </div>
+  <div class="fc fc-b">
+    <div class="fc-title">🧰 Réflexes du comptoir hiver</div>
+    <div class="fc-item"><strong>Toute visite d'un patient ciblé</strong> : demander son statut grippe / Covid / VRS.</div>
+    <div class="fc-item"><strong>Bébé enrhumé :</strong> sérum physiologique, pas de sirop, signes de gravité expliqués.</div>
+    <div class="fc-item"><strong>Gastro :</strong> SRO d'abord, âge et signes de déshydratation avant tout autre produit.</div>
+  </div>
+  <div class="fc fc-c">
+    <div class="fc-title">✅ Avant d'afficher</div>
+    <div class="fc-item">Relire les encadrés <strong>« À VÉRIF. »</strong> ci-dessus.</div>
+    <div class="fc-item">Contrôler les dates sur les DGS-Urgent n°2026-10 et n°2026-12.</div>
+    <div class="fc-item"><strong>À valider par le pharmacien</strong> avant impression.</div>
+  </div>
+</div>
+
+<div class="sources">
+  <strong>Sources (consultées le 20/10/2026 via relais officiels et presse professionnelle ; PDF officiels non relus en entier) :</strong>
+  DGS-Urgent n°2026-10 (campagne VRS) et n°2026-12 (campagne grippe/Covid) · Ordre des pharmaciens (campagne 2026-2027 ; vaccins grippe sur prescription) · ANSM (vaccins grippaux liste I, 07/07/2026 ; erreurs médicamenteuses VRS, 16/09/2026 ; plan hivernal 2026-27, 13/10/2026 ; fiche bon patient / bon produit VRS) · ameli (grippe, Covid, bronchiolite, gastro-entérite de l'enfant) · HAS (VRS adulte 2024 ; bronchiolite ; Efluelda/Fluad ; rotavirus) · Santé publique France (bulletin vaccination 08/10/2026) · Vidal (modalités de la campagne de prévention VRS 2026-2027 ; Enflonsia) · LFSS 2026 relayée par la FSPF · calendrier vaccinal 2026.
+</div>
+
+<div class="footer-strip">
+  <span>Hiver 2026-27 · Grippe · Covid · VRS · Bronchiolite · Gastro · Officine</span>
+  <span class="brand">SANTÉVEILLE · OFFICINE HIVER</span>
+  <span>Mise à jour 20/10/2026 · api-pharma</span>
+</div>
+
+</body>
+</html>
