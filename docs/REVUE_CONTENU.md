@@ -18,6 +18,9 @@ Priorité : **P1** = peut induire une erreur au comptoir · **P2** = à jour mai
 | `angine_TROD` | « Allergie pénicilline signalée : orienter vers le médecin (prudence) » | Aucun texte trouvé sur la conduite du pharmacien ; la grille OMEDIT IdF exige « aucune allergie signalée ». |
 | `angine_TROD` | « TROD Pharmacie depuis 2020 » | Non revérifié. |
 | `angine_TROD` | Rémunération 10 € / 15 € (avenant 18) | Tarifs 2026 non retrouvés (clause de revoyure). |
+| `cystite_IU` | La délivrance sans ordonnance de la fosfomycine était datée « 2020 (arrêté) » | Aucun texte de 2020 retrouvé ; les sources situent ce régime dans le décret n° 2024-550 du 17/06/2024 (après TROD urinaire). Date remplacée, **à confirmer**. |
+| `cystite_IU` | Critères d'exclusion en officine (« pas de diabète déséquilibré », récidive) | Un support de formation non officiel cite : grossesse non écartée, ≥ 3 épisodes en 12 mois, épisode dans les 15 jours, immunodépression, insuffisance rénale sévère, antibiotique récent. Le poster dit « récidivante ≥ 4/an » : à aligner sur le texte. |
+| `cystite_IU` | Nitrofurantoïne | Non retrouvée parmi les molécules délivrables par le pharmacien (fosfomycine trométamol, pivmécillinam) : présentée comme 3ᵉ ligne **sur prescription**. |
 | `vaccinations_officine` | Lignes non revérifiées : hépatite B, coqueluche, ROR, fièvre jaune ; contenu de la formation | Hors périmètre de la mise à jour. |
 | `vaccinations_officine` | Covid : âge minimal d'intervention du pharmacien | « Dès 5 ans » (ameli) alors que la présentation pédiatrique commence à 6 mois : confirmer pour les moins de 12 ans. |
 | `vaccinations_officine` | Ligne VRS adulte | Compétence de l'officine et remboursement adulte non confirmés. |

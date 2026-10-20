@@ -18,7 +18,7 @@ Généré par `python3 tools/posters.py index` — ne pas éditer à la main.
 | Constipation | [constipation_poster.html](constipation_poster.html) | moyenne | — | — | — |
 | Contraception | [contraception_poster.html](contraception_poster.html) | moyenne | — | — | — |
 | Corticoïdes — Guide pratique officine | [corticoides_poster.html](corticoides_poster.html) | moyenne | — | — | — |
-| Cystite & Infection Urinaire | [cystite_IU_poster.html](cystite_IU_poster.html) | haute | — | — | — |
+| Cystite & Infection Urinaire | [cystite_IU_poster.html](cystite_IU_poster.html) | haute | 2026-10-20 | oui | — |
 | Dépression · Anxiété · Insomnie | [depression_anxiete_poster.html](depression_anxiete_poster.html) | moyenne | — | — | — |
 | Diabète Type 2 | [diabete_type2_poster.html](diabete_type2_poster.html) | moyenne | — | — | — |
 | Douleur | [douleur_poster.html](douleur_poster.html) | moyenne | — | — | — |
