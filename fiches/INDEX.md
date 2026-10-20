@@ -9,7 +9,7 @@
 |---|---|---|---|
 | 01 | [HTA](./01_HTA.md) | [🖨 HTA_poster.html](../posters/HTA_poster.html) | tension, cachets pour la tension, SRAA, IEC, sartans, amlodipine |
 | 02 | [Diabète Type 2](./02_diabete_type2.md) | [🖨 diabete_type2_poster.html](../posters/diabete_type2_poster.html) | sucre, insuline, glycémie, HbA1c, metformine, gliflozines |
-| 03 | [Dyslipidémie](./03_dyslipidémie.md) | [🖨 dyslipidémie_poster.html](../posters/dyslipidémie_poster.html) | cholestérol, triglycérides, statines, pamplemousse |
+| 03 | [Dyslipidémie](./03_dyslipidemie.md) | [🖨 dyslipidemie_poster.html](../posters/dyslipidemie_poster.html) | cholestérol, triglycérides, statines, pamplemousse |
 | 04 | [Douleur — Paliers OMS](./04_douleur_paliers_OMS.md) | [🖨 douleur_poster.html](../posters/douleur_poster.html) | mal, douleur, morphine, tramadol, ibuprofène, paracétamol |
 | 05 | [Asthme / BPCO](./05_asthme_BPCO.md) | [🖨 asthme_BPCO_poster.html](../posters/asthme_BPCO_poster.html) | Ventoline, aérosol, siffle, toux, Symbicort, inhalateur |
 
