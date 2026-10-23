@@ -128,7 +128,7 @@ python app.py
 
 - `fiches/` : 20 fiches de pathologies (physiopathologie, classes, interactions, réflexes comptoir) et `INDEX.md`.
 - `posters/` : posters HTML A4 prêts à imprimer (Ctrl+P, A4, couleurs activées). L'inventaire à jour est dans [`posters/INDEX.md`](posters/INDEX.md).
-- `docs/` : [`RECHERCHE_2026-10.md`](docs/RECHERCHE_2026-10.md) (état des données publiques, accès aux données du LGO, LLM et cadre juridique, feuille de route), [`REVUE_CONTENU.md`](docs/REVUE_CONTENU.md) (points à valider par le pharmacien avant affichage) et [`veille_reglementaire_2026.md`](docs/veille_reglementaire_2026.md).
+- `docs/` : [`CROISEMENTS_DATA_PUBLIQUE.md`](docs/CROISEMENTS_DATA_PUBLIQUE.md) (données publiques et croisements avec les ventes de l'officine), [`RECHERCHE_2026-10.md`](docs/RECHERCHE_2026-10.md) (état des données publiques, accès aux données du LGO, LLM et cadre juridique, feuille de route), [`REVUE_CONTENU.md`](docs/REVUE_CONTENU.md) (points à valider par le pharmacien avant affichage) et [`veille_reglementaire_2026.md`](docs/veille_reglementaire_2026.md).
 - `tools/posters.py` : contrôle de fraîcheur des posters (sources, date de mise à jour, validation), génération de l'index.
 
 ```bash

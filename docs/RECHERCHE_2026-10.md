@@ -12,7 +12,7 @@ Relance du projet après 6 mois, à partir du but formulé par l'utilisateur : *
 
 ## 1. Verdict
 
-1. **Le point différenciant n'est plus l'agrégation de données publiques** (elle se banalise : serveur MCP officiel de data.gouv, fichiers BDPM convertis en CSV, projets de RAG sur la BDPM). C'est le **croisement entre les ventes de l'officine et des signaux publics** (épidémie, météo, calendrier), que seul le pharmacien peut apporter.
+1. **Le point différenciant n'est plus l'agrégation de données publiques** (elle se banalise : serveur MCP officiel de data.gouv, fichiers BDPM convertis en CSV, projets de RAG sur la BDPM). C'est le **croisement entre les ventes de l'officine et des signaux publics** (épidémie, météo, calendrier), à l'échelle de **votre** officine (des panels d'officines le font déjà à l'échelle nationale).
 2. **L'espace « pilotage indépendant du LGO » est vide** d'après les recherches : les tableaux de bord trouvés (Winstat, Smart Rx 360, My Pilot, Offisanté) vivent dans l'écosystème des éditeurs ou dépendent d'eux. 🟡 (absence non démontrée)
 3. **Le goulot est la sortie des données du LGO**, pas la technique : aucune API ni programme développeur public trouvé pour Winpharma. Voies légitimes au §2.
 4. **Commencer par des données non nominatives** (ventes par produit et par jour) réduit fortement le risque juridique : pas de donnée de patient, pas d'envoi vers un LLM cloud.
@@ -80,7 +80,7 @@ Relance du projet après 6 mois, à partir du but formulé par l'utilisateur : *
 - Pittsburgh (preprint 2025) : ventes OTC et syndromes grippaux, r = 0,66 avec les passages aux urgences.
 - Revue systématique : 17 comparaisons sur 19 montrent une corrélation significative.
 - New York (CDC) : les antidiarrhéiques suivent norovirus et grippe.
-- **Aucune étude française trouvée** liant ventes officinales et surveillance : espace non exploité.
+- **Correction du 23/10/2026 :** des travaux français existent depuis 1999 (partenariat Sentinelles – panel IQVIA d'environ 14 000 officines ; Vergu 2006, Pelat sur la gastro-entérite, Vilcu 2019) : les ventes **devancent** la surveillance de 1 à 3 semaines. Ce qui reste non démontré : le gain pour **une officine isolée**. Détail dans `docs/CROISEMENTS_DATA_PUBLIQUE.md` (§4).
 
 **Croisements les plus prometteurs** (à tester sur vos propres ventes, aucune garantie) :
 1. IRA Sentiweb + eaux usées × antitussifs, expectorants, antigrippaux (avance de 1 à 3 semaines à vérifier).

@@ -11,7 +11,7 @@ Pharmacien en reconversion vers l'IA. Il a repris le métier après **5 ans d'ab
 ## Contenu du dépôt
 - `fiches/` : 20 fiches Markdown de pathologies + `INDEX.md`.
 - `posters/` : posters HTML A4 imprimables (Ctrl+P, A4, couleurs activées). **L'inventaire est généré dans `posters/INDEX.md`** : ne pas recopier de compteurs ici.
-- `docs/` : `RECHERCHE_2026-10.md` (synthèse de la recherche sur les données, les LLM et le cadre juridique), `REVUE_CONTENU.md` (points à valider par le pharmacien), `veille_reglementaire_2026.md`.
+- `docs/` : `CROISEMENTS_DATA_PUBLIQUE.md` (approfondissement des données publiques et des croisements avec les données de l'officine, pour Officina), `RECHERCHE_2026-10.md` (synthèse de la recherche sur les données, les LLM et le cadre juridique), `REVUE_CONTENU.md` (points à valider par le pharmacien), `veille_reglementaire_2026.md`.
 - `tools/posters.py` : contrôle de fraîcheur, index, métadonnées. `tools/legacy/` : scripts obsolètes, **ne pas exécuter**.
 - **Le code de l'application Flask décrite dans le README (app.py, RAG, clients API, index de 15 000 médicaments) n'est pas dans ce dépôt** : il est sur le poste de l'utilisateur. Ne pas supposer qu'il existe ici (le dépôt ne contient ni FastAPI, ni `rag/`, ni `data/`).
 
